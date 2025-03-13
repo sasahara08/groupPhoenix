@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* メイン */
+main {
+  height: 500px;
+}
+.col3 {
+  display: flex;
+}
+.col3 li {
+  width: calc(100% / 3);
+  height: 400px;
+}
+
+.main-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sales-message {
+  padding: 10px 0 10px 0;
+  text-align: center;
+  color: white;
+  font-family: Noto Sans Japaneze;
+}

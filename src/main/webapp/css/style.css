@@ -1,0 +1,146 @@
+@charset "UTF-8";
+* {
+  font-family: Noto Sans Japaneze;
+}
+body {
+  background-color: #ec6d4e;
+  color: white;
+}
+/* ヘッダー */
+header {
+  margin: 0 5px 0 5px;
+}
+.header_inline_block ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.header_inline_block li {
+  list-style: none;
+}
+.nav {
+  display: flex;
+}
+.header_inline_block form {
+  display: flex;
+}
+.login form {
+  margin-right: auto;
+}
+.header_inline_block button {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.logo {
+  padding: 20px;
+  margin-left: 0;
+}
+/* メインコンテンツ */
+/* h1 タイトル */
+h1 {
+  color: white;
+}
+/* h2 サブ */
+h2 {
+  color: white;
+}
+/* h3 項目 */
+h3 {
+  color: white;
+}
+/* u アンダーバー */
+u {
+  color: white;
+}
+/* ボタン1 背景無し白枠文字白*/
+.button1 {
+  padding: 5px 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* ボタン1ホバー時の記述 背景白 文字色オレンジに*/
+.button1:hover {
+  background-color: #fff;
+  color: #ec6d4e;
+}
+/* ボタン2 背景オレンジ 文字白*/
+.button2 {
+  padding: 5px 10px;
+  background-color: #ec6d4e;
+  border: 2px solid #ec6d4e;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* ボタン2 ホバー時の記述 枠線を白に変え影を付ける*/
+.button2:hover {
+  background-color: #ec6d4e;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+/* ボタン3 背景白　枠線オレンジ 文字オレンジ*/
+.button3 {
+  padding: 5px 10px;
+  background-color: white;
+  border: 2px solid #ec6d4e;
+  border-radius: 20px;
+  color: #ec6d4e;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* ボタン3 ホバー時の記述 枠線を白 背景色をオレンジ文字を白に変え影を付ける*/
+.button3:hover {
+  background-color: #ec6d4e;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+/* inputタグ用CSS */
+input {
+  background-color: white;
+  color: #ec6d4e;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 8px;
+}
+/* フッター */
+.footer {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.693);
+}
+.footer p {
+  margin: 0;
+}
+.footer button {
+  padding: 5px 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.footer form {
+  margin: 0;
+}

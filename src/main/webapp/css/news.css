@@ -1,0 +1,34 @@
+@charset "UTF-8";
+.back {
+  text-align: center;
+/*  text-decoration: none;*/
+  width: 8%;
+  margin: auto;
+  padding: 0.5rem 0.5rem;
+  font-weight: bold;
+  border: 2px solid #98fb98;
+  background: #98fb98;
+  color: black;
+  transition: 0.5s;
+}
+a {
+  text-decoration: none;
+}
+body {
+  width: 100%;
+}
+h2 {
+  text-align: center;
+}
+ul {
+  width: 40%;
+  margin: auto;
+}
+li {
+  list-style: none;
+  text-align: left;
+  border: 1px solid #aaa;
+  border-radius: 15px;
+  padding: 5%;
+  margin-bottom: 9%;
+  }

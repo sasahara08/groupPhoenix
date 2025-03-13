@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>非会員TOPページ</title>
+    <link rel="stylesheet" href="../css/html5reset-1.6.1.css" media="all" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+     <!-- ヘッダーを挿入 -->
+  <jsp:include page="../inc/header.jsp" />
+
+    <!-- メインコンテンツ -->
+    <main>
+
+    </main>
+
+  <!-- フッターを挿入 -->
+   <jsp:include page="../inc/footer.jsp" />
+  </body>
+</html>
+
+●ルール3/13更新
+	①上記ようにヘッダーとフッターを追加してください。
+	
+※会員ﾍﾟｰｼﾞの際はヘッダーに下記リンクを使用してください。
+  <jsp:include page="../inc/memberHeader.jsp" />
+
+    <link rel="stylesheet" href="../css/html5reset-1.6.1.css" media="all" />
+    <link rel="stylesheet" href="../css/style.css" />
+    
+    ②上記CSSのリンクを追加してください。
+    
+    ③デザインは下記リンクを参考にしています。
+    参照していただき、
+    大きくデザインが崩れないように注意よろしくお願いします。
+    
+    https://shop.fruoats.jp/
+    

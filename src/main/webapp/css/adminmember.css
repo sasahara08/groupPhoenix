@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* ページタイトルのスタイル */
+.title {
+	background-color: #e9e7e7;
+	/* 背景色を水色に設定 */
+	display: flex;
+	justify-content: center;
+	/* 水平方向の中央揃え */
+	align-items: center;
+	/* 垂直方向の中央揃え */
+	height: 70px;
+	/*	 タイトル領域を画面全体の高さに設定 */
+	margin: 20px 0;
+	/* 余白を設定 */
+	text-align: center;
+	/* テキストを中央揃え */
+}
+
+h2 {
+	font-size: 26px;
+	/* テキストサイズ */
+	line-height: 1.5;
+	/* 行間の調整 */
+}
+
+.subtitle {
+	display: block;
+	/* 改行させる */
+	font-size: 0.7em;
+	/* テキストサイズ */
+}
+
+/* mainエリアのスタイル */
+main {
+	margin: 20px 50px;
+	/* 余白を設定 */
+
+}
+

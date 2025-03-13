@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+	flex-direction: column; /* 子要素を縦方向に並べる */
+    justify-content: center; /* 縦方向の中央揃え */
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('stadium.jpg'); /* 画像ファイル名を指定 */
+    background-size: cover; /* 画像を全面に表示 */
+    background-position: center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 背景を繰り返さない */
+    background-attachment: fixed; /* 背景を固定する */
+}
+/* コンテナ */
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 20px; /* containerの下に余白を追加 */
+}
+
+/* 選手詳細 */
+.player-detail {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* サムネイル */
+.player-thumbnail {
+    flex: 1;
+    text-align: center;
+}
+
+.player-thumbnail img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* 選手情報 */
+.player-info {
+    flex: 2;
+    text-align: left;
+}
+
+.player-info h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.player-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* 戻るボタン */
+.back-button {
+    text-align: center;
+}
+
+.back-button a {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.back-button a:hover {
+    background-color: #0056b3;
+}

@@ -16,7 +16,7 @@
  	<div class = enclose1>
  	<c:forEach var="ticket" items="${ticket.ticketId}">
  	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
- 	<h1>${game.homeTeam}vs${game.awayTeam}</h1>
+ 	<h1>${team.team_name}vs${game.awayTeam}</h1>
  	<h5>
 		日時:${game.gameDate} ${game.gameTime}<br/>
 		場所:${game.stadiumPlace}<br/>

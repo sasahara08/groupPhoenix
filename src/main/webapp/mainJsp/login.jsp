@@ -10,12 +10,13 @@
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
  </head>
+ <jsp:include page="../inc/header.jsp" />
  <body>
-  <jsp:include page="/inc/header.jsp" />
+ 
  	<h1>ログイン</h1>
  	<div class = enclose1>
 <!-- 	<form action="${pageContext.request.contextPath}/login" method="post" onsubmit="return validateForm();">-->
-<form action="login" method="post" onsubmit="return validateForm();"> 	<p>
+<form login="${pageContext.request.contextPath}/NonMemberLogin.java" method="post" onsubmit="return validateForm();"> 	<p>
  		<label for="email">メールアドレス</label>
         <input type="email" id="email" name="email" required>
  	</p>
@@ -25,6 +26,7 @@
  	<button type="button1" name="login" value="login">ログイン</button>
  	</form>
 	</div> 
-<jsp:include page="/inc/footer.jsp" />
+
  </body>
+ <jsp:include page="../inc/footer.jsp" />
  </html>

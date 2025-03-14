@@ -557,6 +557,7 @@ CREATE TABLE `users` (
   `kana` varchar(255) NOT NULL COMMENT '名前(ふりがな)',
   `birthday` date NOT NULL COMMENT '生年月日',
   `post_code` varchar(7) NOT NULL COMMENT '郵便番号(ハイフンなし７桁)',
+  `address` varchar(255) NOT NULL COMMENT '住所',
   `phone` varchar(20) NOT NULL COMMENT '電話番号',
   `email` varchar(255) NOT NULL,
   `gender` enum('男性','女性','その他') NOT NULL COMMENT '性別(ENUM(1.男性, 2.女性, 3.その他）)',
@@ -577,7 +578,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','8100072','0924011835','asuka-saitou@@rikarento.com','女性','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','女性','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -590,4 +591,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-13 10:23:31
+-- Dump completed on 2025-03-14 10:45:32

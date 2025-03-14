@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDAO {
+public class NonMemberDAO {
 
     public boolean validateLogin(String email, String password) {
     	//SQL文を記述

@@ -8,9 +8,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import dao.LoginDAO;
+import dao.NonMemberDAO;
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class NonMemberLogin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         
         //LoginDAOクラスのインスタンスを作成
-        LoginDAO loginDAO = new LoginDAO();
+        NonMemberDAO loginDAO = new NonMemberDAO();
         //validateLoginメソッドを使用してメールアドレスとパスワードの認証
         if (loginDAO.validateLogin(email, password)) {
             // ログイン成功の場合は会員TOPへ遷移

@@ -55,10 +55,8 @@
  	</p>
  	<p>
  		<label for="password">パスワード：</label>
-        <input type="password" id="password" name="password" required></p>
-	<p><label for="phone">電話番号：</label><br>
-        <input type="tel" id="phone" name="phone" pattern="\d{10,11}" required>
-	</p>
+        <input type="password" id="password" name="password" required>
+    </p>
 	<p>
 	<label for="expiry">クレジットカード使用期限 (MM/YY)：</label>
         <input type="text" id="expiry" name="expiry" pattern="\d{2}/\d{2}">
@@ -76,5 +74,23 @@
  	</form>
 	</div> 
 <jsp:include page="/inc/footer.jsp" />
+<script>
+    function clearForm() {
+      document.getElementById("name").value = "";
+      document.getElementById("kana").value = "";
+      document.getElementById("birthday").value = "";
+      document.getElementById("male").checked = false;
+      document.getElementById("female").checked = false;
+      document.getElementById("other").checked = false;
+      document.getElementById("postcode").value = "";
+      document.getElementById("address").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("expiry").value = "";
+      document.getElementById("creditcard").value = "";
+      document.getElementById("securitycode").value = "";
+    }
+  </script>
  </body>
  </html>

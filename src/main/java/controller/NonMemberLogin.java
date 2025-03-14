@@ -12,28 +12,31 @@ import dao.NonMemberDAO;
 @WebServlet("/NonMemberLogin")
 public class NonMemberLogin extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-	}	
-    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 // ticket.jsp を表示  
+       request.getRequestDispatcher("/mainJsp/login.jsp").forward(request, response);  
+       System.out.println("login");
+	}
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	//リクエストからメールアドレスとパスワードを取得
-    	String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        //LoginDAOクラスのインスタンスを作成
-        NonMemberDAO loginDAO = new NonMemberDAO();
-        //validateLoginメソッドを使用してメールアドレスとパスワードの認証
-        if (loginDAO.validateLogin(email, password)) {
-            // ログイン成功の場合は会員TOPへ遷移
-        	request.getRequestDispatcher("memberTop.jsp").forward(request, response);
-        } else {
-            // ログイン失敗の場合は再度ログイン画面へ遷移
-        	request.setAttribute("loginError", "メールアドレスまたはパスワードが間違っています。");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+    	request.setCharacterEncoding("UTF-8");
+    	
+    	
+    	// 遷移先分岐
+    	String login = request.getParameter("login");
+    	
+        if ("login".equals(login)) {
+            request.getRequestDispatcher("./mainJsp/member.jsp").forward(request, response);
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            System.out.println("login");
+            //LoginDAOクラスのインスタンスを作成
+            NonMemberDAO loginDAO = new NonMemberDAO();
+            //validateLoginメソッドを使用してメールアドレスとパスワードの認証
+            if (loginDAO.validateLogin(email, password)) {
+            	request.getRequestDispatcher("/mainJsp/memberTop.jsp").forward(request, response);      
+        } else  {request.getRequestDispatcher("/mainJsp/login.jsp").forward(request, response);
+            }
+      } 
     }
 }

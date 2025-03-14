@@ -11,7 +11,7 @@ public class NonMemberDAO {
     	//SQL文を記述
     	String query = "SELECT * FROM users WHERE email = ? AND pass = ?";
     	
-    	//DBに接続
+    	//DBに接続 
         try (Connection connection = DBManager.getConnection()) {
             
             PreparedStatement preparedStatement = connection.prepareStatement(query);

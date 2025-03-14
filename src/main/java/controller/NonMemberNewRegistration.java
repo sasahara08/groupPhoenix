@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import dao.MembershipRegistrationCompleteDAO;
 
-@WebServlet("/nonMemberNewRegistration")
+@WebServlet("/NonMemberNewRegistration")
 public class NonMemberNewRegistration extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

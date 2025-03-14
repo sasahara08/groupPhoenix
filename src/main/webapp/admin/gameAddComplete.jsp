@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Insert title here</title>
+        <title>管理者画面-試合登録完了</title>
         <link rel="stylesheet" href="javascript:void(0)">
     </head>
 

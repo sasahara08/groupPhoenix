@@ -9,7 +9,7 @@
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/player.css">-->
 <link rel="stylesheet" href="../css/style.css" />
 <!--  古いcssが読み込まれる場合があるので ?v=20250313　のように後ろに日付等の文字列のクエリを入れると、最新のcssが読み込まれます-->
-<link rel="stylesheet" href="../css/player.css?v=20250313">
+<link rel="stylesheet" href="../css/player.css">
 </head>
 
 <body class="one">
@@ -26,6 +26,7 @@
 				<div class="player-card">
 					<div class="player-info">
 						<p>${player.name}</p>
+						<p>${player.kana}</p>
 						<a href="${player.detailLink}"> <!-- 個別選手ページへのリンク --> <img src="${player.image}" alt="${player.name}のサムネイル">
 						</a>
 						<p>${player.position}</p>
@@ -34,13 +35,11 @@
 			</c:forEach>
 		</div>
 	</div>
+	
 	<!-- TOPページボタン -->
 	<div class="top-page-button">
-		<a href="memberTop.jsp">TOPページ</a>
+		<a class="button1" href="memberTop.jsp">TOPページ</a>
 	</div>
-
-	<!-- フッターを挿入 -->
-	<jsp:include page="../inc/footer.jsp" />
 
 </body>
 </html>

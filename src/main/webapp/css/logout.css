@@ -1,18 +1,12 @@
 @charset "UTF-8";
 
 body {    
-	font-family: Arial, sans-serif;
 /*2025/3/13 清水　flexがあると横並びになるので削除*/
-	/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-    min-height: 100vh;
+/*    display: flex;*/
+    font-family: Arial, sans-serif;
+    height: 100vh; /* ビューポート全体の高さに固定 */
     margin: 0;
-    background-image: url('stadium.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    overflow: hidden; /* 不要なスクロールを防止 */
 }
 
 
@@ -22,10 +16,13 @@ body {
     flex-direction: column; /* 垂直方向に要素を並べる */
     justify-content: center; /* 縦方向の中央揃え */
     align-items: center; /* 横方向の中央揃え */
-    height: 100vh; /* ビューポート全体の高さを確保 */
+    height: 100%; /* ビューポート全体の高さを確保 */
     text-align: center; /* テキストを中央揃え */
+	padding: 10px; /* 余白を削減 */
+	box-sizing: border-box; /* パディングを含めた計算に */
 }
 
 .completion-container h1 {
-    margin-bottom: 20px; /* ボタンとの間に余白を追加 */
+    margin-bottom: 30px; /* ボタンとの間に余白を追加 */
 }
+

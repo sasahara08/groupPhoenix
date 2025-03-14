@@ -19,9 +19,6 @@
     	    <h1>ログアウトしますか？</h1>
         	<a href="index.jsp" class="button1">ログアウトする</a>
     	</div>
-    	
-    <!-- フッターを挿入 -->
-	<jsp:include page="../inc/footer.jsp" />
-    		
+   		
 </body>
 </html>

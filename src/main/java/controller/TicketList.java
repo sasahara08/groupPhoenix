@@ -24,6 +24,8 @@ public class TicketList extends HttpServlet {
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	request.setCharacterEncoding("UTF-8");
 	    	
+	    	
+	    	// 遷移先分岐
 	    	String ticket = request.getParameter("ticket");
 	    	
 	        if ("resaleTicketSalesConfirmation".equals(ticket)) {

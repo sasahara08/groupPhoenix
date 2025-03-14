@@ -1,42 +1,50 @@
 @charset "UTF-8";
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-	flex-direction: column; /* 子要素を縦方向に並べる */
-    justify-content: center; /* 縦方向の中央揃え */
-    align-items: center;
+body {    
+	font-family: Arial, sans-serif;
+/*2025/3/13 清水　flexがあると横並びになるので削除*/
+	/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
     min-height: 100vh;
     margin: 0;
-    background-image: url('stadium.jpg'); /* 画像ファイル名を指定 */
-    background-size: cover; /* 画像を全面に表示 */
-    background-position: center; /* 背景画像を中央に配置 */
-    background-repeat: no-repeat; /* 背景を繰り返さない */
-    background-attachment: fixed; /* 背景を固定する */
+    background-image: url('stadium.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 /* コンテナ */
 .container {
+    display: flex; /* Flexboxを使用 */
+    justify-content: center; /* 横方向の中央揃え */
+    align-items: center; /* 縦方向の中央揃え */
+    height: auto; /* 必要な高さのみを確保 */
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 800px;
     width: 100%;
-    margin-bottom: 20px; /* containerの下に余白を追加 */
+    margin: 20px auto; /* 上下に適度な余白を追加 */
 }
 
 /* 選手詳細 */
 .player-detail {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    justify-content: center; /* 子要素を中央に配置 */
+    align-items: center; /* 垂直方向の中央揃え */
+    gap: 20px; /* 要素間のスペース */
 }
 
 /* サムネイル */
 .player-thumbnail {
-    flex: 1;
-    text-align: center;
+    align-self: center; /* サムネイル自身を中央揃え */
+    flex: 0 0 auto; /* サイズの固定 */
+    margin-right: auto; /* 左寄せに役立てる */
 }
+
 
 .player-thumbnail img {
     width: 200px;

@@ -1,10 +1,11 @@
 /* 全体スタイル */
 
-body {
+.one{
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*2025/3/13 清水　flexがあると横並びになるので削除*/
+	/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
     min-height: 100vh;
     margin: 0;
     background-image: url('stadium.jpg');
@@ -18,15 +19,20 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+	padding-top: 75px;		/*2025/3/13 清水　上部メニューと重なるので上に余白を設定*/
 }
 
 /* ヘッダー部分 */
-.header {
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+header {
+    position: fixed; /* ヘッダーを画面の上部に固定 */
+    top: 0; /* ページの最上部に配置 */
+    width: 100%; /* 横幅を画面いっぱいに広げる */
+	/*2025/3/13 清水　背景色はオレンジにしたいので削除*/
+/*    background-color: #ffffff;  背景色（お好みで変更） */
+    z-index: 1000; /* ヘッダーを他の要素の前面に表示 */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* ヘッダーの影 */
 }
+
 
 h1 {
     color: white;

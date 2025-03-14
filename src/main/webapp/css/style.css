@@ -62,6 +62,7 @@ u {
 }
 /* ボタン1 背景無し白枠文字白*/
 .button1 {
+	text-decoration: none;
   padding: 5px 10px;
   background: none;
   border: 2px solid white;
@@ -77,6 +78,7 @@ u {
 }
 /* ボタン2 背景オレンジ 文字白*/
 .button2 {
+	text-decoration: none;
   padding: 5px 10px;
   background-color: #ec6d4e;
   border: 2px solid #ec6d4e;
@@ -95,6 +97,7 @@ u {
 }
 /* ボタン3 背景白　枠線オレンジ 文字オレンジ*/
 .button3 {
+	text-decoration: none;
   padding: 5px 10px;
   background-color: white;
   border: 2px solid #ec6d4e;
@@ -116,7 +119,7 @@ input {
   background-color: white;
   color: #ec6d4e;
   font-weight: bold;
-  border: 1px solid white;
+  border: 1px solid #ec6d4e;
   padding: 5px;
   border-radius: 8px;
 }

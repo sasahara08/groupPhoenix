@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import dao.NonMemberDAO;
-@WebServlet("/login")
+@WebServlet("/NonMemberLogin")
 public class NonMemberLogin extends HttpServlet {
 
     @Override
@@ -32,6 +32,7 @@ public class NonMemberLogin extends HttpServlet {
         	request.getRequestDispatcher("memberTop.jsp").forward(request, response);
         } else {
             // ログイン失敗の場合は再度ログイン画面へ遷移
+        	request.setAttribute("loginError", "メールアドレスまたはパスワードが間違っています。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

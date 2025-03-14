@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `phoenix` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `phoenix`;
 -- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: phoenix
@@ -361,7 +359,7 @@ DROP TABLE IF EXISTS `ticket_statuses`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ticket_statuses` (
   `ticket_status_id` int NOT NULL DEFAULT '1' COMMENT 'チケットステータスID(オートインクルメント）',
-  `ticket_status` varchar(10) NOT NULL COMMENT '販売状況（1:未購入、2:購入済、3:リセール出品）',
+  `ticket_status` varchar(10) NOT NULL COMMENT '販売状況（1:未購入、2:購入済、3:リセール出品、4:リセール購入済）',
   PRIMARY KEY (`ticket_status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='チケットステータステーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -372,7 +370,7 @@ CREATE TABLE `ticket_statuses` (
 
 LOCK TABLES `ticket_statuses` WRITE;
 /*!40000 ALTER TABLE `ticket_statuses` DISABLE KEYS */;
-INSERT INTO `ticket_statuses` VALUES (1,'未購入'),(2,'購入済'),(3,'リセール販売');
+INSERT INTO `ticket_statuses` VALUES (1,'未購入'),(2,'購入済'),(3,'リセール販売'),(4,'リセール購入済');
 /*!40000 ALTER TABLE `ticket_statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,11 +418,11 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL COMMENT '名前',
   `kana` varchar(255) NOT NULL COMMENT '名前(ふりがな)',
   `birthday` date NOT NULL COMMENT '生年月日',
+  `gender` enum('男性','女性','その他') NOT NULL COMMENT '性別(ENUM(1.男性, 2.女性, 3.その他）)',
   `post_code` varchar(7) NOT NULL COMMENT '郵便番号(ハイフンなし７桁)',
   `address` varchar(255) NOT NULL COMMENT '住所',
   `phone` varchar(20) NOT NULL COMMENT '電話番号',
   `email` varchar(255) NOT NULL,
-  `gender` enum('男性','女性','その他') NOT NULL COMMENT '性別(ENUM(1.男性, 2.女性, 3.その他）)',
   `pass` varchar(255) NOT NULL COMMENT 'パスワード',
   `created_at` date NOT NULL COMMENT 'アカウント作成日(登録日)',
   `last_login_at` datetime NOT NULL COMMENT 'カードの有効期限',
@@ -442,7 +440,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','女性','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','女性','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -455,4 +453,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-14 11:16:23
+-- Dump completed on 2025-03-14 15:04:51

@@ -15,15 +15,21 @@
  
  	<h1>ログイン</h1>
  	<div class = enclose1>
+<<<<<<< HEAD
 <!-- 	<form action="${pageContext.request.contextPath}/login" method="post" onsubmit="return validateForm();">-->
 <form login="${pageContext.request.contextPath}/NonMemberLogin.java" method="post" onsubmit="return validateForm();"> 	<p>
+=======
+ 	<form action="${pageContext.request.contextPath}/NonMemberLogin" method="post" onsubmit="return validateForm();">
+<!--<form action="login" method="post" onsubmit="return validateForm();"> 	<p>-->
+>>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git
  		<label for="email">メールアドレス</label>
         <input type="email" id="email" name="email" required>
  	</p>
  	<p>
  		<label for="password">パスワード</label>
         <input type="password" id="password" name="password" required></p>
- 	<button type="button1" name="login" value="login">ログイン</button>
+ 	
+ 	<button type="submit" name="login" value="login">ログイン</button>
  	</form>
 	</div> 
 

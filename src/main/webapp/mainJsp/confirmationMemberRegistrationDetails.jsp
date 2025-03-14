@@ -38,7 +38,8 @@
         <p>クレジットカード番号: ${param.creditcard}</p>
         <p>セキュリティコード: ${param.securitycode}</p>
         <div class="button-wrapper">
-            <form action="newMemberRegistration.jsp" method="post">
+        	<form action="${pageContext.request.contextPath}/newMemberRegistration.jsp" method="post">
+<!--            <form action="newMemberRegistration.jsp" method="post">-->
                 <input type="hidden" name="name" value="${param.name}">
                 <input type="hidden" name="kana" value="${param.kana}">
                 <input type="hidden" name="birthday" value="${param.birthday}">
@@ -53,7 +54,8 @@
                 <input type="hidden" name="securitycode" value="${param.securitycode}">
                 <button type="submit">戻る</button>
             </form>
-            <form action="membershipRegistrationComplete.jsp" method="post">
+            <form action="${pageContext.request.contextPath}/membershipRegistrationComplete.jsp" method="post">
+<!--            <form action="membershipRegistrationComplete.jsp" method="post">-->
                 <input type="hidden" name="name" value="${param.name}">
                 <input type="hidden" name="kana" value="${param.kana}">
                 <input type="hidden" name="birthday" value="${param.birthday}">

@@ -18,6 +18,7 @@ public class NonMemberLogin extends HttpServlet {
 	}	
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
     	request.setCharacterEncoding("UTF-8");
     	
     	
@@ -39,5 +40,22 @@ public class NonMemberLogin extends HttpServlet {
         }else  {
             request.getRequestDispatcher("/mainJsp/login.jsp").forward(request, response);
         } 
+=======
+    	//リクエストからメールアドレスとパスワードを取得
+    	String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        //LoginDAOクラスのインスタンスを作成
+        NonMemberDAO loginDAO = new NonMemberDAO();
+        //validateLoginメソッドを使用してメールアドレスとパスワードの認証
+        if (loginDAO.validateLogin(email, password)) {
+            // ログイン成功の場合は会員TOPへ遷移
+        	request.getRequestDispatcher("memberTop.jsp").forward(request, response);
+        } else {
+            // ログイン失敗の場合は再度ログイン画面へ遷移
+        	request.setAttribute("loginError", "メールアドレスまたはパスワードが間違っています。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+>>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git
     }
 }

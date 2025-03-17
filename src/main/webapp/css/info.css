@@ -1,0 +1,94 @@
+@charset "UTF-8";
+    body {
+       width: 100%;
+       margin: auto;
+/*       font-family: Arial, sans-serif;*/
+/*        margin: 20px;*/
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      width: 35%;
+      margin: auto;
+      margin-top: 3%;
+      background-color:chocolate
+    }
+    .form-group {
+      width: 100%;
+      display: flex;
+      margin-bottom: 15px;
+    }
+    .form-group label {
+       width: 50%;
+       display: block;
+       margin-bottom: 5px;
+       font-size: 18px;
+    }
+    label {
+      padding: 2%;
+    }
+    .form-group input {
+        display: block;
+        width: 50%;
+        height: 28px;
+        box-sizing: border-box;
+    }
+    .reverse-label-textarea {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .reverse-label-textarea label {
+        order: 2;
+    }
+    .reverse-label-textarea textarea {
+      width: 100%;
+      padding: 5% 0%;
+        order: 1;
+    }
+    .form-group-button {
+      width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+    .form-group-button button {
+      width: 20%;
+      padding: 0.5rem 0.5rem;
+      font-weight: bold;
+      border: 2px solid #98fb98;
+      background: #98fb98;
+      margin: 5%;
+    }
+    .form-group-button button:hover {
+      margin-top: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      
+    }
+/*    .form-group-button,*/
+/*    .back-button {*/
+/*      display: flex;*/
+/*      width: 100%;*/
+/*      margin: auto;*/
+/*      text-align: center;*/
+/*        padding: 10px 20px;*/
+/*        color: #fff;*/
+/*        border: none;*/
+/*        cursor: pointer;*/
+/*        border-radius: 5px;*/
+/*    }*/
+/*    .form-group-button:hover,*/
+/*    .back-button:hover {*/
+/*        margin-top: 10px;*/
+/*        padding: 10px 20px;*/
+/*        color: #fff;*/
+/*        border: none;*/
+/*        cursor: pointer;*/
+/*        border-radius: 5px;*/
+/*   }*/
+

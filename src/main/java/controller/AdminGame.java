@@ -20,9 +20,13 @@ import jakarta.servlet.http.HttpSession;
 import dao.AdminGameDAO;
 import dao.DBManager;
 import dto.GameBean;
+import dto.StadiumsBean;
+import dto.TeamsBean;
 
 /**
- * Servlet implementation class AdminGame
+ * @since : 2025/03/17 Y.sasahara
+ * 
+ * @return : 管理者画面内に置ける試合情報のCRUD
  */
 @WebServlet("/game")
 public class AdminGame extends HttpServlet {
@@ -52,20 +56,47 @@ public class AdminGame extends HttpServlet {
 			String teamSql = "select * from teams order by team_id";
 			String stadiumSql = "select * from stadiums order by stadium_id";
 			String gameSql = "select * from games order by game_id";
+
+			System.out.print(teamSql);//取得確認用
+
 			try (Connection conn = DBManager.getConnection();
 					PreparedStatement teamPStmt = conn.prepareStatement(teamSql);
 					PreparedStatement stadiumPStmt = conn.prepareStatement(stadiumSql);
 					PreparedStatement gamePStmt = conn.prepareStatement(gameSql);) {
-				//sqlを実行(全チーム取得)
-				ResultSet rsTeam = teamPStmt.executeQuery();
-				//sqlを実行(全スタジアム取得)
-				ResultSet rsStadium = stadiumPStmt.executeQuery();
-				//sqlを実行(全試合情報取得)
-				ResultSet rsGame = AdminGameDAO.teamName();
 
-				request.setAttribute("teams", rsTeam);
-				request.setAttribute("stadiums", rsStadium);
-				request.setAttribute("games", rsGame);
+				//sqlを実行(全チーム取得)
+				List<TeamsBean> teamList = new ArrayList<>();
+				ResultSet rsTeam = teamPStmt.executeQuery();
+				while (rsTeam.next()) {
+					TeamsBean team = new TeamsBean();
+					team.setTeamId(rsTeam.getInt("team_id"));
+					team.setTeamName(rsTeam.getString("team_name"));
+					teamList.add(team);
+				}
+
+				//sqlを実行(全スタジアム取得)
+				List<StadiumsBean> stadiumList = new ArrayList<>();
+				ResultSet rsStadium = stadiumPStmt.executeQuery();
+				while (rsStadium.next()) {
+					StadiumsBean stadiums = new StadiumsBean();
+					stadiums.setStadiumsId(rsStadium.getInt("stadium_id"));
+					stadiums.setStadiumsName(rsStadium.getString("stadium_name"));
+					stadiumList.add(stadiums);
+				}
+
+				//sqlを実行(全試合情報取得)
+				List<GameBean> gameList = AdminGameDAO.teamName();
+
+				// 確認用
+				//				System.out.println(teamList);
+				//				System.out.println(stadiumList);
+				//				System.out.println(gameList);
+				//				System.out.println("gameTop遷移");
+
+				//画面遷移
+				request.setAttribute("teams", teamList);
+				request.setAttribute("stadiums", stadiumList);
+				request.setAttribute("games", gameList);
 				String path = "./admin/game.jsp";
 				request.getRequestDispatcher(path).forward(request, response);
 
@@ -183,10 +214,10 @@ public class AdminGame extends HttpServlet {
 
 					//チーム名でチームIDを検索
 					if (!homeTeam.isEmpty()) {
-						homeTeamSql = "select team_id from teams where team_name = " + homeTeam;
+						homeTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 						PreparedStatement homeTeamStatement = connection.prepareStatement(homeTeamSql);
+						homeTeamStatement.setString(1, homeTeam); // パラメータを設定
 
-						//ホームチームのIDを取得
 						try (ResultSet homeTeamIdSet = homeTeamStatement.executeQuery()) {
 							if (homeTeamIdSet.next()) {
 								homeTeamId = homeTeamIdSet.getInt("team_id");
@@ -195,9 +226,10 @@ public class AdminGame extends HttpServlet {
 					}
 
 					if (!awayTeam.isEmpty()) {
-						awayTeamSql = "select team_id from teams where team_name = " + awayTeam;
+						awayTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 						PreparedStatement awayTeamStatement = connection.prepareStatement(awayTeamSql);
-						//アウェイチームのIDを取得
+						awayTeamStatement.setString(1, awayTeam); // パラメータを設定
+
 						try (ResultSet awayTeamIdSet = awayTeamStatement.executeQuery()) {
 							if (awayTeamIdSet.next()) {
 								awayTeamId = awayTeamIdSet.getInt("team_id");
@@ -210,24 +242,29 @@ public class AdminGame extends HttpServlet {
 
 					searchSql.append("join teams as homeTeam on games.home_team_id = homeTeam.team_id ");
 					searchSql.append("join teams as awayTeam on games.away_team_id = awayTeam.team_id ");
-					searchSql.append("join stadiums on games.stadium_id = stadiums.stadium_id WHERE game_delete_at is not null");
+					searchSql.append("join stadiums on games.stadium_id = stadiums.stadium_id");
+
+					// 時間があれば実装
+					//					searchSql.append("join stadiums on games.stadium_id = stadiums.stadium_id WHERE game_delete_at is null");
 
 					// パラメータに基づいてWHERE句を動的に追加
 					if (gameId != null && !gameId.isEmpty()) {
 						searchSql.append(" AND game_id = ?");
 					}
 					if (gameDay != null && !gameDay.isEmpty()) {
-						searchSql.append(" AND game_day = ?");
+						searchSql.append(" AND game_date = ?");
 					}
 					if (homeTeam != null && !homeTeam.isEmpty()) {
-						searchSql.append(" AND home_team = ?");
+						searchSql.append(" AND homeTeam.team_id = ?");
 					}
 					if (awayTeam != null && !awayTeam.isEmpty()) {
-						searchSql.append(" AND away_team = ?");
+						searchSql.append(" AND awayTeam.team_id = ?");
 					}
 					if (stadium != null && !stadium.isEmpty()) {
-						searchSql.append(" AND stadium = ?");
+						searchSql.append(" AND stadiums.stadium_name = ?");
 					}
+
+					searchSql.append(" order by game_id");
 
 					// SQL実行
 					try (PreparedStatement statement = connection.prepareStatement(searchSql.toString())) {
@@ -257,15 +294,21 @@ public class AdminGame extends HttpServlet {
 						try (ResultSet resultSet = statement.executeQuery()) {
 							// 結果をリクエスト属性にセット
 							while (resultSet.next()) {
-								int gId = resultSet.getInt("game_id");
-								Date gDay = resultSet.getDate("game_date");
-								Time gTime = resultSet.getTime("start_time");
-								String gHomeTeam = resultSet.getString("homeTeam.team_name");
-								String gAwayTeam = resultSet.getString("awayTeam.team_name");
-								String gStadium = resultSet.getString("stadiums.stadium_name");
-								gameList.add(new GameBean(gId, gDay, gTime, gHomeTeam, gAwayTeam, gStadium));
+								GameBean games = new GameBean();
+								games.setGameId(resultSet.getInt("game_id"));
+								games.setGameDate(resultSet.getDate("game_date"));
+								games.setStartTime(resultSet.getTime("start_time"));
+								games.setHomeTeamName(resultSet.getString("homeTeam.team_name"));
+								games.setAwayTeamName(resultSet.getString("awayTeam.team_name"));
+								games.setStadium(resultSet.getString("stadiums.stadium_name"));
+								gameList.add(games);
 							}
-							request.setAttribute("games", gameList);
+							if (!gameList.isEmpty()) {
+								request.setAttribute("games", gameList);
+							} else {
+								request.setAttribute("message", "検索結果はありません。");
+							}
+							System.out.println(gameList);
 							path = "/admin/gameSearched.jsp";
 							request.getRequestDispatcher(path).forward(request, response);
 						}

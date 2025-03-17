@@ -1,29 +1,35 @@
 package dto;
 
 public class TeamsBean {
-	private int teamid;
-	private String team_name;
+	private int teamId;
+	private String teamName;
 	
-	public TeamsBean(int teamid, String team_name) {
-		this.teamid = teamid;
-		this.team_name = team_name;
+	public TeamsBean(int teamId, String teamName) {
+		this.teamId = teamId;
+		this.teamName = teamName;
+	}
+	
+	public TeamsBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	public int getTeamid() {
-		return teamid;
+	public int getTeamId() {
+		return teamId;
 	}
 
-	public void setTeamid(int teamid) {
-		this.teamid = teamid;
+	public void setTeamId(int teamId) {
+		this.teamId = teamId;
 	}
 
-	public String getTeam_name() {
-		return team_name;
+	public String getTeamName() {
+		return teamName;
 	}
 
-	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
+
+
 	
 	
 	

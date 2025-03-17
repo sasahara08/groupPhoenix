@@ -1,81 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会員情報変更
+</title>
 <link rel="stylesheet" href="javascript:void(0)"> 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
  
 </head>
 <body>
-	<script>
-        // フォームをクリアする関数
-        function clearForm() {
-            document.getElementById("memberForm").reset();
-        }
-    </script>
-</head>
-<body>
-	<h1>会員情報編集</h1>
+	 <h1>会員情報変更 入力画面
+</h1>
     
-    <form id="memberForm" action="memberEditorConfirmation.jsp" method="post">
+    <form action="memberEditorConfirmation.jsp" method="post">
+        <!-- hiddenフィールドでuser_idを送信 -->
+        <input type="hidden" name="user_id" value="${user.userId}">
+
         <p>
             <label for="name">氏名：</label>
-            <input type="text" id="name" name="name" value="<%= request.getParameter("name") != null ? request.getParameter("name") : "" %>" >
+            <input type="text" id="name" name="name" value="${user.name}" required>
         </p>
         <p>
             <label for="kana">ふりがな：</label>
-            <input type="text" id="kana" name="kana" value="<%= request.getParameter("kana") != null ? request.getParameter("kana") : "" %>" >
+            <input type="text" id="kana" name="kana" value="${user.kana}" required>
         </p>
         <p>
             <label for="birthday">生年月日：</label>
-            <input type="date" id="birthday" name="birthday" value="<%= request.getParameter("birthday") != null ? request.getParameter("birthday") : "" %>" >
+            <input type="date" id="birthday" name="birthday" value="${user.birthday}" required>
         </p>
         <p>
             <label>性別：</label><br>
-            <input type="radio" id="male" name="gender" value="male" <%= request.getParameter("gender") != null && request.getParameter("gender").equals("male") ? "checked" : "" %> >
+            <input type="radio" id="male" name="gender" value="male" <c:if test="${user.gender == 'male'}">checked</c:if> required>
             <label for="male">男性</label>
-            <input type="radio" id="female" name="gender" value="female" <%= request.getParameter("gender") != null && request.getParameter("gender").equals("female") ? "checked" : "" %> >
+            <input type="radio" id="female" name="gender" value="female" <c:if test="${user.gender == 'female'}">checked</c:if> required>
             <label for="female">女性</label>
-            <input type="radio" id="other" name="gender" value="other" <%= request.getParameter("gender") != null && request.getParameter("gender").equals("other") ? "checked" : "" %> >
+            <input type="radio" id="other" name="gender" value="other" <c:if test="${user.gender == 'other'}">checked</c:if> required>
             <label for="other">その他</label>
         </p>
         <p>
             <label for="postcode">郵便番号 (ハイフンなし7桁)：</label>
-            <input type="text" id="postcode" name="postcode" value="<%= request.getParameter("postcode") != null ? request.getParameter("postcode") : "" %>" pattern="\d{7}" >
+            <input type="text" id="postcode" name="postcode" value="${user.postcode}">
         </p>
         <p>
             <label for="address">住所：</label>
-            <input type="text" id="address" name="address" value="<%= request.getParameter("address") != null ? request.getParameter("address") : "" %>" >
+            <input type="text" id="address" name="address" value="${user.address}">
         </p>
         <p>
             <label for="phone">電話番号：</label>
-            <input type="tel" id="phone" name="phone" value="<%= request.getParameter("phone") != null ? request.getParameter("phone") : "" %>" pattern="\d{10,11}" >
+            <input type="tel" id="phone" name="phone" value="${user.phone}">
         </p>
         <p>
             <label for="email">メールアドレス：</label>
-            <input type="email" id="email" name="email" value="<%= request.getParameter("email") != null ? request.getParameter("email") : "" %>" >
+            <input type="email" id="email" name="email" value="${user.email}">
         </p>
         <p>
             <label for="password">パスワード：</label>
-            <input type="password" id="password" name="password" value="<%= request.getParameter("password") != null ? request.getParameter("password") : "" %>" >
-        </p>
-        <p>
-            <label for="expiry">クレジットカード使用期限 (MM/YY)：</label>
-            <input type="text" id="expiry" name="expiry" value="<%= request.getParameter("expiry") != null ? request.getParameter("expiry") : "" %>" pattern="\d{2}/\d{2}">
+            <input type="password" id="password" name="password" value="${user.password}">
         </p>
         <p>
             <label for="creditcard">クレジットカード番号：</label>
-            <input type="text" id="creditcard" name="creditcard" value="<%= request.getParameter("creditcard") != null ? request.getParameter("creditcard") : "" %>" pattern="\d{16}">
+            <input type="text" id="creditcard" name="creditcard" value="${user.creditcard}">
         </p>
         <p>
-            <label for="securitycode">セキュリティコード:</label>
-            <input type="text" id="securitycode" name="securitycode" value="<%= request.getParameter("securitycode") != null ? request.getParameter("securitycode") : "" %>" pattern="\d{3,4}">
+            <label for="expiry">クレジットカード使用期限：</label>
+            <input type="text" id="expiry" name="expiry" value="${user.expiry}">
         </p>
-        <button type="button" onclick="clearForm()">クリア</button>
+        <p>
+            <label for="securitycode">セキュリティコード：</label>
+            <input type="text" id="securitycode" name="securitycode" value="${user.securitycode}">
+        </p>
+
+        <!-- 確認ボタン -->
         <button type="submit">確認</button>
-</body>
+    </form>
+
+    <!-- 戻るボタン -->
+    <form action="myPage.jsp" method="get">
+        <button type="submit">戻る</button>
+    </form>
+    <jsp:include page="/inc/footer.jsp" />
 </html>

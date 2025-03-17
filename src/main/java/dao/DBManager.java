@@ -23,8 +23,8 @@ public class DBManager {
 
 	private static final String NAME_DRIVER_MYSQL = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/phoenix?characterEncoding=UTF-8&serverTimeZone=JST";
-	private static final String USER = "Recurrent6C";
-	private static final String PASSWORD = "6cjava";
+	private static final String USER = "root";
+	private static final String PASSWORD = "root";
 	/**
 	*
 	* コネクションを確立します

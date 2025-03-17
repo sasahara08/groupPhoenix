@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <form class="editComplete" action="/game" method="post">
+        <form class="editComplete" action="/groupPhoenix/game" method="post">
             <input type="hidden" name="gameId" value="">
 
             <input type="hidden" name="gamePage" value="deleteComplete">

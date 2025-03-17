@@ -9,6 +9,10 @@ public class StadiumsBean {
 		this.stadiumsName = stadiumsName;
 	}
 
+	public StadiumsBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getStadiumsId() {
 		return stadiumsId;
 	}

@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <form class="editComplete" action="/game" method="post">
+        <form class="editComplete" action="/groupPhoenix/game" method="post">
             <input type="hidden" id="gameId" name="gameId" value="">
             <input type="hidden" id="gameDay" name="gameDay" value="">
             <input type="hidden" id="gameTime" name="gameTime" value="">

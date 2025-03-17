@@ -12,7 +12,8 @@
  </head>
  <body>
   <jsp:include page="/inc/header.jsp" />
- 	<h1>新規会員登録 入力</h1>
+ 	<h1>新規会員登録 入力</h1>s
+ 	
  	<div class = enclose1>
 <!-- 	<form action="${pageContext.request.contextPath}/nonMemberNewRegistration.jsp" method="post" onsubmit="return validateForm();">-->
 <form action="confirmationMemberRegistrationDetails.jsp" method="post" onsubmit="return validateForm();"> 	
@@ -34,7 +35,7 @@
         <label for="male">男性</label>
         <input type="radio" id="female" name="gender" value="female" required>
         <label for="female">女性</label>
-        <input type="radio" id="other" name="gender" value="female" required>
+        <input type="radio" id="other" name="gender" value="other" required>
         <label for="other">その他</label>
  	</p>
  	<p>
@@ -69,28 +70,38 @@
         <label for="securitycode">セキュリティコード:</label>
         <input type="text" id="securitycode" name="securitycode" pattern="\d{3,4}">
 	</p>
- 	<button type="button1" onclick="clearForm()">クリア</button>
+ 	<button type="button" onclick="clearForm()">クリア</button>
     <button type="submit">確認</button>
  	</form>
 	</div> 
 <jsp:include page="/inc/footer.jsp" />
 <script>
     function clearForm() {
-      document.getElementById("name").value = "";
-      document.getElementById("kana").value = "";
-      document.getElementById("birthday").value = "";
-      document.getElementById("male").checked = false;
-      document.getElementById("female").checked = false;
-      document.getElementById("other").checked = false;
-      document.getElementById("postcode").value = "";
-      document.getElementById("address").value = "";
-      document.getElementById("phone").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("password").value = "";
-      document.getElementById("expiry").value = "";
-      document.getElementById("creditcard").value = "";
-      document.getElementById("securitycode").value = "";
+        document.getElementById("memberForm").reset();
     }
-  </script>
+
+    // validateForm 関数はそのまま
+    function validateForm() {
+        const name = document.getElementById("name").value;
+        const kana = document.getElementById("kana").value;
+        const birthday = document.getElementById("birthday").value;
+        const postcode = document.getElementById("postcode").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+
+        if (!name || !kana || !birthday || !postcode || !phone || !email) {
+            alert("すべての必須項目を入力してください。");
+            return false;
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            alert("正しいメールアドレスを入力してください。");
+            return false;
+        }
+
+        return true;
+    }
+</script>
  </body>
  </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <!DOCTYPE html>
     <html lang="ja">
 
@@ -12,7 +13,7 @@
     <body>
         <h3>試合情報_編集</h3>
 
-        <form class="gameAdd" action="/groupPhoenix/game" method="post">
+        <form class="gameAdd" action="/groupPhoenix/game" method="get">
             <div class="addForm">
 
                 <div class="formItem">
@@ -23,7 +24,7 @@
 
                 <div class="formItem">
                     <span>試合日</span>
-                    <input type="text" id="gameDay" name="gameDay" value="">
+                    <input type="date" id="gameDay" name="gameDay" value="">
                 </div>
 
                 <div class="formItem">
@@ -32,31 +33,30 @@
                 </div>
 
                 <div class="formItem">
-                    <span>チーム(ホーム)</span>
-                    <select name="homeTeam" id="homeTeam">
-                        <c:forEach var="team" items="${teams}">
-                            <option value="${team.team_name}" name="homeTeam">${team.teamName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
+                        <span>チーム(ホーム)</span> <select name="homeTeam" id="homeTeam" required>
+                        <option value="" selected>選択してください</option>
+                            <c:forEach var="team" items="${teams}">
+                                <option value="${team.teamName}">${team.teamName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
-                <div class="formItem">
-                    <span>チーム(アウェイ)</span>
-                    <select name="awayTeam" id="awayTeam">
-                        <c:forEach var="team" items="${teams}">
-                            <option value="${team.team_name}" name="awayTeam">${team.teamName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
+                    <div class="formItem">
+                        <span>チーム(アウェイ)</span> <select name="awayTeam" id="awayTeam" required>
+                        <option value="" selected>選択してください</option>
+                            <c:forEach var="team" items="${teams}">
+                                <option value="${team.teamName}">${team.teamName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
-                <div class="formItem">
-                    <span>開催場所</span>
-                    <select name="stadium" id="stadium">
-                        <c:forEach var="stadium" items="${stadiums}">
-                            <option value="${stadium.stadiums_name}">${stadium.stadiumsName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
+                    <div class="formItem">
+                        <span>開催場所</span> <select name="stadium" id="stadium" required>
+                            <c:forEach var="stadium" items="${stadiums}">
+                                <option value="${stadium.stadiumsName}">${stadium.stadiumsName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
             </div>
 

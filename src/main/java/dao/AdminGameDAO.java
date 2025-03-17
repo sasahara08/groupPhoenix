@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,24 +44,41 @@ public class AdminGameDAO {
 		return gameList;
 	}
 
-	//特定のidのチームを取得
-	public static ResultSet teamNameForId(int gameId) {
-        try (Connection connection = DBManager.getConnection()) {
-            // SQLクエリ
-            String sql = """
-                SELECT * FROM games 
-                JOIN teams AS homeTeam ON games.home_team_id = homeTeam.team_id 
-                JOIN teams AS awayTeam ON games.away_team_id = awayTeam.team_id 
-                JOIN stadiums ON games.stadium_id = stadiums.stadium_id where game_id = 
-            """ + gameId;
+	// 特定のidのチーム情報を取得
+	// 特定のidのチーム情報を取得
+	public static GameBean teamNameForId(int gameId) {
+	    GameBean games = null;
+	    
+	    try (Connection connection = DBManager.getConnection();
+	         PreparedStatement statement = connection.prepareStatement("""
+	             SELECT * FROM games
+	             JOIN teams AS homeTeam ON games.home_team_id = homeTeam.team_id
+	             JOIN teams AS awayTeam ON games.away_team_id = awayTeam.team_id
+	             JOIN stadiums ON games.stadium_id = stadiums.stadium_id
+	             WHERE game_id = ?
+	         """)) {
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-            return statement.executeQuery();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+	        statement.setInt(1, gameId); // プレースホルダに gameId を設定
+	        try (ResultSet rsGame = statement.executeQuery()) {
+	            if (rsGame.next()) { // カーソルを最初の行に移動
+	                games = new GameBean();
+	                games.setGameId(rsGame.getInt("game_id"));
+	                games.setGameDate(rsGame.getDate("game_date"));
+	                games.setStartTime(rsGame.getTime("start_time"));
+	                games.setHomeTeamName(rsGame.getString("homeTeam.team_name"));
+	                games.setAwayTeamName(rsGame.getString("awayTeam.team_name"));
+	                games.setStadium(rsGame.getString("stadiums.stadium_name"));
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return games; // データが見つからなかった場合は null
 	}
+
+
         
         
     //特定のIDの試合情報を削除(テーブルの削除時間を更新)

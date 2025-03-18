@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>管理者画面-試合編集確認</title>
-        <script src="<%= request.getContextPath() %>/js/adminGameAfterEdit.js"></script>
+        
     </head>
 
     <body>
@@ -39,15 +39,17 @@
             <input type="hidden" id="gameId" name="gameId" value="">
             <input type="hidden" id="gameDay" name="gameDay" value="">
             <input type="hidden" id="gameTime" name="gameTime" value="">
-            <input type="hidden" id="homeTeam" name="homeTeam" value="">
-            <input type="hidden" id="awayTeam" name="awayTeam" value="">
-            <input type="hidden" id="stadium" name="stadium" value="">
+            <input type="hidden" id="homeTeam" name="homeTeam" value="<%= request.getParameter("homeTeam") %>">
+<input type="hidden" id="awayTeam" name="awayTeam" value="<%= request.getParameter("awayTeam") %>">
+<input type="hidden" id="stadium" name="stadium" value="<%= request.getParameter("stadium") %>">
 
             <input type="hidden" name="gamePage" value="editComplete">
 
             <input type="submit" value="登録" name="editComplete">
             <input type="button" value="修正" onclick="history.back()">
         </form>
+        
+        <script src="<%= request.getContextPath() %>/js/adminGameAfterEdit.js"></script>
     </body>
 
     </html>

@@ -3,17 +3,27 @@
 document.addEventListener('DOMContentLoaded', function () {
     let urlParams = new URLSearchParams(window.location.search);
 
-    document.getElementById('displayId').textContent = urlParams.get('gameId') || '';
-    document.getElementById('hiddenId').value = urlParams.get('gameId') || '';
+    let gameId = urlParams.get('gameId') || '';
+    let gameDate = urlParams.get('gameDate') || '';
+    let gameTime = urlParams.get('gameTime') || '';
+    let homeTeam = urlParams.get('homeTeam') || '';
+    let awayTeam = urlParams.get('awayTeam') || '';
+    let stadiumName = urlParams.get('stadiumName') || '';
 
-    document.getElementById('displayDate').textContent = urlParams.get('gameDate') || '';
+    document.getElementById('displayId').textContent = gameId;
+    document.getElementById('hiddenId').value = gameId;
+    document.getElementById('displayDate').textContent = gameDate;
+    document.getElementById('displayTime').textContent = gameTime;
+    document.getElementById('displayHomeTeam').textContent = homeTeam;
+    document.getElementById('displayAwayTeam').textContent = awayTeam;
+    document.getElementById('displayStadiumName').textContent = stadiumName;
 
-    document.getElementById('displayTime').textContent = urlParams.get('gameTime') || '';
-
-    document.getElementById('displayHomeTeam').textContent = urlParams.get('homeTeam') || '';
-
-    document.getElementById('displayAwayTeam').textContent = urlParams.get('awayTeam') || '';
-    
-    document.getElementById('displayStadiumName').textContent = urlParams.get('stadiumName') || '';
-
+    // Log each value to the console
+    console.log('Game ID:', gameId);
+    console.log('Game Date:', gameDate);
+    console.log('Game Time:', gameTime);
+    console.log('Home Team:', homeTeam);
+    console.log('Away Team:', awayTeam);
+    console.log('Stadium Name:', stadiumName);
 });
+

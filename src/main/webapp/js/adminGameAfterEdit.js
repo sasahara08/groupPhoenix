@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('gameTime').value = urlParams.get('gameTime') || '';
 
     document.getElementById('displayHomeTeam').textContent = urlParams.get('homeTeam') || '';
+//    document.getElementById('homeTeam').value = urlParams.get('homeTeam') || '';
 
     document.getElementById('displayAwayTeam').textContent = urlParams.get('awayTeam') || '';
+    document.getElementById('awayTeam').value = urlParams.get('awayTeam') || '';
 
-    document.getElementById('displayStadium').textContent = urlParams.get('stadium') || '';});
+    document.getElementById('displayStadium').textContent = urlParams.get('stadium') || '';
+    document.getElementById('stadium').value = urlParams.get('stadium') || '';});

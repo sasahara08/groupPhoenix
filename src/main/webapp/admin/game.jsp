@@ -144,6 +144,10 @@
                             <span> ${game.awayTeamName} </span>
 
                             <span> ${game.stadium} </span>
+                            
+                            <c:if test="${game.gameDeleteAt != null}">
+                            <span style="color:tomato;">試合情報は削除されています</span>
+                            </c:if>
 
                             <div>
                                 <form action="/groupPhoenix/game" method="get">

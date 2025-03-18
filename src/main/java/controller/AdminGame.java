@@ -322,6 +322,7 @@ public class AdminGame extends HttpServlet {
 								games.setHomeTeamName(resultSet.getString("homeTeam.team_name"));
 								games.setAwayTeamName(resultSet.getString("awayTeam.team_name"));
 								games.setStadium(resultSet.getString("stadiums.stadium_name"));
+								games.setGameDeleteAt(resultSet.getDate("game_delete_at"));
 								gameList.add(games);
 							}
 							
@@ -350,7 +351,7 @@ public class AdminGame extends HttpServlet {
 				String hiddenAwayTeam = request.getParameter("hiddenAwayTeam");
 				String hiddenStadium = request.getParameter("hiddenStadium");
 				
-
+				//チームIDを検索
 				homeTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 				awayTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 
@@ -429,17 +430,57 @@ public class AdminGame extends HttpServlet {
 				String editGameId = request.getParameter("gameId");
 				String editGameDay = request.getParameter("gameDay");
 				String editGameTime = request.getParameter("gameTime");
+				String editFormattedTime = editGameTime + ":00";
 				String editHomeTeam = request.getParameter("homeTeam");
 				String editAwayTeam = request.getParameter("awayTeam");
 				String editStadium = request.getParameter("stadium");
+				
+				//チームIDを検索
+				homeTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
+				awayTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
+
+				//StadiumIDを検索
+				String editStadiumSql = "SELECT stadium_id FROM stadiums WHERE stadium_name = ?";
 
 				//日付と時間をdate型とtime型に変換
 				Date gameDate = Date.valueOf(editGameDay);
-				Time gameTimes = Time.valueOf(editGameTime);
+				Time gameTimes = Time.valueOf(editFormattedTime);
 
 				// update処理
-				try (Connection connection = DBManager.getConnection()) {
-				    // SQLクエリ（プレースホルダーを使用）
+				try (Connection connection = DBManager.getConnection();
+						PreparedStatement homeTeamIdSql = connection.prepareStatement(homeTeamSql.toString());
+						PreparedStatement awayTeamIdSql = connection.prepareStatement(awayTeamSql.toString());
+						PreparedStatement stadiumIdSql = connection.prepareStatement(editStadiumSql.toString());) {
+				    
+					// プレースホルダに値を設定
+					homeTeamIdSql.setString(1, editHomeTeam);
+					awayTeamIdSql.setString(1, editAwayTeam);
+					stadiumIdSql.setString(1, editStadium);
+					
+					//ホームチームのIDを取得
+					try (ResultSet homeTeamIdSet = homeTeamIdSql.executeQuery()) {
+						if (homeTeamIdSet.next()) {
+							homeTeamId = homeTeamIdSet.getInt("team_id");
+						}
+					}
+					
+					//アウェイチームのIDを取得
+					try (ResultSet awayTeamIdSet = awayTeamIdSql.executeQuery()) {
+						if (awayTeamIdSet.next()) {
+							awayTeamId = awayTeamIdSet.getInt("team_id");
+						}
+					}
+					
+					System.out.println("Away Team ID: " + editAwayTeam);
+
+					//スタジアムのIDを取得
+					try (ResultSet stadiumIdSet = stadiumIdSql.executeQuery()) {
+						if (stadiumIdSet.next()) {
+							stadiumId = stadiumIdSet.getInt("stadium_id");
+						}
+					}
+					
+					// SQLクエリ（プレースホルダーを使用）
 				    String sql = """
 				        UPDATE games 
 				        SET game_date = ?, 
@@ -454,9 +495,9 @@ public class AdminGame extends HttpServlet {
 				        // プレースホルダーに値をセット
 				        statement.setDate(1, gameDate);
 				        statement.setTime(2, gameTimes);
-				        statement.setInt(3, Integer.parseInt(editHomeTeam)); // IDは数値
-				        statement.setInt(4, Integer.parseInt(editAwayTeam)); // IDは数値
-				        statement.setInt(5, Integer.parseInt(editStadium));  // IDは数値
+				        statement.setInt(3, homeTeamId); // IDは数値
+				        statement.setInt(4, awayTeamId); // IDは数値
+				        statement.setInt(5, stadiumId);  // IDは数値
 				        statement.setInt(6, Integer.parseInt(editGameId));   // IDは数値
 				        
 

@@ -19,7 +19,7 @@
                 <div class="formItem">
                     <span>試合Id</span>
                     <span id="displayId"></span>
-                    <input type="text" id="hiddenId" name="gameId" value="">
+                    <input type="hidden" id="hiddenId" name="gameId" value="">
                 </div>
 
                 <div class="formItem">
@@ -63,6 +63,7 @@
             <div class="addBtn">
                 <input type="button" value="戻る" onclick="history.back()">
                 <input type="submit" value="確認" name="edit">
+                
                 <input type="hidden" name="gamePage" value="editCheck">
             </div>
 

@@ -34,6 +34,7 @@ public class AdminGameDAO {
 				games.setHomeTeamName(rsGame.getString("homeTeam.team_name"));
 				games.setAwayTeamName(rsGame.getString("awayTeam.team_name"));
 				games.setStadium(rsGame.getString("stadiums.stadium_name"));
+				games.setGameDeleteAt(rsGame.getDate("game_delete_at"));
 				gameList.add(games);
 				
 				
@@ -75,7 +76,7 @@ public class AdminGameDAO {
 	        e.printStackTrace();
 	    }
 	    
-	    return games; // データが見つからなかった場合は null
+	    return games; 
 	}
 
 
@@ -104,3 +105,4 @@ public class AdminGameDAO {
 	    }
 	}
 }
+

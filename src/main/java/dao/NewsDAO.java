@@ -1,49 +1,94 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.NewsBean;
 
 public class NewsDAO {
+	// ニュース一覧を取得するメソッド
+	public List<NewsBean> getAllNews() throws SQLException {
+		List<NewsBean> newsList = new ArrayList<>();
+		String sql = "SELECT * FROM news ORDER BY created_at DESC";
 
-    // データベース接続情報を直接記述
-    private static final String URL = "jdbc:mysql://localhost:3306/your_database_name";
-    private static final String USER = "your_username";
-    private static final String PASSWORD = "your_password";
+		try (
+				Connection conn = DBManager.getConnection(); // DB接続を取得
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				//            ResultSet rs = pstmt.executeQuery() // SQLを実行して結果を取得
+				ResultSet resultSet = pstmt.executeQuery() // SQLを実行して結果を取得
+		) {
 
-    public NewsBean getNewsById(int id) {
-        NewsBean news = null;
-        String sql = "SELECT * FROM news WHERE id = ?";
+			while (resultSet.next()) {
+				NewsBean news = new NewsBean();
+				news.setNewsId(resultSet.getInt("news_id"));
+				news.setTitle(resultSet.getString("title"));
+				news.setMainText(resultSet.getString("main_text"));
+				news.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+				if(resultSet.getTimestamp("updated_at") != null) {
+					news.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
+				}
+				news.setStartAt(resultSet.getTimestamp("start_at").toLocalDateTime());
+				if(resultSet.getTimestamp("ending_at") != null) {
+					news.setEndingAt(resultSet.getTimestamp("ending_at").toLocalDateTime());
+				}
+				newsList.add(news);
+			}
 
-        try (
-            // データベース接続を直接行う
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            PreparedStatement pstmt = conn.prepareStatement(sql)
-        ) {
-            pstmt.setInt(1, id); // パラメータを設定
+			//            while (resultSet.next()) {
+			//                // ニュース情報をNewsBeanオブジェクトに設定
+			//                NewsBean news = new NewsBean(
+			//                		news.setNewsId(resultSet.getInt("news_id"));
+			//                		news.setTitle(resultSet.getString("title"));
+			//                		news.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+			//                		news.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
+			//                		news.setStartAt(resultSet.getTimestamp("start_at").toLocalDateTime());
+			//                		news.setEndingAt(resultSet.getTimestamp("ending_at").toLocalDateTime());
+			//                );
+			//                // リストに追加
+			//                newsList.add(news);
+			//            }
+		} catch (SQLException e) {
+			e.printStackTrace(); // エラーをログに出力
+			throw e; // エラーを再スロー
+		}
+		return newsList; // ニュース一覧を返す
+	}
 
-            // クエリの実行
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    // ニュース情報をDTOに設定
-                    news = new NewsBean(
-                        rs.getInt("id"),
-                        rs.getString("title"),
-                        rs.getString("main_text"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime(),
-                        rs.getTimestamp("start_at").toLocalDateTime(),
-                        rs.getTimestamp("ending_at").toLocalDateTime()
-                    );
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // エラーのログを出力
-        }
-        return news;
-    }
+	public NewsBean getNewsById(int id) {
+		NewsBean news = null;
+		String sql = "SELECT * FROM news WHERE news_id = ?";
+
+		try (
+				// データベース接続を直接行う
+				Connection conn = DBManager.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+				pstmt.setInt(1, id); // パラメータを設定
+
+			// クエリの実行
+			try(ResultSet resultSet = pstmt.executeQuery()) {
+				if (resultSet.next()) {
+					news = new NewsBean();
+					// ニュース情報をDTOに設定
+					news.setNewsId(resultSet.getInt("news_id"));
+					news.setTitle(resultSet.getString("title"));
+					news.setMainText(resultSet.getString("main_text"));
+					news.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+					if(resultSet.getTimestamp("updated_at") != null) {
+						news.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
+					}
+					news.setStartAt(resultSet.getTimestamp("start_at").toLocalDateTime());
+					if(resultSet.getTimestamp("ending_at") != null) {
+						news.setEndingAt(resultSet.getTimestamp("ending_at").toLocalDateTime());
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace(); // エラーのログを出力
+		}
+		return news;
+	}
 }

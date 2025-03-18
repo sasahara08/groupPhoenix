@@ -60,6 +60,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -71,9 +73,31 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.NewsDAO;
 import dto.NewsBean;
 
-@WebServlet("/NewsDetail")
+@WebServlet("/news")
 public class News extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // DAOでデータ取得
+        NewsDAO newsDAO = new NewsDAO();
+        List<NewsBean> newsList  = null;
+		try {
+			newsList = newsDAO.getAllNews();
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+        // ニュース情報をリクエストスコープに設定
+        request.setAttribute("newsList", newsList);
+    	
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/news.jsp");
+        dispatcher.forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // IDを取得
@@ -86,8 +110,8 @@ public class News extends HttpServlet {
 
         // ニュース情報をリクエストスコープに設定
         request.setAttribute("news", news);
-
-        // JSPに転送
+        
+         // JSPに転送
         RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/newsDetail.jsp");
         dispatcher.forward(request, response);
     }

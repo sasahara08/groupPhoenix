@@ -22,6 +22,10 @@ public class NewsBean {
 		this.endingAt = endingAt;
 	}
 
+	public NewsBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getNewsId() {
 		return newsId;
 	}

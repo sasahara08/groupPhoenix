@@ -39,6 +39,20 @@
             <button type="submit" class="link-button">システムメンテナンス時間延長のお知らせ</button>
         </form>
     </li>
+        <li class="news-content">
+        24/11/26&nbsp;
+        <form action="${pageContext.request.contextPath}/NewsDetail" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="3" />
+            <button type="submit" class="link-button">時間延長のお知らせ</button>
+        </form>
+    </li>
+        <li class="news-content">
+        24/11/26&nbsp;
+        <form action="${pageContext.request.contextPath}/NewsDetail" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="4" />
+            <button type="submit" class="link-button">システムメンテナンス</button>
+        </form>
+    </li>
 </ul>
 
   <br>

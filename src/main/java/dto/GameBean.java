@@ -36,6 +36,10 @@ public class GameBean implements Serializable {
 		
 	}
 
+	public GameBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getGameId() {
 		return gameId;
 	}

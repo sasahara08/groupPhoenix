@@ -5,10 +5,15 @@
     <head>
         <meta charset="UTF-8">
         <title>管理者画面-試合削除確認</title>
-        <script src="<%= request.getContextPath() %>/js/adminGameAfterEdit.js"></script>
+        
     </head>
 
     <body>
+    
+    <!-- ヘッダーを挿入 -->
+            <jsp:include page="../inc/adminHeader.jsp" />
+            
+            
         <div class="beforeEditGame">
             <h4>削除する試合情報の確認</h4>
             <div class="contentsForm">
@@ -21,14 +26,19 @@
             </div>
         </div>
 
-        <form class="editComplete" action="/game" method="post">
-            <input type="hidden" name="gameId" value="">
+        <form class="editComplete" action="/groupPhoenix/game" method="post">
+            <input type="hidden" id="hiddenId"" name="gameId" value="">
 
             <input type="hidden" name="gamePage" value="deleteComplete">
 
             <input type="submit" value="削除" name="deleteComplete">
             <input type="button" value="戻る" onclick="history.back()">
         </form>
+        
+        <!-- フッターを挿入 -->
+            <jsp:include page="../inc/adminFooter.jsp" />
+            
+            <script src="<%= request.getContextPath() %>/js/adminGameDelete.js"></script>
     </body>
 
     </html>

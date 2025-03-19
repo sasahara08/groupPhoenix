@@ -1,4 +1,4 @@
-// ゲーム一覧→ゲーム編集顔面遷移時
+// ゲーム一覧→ゲーム編集画面遷移時
 
 document.addEventListener('DOMContentLoaded', function () {
     let urlParams = new URLSearchParams(window.location.search);

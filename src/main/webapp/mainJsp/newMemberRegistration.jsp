@@ -58,14 +58,15 @@
  		<label for="password">パスワード：</label>
         <input type="password" id="password" name="password" required>
     </p>
+    <p>
+    	<label for="creditcard">クレジットカード番号：</label>
+        <input type="text" id="creditcard" name="creditcard" pattern="\d{16}">
+    </p>
 	<p>
 	<label for="expiry">クレジットカード使用期限 (MM/YY)：</label>
         <input type="text" id="expiry" name="expiry" pattern="\d{2}/\d{2}">
     </p>
-    <p>
-    <label for="creditcard">クレジットカード番号：</label>
-        <input type="text" id="creditcard" name="creditcard" pattern="\d{16}">
-    </p>
+
 	<p>
         <label for="securitycode">セキュリティコード:</label>
         <input type="text" id="securitycode" name="securitycode" pattern="\d{3,4}">

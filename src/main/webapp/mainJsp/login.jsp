@@ -14,7 +14,7 @@
   <jsp:include page="/inc/header.jsp" />
  	<h1>ログイン</h1>
  	<div class = enclose1>
- 	<form login="${pageContext.request.contextPath}/NonMemberLogin" method="post" onsubmit="return validateForm();">
+ 	<form action="${pageContext.request.contextPath}/NonMemberLogin" method="post" onsubmit="return validateForm();">
 <!--<form action="login" method="post" onsubmit="return validateForm();"> 	<p>-->
  		<label for="email">メールアドレス</label>
         <input type="email" id="email" name="email" required>

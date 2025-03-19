@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,8 +9,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
   </head>
   <body>
-     <!-- ヘッダーを挿入 -->
-  <jsp:include page="../inc/memberHeader.jsp" />
+    <!-- ヘッダーを挿入 -->
+    <jsp:include page="../inc/memberHeader.jsp" />
 
     <!-- メインコンテンツ -->
     <main>
@@ -22,9 +21,12 @@ pageEncoding="UTF-8"%>
         <img src="../images/PhoenixChicketLogoBig.png" alt="TOP画面ロゴ" class="main-logo" />
       </div>
       <p class="sales-message">最安でチケットが買えるウェブサイト</p>
-    </main>
 
-  <!-- フッターを挿入 -->
-  <jsp:include page="../inc/footer.jsp" />
+      <!-- ログインしたユーザーの名前とIDを表示 -->
+      <p>ようこそ、${sessionScope.userName} さん！</p>
+    </main>
+    
+    <!-- フッターを挿入 -->
+    <jsp:include page="../inc/footer.jsp" />
   </body>
 </html>

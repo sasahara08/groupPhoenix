@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,11 +13,11 @@
         .button-wrapper {
             display: flex;
             justify-content: space-between;
-            width: 300px; /* ボタンの間隔を調整するために適宜変更してください */
+            width: 300px;
             margin: 0 auto;
         }
         .button-wrapper form {
-            margin: 0; /* フォーム間の余白を削除 */
+            margin: 0;
         }
     </style>
 </head>
@@ -25,21 +25,23 @@
     <jsp:include page="/inc/header.jsp" />
     <h1>新規会員登録 確認</h1>
     <div class="enclose1">
-        <p>氏名: ${param.name}</p>
-        <p>ふりがな: ${param.kana}</p>
-        <p>生年月日: ${param.birthday}</p>
-        <p>性別: ${param.gender}</p>
-        <p>郵便番号: ${param.postcode}</p>
-        <p>住所: ${param.address}</p>
-        <p>電話番号: ${param.phone}</p>
-        <p>メールアドレス: ${param.email}</p>
-        <p>パスワード: ${param.password}</p>
-        <p>クレジットカード使用期限: ${param.expiry}</p>
-        <p>クレジットカード番号: ${param.creditcard}</p>
-        <p>セキュリティコード: ${param.securitycode}</p>
+        <form action="${pageContext.request.contextPath}/confirmationMemberRegistrationDetails.jsp" method="post">
+            <p>氏名: ${param.name}</p>
+            <p>ふりがな: ${param.kana}</p>
+            <p>生年月日: ${param.birthday}</p>
+            <p>性別: ${param.gender}</p>
+            <p>郵便番号: ${param.postcode}</p>
+            <p>住所: ${param.address}</p>
+            <p>電話番号: ${param.phone}</p>
+            <p>メールアドレス: ${param.email}</p>
+            <p>パスワード: ${param.password}</p>
+            <p>クレジットカード使用期限: ${param.expiry}</p>
+            <p>クレジットカード番号: ${param.creditcard}</p>
+            <p>セキュリティコード: ${param.securitycode}</p>
+        </form>
+
         <div class="button-wrapper">
-        	<form action="${pageContext.request.contextPath}/newMemberRegistration.jsp" method="post">
-<!--            <form action="newMemberRegistration.jsp" method="post">-->
+            <form action="${pageContext.request.contextPath}/newMemberRegistration.jsp" method="post">
                 <input type="hidden" name="name" value="${param.name}">
                 <input type="hidden" name="kana" value="${param.kana}">
                 <input type="hidden" name="birthday" value="${param.birthday}">
@@ -54,8 +56,8 @@
                 <input type="hidden" name="securitycode" value="${param.securitycode}">
                 <button type="submit">戻る</button>
             </form>
+
             <form action="${pageContext.request.contextPath}/membershipRegistrationComplete.jsp" method="post">
-<!--            <form action="membershipRegistrationComplete.jsp" method="post">-->
                 <input type="hidden" name="name" value="${param.name}">
                 <input type="hidden" name="kana" value="${param.kana}">
                 <input type="hidden" name="birthday" value="${param.birthday}">

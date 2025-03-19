@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.complete-content {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #98fb98;
+    background-color: #f5fff5;
+    width: 60%;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.complete-content p {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.back-to-top {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-to-top .back-button {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #98fb98;
+    border: 2px solid #98fb98;
+    border-radius: 5px;
+}
+
+.back-to-top .back-button:hover {
+    background-color: #8fbc8f;
+    border-color: #8fbc8f;
+}

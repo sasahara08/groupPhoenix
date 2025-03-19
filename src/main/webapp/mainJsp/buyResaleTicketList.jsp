@@ -7,7 +7,10 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>リセールチケット一覧</title>
  <link rel="stylesheet" href="javascript:void(0)"> 
-</head>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+ </head>
+ <jsp:include page="../inc/memberHeader.jsp" />
  <body>
  	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
  	<h1>リセールチケット一覧</h1>
@@ -22,5 +25,6 @@
 	<br/>
 	<button type="button2" name="resaleticket" value="game">戻る</button>
 	</form>
+ <jsp:include page="/inc/footer.jsp" />
  </body>
  </html>

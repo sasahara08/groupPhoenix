@@ -7,13 +7,17 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>リセールチケット購入完了</title>
  <link rel="stylesheet" href="javascript:void(0)"> 
-</head>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+ </head>
  <body>
+ <jsp:include page="../inc/memberHeader.jsp" />
  	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
  	<div class = enclose2>
  	<h5>チケットの購入が完了しました</h5><br/>
  	<button type="button2" name="resaleticket" value="memberTop">TOP</button>
  	</div>
  	</form>
+ <jsp:include page="/inc/footer.jsp" />
  </body>
  </html>

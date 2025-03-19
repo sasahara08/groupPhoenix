@@ -1,10 +1,9 @@
 @charset "UTF-8";
-.back {
+.back-one {
   text-align: center;
-/*  text-decoration: none;*/
   width: 8%;
   margin: auto;
-  padding: 0.5rem 0.5rem;
+  padding: 0.7rem 0.7rem;
   font-weight: bold;
   border: 2px solid #98fb98;
   background: #98fb98;
@@ -13,22 +12,26 @@
 }
 a {
   text-decoration: none;
+  color: brown;
 }
 body {
   width: 100%;
 }
-h2 {
+h1 {
+/*  font-size: 20px;*/
   text-align: center;
 }
-ul {
+ul.news {
   width: 40%;
   margin: auto;
+  padding: 3%;
 }
-li {
+li.news-content {
   list-style: none;
   text-align: left;
+  background-color: azure;
   border: 1px solid #aaa;
   border-radius: 15px;
-  padding: 5%;
-  margin-bottom: 9%;
+  padding: 3%;
+  margin-bottom: 5%;
   }

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+body {
+  width: 100%;
+}
+.confirm-content {
+    width: 40%;
+    height: 200px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.confirm-content p {
+    margin: 10px 0;
+    color: #0056b3;
+}
+
+.confirm-content strong {
+    font-weight: bold;
+}
+
+.form-group-button {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.back-button {
+    background-color: #6c757d;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}

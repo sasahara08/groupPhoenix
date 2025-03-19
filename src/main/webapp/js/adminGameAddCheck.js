@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('displayTime').textContent = urlParams.get('gameTime') || '';
     document.getElementById('hiddenTime').value = urlParams.get('gameTime') || '';
+    console.log(gameTime);
 
     document.getElementById('displayHomeTeam').textContent = urlParams.get('homeTeam') || '';
     document.getElementById('hiddenHomeTeam').value = urlParams.get('homeTeam') || '';

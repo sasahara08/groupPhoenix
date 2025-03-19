@@ -1,9 +1,10 @@
 @charset "UTF-8";
-.back {
+.back-second{
   text-align: center;
   text-decoration: none; 
   width: 8%;
   margin: auto;
+  margin-top: 5%;
   padding: 0.5rem 0.5rem;
   font-weight: bold;
   border: 2px solid #98fb98;
@@ -13,15 +14,21 @@
 }
 a {
   text-decoration: none;
+  color: brown;
 }
+/*.sub {*/
+/*  width: 40%;*/
+/*}*/
 body {
   width: 100%;
 }
-
-h2 {
+h1.ticket {
   width: 40%;
   margin: auto;
-  text-align: center;
+  font-weight:bold;
+  text-align: left;
+  color: brown;
+  background-color: azure;
   border: 1px solid #aaa;
   border-radius: 15px;
   padding: 3%;
@@ -32,7 +39,10 @@ h2 {
 .content p {
   width: 40%;
   margin: auto;
+  font-weight:bold;
   text-align: left;
+  color: brown;
+  background-color: azure;
   border: 1px solid #aaa;
   border-radius: 30px;
   padding: 6%  3%;

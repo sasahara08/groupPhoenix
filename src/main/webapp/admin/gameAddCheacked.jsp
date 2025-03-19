@@ -10,7 +10,7 @@
 
     <body>
         <h3>追加試合情報の内容確認</h3>
-        <form class="gameAdd" action="/game" method="post">
+        <form class="gameAdd" action="/groupPhoenix/game" method="post">
             <div class="addForm">
 
                 <div class="formItem">
@@ -52,13 +52,14 @@
             </div>
 
             <div class="addBtn">
+                <input type="hidden" id="hiddenStatus" name="gamePage" value="addComplete">
                 <input type="button" value="戻る" onclick="history.back()">
                 <input type="submit" value="追加" name="add">
             </div>
 
         </form>
 
-
+    <script src="<%= request.getContextPath() %>/js/adminGameAddCheck.js"></script>
     </body>
 
     </html>

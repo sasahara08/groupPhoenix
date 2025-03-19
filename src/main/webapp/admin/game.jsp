@@ -75,15 +75,15 @@
                 <div class="addForm">
 
                     <div class="formItem">
-                        <span>試合日</span> <input type="date" name="gameDay">
+                        <span>試合日</span> <input type="date" name="gameDay" required>
                     </div>
 
                     <div class="formItem">
-                        <span>試合時間</span> <input type="time" name="gameTime">
+                        <span>試合時間</span> <input type="time" name="gameTime" required>
                     </div>
 
                     <div class="formItem">
-                        <span>チーム(ホーム)</span> <select name="homeTeam" id="homeTeam">
+                        <span>チーム(ホーム)</span> <select name="homeTeam" id="homeTeam" required>
                         <option value="" selected>選択してください</option>
                             <c:forEach var="team" items="${teams}">
                                 <option value="${team.teamName}">${team.teamName}</option>
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="formItem">
-                        <span>チーム(アウェイ)</span> <select name="awayTeam" id="awayTeam">
+                        <span>チーム(アウェイ)</span> <select name="awayTeam" id="awayTeam" required>
                         <option value="" selected>選択してください</option>
                             <c:forEach var="team" items="${teams}">
                                 <option value="${team.teamName}">${team.teamName}</option>
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="formItem">
-                        <span>開催場所</span> <select name="stadium" id="stadium">
+                        <span>開催場所</span> <select name="stadium" id="stadium" required>
                             <c:forEach var="stadium" items="${stadiums}">
                                 <option value="${stadium.stadiumsName}">${stadium.stadiumsName}</option>
                             </c:forEach>
@@ -144,6 +144,10 @@
                             <span> ${game.awayTeamName} </span>
 
                             <span> ${game.stadium} </span>
+                            
+                            <c:if test="${game.gameDeleteAt != null}">
+                            <span style="color:tomato;">試合情報は削除されています</span>
+                            </c:if>
 
                             <div>
                                 <form action="/groupPhoenix/game" method="get">

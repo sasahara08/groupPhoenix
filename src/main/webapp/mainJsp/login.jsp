@@ -12,20 +12,27 @@
  </head>
  <body>
   <jsp:include page="/inc/header.jsp" />
- 	<h1>ログイン</h1>
- 	<div class = enclose1>
- 	<form action="${pageContext.request.contextPath}/NonMemberLogin" method="post" onsubmit="return validateForm();">
-<!--<form action="login" method="post" onsubmit="return validateForm();"> 	<p>-->
- 		<label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" required>
- 	</p>
- 	<p>
- 		<label for="password">パスワード</label>
-        <input type="password" id="password" name="password" required></p>
- 	
- 	<button type="submit" name="login" value="login">ログイン</button>
- 	</form>
-	</div> 
+ 	<div class="login-container">
+        <h1>ログイン</h1>
+        
+        <% if(request.getAttribute("errorMsg") != null) { %>
+            <p class="error-message"><%= request.getAttribute("errorMsg") %></p>
+        <% } %>
+        
+        <form action="${pageContext.request.contextPath}/member" method="post">
+            <div class="form-group">
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="pass">パスワード:</label>
+                <input type="password" id="pass" name="pass" required>
+            </div>
+            
+            <button type="submit" class="button">ログイン</button>
+        </form>
+    </div>
 <jsp:include page="/inc/footer.jsp" />
  </body>
  </html>

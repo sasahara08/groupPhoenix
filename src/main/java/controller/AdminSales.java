@@ -49,7 +49,23 @@ public class AdminSales extends HttpServlet {
 			//売上一覧(月別)
 			case "saleMonth":
 				
+				Integer years = null;
+				
 				//月別の売上一覧を表示
+				String saleYear = request.getParameter("saleYear");
+				
+				// パラメータに値が入っていた時だけyearsを初期化
+				if(saleYear != null) {
+					years = Integer.parseInt(saleYear);
+				}
+				
+				//月別の売り上げのリストを取得
+				List<SaleBean> saleList = AdminSaleDAO.saleMonth(years);
+				//画面遷移
+				request.setAttribute("sales", saleList);
+				String path = "./admin/monthlySales.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
+
 			}
 		}
 		

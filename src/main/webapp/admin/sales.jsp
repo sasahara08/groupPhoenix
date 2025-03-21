@@ -20,7 +20,6 @@
                 <div class="saleForMonthBtn">
                     <form action="/groupPhoenix/AdminSales" method="get">
                         <input type="hidden" name="salePage" value="saleMonth">
-                        <input type="hidden" name="selectYear" value="">
                         <input type="submit" value="月別売上">
                     </form>
                 </div>

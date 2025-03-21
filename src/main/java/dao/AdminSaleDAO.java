@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class AdminSaleDAO {
 			// チームネーム取得
 			try (ResultSet rsGame = statement.executeQuery()) {
 				if (rsGame.next()) {
-				teamName = rsGame.getString("team_Name");
+					teamName = rsGame.getString("team_Name");
 				}
 
 			}
@@ -105,9 +106,10 @@ public class AdminSaleDAO {
 
 		try (Connection connection = DBManager.getConnection()) {
 			// 特定の試合の特定のシートの数を集計
-			String sql = "select count(*) as seatCount from tickets join ticket_statuses "
-					+ "on tickets.ticket_status_id = ticket_statuses.ticket_status_id "
-					+ "where game_id = ? and seat_id = ? and (ticket_statuses.ticket_status_id = 2 OR ticket_statuses.ticket_status_id = 3 OR ticket_statuses.ticket_status_id = 4)";
+			String sql = "SELECT COUNT(*) AS seatCount FROM tickets " +
+					"JOIN ticket_statuses ON tickets.ticket_status_id = ticket_statuses.ticket_status_id " +
+					"WHERE game_id = ? AND seat_id = ? " +
+					"AND ticket_statuses.ticket_status_id IN (2, 3, 4)";
 
 			//sqlセット
 			PreparedStatement statement = connection.prepareStatement(sql);
@@ -132,34 +134,59 @@ public class AdminSaleDAO {
 		}
 		return salesPrice;
 	}
-	
-	// 特定の月ごとに売上を集計する
-	public static List<SaleBean> saleMonth(){
-		
+
+	// 特定の月ごとに売上を集計する(引数に集計したい年を代入する)
+	public static List<SaleBean> saleMonth(Integer searchYear) {
+
 		List<SaleBean> saleList = new ArrayList<>();
-		int saleManth = 0;
-		
-		//ゲーム情報を取得
-		try (Connection connection = DBManager.getConnection()) {
-			String sql = "select games.date_format(game_date, '%Y-%m') as saleMonth from tickets "
-					+ "join games on games.game_id = tickets.game_id "
-					+ "join ticket_statuses on tickets.ticket_status_id = ticket_statuses.ticket_status_id "
-					+ "group by games.date_format(game_date, '%Y-%m') "
-					+ "where ticket_statuses.ticket_status_id = 2 OR ticket_statuses.ticket_status_id = 3 OR ticket_statuses.ticket_status_id = 4";
-			PreparedStatement statement = connection.prepareStatement(sql);
-			ResultSet rsSaleMonth = statement.executeQuery();
-			
-			// 仕分け処理
-			while (rsSaleMonth.next()) {
-				
-				saleManth = 0;
-				SaleBean sale = new SaleBean();
-				
-				sale.setSaleManth(rsSaleMonth.getString("saleMonth"));
-				
+
+		//　初回のアクセス時は現在の年を検索
+		//  検索年の入力があった際はその年を入力
+		if (searchYear == null) {
+			// 今年の年を入力
+			LocalDate today = LocalDate.now();
+			searchYear = today.getYear();
 		}
-			
-		}catch (Exception e) {
+
+		//ゲーム情報を取得(月ごとの検索、月ごとの売上高を確認)
+		try (Connection connection = DBManager.getConnection()) {
+			String sql = "SELECT DATE_FORMAT(games.game_date, '%Y-%m') AS saleManth, " +
+					"SUM(seats.seat_price) AS totalSeatPrice " +
+					"SUM(CASE WHEN seat_id = 1 THEN 1 ELSE 0 END) AS seat1Count " +
+					"SUM(CASE WHEN seat_id = 2 THEN 1 ELSE 0 END) AS seat2Count " +
+					"SUM(CASE WHEN seat_id = 3 THEN 1 ELSE 0 END) AS seat3Count " +
+					"SUM(CASE WHEN seat_id = 4 THEN 1 ELSE 0 END) AS seat4Count " +
+					"FROM tickets " +
+					"JOIN games ON games.game_id = tickets.game_id " +
+					"JOIN ticket_statuses ON tickets.ticket_status_id = ticket_statuses.ticket_status_id " +
+					"JOIN seats ON seats.seat_id = tickets.seat_id " +
+					"WHERE ticket_statuses.ticket_status_id IN (2, 3, 4) AND YEAR(games.game_date) = ? " +
+					"GROUP BY DATE_FORMAT(games.game_date, '%Y-%m')";
+
+			PreparedStatement statement = connection.prepareStatement(sql);
+			//対象の年を代入
+			statement.setInt(1, searchYear);
+			//sql実行
+			ResultSet rsSaleMonth = statement.executeQuery();
+
+			// 変数用意
+			SaleBean sale = new SaleBean();
+
+			// 各月の値と売り上げをセット
+			while (rsSaleMonth.next()) {
+
+				//beanにセット
+				sale.setSaleManth(rsSaleMonth.getString("saleManth"));
+				sale.setSalesValue(rsSaleMonth.getInt("totalSeatPrice"));
+				sale.setSalesValue(rsSaleMonth.getInt("seat1Count"));
+				sale.setSalesValue(rsSaleMonth.getInt("seat2Count"));
+				sale.setSalesValue(rsSaleMonth.getInt("seat3Count"));
+				sale.setSalesValue(rsSaleMonth.getInt("seat4Count"));
+				saleList.add(sale);
+			}
+
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return saleList;
@@ -223,6 +250,10 @@ public class AdminSaleDAO {
 
 		return soldSeatCount;
 	}
+	
+	
+
+	
 
 	// 売上一覧表示用に配列のオブジェクトを作成
 	public static List<SaleBean> createSalesList() {

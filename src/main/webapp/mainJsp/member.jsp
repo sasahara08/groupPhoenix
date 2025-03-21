@@ -22,7 +22,7 @@
       </div>
       <p class="sales-message">最安でチケットが買えるウェブサイト</p>
 
-      <!-- ログインしたユーザーの名前とIDを表示 -->
+      <!-- ログインしたユーザーの名前を表示 -->
       <p>ようこそ、${sessionScope.userName} さん！</p>
     </main>
     

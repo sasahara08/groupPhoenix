@@ -15,6 +15,7 @@ pageEncoding="UTF-8"%>
   <jsp:include page="../inc/header.jsp" />
 
     <!-- メインコンテンツ -->
+    
     <main>
       <ul class="col3">
         <li>1</li>

@@ -1,14 +1,22 @@
+/*鐘ケ江*/
 @charset "UTF-8";
 * {
   font-family: Noto Sans Japaneze;
 }
+html{
+	height: 100%;
+}
 body {
   background-color: #ec6d4e;
   color: white;
+
 }
 /* ヘッダー */
 header {
-  margin: 0 5px 0 5px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: #ec6d4e;
 }
 .header_inline_block ul {
   display: flex;
@@ -29,6 +37,7 @@ header {
   margin-right: auto;
 }
 .header_inline_block button {
+  text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
   padding: 5px 10px;
@@ -38,6 +47,10 @@ header {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+.header_inline_block button:hover {
+  background-color: #fff;
+  color: #ec6d4e;
 }
 .logo {
   padding: 20px;
@@ -62,7 +75,7 @@ u {
 }
 /* ボタン1 背景無し白枠文字白*/
 .button1 {
-	text-decoration: none;
+  text-decoration: none;
   padding: 5px 10px;
   background: none;
   border: 2px solid white;
@@ -78,7 +91,7 @@ u {
 }
 /* ボタン2 背景オレンジ 文字白*/
 .button2 {
-	text-decoration: none;
+  text-decoration: none;
   padding: 5px 10px;
   background-color: #ec6d4e;
   border: 2px solid #ec6d4e;
@@ -97,7 +110,7 @@ u {
 }
 /* ボタン3 背景白　枠線オレンジ 文字オレンジ*/
 .button3 {
-	text-decoration: none;
+  text-decoration: none;
   padding: 5px 10px;
   background-color: white;
   border: 2px solid #ec6d4e;
@@ -119,7 +132,7 @@ input {
   background-color: white;
   color: #ec6d4e;
   font-weight: bold;
-  border: 1px solid #ec6d4e;
+  border: 1px solid white;
   padding: 5px;
   border-radius: 8px;
 }
@@ -136,6 +149,7 @@ input {
   margin: 0;
 }
 .footer button {
+  text-decoration: none;
   padding: 5px 10px;
   background: none;
   border: 2px solid white;
@@ -143,6 +157,10 @@ input {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+.footer button:hover {
+  background-color: #fff;
+  color: #ec6d4e;
 }
 .footer form {
   margin: 0;

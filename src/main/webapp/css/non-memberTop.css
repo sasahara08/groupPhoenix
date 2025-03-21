@@ -1,24 +1,449 @@
+/*鐘ケ江*/
 @charset "UTF-8";
 /* メイン */
-main {
-  height: 500px;
+main{
+	/*margin-bottom: -600px;*/
+	height: auto;
 }
-.col3 {
+/* 動く(予定）画像の行 */
+.container {
+  height: 600px;
   display: flex;
+  position: relative;
 }
-.col3 li {
-  width: calc(100% / 3);
-  height: 400px;
+/* 左空きスペース */
+.left-space {
+  width: 33.33%; /* 画面の1/3を空白 */
+  display: flex; /* フレックスボックスを適用 */
+  align-items: center; /* 上下中央揃え */
+  justify-content: center; /* 左右中央揃え */
+  position: relative; /* 位置調整の基準にする */
 }
 
-.main-picture {
+.catchphrase {
+  writing-mode: vertical-rl; /* 縦書き（右から左） */
+  text-align: center; /* 中央揃え */
+  font-size: 1.5rem; /* フォントサイズ調整（適宜変更） */
+}
+/* 右スペース */
+.right-image {
+  width: 80%;
+  display: flex;
+}
+
+.right-image img {
+  flex-grow: 1;
+}
+/* スライドショー */
+.slide-container {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+}
+.slide-wrapper {
+  display: flex;
+  animation: slide-flow 50s infinite linear 1s both;
+  height: 100%;
+}
+.slide {
+  object-fit: cover;
+  margin: 0 5px;
+}
+@keyframes slide-flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* 動く画像の上のロゴとキャッチフレーズ*/
+.right-image-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 3;
+}
+.right-image-text {
+  position: absolute;
+  top: 65%; /* ロゴの下に配置 */
+  left: 50%;
+  transform: translate(-50%, 0); /* 水平方向に中央寄せ */
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 1;
+}
+/* 回転する画像 */
+.rotating-image {
+  position: absolute;
+  right: 60px; /* 右端に配置 */
+  bottom: -120px; /* 下端に配置 */
+  width: 270px; /* 画像サイズ（適宜変更） */
+  height: 250px;
+  animation: rotate 50s linear infinite; /* 3秒で1回転、無限ループ */
+  z-index: 2;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ②サイトの詳細について */
+.siteInfo {
+  height: 600px;
+  padding: 50px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* はみ出し防止 */
+}
+/* 背景画像 */
+.siteInfo-bg {
+  position: relative;
+  width: 100%; /* 親要素の幅いっぱいに広げる */
+  height: 100%; /* 親要素の高さいっぱいに広げる */
+  object-fit: cover; /* 画像の縦横比を維持しつつ、親要素いっぱいにフィット */
+  object-position: center center; /* 画像の中央を表示 */
+}
+/* 背景画像の上の白ボックス */
+.siteInfo-text {
+  position: absolute;
+  border-radius: 5px;
+  height: 600px;
+  width: 500px;
+  background-color: white;
+  left: 150px;
+  top: 900px;
+  color: #ec6d4e;
+  padding: 55px;
+  z-index: 2;
+}
+.siteInfo-title {
+  font-size: 30px;
+  color: #ec6d4e;
+  z-index: 2;
+}
+/* フワちゃん */
+.huwa-container {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.box {
+  position: relative;
+  width: 90%;
+  height: auto;
+  animation: fadeIn linear both;
+  animation-timeline: view();
+  animation-range: entry 30% cover 50%;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    clip-path: inset(45% 20% 45% 20%);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0%);
+  }
+}
+/* フワちゃん上流れる文字 */
+.loop-wrap {
+  position: absolute;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 200px;
+  bottom: 20px;
+}
+.loop-area {
+  display: flex;
+  animation: loop-slide 50s infinite linear 1s both;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 150px;
+  white-space: nowrap;
+}
+@keyframes loop-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+/* ①試合情報バナー */
+/* Swiperスライド内の画像を中央揃え */
+.swiper-wrapper{
+	height:auto;
+}
+.sample-slider {
+	width: 55%;
+}
+
+.sample-slider img {
+	height:100%;
+	width: 100%;
+}
+.swiper-slide {
+  border-radius: 10px;
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center; /* 垂直方向の中央揃え */
+  height: 100%; /* 必要に応じて高さを指定 */
+}
+
+/* ボタンのスタイル（オプション） */
+.swiper-button-prev {
+  margin: 0 0 0 5%;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+.swiper-button-next {
+  margin: 0 5% 0 0;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+/* ②③試合情報・チケット購入 */
+.game-and-buyTicket {
+  margin: 5% 0 5% 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.sales-message {
-  padding: 10px 0 10px 0;
+/* ②試合情報 */
+.game {
+  margin: 5% 0 5% 0;
+}
+.game-inf {
+  width: 50%;
+  margin-left: 20%;
+  text-align: center;
+}
+.game-inf-button {
+  margin: 20px;
+  text-decoration: none;
+  padding: 5px 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.game-inf-button:hover {
+  background-color: #fff;
+  color: #ec6d4e;
+}
+/* ③チケット購入 */
+.ticket {
+  margin: 5% 0 5% 0;
+}
+.ticket-button {
+  text-decoration: none;
+  padding: 5px 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.ticket-button:hover {
+  background-color: #fff;
+  color: #ec6d4e;
+}
+.buy-ticket {
+  width: 50%;
+  margin-right: 20%;
+  text-align: center;
+}
+/* ④ニュース */
+.news {
   text-align: center;
   color: white;
-  font-family: Noto Sans Japaneze;
+  margin: 0 20% 5% 20%;
+}
+hr {
+  color: white;
+}
+.news-number {
+  display: flex;
+  gap: 40px;
+}
+.news-number-button {
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+.news-number-button:hover {
+  transform: translate(5px, 0px);
+}
+.news-all {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: flex-end;
+}
+.news-all-button {
+  text-decoration: none;
+  padding: 10px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.news-all-button:hover {
+  background-color: #fff;
+  color: #ec6d4e;
+}
+/* ⑤選手紹介 */
+.player-inf {
+  display: flex;
+  justify-content: center;
+  margin: 0 5% 5% 5%;
+  height: 350px;
+}
+
+/* スクロール可能領域を作成 */
+
+/* 画像のコンテナ */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+
+/* 画像のスタイル */
+.image-container img {
+  border-radius: 10px;
+  margin-right: -10px;
+  width: 30%;
+  height: auto;
+  transition: transform 0.5s ease-out;
+}
+.center-img {
+  z-index: 1;
+  transform: translateY(-30px); /* Y軸方向に上へ移動 */
+  border: 7px solid #ec6d4e;
+}
+.left-img {
+  filter: blur(0.3px);
+  filter: brightness(80%);
+}
+.right-img {
+  filter: blur(0.3px);
+  filter: brightness(80%);
+}
+h4 {
+  text-align: center;
+  padding: 10px;
+}
+.button1 {
+  text-decoration: none;
+  width: fit-content;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+  z-index: 1;
+  transform: translateY(-80px);
+}
+/* 場所 */
+.hero {
+  margin: 0 20% -600px 0;
+  height: 600px;
+  background-image: url(../images/baseball.jpg);
+  background-size: cover;
+  background-position: top;
+  animation: parallax linear both;
+  animation-timeline: view();
+}
+
+@keyframes parallax {
+  from {
+    background-position: center 0;
+  }
+
+  to {
+    background-position: center -250px;
+  }
+}
+/*四角*/
+.hero-container {
+  overflow: hidden;
+  z-index: 1;
+
+}
+.slidein {
+  /* 装飾に関わるスタイルは省略 */
+  margin: 50px auto;
+  transition: 1s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.slide_right {
+  border-radius: 10px;
+  margin-right: 10%;
+  margin-left: 60%;
+  background-color: white;
+  height: 500px;
+  transform: translateX(calc(50vw + 50%));
+}
+.show {
+  transform: translateX(0);
+}
+.location {
+  text-align: center;
+  color: #ec6d4e;
+  padding: 60px;
+}
+.location-title {
+  color: #ec6d4e;
+  font-weight: bold;
+  padding-left: 50px;
+  font-size: 24px;
+}
+.location-text {
+  padding-left: 50px;
+  color: #000;
+}
+.location-title-sub {
+  padding-left: 50px;
+  color: #000;
+  font-weight: bold;
+}
+.confirm-button {
+  padding-top: 80px;
+  text-align: center;
+}
+.button2 {
+  padding: 20px 50px 20px 50px;
+  border-radius: 50px;
+  text-decoration: none;
 }

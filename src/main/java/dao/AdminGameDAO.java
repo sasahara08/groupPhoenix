@@ -60,8 +60,9 @@ public class AdminGameDAO {
 	         """)) {
 
 	        statement.setInt(1, gameId); // プレースホルダに gameId を設定
+	        
 	        try (ResultSet rsGame = statement.executeQuery()) {
-	            if (rsGame.next()) { // カーソルを最初の行に移動
+	            if (rsGame.next()) { 
 	                games = new GameBean();
 	                games.setGameId(rsGame.getInt("game_id"));
 	                games.setGameDate(rsGame.getDate("game_date"));
@@ -79,8 +80,7 @@ public class AdminGameDAO {
 	    return games; 
 	}
 
-
-        
+   
         
     //特定のIDの試合情報を削除(テーブルの削除時間を更新)
 	public static void deleteGame(int gameId) {

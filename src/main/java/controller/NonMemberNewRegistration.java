@@ -1,7 +1,4 @@
-package controller;
-
 import java.io.IOException;
-import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,31 +10,34 @@ import dao.MembershipRegistrationCompleteDAO;
 
 @WebServlet("/NonMemberNewRegistration")
 public class NonMemberNewRegistration extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-
+        // フォームデータの取得
         String name = request.getParameter("name");
         String kana = request.getParameter("kana");
         String birthday = request.getParameter("birthday");
         String gender = request.getParameter("gender");
-        String postcode = request.getParameter("postcode");
+        String postCode = request.getParameter("postcode");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String expiry = request.getParameter("expiry");
-        String creditcard = request.getParameter("creditcard");
-        String securitycode = request.getParameter("securitycode");
+        String creditCardNumber = request.getParameter("creditcard");
+        String creditCardExpiryDate = request.getParameter("expiry");
+        String creditCardSecurityCode = request.getParameter("securitycode");
 
+        // DAOインスタンスを作成
         MembershipRegistrationCompleteDAO dao = new MembershipRegistrationCompleteDAO();
-        try {
-            dao.insertMember(name, kana, birthday, gender, postcode, address, phone, email, password, expiry, creditcard, securitycode);
+
+        // ユーザー登録処理
+        boolean isRegistered = dao.registerUser(name, kana, birthday, gender, postCode, address, phone, email, password, creditCardNumber, creditCardExpiryDate, creditCardSecurityCode);
+
+        // 登録成功した場合、登録完了ページに遷移
+        if (isRegistered) {
             response.sendRedirect("membershipRegistrationComplete.jsp");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp"); // エラーページにリダイレクト
+        } else {
+            // 登録失敗した場合、エラーメッセージを表示（またはエラーページへ遷移）
+            response.sendRedirect("error.jsp");
         }
     }
 }

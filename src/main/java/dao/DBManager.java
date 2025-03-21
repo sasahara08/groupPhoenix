@@ -47,5 +47,6 @@ public class DBManager {
 			throw e;
 		}
 		return conn;
-	}
+
+    }
 }

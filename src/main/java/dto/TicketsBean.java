@@ -1,61 +1,26 @@
 package dto;
+public class TicketsBean {  
+    private int gameId;  
+    private String gameDate;  
+    private String startTime;  
+    private String homeTeamName;  
+    private String awayTeamName;  
+    private String stadiumName;  
 
-public class TicketsBean {
-	private int ticketId;
-	private int gameId;
-	private int seatId;
-	private int seatNUmber;
-	private int ticketStatusId;
-	
-	public TicketsBean(int ticketId, int gameId, int seatId, int seatNUmber, int ticketStatusId) {
-		this.ticketId = ticketId;
-		this.gameId = gameId;
-		this.seatId = seatId;
-		this.seatNUmber = seatNUmber;
-		this.ticketStatusId = ticketStatusId;
-	}
+    public TicketsBean(int gameId, String gameDate, String startTime, String homeTeamName, String awayTeamName, String stadiumName) {  
+        this.gameId = gameId;  
+        this.gameDate = gameDate;  
+        this.startTime = startTime;  
+        this.homeTeamName = homeTeamName;  
+        this.awayTeamName = awayTeamName;  
+        this.stadiumName = stadiumName;  
+    }  
 
-	public int getTicketId() {
-		return ticketId;
-	}
-
-	public void setTicketId(int ticketId) {
-		this.ticketId = ticketId;
-	}
-
-	public int getGameId() {
-		return gameId;
-	}
-
-	public void setGameId(int gameId) {
-		this.gameId = gameId;
-	}
-
-	public int getSeatId() {
-		return seatId;
-	}
-
-	public void setSeatId(int seatId) {
-		this.seatId = seatId;
-	}
-
-	public int getSeatNUmber() {
-		return seatNUmber;
-	}
-
-	public void setSeatNUmber(int seatNUmber) {
-		this.seatNUmber = seatNUmber;
-	}
-
-	public int getTicketStatusId() {
-		return ticketStatusId;
-	}
-
-	public void setTicketStatusId(int ticketStatusId) {
-		this.ticketStatusId = ticketStatusId;
-	}
-	
-	
-	
-	
-}
+    // ゲッター  
+    public int getGameId() { return gameId; }  
+    public String getGameDate() { return gameDate; }  
+    public String getStartTime() { return startTime; }  
+    public String getHomeTeamName() { return homeTeamName; }  
+    public String getAwayTeamName() { return awayTeamName; }  
+    public String getStadiumName() { return stadiumName; }  
+}  

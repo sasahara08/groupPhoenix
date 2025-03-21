@@ -8,5 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('gameDay').value = urlParams.get('editGameDate') || '';
 
-    document.getElementById('gameTime').value = urlParams.get('editGameTime') || '';
+    let gameTime = urlParams.get('editGameTime') || '';
+    document.getElementById('gameTime').value = gameTime;
 });

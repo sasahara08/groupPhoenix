@@ -1,26 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dao.GameTicket" %>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>試合一覧</title>
-<link rel="stylesheet" href="../css/html5reset-1.6.1.css" media="all" />
-<link rel="stylesheet" href="../css/style.css" />
-<link rel="stylesheet" href="../css/game.css" />
+<title>試合リスト</title>
 </head>
-
 <body>
-<main>
-	<h1>試合一覧</h1>
-	<div class="box2">
-		<p>試合日</p>
-		<p>開始時間</p>
-        <p>対戦チーム</p>
-        <p>試合場所</p>
-      </div>
-</main>
+	<h1>試合リスト</h1>
+
+	<c:choose>
+		<c:when test="${empty games}">
+			<p>試合情報が見つかりませんでした。</p>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="game" items="${games}">
+				<div class="game">
+					<h2>試合ID: ${game.ticketId}</h2>
+					<p>試合日: ${game.gameDate}</p>
+					<p>開始時間: ${game.startTime}</p>
+					<p>対戦チーム: ${game.awayTeam}</p>
+					<p>試合場所: ${game.stadiumName}</p>
+				</div>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+
 
 </body>
 </html>

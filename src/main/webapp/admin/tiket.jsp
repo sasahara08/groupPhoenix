@@ -14,8 +14,13 @@
   <body>
   
 <!--     ヘッダー  -->
-
+	<header>
+		<h1><a href="#" class="logo">Phoenix管理画面</a></h1>
+<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
+		<button type="logout" class="logout-button">ログアウト</button>
+	</header>
     <!-- タイトル -->
+    <main>
     <div class="title">
     <h1>管理画面</h1>
     <p class="sub">3.チケット情報管理</p>
@@ -28,8 +33,8 @@
     <table>
       <tr>
         <th>購入ステータス</th><td>
-          <input type="search" name="purchase-status" list="data" />
-          <datalist id="data">
+          <input type="search" name="purchase-status" list="purchase-status-data" />
+          <datalist id="purchase-status-data">
             <option value="未購入"></option>
     
             <option value="購入"></option>
@@ -80,8 +85,8 @@
       </tr>
       <tr>
           <th>チーム(ホーム)</th><td>
-            <input type="search" name="team-home" list="data" />
-            <datalist id="data">
+            <input type="search" name="team-home" list="team-home-data" />
+            <datalist id="team-home-data">
               <option value="☆"></option>
       
               <option value="☆"></option>
@@ -91,8 +96,8 @@
       </tr>
       <tr>
           <th>チーム(アウェイ)</th><td>
-            <input type="search" name="team-away" list="data" />
-            <datalist id="data">
+            <input type="search" name="team-away" list="team-away-data" />
+            <datalist id="team-away-data">
               <option value="☆"></option>
       
               <option value="☆"></option>
@@ -103,8 +108,8 @@
       </tr>
       <tr>
           <th>開催場所</th><td>
-            <input type="search" name="place" list="data" />
-            <datalist id="data">
+            <input type="search" name="place" list="place-data" />
+            <datalist id="place-data">
               <option value="☆"></option>
       
               <option value="☆"></option>
@@ -114,8 +119,8 @@
         </tr>
         <tr>
             <th>試合ステータス</th><td>
-              <input type="search" name="game-status" list="data" />
-              <datalist id="data">
+              <input type="search" name="game-status" list="game-status-data" />
+              <datalist id="game-status-data">
                 <option value="今後開催"></option>
         
                 <option value="終了"></option>
@@ -131,7 +136,10 @@
            </div>
     </form>
   </div>
+  </main>
 <!--      フッター -->
-
+	<footer class="footer">
+		<p>© 2025 Phoenix Inc. All Rights Reserved.</p>
+	</footer>
   </body>
 </html>

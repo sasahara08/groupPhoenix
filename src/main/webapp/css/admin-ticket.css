@@ -4,7 +4,9 @@ body {
   text-align: center; /* ページ全体を中央寄せ */
   color: black;
 }
-
+main{
+	margin:20px 0;
+}
 form {
   display: inline-block; /* フォームを中央に寄せる */
   text-align: left; /* フォーム内のテキストを左寄せ */
@@ -27,7 +29,7 @@ div {
 /* タイトル */
 .title {
   background-color: #444444;
-  margin: 0 40%;
+  margin: 0 30%;
   border-radius: 25px;
 }
 .sub {
@@ -36,7 +38,7 @@ div {
 /* メインの箱（白） */
 .main {
   background-color: white;
-  margin: 0 40% 0 40%;
+  margin: 0 30%;
   padding: 25px 0;
   border-radius: 25px;
 }

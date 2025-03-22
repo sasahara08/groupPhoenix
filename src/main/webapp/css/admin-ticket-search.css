@@ -1,0 +1,40 @@
+@charset "UTF-8";
+table {
+  border: 1px black solid;
+}
+.blue {
+  background-color: rgb(176, 226, 215);
+}
+.orange {
+  background-color: #fac85d;
+}
+.pink {
+  background-color: #ffc8c8;
+}
+.green {
+  background-color: rgb(75, 219, 95);
+}
+td{
+	background-color: white;
+}
+body{
+	background-color: #a8a8a8;
+	text-align: center;
+}
+main{
+	background-color: white;
+	margin:3% 10%;
+	border-radius: 25px;
+	padding: 0 10px;
+}
+table{
+	margin:0 auto;
+}
+h3{
+	background-color: #007bff;
+	color: white;
+	text-align: center;
+	margin: 10px 30%;
+	border-radius: 25px;
+	padding: 5px 0;
+}

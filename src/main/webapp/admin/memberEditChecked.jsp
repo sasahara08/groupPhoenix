@@ -22,41 +22,39 @@
 	<main>
 		<!-- 編集内容チェックエリア -->
 		<div class="searchresultsarea">
-			<h3>【追加会員情報の内容確認】</h3>
-			<div
-				class="afterEditUser>
-			<h4>編集後</h4>
-				<form action="${pageContext.request.contextPath}/AdminMember" method="post">
-				<p>名前: ${sessionScope.newUser.name}</p>
-				<p>ふりがな: ${sessionScope.newUser.kana}</p>
-				<p>生年月日: ${sessionScope.newUser.birthday}</p>
-				<p>郵便番号: ${sessionScope.newUser.postCode}</p>
-				<p>住所: ${sessionScope.newUser.address}</p>
-				<p>電話番号: ${sessionScope.newUser.phone}</p>
-				<p>メールアドレス: ${sessionScope.newUser.email}</p>
-				<p>性別: ${sessionScope.newUser.gender}</p>
-				<p>パスワード: ${sessionScope.newUser.pass}</p>
-				</form>
-				</div>
+			<h3>会員情報編集_内容確認</h3>
+			<div class="afterEditUser">
+				<h4>編集後</h4>
+				<p>会員ID: ${editUser.userId}</p>
+				<p>名前: ${editUser.name}</p>
+				<p>ふりがな: ${editUser.kana}</p>
+				<p>生年月日: ${editUser.birthday}</p>
+				<p>郵便番号: ${editUser.postCode}</p>
+				<p>住所: ${editUser.address}</p>
+				<p>電話番号: ${editUser.phone}</p>
+				<p>メールアドレス: ${editUser.email}</p>
+				<!--				<p>性別: ${editUser.gender}</p>-->
+				<p>パスワード: ${editUser.pass}</p>
+			</div>
 
-			<div
-				class="beforeEditUser>
-				<h4>編集前</h4>
-				<p>名前: ${sessionScope.newUser.name}</p>
-				<p>ふりがな: ${sessionScope.newUser.kana}</p>
-				<p>生年月日: ${sessionScope.newUser.birthday}</p>
-				<p>郵便番号: ${sessionScope.newUser.postCode}</p>
-				<p>住所: ${sessionScope.newUser.address}</p>
-				<p>電話番号: ${sessionScope.newUser.phone}</p>
-				<p>メールアドレス: ${sessionScope.newUser.email}</p>
-				<p>性別: ${sessionScope.newUser.gender}</p>
-				<p>パスワード: ${sessionScope.newUser.pass}</p>
-				</div>
-				<div class="buttonArea">
-				<button type="submit" name="sendKind" value="userEditConfirm">確定</button>
-				<button type="submit" name="sendKind" value="userEditReset">修正</button>
-				</div>
-			
+			<div class="buttonArea">
+				<!-- データ送信用のフォーム -->
+				<form action="${pageContext.request.contextPath}/AdminMember" method="post">
+					<input type="hidden" name="userId" value="${editUser.userId}"> <input type="hidden" name="name"
+						value="${editUser.name}"> <input type="hidden" name="kana" value="${editUser.kana}"> <input
+						type="hidden" name="birthday" value="${editUser.birthday}"> <input type="hidden" name="postcode"
+						value="${editUser.postCode}"> <input type="hidden" name="address" value="${editUser.address}"> <input
+						type="hidden" name="phone" value="${editUser.phone}"> <input type="hidden" name="email"
+						value="${editUser.email}">
+					<!--			<input type="hidden" name="gender" value="${editUser.gender}">-->
+					<input type="hidden" name="pass" value="${editUser.pass}">
+					<button type="submit" name="sendKind" value="userEditConfirm">確定</button>
+				</form>
+				<form action="${pageContext.request.contextPath}/AdminMember" method="get" style="display: inline;">
+					<button type="submit" name="sendKind" value="userEdit">修正</button>
+					<input type="hidden" name="userId" value="${editUser.userId}">
+				</form>
+			</div>
 	</main>
 	<!-- フッターを挿入 -->
 

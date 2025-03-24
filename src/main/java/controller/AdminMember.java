@@ -43,19 +43,18 @@ public class AdminMember extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-        // 送信されたデータのエンコーディングを指定（文字化け対策）
+		// 送信されたデータのエンコーディングを指定（文字化け対策）
 		request.setCharacterEncoding("UTF-8");
- 
 
 		// 送信種別の取得
 		String sendKind = request.getParameter("sendKind");
 		if (sendKind == null || sendKind.isEmpty() || sendKind.equals("userReset")) {
 
-            // HttpSession session = request.getSession(false);
-            // if (session != null) {
-            //     // 検索結果を削除
-            //     session.removeAttribute("users");
-            // }
+			// HttpSession session = request.getSession(false);
+			// if (session != null) {
+			//     // 検索結果を削除
+			//     session.removeAttribute("users");
+			// }
 			/* 送信種別なし or 取り消し or 会員TOPに戻る */
 
 			// member.jspへ画面遷移
@@ -83,29 +82,27 @@ public class AdminMember extends HttpServlet {
 				// リクエストスコープにユーザー情報を保存
 				request.setAttribute("users", editUser);
 
-                 // ユーザー編集画面にフォワード
+				// ユーザー編集画面にフォワード
 				String userEditPath = "/admin/memberEditer.jsp";
 				request.getRequestDispatcher(userEditPath).forward(request, response);
 				break;
 
-			
-				//会員検索一覧_削除ボタン→削除内容確認画面
+			//会員検索一覧_削除ボタン→削除内容確認画面
 			case "userDeleteCheck":
-            String delUserId = request.getParameter("userId");
-            int intDelValue = Integer.parseInt(delUserId);
+				String delUserId = request.getParameter("userId");
+				int intDelValue = Integer.parseInt(delUserId);
 
-            // DAOから該当ユーザー情報を取得
-            UserBean deleteUser = UserDAO.userId(intDelValue);
+				// DAOから該当ユーザー情報を取得
+				UserBean deleteUser = UserDAO.userId(intDelValue);
 
-            // リクエストスコープにユーザー情報を保存
-            request.setAttribute("deleteUser", deleteUser);          
+				// リクエストスコープにユーザー情報を保存
+				request.setAttribute("deleteUser", deleteUser);
 
-            // 削除確認画面にフォワード
-            String deleteCheckPath = "/admin/memberDeleteChecked.jsp";
-            request.getRequestDispatcher(deleteCheckPath).forward(request, response);
-            break;
+				// 削除確認画面にフォワード
+				String deleteCheckPath = "/admin/memberDeleteChecked.jsp";
+				request.getRequestDispatcher(deleteCheckPath).forward(request, response);
+				break;
 
-            
 			}
 		}
 	}
@@ -123,7 +120,7 @@ public class AdminMember extends HttpServlet {
 		String sendKind = request.getParameter("sendKind");
 		if (sendKind == null || sendKind.isEmpty() || sendKind.equals("userReset")) {
 			/* 送信種別なし or 取り消し or 会員TOPに戻る */
-            response.sendRedirect("/AdminMember");
+			response.sendRedirect("/AdminMember");
 			// // member.jspへ画面遷移
 			// String path = "./admin/member.jsp";
 			// request.getRequestDispatcher(path).forward(request, response);
@@ -131,8 +128,8 @@ public class AdminMember extends HttpServlet {
 		}
 		/* 送信種別あり */
 		else {
-            // セッションスコープ取得
-            HttpSession session = request.getSession();
+			// セッションスコープ取得
+			HttpSession session = request.getSession();
 
 			// 画面遷移先の初期化
 			String path = null;
@@ -236,15 +233,15 @@ public class AdminMember extends HttpServlet {
 							userList.add(user);
 						}
 						request.setAttribute("users", userList);
-                        
-                        // // セッションスコープに保存
-                        // HttpSession session = request.getSession(); //ここじゃなくてもOK？
-                        // session.setAttribute("users", userList);
+
+						// // セッションスコープに保存
+						// HttpSession session = request.getSession(); //ここじゃなくてもOK？
+						// session.setAttribute("users", userList);
 
 						path = "/admin/memberSearch.jsp";
 						request.getRequestDispatcher(path).forward(request, response);
 					}
-                    // 確認用
+					// 確認用
 					System.out.println("Number of users in userList: " + userList.size());
 
 				} catch (SQLException e) {
@@ -254,8 +251,6 @@ public class AdminMember extends HttpServlet {
 					request.getRequestDispatcher(path).forward(request, response);
 				}
 				break;
-
-			
 
 			case "userSearchTop":
 				// userResetにしてTopに飛ばすかも。これいらないかも
@@ -268,21 +263,19 @@ public class AdminMember extends HttpServlet {
 				String deleteUserId = request.getParameter("userId");
 				int intDeleteValue = Integer.parseInt(deleteUserId);
 
-                // DBから該当データ削除
+				// DBから該当データ削除
 				UserDAO.deleteUser(intDeleteValue);
 
-                // HttpSession session = request.getSession(false);
-                // if (session != null) {
-                //     // 検索結果を削除
-                //     session.removeAttribute("users");
-                // }
+				// HttpSession session = request.getSession(false);
+				// if (session != null) {
+				//     // 検索結果を削除
+				//     session.removeAttribute("users");
+				// }
 
-                // 削除完了画面にフォワード
+				// 削除完了画面にフォワード
 				String deleteCompletePath = "/admin/memberDeleteComplete.jsp";
 				request.getRequestDispatcher(deleteCompletePath).forward(request, response);
 				break;
-
-			
 
 			// 会員情報_追加確認ボタン押下時
 			case "userAddCheck":
@@ -345,79 +338,73 @@ public class AdminMember extends HttpServlet {
 				request.getRequestDispatcher(path).forward(request, response);
 				break;
 
-
-                // 会員情報_編集確認ボタン押下時
+			// 会員情報_編集確認ボタン押下時
 			case "userEditCheck":
-            /* 入力情報取得 */
-            // 会員ID
-			String editUserId = request.getParameter("userid");
-            // 名前
-            String editName = request.getParameter("name");
-            // ふりがな
-            String editKana = request.getParameter("kana");
-            // 生年月日
-            String editBirthday = request.getParameter("birthday");
-            // 郵便番号
-            String editPostcode = request.getParameter("postcode");
-            // 住所
-            String editAddress = request.getParameter("address");
-            // 電話番号
-            String editPhone = request.getParameter("phone");
-            // メールアドレス
-            String editEmail = request.getParameter("email");
-            //				// 性別
-            //				String editGender = request.getParameter("gender");
-            // パスワード
-            String editPass = request.getParameter("pass");
+				/* 入力情報取得 */
+				// 会員ID
+				String editUserId = request.getParameter("userid");
+				// 名前
+				String editName = request.getParameter("name");
+				// ふりがな
+				String editKana = request.getParameter("kana");
+				// 生年月日
+				String editBirthday = request.getParameter("birthday");
+				// 郵便番号
+				String editPostcode = request.getParameter("postcode");
+				// 住所
+				String editAddress = request.getParameter("address");
+				// 電話番号
+				String editPhone = request.getParameter("phone");
+				// メールアドレス
+				String editEmail = request.getParameter("email");
+				//				// 性別
+				//				String editGender = request.getParameter("gender");
+				// パスワード
+				String editPass = request.getParameter("pass");
 
-            // UserBeanにデータを格納
-            UserBean editUser = new UserBean(editName, editName, editKana, editBirthday, editPostcode, editAddress, editPhone,
-            editEmail, editPass);
+				// UserBeanにデータを格納
+				UserBean editUser = new UserBean(editName, editName, editKana, editBirthday, editPostcode, editAddress, editPhone, editEmail, editPass);
 
-            // リクエストスコープに保存
-            request.setAttribute("editUser", editUser);
+				// リクエストスコープに保存
+				request.setAttribute("editUser", editUser);
 
-            // 確認画面に遷移
-            path = "/admin/memberEditChecked.jsp";
-            request.getRequestDispatcher(path).forward(request, response);
-            break;
+				// 確認画面に遷移
+				path = "/admin/memberEditChecked.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
+				break;
 
-            // 会員情報_編集確定ボタン押下時
+			// 会員情報_編集確定ボタン押下時
 			case "userEditConfirm":
-            // 確認画面からhiddenデータを取得
-            String editConfirmUserId = request.getParameter("userid");
-            String editConfirmName = request.getParameter("name");
-            String editConfirmKana = request.getParameter("kana");
-            String editConfirmBirthday = request.getParameter("birthday");
-            String editConfirmPostcode = request.getParameter("postcode");
-            String editConfirmAddress = request.getParameter("address");
-            String editConfirmPhone = request.getParameter("phone");
-            String editConfirmEmail = request.getParameter("email");
-            //			    String editConfirmGender = request.getParameter("gender");
-            String editConfirmPass = request.getParameter("pass");
+				// 確認画面からhiddenデータを取得
+				String editConfirmUserId = request.getParameter("userid");
+				String editConfirmName = request.getParameter("name");
+				String editConfirmKana = request.getParameter("kana");
+				String editConfirmBirthday = request.getParameter("birthday");
+				String editConfirmPostcode = request.getParameter("postcode");
+				String editConfirmAddress = request.getParameter("address");
+				String editConfirmPhone = request.getParameter("phone");
+				String editConfirmEmail = request.getParameter("email");
+				//			    String editConfirmGender = request.getParameter("gender");
+				String editConfirmPass = request.getParameter("pass");
 
-            UserBean userToEdit = new UserBean(editConfirmUserId, editConfirmName, editConfirmKana, editConfirmBirthday,
-            editConfirmPostcode, editConfirmAddress, editConfirmPhone, editConfirmEmail, editConfirmPass);
+				UserBean userToEdit = new UserBean(editConfirmUserId, editConfirmName, editConfirmKana, editConfirmBirthday, editConfirmPostcode, editConfirmAddress, editConfirmPhone, editConfirmEmail, editConfirmPass);
 
-            try {
-                UserDAO.EditUser(userToEdit); // データベースに挿入
-            } catch (SQLException e) {
-                e.printStackTrace(); // 例外をログに出力
-            }
+				try {
+					UserDAO.EditUser(userToEdit); // データベースに挿入
+				} catch (SQLException e) {
+					e.printStackTrace(); // 例外をログに出力
+				}
 
-            
-                // HttpSession session = request.getSession(false);
-                // if (session != null) {
-                //     // 検索結果を削除
-                //     session.removeAttribute("users");
-                // }
+				// HttpSession session = request.getSession(false);
+				// if (session != null) {
+				//     // 検索結果を削除
+				//     session.removeAttribute("users");
+				// }
 
-
-            // 完了画面に遷移
-            path = "/admin/memberEditComplete.jsp";
-            request.getRequestDispatcher(path).forward(request, response);
-            break;
-                
+				// 完了画面に遷移
+				path = "/admin/memberEditComplete.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
+				break;
 
 			}
 

@@ -129,10 +129,10 @@ u {
 }
 /* inputタグ用CSS */
 input {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: #ec6d4e;
   font-weight: bold;
-  border: 1px solid white;
+  border: 2px solid rgb(128, 0, 0);
   padding: 5px;
   border-radius: 8px;
 }

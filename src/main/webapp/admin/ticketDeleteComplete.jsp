@@ -12,14 +12,23 @@
     <link rel="stylesheet" href="../css/admin-ticketDeleteComplete.css" />
   </head>
   <body>
+      <!--     ヘッダー  -->
+	<header>
+		<h1><a href="#" class="logo">Phoenix管理画面</a></h1>
+<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
+		<button type="logout" class="logout-button">ログアウト</button>
+	</header>
+	<br>
     <!-- ページタイトル -->
+    <div class="title">
     <h1>管理画面</h1>
-    <p>3.チケット情報管理</p>
+    <p class="sub">3.チケット情報管理</p>
+    </div>
 
     <!-- タイトル -->
     <h2>チケット情報_編集内容確認</h2>
     <!-- 中身 -->
-    <main>
+    <main class="main">
         <form action="★TOP" method="post"></form>
         <div class="wrapper">
         <!-- 編集後 -->
@@ -216,7 +225,13 @@
       <button onclick="location.href='..admin/ticketDeleteChecked.jsp'">修正</button>
     </div>
       </form>
-    </main>
+          </main>
+      <br>
+          <!--      フッター -->
+	<footer class="footer">
+		<p>© 2025 Phoenix Inc. All Rights Reserved.</p>
+	</footer>
+
   </body>
 </html>
   

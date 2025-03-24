@@ -15,34 +15,31 @@
     <jsp:include page="../inc/header.jsp" />
     <h1>問い合わせ確認</h1>
     <div class="confirm-content">
-        <p>以下の内容でよろしいですか？</p>
-        <p><strong>氏名:</strong> ${name}</p>
-        <p><strong>メールアドレス:</strong> ${email}</p>
-        <p><strong>問い合わせ内容:</strong> ${message}</p>
+<!--        <p>以下の内容でよろしいですか？</p>-->
+        <p><strong>氏名:</strong> ${info.name}</p>
+        <p><strong>メールアドレス:</strong> ${info.email}</p>
+        <p><strong>メールアドレス(確認画面):</strong> ${info.confirm-email}</p>
+        <p><strong>問い合わせ内容:</strong> ${info.message}</p>
     </div>
     
     <div class="form-group-button">
     <!-- 修正されたフォーム -->
+    
     <form action="Info" method="post">
-        <input type="hidden" name="name" value="${name}">
-        <input type="hidden" name="email" value="${email}">
-        <input type="hidden" name="message" value="${message}">
-        <input type="hidden" name="action" value="complete"> <!-- 完了処理用のパラメータ -->
-        <button type="submit">送信</button>
-    </form>
-    <button class="back-button" onclick="history.back()">戻る</button>
-</div>
-    
-    
-<!--    <div class="form-group-button">-->
-<!--        <form action="SubmitContactServlet" method="post">-->
-<!--            <input type="hidden" name="name" value="${name}">-->
-<!--            <input type="hidden" name="email" value="${email}">-->
-<!--            <input type="hidden" name="message" value="${message}">-->
-<!--            <button type="submit">送信</button>-->
-<!--        </form>-->
-<!--        <button class="back-button" onclick="history.back()">戻る</button>-->
-<!--    </div>-->
+    <input type="hidden" name="name" value="${info.name}">
+    <input type="hidden" name="email" value="${info.email}">
+    <input type="hidden" name="message" value="${info.message}">
+    <input type="hidden" name="action" value="complete"> <!-- 完了処理用のパラメータ -->
+
+    <div class="form-group-button-second">
+        <button class="button1" onclick="history.back()">戻る</button>
+        <!-- <button type="submit" name="confirm" class="button1">確認</button> -->
+        <button type="submit" class="button1">送信</button>
+    </div>
+</form>
+    </div>
+
+
     <!-- フッターを挿入 -->
     <jsp:include page="../inc/footer.jsp" />
 </body>

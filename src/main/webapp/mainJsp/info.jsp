@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>問い合わせ</title>
-<link rel="stylesheet" href="../css/html5reset-1.6.1.css" media="all" />
-<link rel="stylesheet" href="../css/style.css" />
+<!--<link rel="stylesheet" href="../css/html5reset-1.6.1.css" media="all" />-->
+<!--<link rel="stylesheet" href="../css/style.css" />-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/info.css">
 </head>
 <body>
@@ -32,10 +34,14 @@
         <label for="message">問い合わせ内容</label>
         <textarea id="message" name="message" rows="5" required></textarea>
     </div>
+<!--    <div class="form-group-button">-->
+<!--        <button type="submit" name="confirm">確認</button>  -->
+<!--        <button class="back-button" type="button" onclick="resetForm()">クリア</button>-->
+<!--    </div>-->
+    
     <div class="form-group-button">
-        <button type="submit">確認</button>  
-<!--        <button class="back-button" onclick="history.back()">クリア</button>-->
-        <button class="back-button" type="button" onclick="resetForm()">クリア</button>
+        <button type="submit" name="confirm" class="button1">確認</button>  
+        <button type="button" class="button1 back-button" onclick="resetForm()">クリア</button>
     </div>
  </form>
     <!-- フッターを挿入 -->

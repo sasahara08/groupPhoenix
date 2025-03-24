@@ -76,12 +76,10 @@
 //
 //}
 
-
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDateTime;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -90,88 +88,92 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import dao.InquiriesDAO;
 import dto.InquiriesBean;
 
-@WebServlet("/mainJsp/Info")
+@WebServlet("/mainJsp/info")
 public class Info extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * GETリクエストの処理
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/info.jsp");
-        dispatcher.forward(request, response);
-    }
+	/**
+	 * POSTリクエストの処理
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    /**
-     * POSTリクエストの処理
-     */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        // フォームから送信されたデータを取得
-//        String name = request.getParameter("name");
-//        String email = request.getParameter("email");
-//        String confirmEmail = request.getParameter("confirm-email");
-//        String message = request.getParameter("message");
-//
-//        // "action" パラメータで処理を分岐
-//        if (request.getParameter("action") != null && request.getParameter("action").equals("complete")) {
-//            // データベースに問い合わせ内容を保存
-//            InquiriesDAO dao = new InquiriesDAO();
-//            LocalDateTime createdAt = LocalDateTime.now();
-//            InquiriesBean inquiry = new InquiriesBean(0, 1, createdAt, message, null, null); // user_id は仮定で 1 を使用
-//
-//            try {
-//                dao.saveInquiry(inquiry);
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "データベース保存中にエラーが発生しました。");
-//                return;
-//            }
-//
-//            // 完了画面に遷移
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoComplete.jsp");
-//            dispatcher.forward(request, response);
-//
-//        } else {
-//            // 確認画面に遷移
-//            request.setAttribute("name", name);
-//            request.setAttribute("email", email);
-//            request.setAttribute("confirmEmail", confirmEmail);
-//            request.setAttribute("message", message);
-//
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoConfirmation.jsp");
-//            dispatcher.forward(request, response);
-//        }
-//    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String message = request.getParameter("message");
+		String confirm = request.getParameter("confirm");
+		
+//		//確認ボタンが押された場合
+//		if(confirm!=null) {
+//			InquiriesBean info = new InquiriesBean();
+//			//InquiriesBeanのセットメソッド（セッター）を使用してInquiriesBeanにフォームに入力した内容を格納
+//			info.setInquiryText(request.getParameter("message"));
+//			
+//			
+//			request.setAttribute("info", info);
+//			// 確認画面に転送
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoConfirmation");
+//			dispatcher.forward(request, response);
+//		}else {
+//			// 完了画面に転送
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoComplete.jsp");
+//			dispatcher.forward(request, response);
+//			
+//		}
+		
+		// 確認ボタンが押された場合
+		if (confirm != null) {
+		    InquiriesBean info = new InquiriesBean();
+//3月24日 （月） 
+		    // フォームデータを InquiriesBean に設定
+//		    info.setInquiryId(Integer.parseInt(request.getParameter("inquiry_id"))); // inquiry_id を取得
+//		    info.setUserId(Integer.parseInt(request.getParameter("user_id"))); // user_id を取得
+		    
+		    info.setName(request.getParameter("name")); // 名前を取得
+		    info.setEmail(request.getParameter("email")); // メールを取得
 
-        // データベースから取得する処理を追加
-        InquiriesDAO dao = new InquiriesDAO();
-        List<InquiriesBean> inquiriesList = null; // データベースから取得するデータ
+		    
+		    info.setInquiryText(request.getParameter("message")); // メッセージを取得
+		    
+//		    // created_at の設定（現在時刻 or フォーム入力値）
+//		    String createdAtParam = request.getParameter("created_at");
+//		    if (createdAtParam != null && !createdAtParam.isEmpty()) {
+//		        info.setCreatedAt(LocalDateTime.parse(createdAtParam)); // ISO-8601形式の日時をパース
+//		    } else {
+//		        info.setCreatedAt(LocalDateTime.now()); // 現在時刻を設定
+//		    }
 
-        try {
-            inquiriesList = dao.getInquiries(); // DAOメソッドで問い合わせ情報を取得
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "データベース操作中にエラーが発生しました。");
-            return;
-        }
+		    // response_text を設定
+		    info.setResponseText(request.getParameter("response_text"));
 
-        // JSPにデータを渡す
-        request.setAttribute("inquiriesList", inquiriesList);
+		    // response_at の設定（nullチェック付き）
+		    String responseAtParam = request.getParameter("response_at");
+		    if (responseAtParam != null && !responseAtParam.isEmpty()) {
+		        info.setResponseAt(LocalDateTime.parse(responseAtParam)); // ISO-8601形式の日時をパース
+		    }
 
-        // 完了画面に転送
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoComplete.jsp");
-        dispatcher.forward(request, response);
-    }
+		    // InquiriesBean オブジェクトをリクエストスコープに保存
+		    request.setAttribute("info", info);
+
+		    // 確認画面に転送
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoConfirmation.jsp");
+		    dispatcher.forward(request, response);
+		} else {
+		    // 完了画面に転送
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/infoComplete.jsp");
+		    dispatcher.forward(request, response);
+		}
+		
+	}
+
+	/**
+	 * GETリクエストの処理
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/info.jsp");
+		dispatcher.forward(request, response);
+
+	}
 
 }

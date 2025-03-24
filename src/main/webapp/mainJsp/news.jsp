@@ -19,25 +19,38 @@
   </div>
   <br>
   
+<!--<ul class="news">-->
+<!--    <c:forEach var="news" items="${newsList}">-->
+<!--        <li class="news-content">-->
+<!--            <form action="${pageContext.request.contextPath}/mainJsp/news" method="post" style="display:inline;">-->
+<!--                <input type="hidden" name="id" value="${news.newsId}" />-->
+<!--                <button type="submit" class="link-button">${news.title}</button>-->
+<!--            </form>-->
+<!--        </li>-->
+<!--        <li class="news-content">-->
+<!--            公開日: <span>${news.startAt}</span>-->
+<!--        </li>-->
+<!--    </c:forEach>-->
+<!--</ul>-->
+<!--下記追加分(更新日)-->
 <ul class="news">
     <c:forEach var="news" items="${newsList}">
         <li class="news-content">
+            公開日: <span>${news.startAt}</span>
             <form action="${pageContext.request.contextPath}/mainJsp/news" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="${news.newsId}" />
                 <button type="submit" class="link-button">${news.title}</button>
             </form>
         </li>
-<!--        <li class="news-content">-->
-<!--            公開日: <span>${news.startAt}</span>-->
-<!--        </li>-->
     </c:forEach>
 </ul>
+
   <br>
  <div class="back-one">
   <% if (session.getAttribute("user") != null) { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/memberTop.jsp" class="back">TOP</a>
+    <a href="<%= request.getContextPath() %>/mainJsp/memberTop.jsp" class="button1">TOP</a>
   <% } else { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/index.jsp" class="back">TOP</a>
+    <a href="<%= request.getContextPath() %>/mainJsp/index.jsp" class="button1">TOP</a>
   <% } %>
 </div> 
 

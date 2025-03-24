@@ -10,14 +10,31 @@ public class InquiriesBean {
 	private String responseText;
 	private LocalDateTime responseAt;
 	
+//	追加
+	private String name;
+	private String email;
+	
+//	public InquiriesBean(int inquiryId, int userId, LocalDateTime createdAt, String inquiryText, String responseText,
+//			LocalDateTime responseAt) {
+	
+//	追加nameとemailを
 	public InquiriesBean(int inquiryId, int userId, LocalDateTime createdAt, String inquiryText, String responseText,
-			LocalDateTime responseAt) {
+	        LocalDateTime responseAt, String name, String email) {
+
 		this.inquiryId = inquiryId;
 		this.userId = userId;
 		this.createdAt = createdAt;
 		this.inquiryText = inquiryText;
 		this.responseText = responseText;
 		this.responseAt = responseAt;
+//		追加nameとemail
+		this.name = name;
+	    this.email = email;
+
+	}
+
+	public InquiriesBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
 	public int getInquiryId() {
@@ -68,7 +85,21 @@ public class InquiriesBean {
 		this.responseAt = responseAt;
 	}
 	
-	
+	public String getName() {
+	    return name;
+	}
+
+	public void setName(String name) {
+	    this.name = name;
+	}
+
+	public String getEmail() {
+	    return email;
+	}
+
+	public void setEmail(String email) {
+	    this.email = email;
+	}
 	
 	
 }

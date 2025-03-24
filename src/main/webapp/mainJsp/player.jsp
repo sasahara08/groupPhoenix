@@ -17,9 +17,6 @@
 	<!-- ヘッダーを挿入 -->
 	<%@ include file="/inc/header.jsp" %>
 
-
-
-
 	<div class="container">
 		<div class="header">
 			<h1>選手紹介</h1>

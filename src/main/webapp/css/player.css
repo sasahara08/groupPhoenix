@@ -15,7 +15,6 @@
 	padding-top: 50px;		/*2025/3/13 清水　上部メニューと重なるので上に余白を設定*/
 }
 
-
 h1 {
     color: white;
     margin-bottom: 20px;
@@ -78,5 +77,4 @@ h1 {
     margin-top: 20px; /* 上部に少し余白を追加 */
     margin-bottom: 200px; /* 下部にも余白を追加 */
 }
-
 

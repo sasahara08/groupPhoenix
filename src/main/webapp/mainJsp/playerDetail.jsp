@@ -17,7 +17,7 @@
     <!-- ヘッダーを挿入 -->
 	<%@ include file="/inc/header.jsp" %>
 
-    
+   
     <div class="container">
         <!-- 中央上に表示するタイトル -->
         <h1 class="player-title">選手詳細</h1>

@@ -23,8 +23,8 @@
 		<div class="addcompletearea">
 			<h3>会員情報登録完了</h3>
 			<p>
-			<form action="${pageContext.request.contextPath}/AdminMember" method="post">
-				<button type="submit" name="sendKind" value="userReset">会員情報TOPに戻る</button>
+			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
+				<input type="submit" value="会員情報TOPに戻る">
 			</form>
 			</p>
 	</main>

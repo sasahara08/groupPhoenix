@@ -15,36 +15,37 @@
 
 <body>
     <!-- ヘッダーを挿入 -->
-	<%@ include file="../inc/header.jsp" %>
-    
+	<%@ include file="/inc/header.jsp" %>
+
+   
     <div class="container">
         <!-- 中央上に表示するタイトル -->
         <h1 class="player-title">選手詳細</h1>
         <div class="player-detail">
             <!-- 左側: 選手サムネイル -->
             <div class="player-thumbnail">
-                <img src="${pageContext.request.contextPath}/${players.image}" alt="${players.name}のサムネイル" />
+                <img src="${pageContext.request.contextPath}/${player.image}" alt="${player.name}のサムネイル" />
             </div>
             <!-- 右側: 選手詳細情報 -->
             <div class="player-info">
-                <p><strong>選手名:</strong> ${players.name}</p>
-                <p><strong>フリガナ:</strong> ${players.kana}</p>
-                <p><strong>生年月日:</strong> ${players.birthday}</p>
-                <p><strong>年齢:</strong> ${players.age}</p>
-                <p><strong>身長:</strong> ${players.height}cm</p>
-                <p><strong>体重:</strong> ${players.weight}kg</p>
-                <p><strong>出身地:</strong> ${players.birthPlace}</p>
-                <p><strong>ポジション:</strong> ${players.position}</p>
-                <p><strong>選手コメント:</strong> ${players.comment}</p>
-                <p><strong>入団日:</strong> ${players.joinedAt}</p>
-                <p><strong>在籍状況:</strong> ${players.status}</p>
+                <p><strong>選手名:</strong> ${player.name}</p>
+                <p><strong>フリガナ:</strong> ${player.kana}</p>
+                <p><strong>生年月日:</strong> ${player.birthday}</p>
+                <p><strong>年齢:</strong> ${player.age}</p>
+                <p><strong>身長:</strong> ${player.height}cm</p>
+                <p><strong>体重:</strong> ${player.weight}kg</p>
+                <p><strong>出身地:</strong> ${player.birthPlace}</p>
+                <p><strong>ポジション:</strong> ${player.position}</p>
+                <p><strong>選手コメント:</strong> ${player.comment}</p>
+                <p><strong>入団日:</strong> ${player.joinedAt}</p>
+                <p><strong>在籍状況:</strong> ${player.playerStatus}</p>
             </div>
         </div>
     </div>
-
-    <!-- 戻るボタン -->
-    <div class="back">
-        <a class="button1" href="${pageContext.request.contextPath}/player.jsp">戻る</a>
-    </div>
+	<!-- 戻るボタン -->
+	<div class="back">
+		<a href="${pageContext.request.contextPath}/PlayerServlet?action=list" class="button1">　戻る　</a>
+	</div>
 </body>
 </html>
+

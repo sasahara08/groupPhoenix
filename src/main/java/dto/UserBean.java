@@ -104,6 +104,21 @@ public class UserBean {
 		this.creditCardNumber = creditCardNumber;
 		this.creditCardExpiryDate = creditCardExpiryDate;
 	}
+	
+	public UserBean(int userId, String name, String kana, String birthday, String postCode, String address, String phone,
+			String email, String pass) {
+		this.userId = userId;
+		this.name = name;
+		this.kana = kana;
+		this.birthday = java.sql.Date.valueOf(birthday); // String型をDate型に変換
+		this.postCode = postCode;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+//		this.gender = gender;
+		this.pass = pass;
+
+	}
 
 	public UserBean(int userId, String name, String kana, Date birthday, String postCode, String address, String phone,
 			String email, int gender, String pass) {

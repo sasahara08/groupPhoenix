@@ -15,7 +15,7 @@
 </head>
 <body class="one">
 	<!-- ヘッダーを挿入 -->
-	<jsp:include page="../inc/header.jsp" />
+	<%@ include file="/inc/header.jsp" %>
 
 	<div class="container">
 		<div class="header">
@@ -26,12 +26,12 @@
 			<c:forEach var="player" items="${players}">
 				<div class="player-card">
 					<div class="player-info">
-						<p>${players.name}</p>
-						<p>${players.kana}</p>
-						<a href="${pageContext.request.contextPath}/PlayerDetailServlet?id=${players.playerId}"> <img
-							src="${pageContext.request.contextPath}/${players.image}" alt="${players.name}のサムネイル" />
+						<p>${player.name}</p>
+						<p>${player.kana}</p>
+						<a href="${pageContext.request.contextPath}/PlayerServlet?id=${player.playerId}"> <img
+							src="${pageContext.request.contextPath}/${player.image}" alt="${player.name}のサムネイル" />
 						</a>
-						<p>${players.position}</p>
+						<p>${player.position}</p>
 					</div>
 				</div>
 			</c:forEach>
@@ -40,7 +40,17 @@
 
 	<!-- TOPページボタン -->
 	<div class="top-page-button">
-		<a class="button1" href="${pageContext.request.contextPath}/memberTop.jsp">TOPページ</a>
+		<%
+		if (session.getAttribute("user") != null) {
+		%>
+		<a href="<%=request.getContextPath()%>/mainJsp/memberTop.jsp" class="button1">　TOPページ　</a>
+		<%
+		} else {
+		%>
+		<a href="<%=request.getContextPath()%>/mainJsp/index.jsp" class="button1">　TOPページ　</a>
+		<%
+		}
+		%>
 	</div>
 </body>
 </html>

@@ -10,13 +10,13 @@ public class PlayersBean {
     private LocalDate birthday;
     private int height;
     private int weight;
-    private String birthPlace;
+    private String birth_Place;
     private String position;
     private String comment;
-    private LocalDate joinedAt;
-    private LocalDate endingAt;
-    private int playerStatusId;
-    private String playerStatus; // ステータス名
+    private LocalDate joined_at;
+    private LocalDate ending_at;
+    private int player_Status_Id;
+    private String player_Status; // ステータス名
 
     // デフォルトコンストラクタ
     public PlayersBean() {
@@ -24,7 +24,7 @@ public class PlayersBean {
 
     // 必要最低限のフィールドを使用したコンストラクタ
     public PlayersBean(int playerId, String name, String kana, String image, LocalDate birthday, int height,
-                      int weight, String birthPlace, String position, String comment, int playerStatusId) {
+                      int weight, String birth_Place, String position, String comment, int player_Status_Id) {
         this.playerId = playerId;
         this.name = name;
         this.kana = kana;
@@ -32,10 +32,10 @@ public class PlayersBean {
         this.birthday = birthday;
         this.height = height;
         this.weight = weight;
-        this.birthPlace = birthPlace;
+        this.birth_Place = birth_Place;
         this.position = position;
         this.comment = comment;
-        this.playerStatusId = playerStatusId;
+        this.player_Status_Id = player_Status_Id;
     }
 
     // ゲッターとセッター
@@ -118,11 +118,11 @@ public class PlayersBean {
     }
 
     public String getBirthPlace() {
-        return birthPlace;
+        return birth_Place;
     }
 
     public void setBirthPlace(String birthPlace) {
-        this.birthPlace = birthPlace;
+        this.birth_Place = birthPlace;
     }
 
     public String getPosition() {
@@ -142,35 +142,35 @@ public class PlayersBean {
     }
 
     public LocalDate getJoinedAt() {
-        return joinedAt;
+        return joined_at;
     }
 
     public void setJoinedAt(LocalDate joinedAt) {
-        this.joinedAt = joinedAt;
+        this.joined_at = joinedAt;
     }
 
     public LocalDate getEndingAt() {
-        return endingAt;
+        return ending_at;
     }
 
     public void setEndingAt(LocalDate endingAt) {
-        this.endingAt = endingAt;
+        this.ending_at = endingAt;
     }
 
     public int getPlayerStatusId() {
-        return playerStatusId;
+        return player_Status_Id;
     }
 
     public void setPlayerStatusId(int playerStatusId) {
-        this.playerStatusId = playerStatusId;
+        this.player_Status_Id = playerStatusId;
     }
 
     public String getPlayerStatus() {
-        return playerStatus;
+        return player_Status;
     }
 
     public void setPlayerStatus(String playerStatus) {
-        this.playerStatus = playerStatus;
+        this.player_Status = playerStatus;
     }
 
 	public void setAge(int i) {

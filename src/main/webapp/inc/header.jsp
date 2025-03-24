@@ -5,7 +5,7 @@
 		<nav>
 			<ul>
 				<!-- ヘッダー左ロゴ -->
-				<li><a href="index.jsp"> <img src="../images/PhoenixTicketLogo.png" alt="ロゴ兼Home">
+				<li><a href="index.jsp"> <img src="${pageContext.request.contextPath}/images/PhoenixTicketLogo.png" alt="ロゴ兼Home">
 				</a></li>
 				<!-- ヘッダー右側 -->
 				<div class="nav">

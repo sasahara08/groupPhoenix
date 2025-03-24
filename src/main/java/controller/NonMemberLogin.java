@@ -41,7 +41,7 @@ public class NonMemberLogin extends HttpServlet {
                 session.setAttribute("userId", user.getUserId());
 
                 // member.jsp にリダイレクト
-                response.sendRedirect(request.getContextPath() + "/mainJsp/member.jsp");
+                response.sendRedirect(request.getContextPath() + "/mainJsp/memberTop.jsp");
             } else {
                 // 認証失敗 -> ログインページに戻る
                 request.setAttribute("errorMsg", "メールアドレスまたはパスワードが間違っています");

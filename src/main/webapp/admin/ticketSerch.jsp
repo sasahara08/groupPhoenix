@@ -54,7 +54,7 @@
 					<td>ロッチ</td>
 					<td>paypayドーム</td>
 					<td></td>
-					<td rowspan="5" class="green">編集</td>
+					<td rowspan="5" class="green"><a class="green-button" href="../admin/ticketDeleteChecked.jsp">編集</a></td>
 				</tr>
 				<!-- 2行目 -->
 				<tr class="orange">

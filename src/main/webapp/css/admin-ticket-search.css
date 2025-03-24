@@ -38,3 +38,13 @@ h3{
 	border-radius: 25px;
 	padding: 5px 0;
 }
+
+.main-title{
+	background-color: #444444;
+	margin: 0 10%;
+	border-radius: 25px;
+}
+
+.sub{
+	color: #a8a8a8;
+}

@@ -118,6 +118,8 @@ CREATE TABLE `inquiries` (
   `inquiry_text` text NOT NULL COMMENT '問い合わせ内容',
   `response_text` text COMMENT '返信内容',
   `response_at` datetime DEFAULT NULL COMMENT '返信日時',
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`inquiry_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='お問い合わせテーブル';
@@ -312,7 +314,7 @@ CREATE TABLE `ticket_order_detail` (
   PRIMARY KEY (`ticket_order_detail_id`),
   KEY `ticket_order_id_idx` (`ticket_order_id`),
   KEY `ticket_id_idx` (`tikcet_id`),
-  CONSTRAINT `ticket_id` FOREIGN KEY (`tikcet_id`) REFERENCES `tickets` (`tikcet_id`),
+  CONSTRAINT `ticket_id` FOREIGN KEY (`tikcet_id`) REFERENCES `tickets` (`ticket_id`),
   CONSTRAINT `ticket_order_id` FOREIGN KEY (`ticket_order_id`) REFERENCES `ticket_orders` (`ticket_order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='チケット注文詳細テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -384,12 +386,12 @@ DROP TABLE IF EXISTS `tickets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tickets` (
-  `tikcet_id` int NOT NULL AUTO_INCREMENT COMMENT 'チケットID（オートインクリメント）',
+  `ticket_id` int NOT NULL AUTO_INCREMENT COMMENT 'チケットID（オートインクリメント）',
   `game_id` int NOT NULL COMMENT '外部キー(game_id)',
   `seat_id` int NOT NULL COMMENT '外部キー(seat_id)',
   `seat_number` int NOT NULL COMMENT '座席番号',
   `ticket_status_id` int NOT NULL COMMENT '外部キー(ticket_status_id)',
-  PRIMARY KEY (`tikcet_id`),
+  PRIMARY KEY (`ticket_id`),
   KEY `game_id_idx` (`game_id`),
   KEY `seat_id_idx` (`seat_id`),
   KEY `ticket_status_id_idx` (`ticket_status_id`),
@@ -455,4 +457,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-17 11:20:29
+-- Dump completed on 2025-03-24 11:17:53

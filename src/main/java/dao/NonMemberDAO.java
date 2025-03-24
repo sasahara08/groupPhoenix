@@ -130,6 +130,9 @@ public class NonMemberDAO {
                 // クレジットカード情報は必要に応じて取得
             }
         } catch (SQLException e) {
+        	  // エラー発生時にエラーメッセージとスタックトレースを出力
+            System.out.println("エラーが発生しました: " + e.getMessage());
+            e.printStackTrace(); // 詳細なスタックトレースを表示
             throw e;
         } finally {
             if (rs != null) try { rs.close(); } catch (SQLException e) {}

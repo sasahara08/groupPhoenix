@@ -49,20 +49,27 @@ public class AdminSales extends HttpServlet {
 			//売上一覧(月別)
 			case "saleMonth":
 				
-				Integer years = null;
+				Integer years = 0;
 				
 				//月別の売上一覧を表示
-				String saleYear = request.getParameter("saleYear");
+				String saleYear = request.getParameter("selectYear");
 				
 				// パラメータに値が入っていた時だけyearsを初期化
-				if(saleYear != null) {
+				if(years != 0) {
 					years = Integer.parseInt(saleYear);
 				}
 				
-				//月別の売り上げのリストを取得
-				List<SaleBean> saleList = AdminSaleDAO.saleMonth(years);
-				//画面遷移
-				request.setAttribute("sales", saleList);
+					//月別の売り上げのリストを取得
+					List<SaleBean> saleTotalList = AdminSaleDAO.saleSeatAsMonth(years);
+					// 販売履歴のある年を取得(2025年販売なら2025年だけ)
+					List<String> yearList = AdminSaleDAO.getYear();
+					//月別の売り上げのリストをjsonに変換
+					String json = AdminSaleDAO.convertListToJson(saleTotalList);
+					
+					//画面遷移
+					request.setAttribute("sales", saleTotalList);
+					request.setAttribute("years", yearList);
+					request.setAttribute("json", json);
 				String path = "./admin/monthlySales.jsp";
 				request.getRequestDispatcher(path).forward(request, response);
 

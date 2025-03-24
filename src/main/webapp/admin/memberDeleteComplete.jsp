@@ -23,8 +23,9 @@
 		<div class="addcompletearea">
 			<h3>会員情報削除完了</h3>
 			<p>
-				<a href="${pageContext.request.contextPath}/admin/member.jsp">会員情報TOPに戻る</a>
-				<button type="submit" name="sendKind" value="userTop">会員情報TOPに戻る</button>
+			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
+				<input type="submit" value="会員情報TOPに戻る">
+			</form>
 			</p>
 	</main>
 	<!-- フッターを挿入 -->

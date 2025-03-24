@@ -13,6 +13,7 @@ table {
 }
 .green {
   background-color: rgb(75, 219, 95);
+box-shadow: inset 5px 5px 0 rgba(0,0,0,0.2), inset -5px -5px 0 rgba(0,0,0,0.2);
 }
 td{
 	background-color: white;

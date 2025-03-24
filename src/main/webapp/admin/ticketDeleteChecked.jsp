@@ -151,6 +151,7 @@
       <!-- 戻る -->
       <button onclick="location.href='..admin/ticketSearch.jsp'">戻る</button>
     </main>
+    <br>
     <!--      フッター -->
 	<footer class="footer">
 		<p>© 2025 Phoenix Inc. All Rights Reserved.</p>

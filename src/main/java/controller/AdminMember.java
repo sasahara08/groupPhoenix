@@ -13,10 +13,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
+import dao.AdminUserDAO;
 import dao.DBManager;
-import dao.UserDAO;
 import dto.UserBean;
 
 /**
@@ -77,10 +76,10 @@ public class AdminMember extends HttpServlet {
 				int intUserId = Integer.parseInt(userId);
 
 				// DAOを使用してユーザー情報を取得
-				UserBean editUser = UserDAO.userId(intUserId);
+				UserBean editUser = AdminUserDAO.userId(intUserId);
 
 				// リクエストスコープにユーザー情報を保存
-				request.setAttribute("users", editUser);
+				request.setAttribute("editUser", editUser);
 
 				// ユーザー編集画面にフォワード
 				String userEditPath = "/admin/memberEditer.jsp";
@@ -93,7 +92,7 @@ public class AdminMember extends HttpServlet {
 				int intDelValue = Integer.parseInt(delUserId);
 
 				// DAOから該当ユーザー情報を取得
-				UserBean deleteUser = UserDAO.userId(intDelValue);
+				UserBean deleteUser = AdminUserDAO.userId(intDelValue);
 
 				// リクエストスコープにユーザー情報を保存
 				request.setAttribute("deleteUser", deleteUser);
@@ -128,8 +127,8 @@ public class AdminMember extends HttpServlet {
 		}
 		/* 送信種別あり */
 		else {
-			// セッションスコープ取得
-			HttpSession session = request.getSession();
+//			// セッションスコープ取得
+//			HttpSession session = request.getSession();
 
 			// 画面遷移先の初期化
 			String path = null;
@@ -264,7 +263,7 @@ public class AdminMember extends HttpServlet {
 				int intDeleteValue = Integer.parseInt(deleteUserId);
 
 				// DBから該当データ削除
-				UserDAO.deleteUser(intDeleteValue);
+				AdminUserDAO.deleteUser(intDeleteValue);
 
 				// HttpSession session = request.getSession(false);
 				// if (session != null) {
@@ -328,7 +327,7 @@ public class AdminMember extends HttpServlet {
 						AddConfirmpostcode, AddConfirmaddress, AddConfirmphone, AddConfirmemail, AddConfirmpass);
 
 				try {
-					UserDAO.addUser(userToAdd); // データベースに挿入
+					AdminUserDAO.addUser(userToAdd); // データベースに挿入
 				} catch (SQLException e) {
 					e.printStackTrace(); // 例外をログに出力
 				}
@@ -342,7 +341,9 @@ public class AdminMember extends HttpServlet {
 			case "userEditCheck":
 				/* 入力情報取得 */
 				// 会員ID
-				String editUserId = request.getParameter("userid");
+//				String editUserId = request.getParameter("userid");
+				int editUserId = Integer.parseInt(request.getParameter("userId"));				
+
 				// 名前
 				String editName = request.getParameter("name");
 				// ふりがな
@@ -363,7 +364,7 @@ public class AdminMember extends HttpServlet {
 				String editPass = request.getParameter("pass");
 
 				// UserBeanにデータを格納
-				UserBean editUser = new UserBean(editName, editName, editKana, editBirthday, editPostcode, editAddress, editPhone, editEmail, editPass);
+				UserBean editUser = new UserBean(editUserId, editName, editKana, editBirthday, editPostcode, editAddress, editPhone, editEmail, editPass);
 
 				// リクエストスコープに保存
 				request.setAttribute("editUser", editUser);
@@ -376,7 +377,9 @@ public class AdminMember extends HttpServlet {
 			// 会員情報_編集確定ボタン押下時
 			case "userEditConfirm":
 				// 確認画面からhiddenデータを取得
-				String editConfirmUserId = request.getParameter("userid");
+//				String editConfirmUserId = request.getParameter("userid");
+				int editConfirmUserId = Integer.parseInt(request.getParameter("userId"));	
+				
 				String editConfirmName = request.getParameter("name");
 				String editConfirmKana = request.getParameter("kana");
 				String editConfirmBirthday = request.getParameter("birthday");
@@ -390,7 +393,7 @@ public class AdminMember extends HttpServlet {
 				UserBean userToEdit = new UserBean(editConfirmUserId, editConfirmName, editConfirmKana, editConfirmBirthday, editConfirmPostcode, editConfirmAddress, editConfirmPhone, editConfirmEmail, editConfirmPass);
 
 				try {
-					UserDAO.EditUser(userToEdit); // データベースに挿入
+					AdminUserDAO.editUser(userToEdit); // データベースに挿入
 				} catch (SQLException e) {
 					e.printStackTrace(); // 例外をログに出力
 				}

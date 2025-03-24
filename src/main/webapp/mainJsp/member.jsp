@@ -10,7 +10,7 @@
   </head>
   <body>
     <!-- ヘッダーを挿入 -->
-    <jsp:include page="../inc/memberHeader.jsp" />
+    <jsp:include page="/inc/header.jsp" />
 
     <!-- メインコンテンツ -->
     <main>

@@ -28,18 +28,18 @@
 		<div class="wrapper">
 			<!-- 会員情報変更ボタン -->
 			<form action="memberEditor.jsp" method="post">
-				<button class="button2" type="submit">会員情報変更</button>
+				<button class="button3" type="submit">会員情報変更</button>
 			</form>
 
 			<!-- マイチケットボタン -->
 			<form action="ticket.jsp" method="post">
-				<button class="button2" type="submit">マイチケット</button>
+				<button class="button3" type="submit">マイチケット</button>
 			</form>
 		</div>
 		<br>
 		<!-- TOPボタン -->
 		<form action="member.jsp" method="post">
-			<button class="button3" type="submit">TOP</button>
+			<button class="button2" type="submit">TOP</button>
 		</form>
 		<br>
 		<br>

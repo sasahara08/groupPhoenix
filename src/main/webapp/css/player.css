@@ -1,12 +1,10 @@
 /* 全体スタイル */
 
 .one{    
-/*2025/3/13 清水　flexがあると横並びになるので削除*/
-/*    display: flex;*/
     font-family: Arial, sans-serif;
-    height: 100vh; /* ビューポート全体の高さに固定 */
+    height: auto; /* ビューポート全体の高さに固定 */
     margin: 0;
-    overflow: hidden; /* 不要なスクロールを防止 */
+/*    overflow: auto;*/
 }
 
 
@@ -14,7 +12,7 @@
 .container {
     text-align: center;
     padding: 20px;
-	padding-top: 150px;		/*2025/3/13 清水　上部メニューと重なるので上に余白を設定*/
+	padding-top: 50px;		/*2025/3/13 清水　上部メニューと重なるので上に余白を設定*/
 }
 
 
@@ -73,9 +71,12 @@ h1 {
 }
 
 /* TOPページボタンのスタイル */
- .top-page-button {
-	display: flex;
-	justify-content: center;
-	align-items: center; 
+.top-page-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* 上部に少し余白を追加 */
+    margin-bottom: 200px; /* 下部にも余白を追加 */
 }
+
 

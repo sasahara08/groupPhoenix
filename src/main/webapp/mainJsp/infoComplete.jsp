@@ -13,7 +13,7 @@
     <!-- ヘッダーを挿入 -->
     <jsp:include page="../inc/header.jsp" />
 
-    <h1>送信完了</h1>
+    <h1>問い合わせが完了しました</h1>
 <!--    <div class="complete-content">-->
 <!--        <p>お問い合わせいただき、ありがとうございます。</p>-->
 <!--        <p>内容を確認次第、担当者よりご連絡いたします。</p>-->
@@ -38,7 +38,8 @@
 </div>
 
     <div class="back-to-top">
-        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="back-button">TOPへ戻る</a>
+<!--        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="back-button">TOPへ戻る</a>-->
+        <a href="${pageContext.request.contextPath}/mainJsp/news" class="button1">戻る</a>
     </div>
 
     <!-- フッターを挿入 -->

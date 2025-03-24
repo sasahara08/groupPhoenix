@@ -54,3 +54,26 @@ document.addEventListener('scroll', function () {
 				}
 			});
 		});
+		
+//		改造
+$(document).ready(function () {
+    function handleScrollAnimation() {
+        let winScroll = $(window).scrollTop();
+        let winHeight = $(window).height();
+        let scrollPos = winHeight * 0.9 + winScroll;
+
+        $('.siteInfo-text p').each(function (index) {
+            if ($(this).offset().top <= scrollPos) {
+                $(this).addClass('show');
+            } else {
+                $(this).removeClass('show');
+            }
+        });
+    }
+
+    // 初回チェック（ページ読み込み時）
+    handleScrollAnimation();
+
+    // スクロール時にアニメーションを適用
+    $(window).on('scroll', handleScrollAnimation);
+});

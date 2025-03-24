@@ -1,0 +1,69 @@
+@charset "UTF-8";
+body {
+  background-color: #a8a8a8;
+  text-align: center; /* ページ全体を中央寄せ */
+  color: black;
+}
+main{
+	margin:20px 0;
+}
+form {
+  display: inline-block; /* フォームを中央に寄せる */
+  text-align: left; /* フォーム内のテキストを左寄せ */
+}
+
+table {
+  margin: 0 auto; /* 表を中央に寄せる */
+  border-spacing: 20px 0;
+}
+
+th,
+td {
+  text-align: left; /* 表のセル内のテキストを左寄せ */
+}
+
+div {
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+/* タイトル */
+.title {
+  background-color: #444444;
+  margin: 0 30%;
+  border-radius: 25px;
+}
+.sub {
+  color: #a8a8a8;
+}
+/* メインの箱（白） */
+.main {
+  background-color: white;
+  margin: 0 20%;
+  padding: 25px 0;
+  border-radius: 25px;
+}
+h3,
+h4 {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  margin: 10px 20%;
+  border-radius: 25px;
+  padding: 5px 0;
+}
+h1 {
+  margin: 0;
+}
+.left{
+	text-align: left;
+}
+.glay{
+	background-color: #a8a8a8;
+}
+td{
+	border:1px solid black;
+}
+.none{
+	border: none;
+	color: red;
+}

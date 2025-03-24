@@ -13,6 +13,14 @@ table {
 }
 .green {
   background-color: rgb(75, 219, 95);
+box-shadow: inset 5px 5px 0 rgba(0,0,0,0.2), inset -5px -5px 0 rgba(0,0,0,0.2);
+}
+.green:active{
+	background-color: rgb(0, 119, 0);
+}
+.green-button a{
+	display: block;
+	text-decoration: none;
 }
 td{
 	background-color: white;
@@ -37,4 +45,14 @@ h3{
 	margin: 10px 30%;
 	border-radius: 25px;
 	padding: 5px 0;
+}
+
+.main-title{
+	background-color: #444444;
+	margin: 0 10%;
+	border-radius: 25px;
+}
+
+.sub{
+	color: #a8a8a8;
 }

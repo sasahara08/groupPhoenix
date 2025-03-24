@@ -57,25 +57,21 @@
 					経済的に。<br />どこよりも安く買えるチケット
 				</h1>
 				<br /> <br />
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias eius, maiores eligendi fugit animi,
-					corporis cumque magnam et, id recusandae officia dolore voluptatibus ipsam aliquid doloribus debitis reiciendis
-					asperiores voluptatem?</p>
+				<p>格安サイトを利用することで、通常よりもはるかに低価格でチケットを購入できるため、旅行やイベントにかかる費用を大幅に節約できるだけでなく、
+				その浮いたお金を他の楽しみや食事、観光などに充てることができ、より充実した時間を過ごせる可能性が広がります。</p>
 				<br /> <br /> <br />
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias eius, maiores eligendi fugit animi,
-					corporis cumque magnam et, id recusandae officia dolore voluptatibus ipsam aliquid doloribus debitis reiciendis
-					asperiores voluptatem?</p>
+				<p>多くのサイトでは定期的に期間限定のセールや特別な割引クーポンが提供されているため、通常価格よりさらに安くチケットを手に入れるチャンスが多く、
+				特に早期予約や直前割引などを活用すれば、驚くほどお得な価格で希望するチケットを確保できることがあります。</p>
 				<br /> <br /> <br />
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias eius, maiores eligendi fugit animi,
-					corporis cumque magnam et, id recusandae officia dolore voluptatibus ipsam aliquid doloribus debitis reiciendis
-					asperiores voluptatem?</p>
+				<p>座席の比較や口コミの確認が簡単にできるため、利用者の評価やリアルな体験談を参考にしながら、自分の希望や予算に最も適した選択肢をじっくりと検討できるだけでなく、
+				サイトによっては座席の詳細な位置情報や施設の雰囲気まで事前に把握することができ、より納得のいく購入が可能になります。</p>
 				<br /> <br /> <br />
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias eius, maiores eligendi fugit animi,
-					corporis cumque magnam et, id recusandae officia dolore voluptatibus ipsam aliquid doloribus debitis reiciendis
-					asperiores voluptatem?</p>
+				<p>インターネットを通じて簡単にチケットを購入できるため、わざわざ店舗に足を運んで長時間待たされる心配がなく、スマートフォンやパソコンさえあれば、
+				通勤中や自宅でくつろぎながらでも手軽に予約が完了し、時間と手間を大幅に削減できるという大きな利点があります。</p>
 				<br /> <br /> <br />
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias eius, maiores eligendi fugit animi,
-					corporis cumque magnam et, id recusandae officia dolore voluptatibus ipsam aliquid doloribus debitis reiciendis
-					asperiores voluptatem?</p>
+				<div class="siteInfo-button">
+				<a class="button2" href="../mainJsp/ticket.jsp">チケットを購入する</a>
+				</div>
 			</div>
 		</div>
 		<!-- なんかフワっとする画像（フワちゃん） -->
@@ -125,17 +121,12 @@
 			<div class="swiper-button-next"></div>
 		</div>
 
-		<!-- ③試合情報④チケット購入　横並び -->
+		<!-- ②試合情報③チケット購入　横並び -->
 		<div class="game-and-buyTicket">
-			<!-- ②試合情報 -->
-			<div class="game-inf">
-				<h4 class="game">game</h4>
-				<a class="game-inf-button" href="../mainJsp/game.jsp">試合情報</a>
-			</div>
 			<!-- ③チケット購入 -->
 			<div class="buy-ticket">
-				<h4 class="ticket">buy ticket</h4>
-				<a class="ticket-button" href="../mainJsp/ticket.jsp">チケット購入</a>
+				<h4 class="ticket">game & buy ticket</h4>
+				<a class="ticket-button" href="../mainJsp/ticket.jsp">試合情報＆チケット購入</a>
 			</div>
 		</div>
 		<!-- ④ニュース -->

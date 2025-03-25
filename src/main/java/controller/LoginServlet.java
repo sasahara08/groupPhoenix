@@ -1,90 +1,83 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import dao.NonMemberDAO;
-import dto.LoginBean;
+import dao.DBManager;
 
-/**
- * ログイン処理を行うサーブレット
- * 
- * @since : 2025/03/21
- * @author : Generated
- */
-@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    
-    /**
-     * コンストラクタ
-     */
-    public LoginServlet() {
-        super();
-    }
-    
-    /**
-     * GET リクエスト処理 - ログインフォームを表示
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        // セッションチェック（すでにログインしている場合はメンバーページへ）
-        HttpSession session = request.getSession();
-        if (session.getAttribute("loginUser") != null) {
-            response.sendRedirect(request.getContextPath() + "/member");
-            return;
-        }
-        
-        // ログインページへフォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-        dispatcher.forward(request, response);
-    }
-    
-    /**
-     * POST リクエスト処理 - ログイン認証を実行
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        // リクエストパラメータの取得
-        request.setCharacterEncoding("UTF-8");
+
+    // ログイン認証処理
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        
-        // ログインモデルの作成
-        NonMemberDAO dao = new NonMemberDAO();
-        LoginBean user = null;
-        
+        String password = request.getParameter("password");
+
+        // データベース接続
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
-            // ユーザー認証
-            user = dao.findByEmailAndPassword(email, pass);
+            conn = DBManager.getConnection();
             
-            if (user != null) {
-                // 認証成功：セッションにユーザー情報を保存
+            // SQLクエリ: メールアドレスとパスワードでユーザー認証
+            String sql = "SELECT * FROM users WHERE email = ? AND pass = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, email);  // メールアドレス
+            ps.setString(2, password);  // パスワード
+
+            rs = ps.executeQuery();
+
+            // ユーザー情報が見つかればセッションにセットして、マイページへ遷移
+            if (rs.next()) {
+                String name = rs.getString("name");  // ユーザー名
+                int user_id = rs.getInt("user_id");  // ユーザーID
+
                 HttpSession session = request.getSession();
-                session.setAttribute("loginUser", user);
-                
-                // メンバーページへリダイレクト
-                response.sendRedirect(request.getContextPath() + "/member");
+                session.setAttribute("name", name);  // セッションに名前
+                session.setAttribute("user_id", user_id);  // セッションにユーザーID
+                session.setAttribute("email", email);  // セッションにメールアドレス
+
+                // 最後のログイン日時を更新
+                String updateSql = "UPDATE users SET last_login_at = NOW() WHERE user_id = ?";
+                try (PreparedStatement updatePs = conn.prepareStatement(updateSql)) {
+                    updatePs.setInt(1, user_id);
+                    updatePs.executeUpdate();
+                }
+
+                // マイページにリダイレクト
+                response.sendRedirect("mainJsp/myPage.jsp");
+
             } else {
-                // 認証失敗
-                request.setAttribute("errorMsg", "メールアドレスまたはパスワードが正しくありません");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+                // 認証に失敗した場合
+                request.setAttribute("error", "ログインに失敗しました。");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
                 dispatcher.forward(request, response);
             }
+
         } catch (SQLException e) {
-            // データベースエラー
             e.printStackTrace();
-            request.setAttribute("errorMsg", "データベース接続エラーが発生しました");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-            dispatcher.forward(request, response);
+            // エラーが発生した場合、エラーページにリダイレクト
+            response.sendRedirect("error.jsp");
+        } finally {
+            // リソースを解放
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

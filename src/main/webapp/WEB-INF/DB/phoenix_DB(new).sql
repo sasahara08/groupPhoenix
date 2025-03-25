@@ -198,7 +198,7 @@ CREATE TABLE `players` (
   `player_id` int NOT NULL AUTO_INCREMENT COMMENT '選手ID(オートインクルメント）',
   `name` varchar(64) NOT NULL COMMENT '選手名',
   `kana` varchar(64) NOT NULL COMMENT '選手名（ふりがな）',
-  `image` varchar(255) DEFAULT NULL COMMENT '選手画像(URL)',
+  `image` blob COMMENT '選手画像(URL)',
   `birthday` date NOT NULL COMMENT '生年月日',
   `height` int NOT NULL COMMENT '身長',
   `weight` int NOT NULL COMMENT '体重',
@@ -308,15 +308,15 @@ DROP TABLE IF EXISTS `ticket_order_detail`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ticket_order_detail` (
   `ticket_order_detail_id` int NOT NULL AUTO_INCREMENT,
-  `ticket_order_id` int NOT NULL COMMENT '外部キー（チケット注文テーブルの主キー）',
-  `tikcet_id` int NOT NULL COMMENT '外部キー（チケットテーブルの主キー）',
-  `quantity` int NOT NULL COMMENT '注文枚数',
+  `ticket_id` int NOT NULL COMMENT '外部キー（チケットテーブルの主キー）',
+  `user_id` int NOT NULL COMMENT '外部キー(会員テーブルの主キー)',
+  `created_at` date NOT NULL COMMENT 'データ作成年月日（注文年月日）',
   PRIMARY KEY (`ticket_order_detail_id`),
-  KEY `ticket_order_id_idx` (`ticket_order_id`),
-  KEY `ticket_id_idx` (`tikcet_id`),
-  CONSTRAINT `ticket_id` FOREIGN KEY (`tikcet_id`) REFERENCES `tickets` (`ticket_id`),
-  CONSTRAINT `ticket_order_id` FOREIGN KEY (`ticket_order_id`) REFERENCES `ticket_orders` (`ticket_order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='チケット注文詳細テーブル';
+  KEY `user_id_idx` (`user_id`),
+  KEY `ticket_id` (`ticket_id`),
+  CONSTRAINT `ticket_id` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`ticket_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='チケット注文詳細テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,33 +325,8 @@ CREATE TABLE `ticket_order_detail` (
 
 LOCK TABLES `ticket_order_detail` WRITE;
 /*!40000 ALTER TABLE `ticket_order_detail` DISABLE KEYS */;
+INSERT INTO `ticket_order_detail` VALUES (1,1,1,'2025-03-24'),(2,1,2,'2025-03-25');
 /*!40000 ALTER TABLE `ticket_order_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ticket_orders`
---
-
-DROP TABLE IF EXISTS `ticket_orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ticket_orders` (
-  `ticket_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'チケット注文ID(オートインクルメント）',
-  `user_id` int NOT NULL COMMENT '外部キー(会員テーブルの主キー)',
-  `created_at` datetime NOT NULL COMMENT 'データ作成年月日（注文年月日）',
-  PRIMARY KEY (`ticket_order_id`),
-  KEY `user_id_idx` (`user_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='チケット注文テーブル';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ticket_orders`
---
-
-LOCK TABLES `ticket_orders` WRITE;
-/*!40000 ALTER TABLE `ticket_orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ticket_orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -435,7 +410,7 @@ CREATE TABLE `users` (
   `credit_card_security_code` varchar(3) DEFAULT NULL COMMENT 'カードのセキュリティコード',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='会員テーブル';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='会員テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +419,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','女性','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','女性','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL),(2,'田中 太一','たなか たいち','2000-01-01','男性','8100072','福岡県福岡市中央区長浜2-3-18-220','09012345678','iwamuro0604@gmail.com','Iwamuro0604','2025-03-24','2025-03-24 16:30:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -457,4 +432,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-24 11:29:42
+-- Dump completed on 2025-03-25 13:00:48

@@ -13,9 +13,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import dao.AdminUserDAO;
 import dao.DBManager;
+import dto.AdminBean;
 import dto.UserBean;
 
 /**
@@ -44,6 +46,21 @@ public class AdminMember extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		// 送信されたデータのエンコーディングを指定（文字化け対策）
 		request.setCharacterEncoding("UTF-8");
+
+		//---ログイン情報取得--------------------------------------------------------------
+
+		// セッションを取得（新規作成しない）
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("loggedInAdmin") == null) {
+			response.sendRedirect(request.getContextPath() + "/AdminLogin");
+			return;
+		}
+
+		// ログイン済みの管理者情報を取得
+		AdminBean admin = (AdminBean) session.getAttribute("loggedInAdmin");
+		request.setAttribute("admin", admin);
+
+		//---------------------------------------------------------------------------------
 
 		// 送信種別の取得
 		String sendKind = request.getParameter("sendKind");
@@ -114,6 +131,23 @@ public class AdminMember extends HttpServlet {
 			throws ServletException, IOException {
 		// 送信されたデータのエンコーディングを指定（文字化け対策）
 		request.setCharacterEncoding("UTF-8");
+		
+		
+
+		//---ログイン情報取得--------------------------------------------------------------
+
+		// セッションを取得（新規作成しない）
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("loggedInAdmin") == null) {
+			response.sendRedirect(request.getContextPath() + "/AdminLogin");
+			return;
+		}
+
+		// ログイン済みの管理者情報を取得
+		AdminBean admin = (AdminBean) session.getAttribute("loggedInAdmin");
+		request.setAttribute("admin", admin);
+
+		//---------------------------------------------------------------------------------
 
 		// 送信種別の取得
 		String sendKind = request.getParameter("sendKind");
@@ -127,8 +161,8 @@ public class AdminMember extends HttpServlet {
 		}
 		/* 送信種別あり */
 		else {
-//			// セッションスコープ取得
-//			HttpSession session = request.getSession();
+			//			// セッションスコープ取得
+			//			HttpSession session = request.getSession();
 
 			// 画面遷移先の初期化
 			String path = null;
@@ -341,8 +375,8 @@ public class AdminMember extends HttpServlet {
 			case "userEditCheck":
 				/* 入力情報取得 */
 				// 会員ID
-//				String editUserId = request.getParameter("userid");
-				int editUserId = Integer.parseInt(request.getParameter("userId"));				
+				//				String editUserId = request.getParameter("userid");
+				int editUserId = Integer.parseInt(request.getParameter("userId"));
 
 				// 名前
 				String editName = request.getParameter("name");
@@ -364,7 +398,8 @@ public class AdminMember extends HttpServlet {
 				String editPass = request.getParameter("pass");
 
 				// UserBeanにデータを格納
-				UserBean editUser = new UserBean(editUserId, editName, editKana, editBirthday, editPostcode, editAddress, editPhone, editEmail, editPass);
+				UserBean editUser = new UserBean(editUserId, editName, editKana, editBirthday, editPostcode,
+						editAddress, editPhone, editEmail, editPass);
 
 				// リクエストスコープに保存
 				request.setAttribute("editUser", editUser);
@@ -377,9 +412,9 @@ public class AdminMember extends HttpServlet {
 			// 会員情報_編集確定ボタン押下時
 			case "userEditConfirm":
 				// 確認画面からhiddenデータを取得
-//				String editConfirmUserId = request.getParameter("userid");
-				int editConfirmUserId = Integer.parseInt(request.getParameter("userId"));	
-				
+				//				String editConfirmUserId = request.getParameter("userid");
+				int editConfirmUserId = Integer.parseInt(request.getParameter("userId"));
+
 				String editConfirmName = request.getParameter("name");
 				String editConfirmKana = request.getParameter("kana");
 				String editConfirmBirthday = request.getParameter("birthday");
@@ -390,7 +425,9 @@ public class AdminMember extends HttpServlet {
 				//			    String editConfirmGender = request.getParameter("gender");
 				String editConfirmPass = request.getParameter("pass");
 
-				UserBean userToEdit = new UserBean(editConfirmUserId, editConfirmName, editConfirmKana, editConfirmBirthday, editConfirmPostcode, editConfirmAddress, editConfirmPhone, editConfirmEmail, editConfirmPass);
+				UserBean userToEdit = new UserBean(editConfirmUserId, editConfirmName, editConfirmKana,
+						editConfirmBirthday, editConfirmPostcode, editConfirmAddress, editConfirmPhone,
+						editConfirmEmail, editConfirmPass);
 
 				try {
 					AdminUserDAO.editUser(userToEdit); // データベースに挿入

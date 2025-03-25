@@ -11,9 +11,17 @@
 </head>
 <body>
 	<header>
-		<h1><a href="#" class="logo">Phoenix管理画面</a></h1>
-<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
+		<h1>
+			<a href="${pageContext.request.contextPath}/AdminTop" class="logo">Phoenix管理画面</a>
+		</h1>
+
+		<c:if test="${not empty admin}">
+			<div class="adminName">管理者名 : ${admin.name}</div>
+		</c:if>
+
 		<button type="logout" class="logout-button">ログアウト</button>
+
+
 	</header>
 </body>
 </html>

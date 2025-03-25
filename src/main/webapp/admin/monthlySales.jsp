@@ -8,10 +8,6 @@
             <title>管理者画面-売上詳細</title>
 
             <style>
-                body {
-                    width: 80%;
-                    margin: auto;
-                }
 
                 table {
                     width: 100%;

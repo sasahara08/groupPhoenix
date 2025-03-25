@@ -6,7 +6,6 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>新規会員登録画面</title>
- <link rel="stylesheet" href="javascript:void(0)"> 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
  </head>
@@ -15,8 +14,8 @@
  	<h1>新規会員登録 入力</h1>
  	
  	<div class = enclose1>
-<!-- 	<form action="${pageContext.request.contextPath}/nonMemberNewRegistration.jsp" method="post" onsubmit="return validateForm();">-->
-<form action="confirmationMemberRegistrationDetails.jsp" method="post" onsubmit="return validateForm();"> 	
+
+<form action="${pageContext.request.contextPath}/mainJsp/newUserConfirm.jsp" method="post" onsubmit="return validateForm();"> 	
 	<p>
  		<label for="name">氏名：</label>
         <input type="text" id="name" name="name" required>
@@ -103,6 +102,8 @@
 
         return true;
     }
+
+
 </script>
  </body>
  </html>

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/*見出し用*/
+h3{
+   border-bottom: solid 3px black;
+   margin-top: 20px;
+   margin-bottom: 10px;
+}
+
+
+/* 試合検索、試合追加のform用 */
+/* フォームコンテナのスタイル */
+.searchForm {
+  width: 30%; /* 固定幅または必要に応じて調整 */
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+.addForm {
+  width: 30%; /* 固定幅または必要に応じて調整 */
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+
+/*フォーム項目名用*/
+label {
+  display: inline-block;
+  width: 150px;
+  vertical-align: top;
+}
+
+/*justify-content: flex-start;
+  flexコンテナ内のアイテムを左揃えにする(すべての子要素が左側に配置される)
+  align-items: center;
+  垂直方向に子要素を中央揃えにする(labelとinputが同じ高さで揃う)*/
+.formItem{
+  display: flex;
+  justify-content: flex-start; /*左寄せ*/
+  align-items: center;         /*垂直方向に中央揃え*/
+  margin-bottom: 10px;
+}
+
+/*検索、追加のボタン用*/
+.searchBtn {
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center;
+  margin-top: 20px; /* 上部のスペースを追加 */
+}
+
+.addBtn{
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center;
+  margin-top: 20px; /* 上部のスペースを追加 */
+}
+
+
+/*試合一覧*/
+.gameList {
+  width: fit-content;
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+
+.table_design08 {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table_design08 th,
+.table_design08 td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table_design08 th {
+  background-color: #f2f2f2;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.deleted-message {
+  color: tomato;
+  text-align: center;
+}
+
+@media screen and (max-width: 787px) {
+  .table_design08 {
+    text-align: left;
+  }
+  .table_design08 thead {
+    display:none;
+  }
+  .table_design08 th, .table_design08 td {
+    display: block;
+    border: 0;
+    border-bottom: 2px solid #e6f1f6;
+  }
+  .table_design08 tbody th{
+    background: #f2f2f2;
+  }
+  .table_design08 td::before{
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 20%;
+    min-width: 4em;
+  }
+  .deleted-message {
+    color: tomato;
+    text-align: center;
+  }
+}

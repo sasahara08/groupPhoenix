@@ -11,7 +11,7 @@
 				<div class="nav">
 					<!-- ログイン -->
 					<li>
-						<button onclick="location.href='login.jsp'">ログイン</button>
+						<button onclick="location.href='${pageContext.request.contextPath}/mainJsp/login.jsp'">ログイン</button>
 					</li>
 					<!-- 新規登録 -->
 					<li>

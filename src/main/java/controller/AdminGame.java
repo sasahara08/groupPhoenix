@@ -56,7 +56,7 @@ public class AdminGame extends HttpServlet {
 			String stadiumSql = "select * from stadiums order by stadium_id";
 			String gameSql = "select * from games order by game_id";
 
-//			System.out.print(teamSql);//取得確認用
+			//			System.out.print(teamSql);//取得確認用
 
 			try (Connection conn = DBManager.getConnection();
 					PreparedStatement teamPStmt = conn.prepareStatement(teamSql);
@@ -122,11 +122,11 @@ public class AdminGame extends HttpServlet {
 				//チーム一覧とスタジアム一覧を取得して遷移
 				String teamSql = "select * from teams order by team_id";
 				String stadiumSql = "select * from stadiums order by stadium_id";
-				
+
 				try (Connection conn = DBManager.getConnection();
 						PreparedStatement teamPStmt = conn.prepareStatement(teamSql);
 						PreparedStatement stadiumPStmt = conn.prepareStatement(stadiumSql);) {
-					
+
 					//sqlを実行(全チーム取得)
 					List<TeamsBean> teamList = new ArrayList<>();
 					ResultSet editRs = teamPStmt.executeQuery();
@@ -146,9 +146,9 @@ public class AdminGame extends HttpServlet {
 						stadiums.setStadiumsName(editRsStadium.getString("stadium_name"));
 						stadiumList.add(stadiums);
 					}
-					
-//					System.out.println(teamList);
-//					System.out.println(stadiumList);
+
+					//					System.out.println(teamList);
+					//					System.out.println(stadiumList);
 
 					request.setAttribute("teams", teamList);
 					request.setAttribute("stadiums", stadiumList);
@@ -172,7 +172,7 @@ public class AdminGame extends HttpServlet {
 				int intValue = Integer.parseInt(gameId);
 
 				GameBean EditGameList = AdminGameDAO.teamNameForId(intValue);
-				
+
 				request.setAttribute("games", EditGameList);
 
 				String editCheckPath = "/admin/gameEditChecked.jsp";
@@ -208,7 +208,7 @@ public class AdminGame extends HttpServlet {
 			response.sendRedirect("/game");
 		} else {
 			// セッションスコープ取得
-//			HttpSession session = request.getSession();
+			//			HttpSession session = request.getSession();
 
 			// 遷移先パス用変数を作成
 			String path = null;
@@ -325,9 +325,9 @@ public class AdminGame extends HttpServlet {
 								games.setGameDeleteAt(resultSet.getDate("game_delete_at"));
 								gameList.add(games);
 							}
-							
-								request.setAttribute("games", gameList);
-							
+
+							request.setAttribute("games", gameList);
+
 							System.out.println(gameList);
 							path = "/admin/gameSearched.jsp";
 							request.getRequestDispatcher(path).forward(request, response);
@@ -350,7 +350,7 @@ public class AdminGame extends HttpServlet {
 				String hiddenHomeTeam = request.getParameter("hiddenHomeTeam");
 				String hiddenAwayTeam = request.getParameter("hiddenAwayTeam");
 				String hiddenStadium = request.getParameter("hiddenStadium");
-				
+
 				//チームIDを検索
 				homeTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 				awayTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
@@ -368,12 +368,12 @@ public class AdminGame extends HttpServlet {
 						PreparedStatement homeTeamIdSql = connection.prepareStatement(homeTeamSql.toString());
 						PreparedStatement awayTeamIdSql = connection.prepareStatement(awayTeamSql.toString());
 						PreparedStatement stadiumIdSql = connection.prepareStatement(stadiumSql.toString());) {
-					
+
 					// プレースホルダに値を設定
 					homeTeamIdSql.setString(1, hiddenHomeTeam);
 					awayTeamIdSql.setString(1, hiddenAwayTeam);
 					stadiumIdSql.setString(1, hiddenStadium);
-					
+
 					//日付と時間をdate型とtime型に変換
 					Date gameDate = Date.valueOf(hiddenDay);
 					Time gameTimes = Time.valueOf(formattedTime);
@@ -407,17 +407,24 @@ public class AdminGame extends HttpServlet {
 					statement.setInt(5, stadiumId);
 
 					int line = statement.executeUpdate();
-					{
-						//更新が成功したらlineは1以上
-						if (line > 0) {
-							path = "/admin/gameAddComplete.jsp";
-							request.getRequestDispatcher(path).forward(request, response);
-						} else {
-							request.setAttribute("errorMessage", "更新に失敗しました");
-							path = "/admin/game.jsp";
-							request.getRequestDispatcher(path).forward(request, response);
-						}
+
+					//更新が成功したらlineは1以上
+					if (line > 0) {
+						path = "/admin/gameAddComplete.jsp";
+					} else {
+						request.setAttribute("errorMessage", "更新に失敗しました");
+						path = "/admin/game.jsp";
+						
 					}
+					
+					// 一番大きいgemeIDを取得してその試合のチケットを発行する
+					int TopGameId = AdminGameDAO.getGameId();
+					System.out.println(TopGameId);
+					AdminGameDAO.addTicket(TopGameId);
+					
+					request.getRequestDispatcher(path).forward(request, response);
+					
+
 				} catch (SQLException e) {
 					e.printStackTrace();
 					request.setAttribute("error", "データベース接続エラー");
@@ -434,7 +441,7 @@ public class AdminGame extends HttpServlet {
 				String editHomeTeam = request.getParameter("homeTeam");
 				String editAwayTeam = request.getParameter("awayTeam");
 				String editStadium = request.getParameter("stadium");
-				
+
 				//チームIDを検索
 				homeTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
 				awayTeamSql = "SELECT team_id FROM teams WHERE team_name = ?";
@@ -451,26 +458,26 @@ public class AdminGame extends HttpServlet {
 						PreparedStatement homeTeamIdSql = connection.prepareStatement(homeTeamSql.toString());
 						PreparedStatement awayTeamIdSql = connection.prepareStatement(awayTeamSql.toString());
 						PreparedStatement stadiumIdSql = connection.prepareStatement(editStadiumSql.toString());) {
-				    
+
 					// プレースホルダに値を設定
 					homeTeamIdSql.setString(1, editHomeTeam);
 					awayTeamIdSql.setString(1, editAwayTeam);
 					stadiumIdSql.setString(1, editStadium);
-					
+
 					//ホームチームのIDを取得
 					try (ResultSet homeTeamIdSet = homeTeamIdSql.executeQuery()) {
 						if (homeTeamIdSet.next()) {
 							homeTeamId = homeTeamIdSet.getInt("team_id");
 						}
 					}
-					
+
 					//アウェイチームのIDを取得
 					try (ResultSet awayTeamIdSet = awayTeamIdSql.executeQuery()) {
 						if (awayTeamIdSet.next()) {
 							awayTeamId = awayTeamIdSet.getInt("team_id");
 						}
 					}
-					
+
 					System.out.println("Away Team ID: " + editAwayTeam);
 
 					//スタジアムのIDを取得
@@ -479,59 +486,58 @@ public class AdminGame extends HttpServlet {
 							stadiumId = stadiumIdSet.getInt("stadium_id");
 						}
 					}
-					
+
 					// SQLクエリ（プレースホルダーを使用）
-				    String sql = """
-				        UPDATE games 
-				        SET game_date = ?, 
-				            start_time = ?, 
-				            home_team_id = ?, 
-				            away_team_id = ?, 
-				            stadium_id = ? 
-				        WHERE game_id = ?
-				    """;
+					String sql = """
+							    UPDATE games
+							    SET game_date = ?,
+							        start_time = ?,
+							        home_team_id = ?,
+							        away_team_id = ?,
+							        stadium_id = ?
+							    WHERE game_id = ?
+							""";
 
-				    try (PreparedStatement statement = connection.prepareStatement(sql)) {
-				        // プレースホルダーに値をセット
-				        statement.setDate(1, gameDate);
-				        statement.setTime(2, gameTimes);
-				        statement.setInt(3, homeTeamId); // IDは数値
-				        statement.setInt(4, awayTeamId); // IDは数値
-				        statement.setInt(5, stadiumId);  // IDは数値
-				        statement.setInt(6, Integer.parseInt(editGameId));   // IDは数値
-				        
+					try (PreparedStatement statement = connection.prepareStatement(sql)) {
+						// プレースホルダーに値をセット
+						statement.setDate(1, gameDate);
+						statement.setTime(2, gameTimes);
+						statement.setInt(3, homeTeamId); // IDは数値
+						statement.setInt(4, awayTeamId); // IDは数値
+						statement.setInt(5, stadiumId); // IDは数値
+						statement.setInt(6, Integer.parseInt(editGameId)); // IDは数値
 
-					//ここで実行
-					int rowsUpdated = statement.executeUpdate();
-					System.out.println("更新された行数: " + rowsUpdated);
+						//ここで実行
+						int rowsUpdated = statement.executeUpdate();
+						System.out.println("更新された行数: " + rowsUpdated);
 
-					//画面遷移
-					path = "/admin/gameEditComplete.jsp";
-					request.getRequestDispatcher(path).forward(request, response);
+						//画面遷移
+						path = "/admin/gameEditComplete.jsp";
+						request.getRequestDispatcher(path).forward(request, response);
 					}
 
 				} catch (NumberFormatException e) {
-			        e.printStackTrace();
-			        request.setAttribute("error", "数値変換エラー（IDが不正）");
-			        path = "/admin/game.jsp";
-			        request.getRequestDispatcher(path).forward(request, response);
-			    } catch (IllegalArgumentException e) {
-			        e.printStackTrace();
-			        request.setAttribute("error", "時間または日付のフォーマットが不正");
-			        path = "/admin/game.jsp";
-			        request.getRequestDispatcher(path).forward(request, response);
-			    } catch (SQLException e) {
-			        e.printStackTrace();
-			        request.setAttribute("error", "データベースエラー（SQL構文ミスの可能性あり）");
-			        path = "/admin/game.jsp";
-			        request.getRequestDispatcher(path).forward(request, response);
-			    } catch (Exception e) {
-			        e.printStackTrace();
-			        request.setAttribute("error", "予期せぬエラーが発生しました");
-			        path = "/admin/game.jsp";
-			        request.getRequestDispatcher(path).forward(request, response);
-			    }
-			    break;
+					e.printStackTrace();
+					request.setAttribute("error", "数値変換エラー（IDが不正）");
+					path = "/admin/game.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+					request.setAttribute("error", "時間または日付のフォーマットが不正");
+					path = "/admin/game.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+					request.setAttribute("error", "データベースエラー（SQL構文ミスの可能性あり）");
+					path = "/admin/game.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+					request.setAttribute("error", "予期せぬエラーが発生しました");
+					path = "/admin/game.jsp";
+					request.getRequestDispatcher(path).forward(request, response);
+				}
+				break;
 
 			//ゲーム情報削除(確定)
 			case "deleteComplete":

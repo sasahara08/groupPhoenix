@@ -5,7 +5,6 @@
     <head>
         <meta charset="UTF-8">
         <title>管理者画面-試合追加確認</title>
-        <script src="<%= request.getContextPath() %>/js/adminGameAddCheck.js"></script>
     </head>
 
     <body>
@@ -43,11 +42,7 @@
                     <input type="hidden" id="hiddenStadium" name="hiddenStadium" value="">
                 </div>
 
-                <div class="formItem">
-                    <span>試合ステータス</span>
-                    <span id="displayStatus"></span>
-                    <input type="hidden" id="hiddenStatus" name="hiddenStatus" value="">
-                </div>
+                
 
             </div>
 

@@ -11,6 +11,10 @@ public class SeatsBean {
 		SeatPrice = seatPrice;
 	}
 
+	public SeatsBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getSeatId() {
 		return seatId;
 	}

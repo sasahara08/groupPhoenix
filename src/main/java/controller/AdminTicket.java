@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.DBManager;
 import dto.StadiumsBean;
 import dto.TeamsBean;
-import dto.UserBean;
+import dto.TicketsBean;
 
 /**
  * Servlet implementation class AdminTicket
@@ -123,115 +124,114 @@ public class AdminTicket extends HttpServlet {
 			// 検索ボタン押下時
 			case "ticketSearch":
 				/* 入力情報取得 */
-				// 会員ID
-				String userId = request.getParameter("userid");
-				// 名前
-				String name = request.getParameter("name");
-				// ふりがな
-				String kana = request.getParameter("kana");
-				// 電話番号
-				String phone = request.getParameter("phone");
-				// メールアドレス
-				String email = request.getParameter("email");
+				// 購入者情報
+				String ticketStatusId = request.getParameter("purchaseStatus");
+				String ticketId = request.getParameter("ticketId");
+				String ticketPurchaseDate = request.getParameter("ticketPurchaseDate");
+				String ticketUserId = request.getParameter("userId");
+				String ticketUserName = request.getParameter("name");
+				String ticketUserKana = request.getParameter("kana");
+
+				// リセールチケット購入者情報
+				String resaleTicketId = request.getParameter("resaleTicketId");
+				String resaleTicketPurchaseDate = request.getParameter("resaleTicketPurchaseDate");
+				String resaleTicketUserId = request.getParameter("resaleUserId");
+				String resaleTicketUserName = request.getParameter("resaleName");
+				String resaleTicketUserKana = request.getParameter("resaleKana");
+
+				// 試合情報
+				String gameId = request.getParameter("gameId");
+				String gameDay = request.getParameter("gameDay");
+				String homeTeam = request.getParameter("homeTeam");
+				String awayTeam = request.getParameter("awayTeam");
+				String stadium = request.getParameter("stadium");
 
 				//会員一覧を取得
-				//				String userSearchSql = "SELECT * FROM users";				
-				StringBuilder searchUserSql = new StringBuilder("SELECT * FROM users WHERE 1=1");
+
+				//				StringBuilder searchTicketSql = new StringBuilder("SELECT * FROM tickets WHERE 1=1");
+
+				StringBuilder searchTicketSql = new StringBuilder(
+						"SELECT T.ticket_status_id, T.tikcet_id, TOD.created_at, TOD.user_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id, away_team.team_id, stadiums.stadium_id "
+								+
+								"FROM tickets AS T " +
+								"JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
+								"JOIN games ON T.game_id = games.game_id " +
+								"JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
+								"JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
+								"JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
+								"LEFT JOIN ticket_order_detail AS TOD ON T.tikcet_id = TOD.ticket_id " +
+								"LEFT JOIN users ON TOD.user_id = users.user_id ");
 
 				// それぞれの項目ごとに検索かけていく
-				if (userId != null && !userId.isEmpty()) {
-					searchUserSql.append(" AND users.user_id = ? ");
+				if (ticketStatusId != null && !ticketStatusId.isEmpty()) {
+					searchTicketSql.append(" AND T.ticket_status_id = ? ");
 				}
-				if (name != null && !name.isEmpty()) {
-					searchUserSql.append(" AND users.name = ? ");
+				if (ticketId != null && !ticketId.isEmpty()) {
+					searchTicketSql.append(" AND T.tikcet_id = ? ");
 				}
-				if (kana != null && !kana.isEmpty()) {
-					searchUserSql.append(" AND users.kana = ? ");
+				if (ticketPurchaseDate != null && !ticketPurchaseDate.isEmpty()) {
+					searchTicketSql.append(" AND TOD.created_at = ? ");
 				}
-				if (phone != null && !phone.isEmpty()) {
-					searchUserSql.append(" AND users.phone = ? ");
+				if (ticketUserId != null && !ticketUserId.isEmpty()) {
+					searchTicketSql.append(" AND TOD.user_id = ? ");
 				}
-				if (email != null && !email.isEmpty()) {
-					searchUserSql.append(" AND users.email = ? ");
+				if (ticketUserName != null && !ticketUserName.isEmpty()) {
+					searchTicketSql.append(" AND users.name = ? ");
 				}
-				//				try (Connection conn = DBManager.getConnection();
-				//						PreparedStatement userSearchPStmt = conn.prepareStatement(userSearchSql);) {
-				//				
-				//				
-				//				try (Connection connection = DBManager.getConnection();
-				//						PreparedStatement searchUserStatement = connection.prepareStatement(searchUserSql.toString())) {
 
 				// 確認用
-				System.out.println("Generated SQL: " + searchUserSql.toString());
-				System.out.println("Received userId: " + userId);
+				System.out.println("Generated SQL: " + searchTicketSql.toString());
+				System.out.println("Received ticketId: " + ticketId);
 
 				// SQL実行
 				try (Connection connection = DBManager.getConnection();
-						PreparedStatement statement = connection.prepareStatement(searchUserSql.toString())) {
+						PreparedStatement statement = connection.prepareStatement(searchTicketSql.toString())) {
 					int index = 1;
 
 					// パラメータを設定する
-					if (userId != null && !userId.isEmpty()) {
-						statement.setInt(index++, Integer.parseInt(userId));
+					if (ticketStatusId != null && !ticketStatusId.isEmpty()) {
+						statement.setInt(index++, Integer.parseInt(ticketStatusId));
 					}
-					if (name != null && !name.isEmpty()) {
-						statement.setString(index++, name);
+					if (ticketId != null && !ticketId.isEmpty()) {
+						statement.setInt(index++, Integer.parseInt(ticketId));
 					}
-					if (kana != null && !kana.isEmpty()) {
-						statement.setString(index++, kana);
+					if (ticketPurchaseDate != null && !ticketPurchaseDate.isEmpty()) {
+						statement.setDate(index++, Date.valueOf(ticketPurchaseDate));
 					}
-					//			if (birthday != null && !birthday.isEmpty()) {
-					//				statement.setDate(index++, Date.valueOf(birthday));
-					//			}
-					//			if (postcode != null && !postcode.isEmpty()) {
-					//				statement.setString(index++, postcode);
-					//			}
-					//			if (address != null && !address.isEmpty()) {
-					//				statement.setString(index++, address);
-					//			}
-					if (phone != null && !phone.isEmpty()) {
-						statement.setString(index++, phone);
+					if (ticketUserId != null && !ticketUserId.isEmpty()) {
+						statement.setInt(index++, Integer.parseInt(ticketUserId));
 					}
-					if (email != null && !email.isEmpty()) {
-						statement.setString(index++, email);
+					if (ticketUserName != null && !ticketUserName.isEmpty()) {
+						statement.setString(index++, ticketUserName);
 					}
-					//			if (gender != null && !gender.isEmpty()) {
-					//				statement.setString(index++, gender);
-					//			}
-
-					List<UserBean> userList = new ArrayList<>();
+					
+					List<TicketsBean> ticketList = new ArrayList<>();
 
 					try (ResultSet resultSet = statement.executeQuery()) {
 						// 結果をリクエスト属性にセット
 						while (resultSet.next()) {
-							UserBean user = new UserBean();
-							user.setUserId(resultSet.getInt("user_id"));
-							user.setName(resultSet.getString("name"));
-							user.setKana(resultSet.getString("kana"));
-							user.setBirthday(resultSet.getDate("birthday"));
-							user.setPostCode(resultSet.getString("post_code"));
-							user.setAddress(resultSet.getString("address"));
-							user.setPhone(resultSet.getString("phone"));
-							user.setEmail(resultSet.getString("email"));
-							//							user.setGender(resultSet.getInt("gender"));
-							userList.add(user);
+							TicketsBean ticketData = new TicketsBean();
+							ticketData.setTicketStatusId(resultSet.getInt("T.ticket_status_id"));
+							ticketData.setTicketId(resultSet.getInt("T.tikcet_id"));
+							ticketData.setCreateAt(resultSet.getDate("TOD.created_at"));
+							ticketData.setUserId(resultSet.getInt("TOD.user_id"));
+							ticketData.setName(resultSet.getString("users.name"));
+
+							ticketList.add(ticketData);
 						}
-						request.setAttribute("users", userList);
+						request.setAttribute("ticketLists", ticketList);
 
-						// // セッションスコープに保存
-						// HttpSession session = request.getSession(); //ここじゃなくてもOK？
-						// session.setAttribute("users", userList);
 
-						path = "/admin/memberSearch.jsp";
+						path = "/admin/ticketSerch.jsp";
 						request.getRequestDispatcher(path).forward(request, response);
 					}
 					// 確認用
-					System.out.println("Number of users in userList: " + userList.size());
+					System.out.println("チケットリスト数: " + ticketList.size());
 
 				} catch (SQLException e) {
 					e.printStackTrace();
 					request.setAttribute("error", "データベース接続エラー");
-					path = "/admin/memberSearch.jsp";
+					path = "/admin/ticketSerch.jsp";
 					request.getRequestDispatcher(path).forward(request, response);
 				}
 				break;

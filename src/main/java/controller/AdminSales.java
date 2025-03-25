@@ -30,23 +30,20 @@ public class AdminSales extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
-		
-		
-//---ログインセッション-------------------------------------------------------------------
-		
-		AdminBean admin = new AdminBean();
 
-		// セッションスコープでログイン状況を確認
-		HttpSession session = request.getSession();
+		//---ログイン情報取得--------------------------------------------------------------
+
+		// セッションを取得
+		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("loggedInAdmin") == null) {
-			admin = (AdminBean)session.getAttribute("loggedInAdmin");
-			
-		} else {
-			// セッションがなければログインページへリダイレクト
-			response.sendRedirect(request.getContextPath() + "/admin/AdminLogin.jsp");
+			response.sendRedirect(request.getContextPath() + "/AdminLogin");
+			return;
 		}
-		
-//----------------------------------------------------------------------------------------
+
+		// ログイン済みの管理者情報を取得
+		AdminBean admin = (AdminBean) session.getAttribute("loggedInAdmin");
+
+		//---------------------------------------------------------------------------------
 
 		// 遷移先分岐
 		String salePage = request.getParameter("salePage");

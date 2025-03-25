@@ -15,9 +15,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import dao.AdminGameDAO;
 import dao.DBManager;
+import dto.AdminBean;
 import dto.GameBean;
 import dto.StadiumsBean;
 import dto.TeamsBean;
@@ -46,6 +48,21 @@ public class AdminGame extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		request.setCharacterEncoding("UTF-8");
+
+		//---ログイン情報取得--------------------------------------------------------------
+
+		// セッションを取得（新規作成しない）
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("loggedInAdmin") == null) {
+			response.sendRedirect(request.getContextPath() + "/AdminLogin");
+			return;
+		}
+
+		// ログイン済みの管理者情報を取得
+		AdminBean admin = (AdminBean) session.getAttribute("loggedInAdmin");
+		request.setAttribute("admin", admin);
+
+		//---------------------------------------------------------------------------------
 
 		// 遷移先分岐
 		String gamePage = request.getParameter("gamePage");
@@ -201,6 +218,21 @@ public class AdminGame extends HttpServlet {
 			throws ServletException, IOException {
 		// 送信されたデータのエンコーディングを指定（文字化け対策）
 		request.setCharacterEncoding("UTF-8");
+
+		//---ログイン情報取得--------------------------------------------------------------
+
+		// セッションを取得（新規作成しない）
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("loggedInAdmin") == null) {
+			response.sendRedirect(request.getContextPath() + "/AdminLogin");
+			return;
+		}
+
+		// ログイン済みの管理者情報を取得
+		AdminBean admin = (AdminBean) session.getAttribute("loggedInAdmin");
+		request.setAttribute("admin", admin);
+
+		//---------------------------------------------------------------------------------
 
 		// 遷移先分岐
 		String gamePage = request.getParameter("gamePage");
@@ -414,16 +446,15 @@ public class AdminGame extends HttpServlet {
 					} else {
 						request.setAttribute("errorMessage", "更新に失敗しました");
 						path = "/admin/game.jsp";
-						
+
 					}
-					
+
 					// 一番大きいgemeIDを取得してその試合のチケットを発行する
 					int TopGameId = AdminGameDAO.getGameId();
 					System.out.println(TopGameId);
 					AdminGameDAO.addTicket(TopGameId);
-					
+
 					request.getRequestDispatcher(path).forward(request, response);
-					
 
 				} catch (SQLException e) {
 					e.printStackTrace();

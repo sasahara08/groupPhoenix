@@ -13,6 +13,10 @@ public class AdminBean {
 		this.adminStatusId = adminStatusId;
 	}
 
+	public AdminBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public int getAdminId() {
 		return adminId;
 	}

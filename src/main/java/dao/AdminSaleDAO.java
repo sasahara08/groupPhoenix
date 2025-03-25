@@ -61,7 +61,7 @@ public class AdminSaleDAO {
 			// 日付を文字列型に
 			if (rsGame.next()) {
 				gameDate = rsGame.getDate("game_date");
-				String strDate = new SimpleDateFormat("yyyy-MM-dd").format(gameDate);
+				String strDate = new SimpleDateFormat("yyyy年 MM月 dd日 ").format(gameDate);
 
 				// チーム名を取得
 				homeTeamName = GetTeamNameForId(homeTeamId);

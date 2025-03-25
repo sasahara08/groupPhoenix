@@ -30,7 +30,7 @@
                     <table>
                         <tr>
                             <th>対象試合</th>
-                            <th>開催日時</th>
+<!--                            <th>開催日時</th>-->
                             <th>売上高</th>
                             <th>外野席</th>
                             <th>内野席(南)</th>
@@ -40,8 +40,8 @@
 
                         <c:forEach var="sale" items="${sales}">
                             <tr>
-                                <td><a href="/AdminSales/${sale.gameId}">${sale.gameName}</a></td>
-                                <td>${sale.gameDate}</td>
+                                <td>${sale.gameName}</td>
+<!--                                <td>${sale.gameDate}</td>-->
                                 <td>${sale.salesValue}</td>
                                 <td>${sale.outSeat}</td>
                                 <td>${sale.nInSeat}</td>

@@ -16,6 +16,10 @@ header {
 	border-bottom: 1px solid #e9e7e7;
 }
 
+header > h1 {
+    flex: 1;
+}
+
 /* テキストロゴのスタイル */
 .logo {
 	font-size: 28px;
@@ -43,4 +47,10 @@ header {
 .logout-button:hover {
 	/* ホバー時白く光る */
 	opacity: 0.8;
+}
+
+.adminName {
+    color: #131313;
+    font-weight: 600;
+    margin-right: 20px;
 }

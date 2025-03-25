@@ -12,17 +12,9 @@
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
-	<header>
-		<h1>
-			<a href="${pageContext.request.contextPath}/AdminTop" class="logo">Phoenix管理画面</a>
-		</h1>
-		<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
-		<c:if test="${not empty admin}">
-			<div">${admin.name}</div>
-		</c:if>
-		<a href="${pageContext.request.contextPath}/AdminLogout"><button type="logout" class="logout-button">ログアウト</button></a>
-	</header>
-
+            <jsp:include page="../inc/adminHeader.jsp" />
+            
+            
 	<div class="adminMenu">
 		<h3>
 			管理画面<br />TOP

@@ -26,11 +26,11 @@
        border-color: coral;
        margin-bottom: 5px;
        font-size: 15px;
+       font-weight: bold;
     }
     label {
       padding: 2%;
-      color:brown
-      
+      color:brown;
     }
     .form-group input {
         display: block;

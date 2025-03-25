@@ -14,25 +14,27 @@
     <!-- ヘッダーを挿入 -->
     <jsp:include page="../inc/header.jsp" />
     <h1>問い合わせ確認</h1>
-    <div class="confirm-content">
-<!--        <p>以下の内容でよろしいですか？</p>-->
-        <p><strong>氏名:</strong> ${info.name}</p>
-        <p><strong>メールアドレス:</strong> ${info.email}</p>
-        <p><strong>メールアドレス(確認画面):</strong> ${info.confirm-email}</p>
-        <p><strong>問い合わせ内容:</strong> ${info.message}</p>
-    </div>
+<div class="confirm-content">
+    <!--        <p>以下の内容でよろしいですか？</p>-->
+    <p><strong>氏名</strong> ${info.name}</p>
+    <p><strong>メールアドレス</strong> ${info.email}</p>
+    <p><strong>問い合わせ内容</strong></p>
+    <textarea class="enclose">${info.inquiryText}</textarea>
+</div>
     
     <div class="form-group-button">
     <!-- 修正されたフォーム -->
     
-    <form action="Info" method="post">
+    <form action="info" method="post">
     <input type="hidden" name="name" value="${info.name}">
     <input type="hidden" name="email" value="${info.email}">
-    <input type="hidden" name="message" value="${info.message}">
+    
+    <input type="hidden" name="message" value="${info.inquiryText}">
     <input type="hidden" name="action" value="complete"> <!-- 完了処理用のパラメータ -->
 
     <div class="form-group-button-second">
-        <button class="button1" onclick="history.back()">戻る</button>
+<!--        <button class="button1" onclick="history.back()">戻る</button>-->
+        <a href="<%= request.getContextPath() %>/mainJsp/info.jsp" class="button1">戻る</a>
         <!-- <button type="submit" name="confirm" class="button1">確認</button> -->
         <button type="submit" class="button1">送信</button>
     </div>

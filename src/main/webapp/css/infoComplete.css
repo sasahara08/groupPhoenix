@@ -6,8 +6,16 @@
     border: 1px solid #98fb98;
     background-color: #f5fff5;
     width: 60%;
+    height: 200px;
     font-size: 1.2rem;
     color: #333;
+    
+    position: relative;
+}
+
+.contact_us {
+  color: coral;
+  font-weight: bold;
 }
 
 .complete-content p {
@@ -17,7 +25,15 @@
 
 .back-to-top {
     text-align: center;
-    margin-top: 2rem;
+    margin: auto;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+/*    color: coral;*/
+    transform: translate(-50%, -50%);
+}
+.button1 {
+  background-color: #ec6d4e;
 }
 
 .back-to-top .back-button {
@@ -25,13 +41,13 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: bold;
-    color: #fff;
-    background-color: #98fb98;
-    border: 2px solid #98fb98;
-    border-radius: 5px;
+/*    color: #fff;*/
+/*    background-color: #98fb98;*/
+/*    border: 2px solid #98fb98;*/
+/*    border-radius: 5px;*/
 }
 
-.back-to-top .back-button:hover {
-    background-color: #8fbc8f;
-    border-color: #8fbc8f;
-}
+/*.back-to-top .back-button:hover {*/
+/*    background-color: #8fbc8f;*/
+/*    border-color: #8fbc8f;*/
+/*}*/

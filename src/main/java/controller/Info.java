@@ -134,13 +134,7 @@ public class Info extends HttpServlet {
 		    
 		    info.setInquiryText(request.getParameter("message")); // メッセージを取得
 		    
-//		    // created_at の設定（現在時刻 or フォーム入力値）
-//		    String createdAtParam = request.getParameter("created_at");
-//		    if (createdAtParam != null && !createdAtParam.isEmpty()) {
-//		        info.setCreatedAt(LocalDateTime.parse(createdAtParam)); // ISO-8601形式の日時をパース
-//		    } else {
-//		        info.setCreatedAt(LocalDateTime.now()); // 現在時刻を設定
-//		    }
+
 
 		    // response_text を設定
 		    info.setResponseText(request.getParameter("response_text"));

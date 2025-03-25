@@ -13,7 +13,7 @@
     <!-- ヘッダーを挿入 -->
     <jsp:include page="../inc/header.jsp" />
 
-    <h1>問い合わせが完了しました</h1>
+<!--    <h1>問い合わせが完了しました</h1>-->
 <!--    <div class="complete-content">-->
 <!--        <p>お問い合わせいただき、ありがとうございます。</p>-->
 <!--        <p>内容を確認次第、担当者よりご連絡いたします。</p>-->
@@ -22,7 +22,7 @@
 
 
 <div class="complete-content">
-    <h2>問い合わせ履歴</h2>
+    <h2 class="contact_us">問い合わせが完了しました</h2>
     <ul>
         <c:forEach var="inquiry" items="${inquiriesList}">
             <li>
@@ -39,7 +39,7 @@
 
     <div class="back-to-top">
 <!--        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="back-button">TOPへ戻る</a>-->
-        <a href="${pageContext.request.contextPath}/mainJsp/news" class="button1">戻る</a>
+        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="button1">TOP</a>
     </div>
 
     <!-- フッターを挿入 -->

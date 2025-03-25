@@ -22,18 +22,38 @@ public class InquiriesDAO {
 //    private static final String USER = "your_username"; // MySQLユーザー名
 //    private static final String PASSWORD = "your_password"; // MySQLパスワード
 
-    // 問い合わせをデータベースに保存するメソッド
+//     問い合わせをデータベースに保存するメソッド
 //    public void saveInquiry(InquiriesBean inquiry) throws SQLException {
 //        String sql = "INSERT INTO inquiries (user_id, created_at, inquiry_text) VALUES (?, ?, ?)";
 //
-//        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+////        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//        		try (Connection conn = DriverManager.getConnection();
 //             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setInt(1, inquiry.getUserId()); // ユーザーID
-//            pstmt.setObject(2, inquiry.getCreatedAt()); // 作成日時
+//             pstmt.setInt(1, inquiry.getName()); // 名前
+//             pstmt.setObject(2, inquiry.getEmail()); // メール
+////            pstmt.setInt(1, inquiry.getUserId()); // ユーザーID
+////            pstmt.setObject(2, inquiry.getCreatedAt()); // 作成日時
 //            pstmt.setString(3, inquiry.getInquiryText()); // 問い合わせ内容
 //            pstmt.executeUpdate();
 //        }
 //    }
+//	修正分
+	
+	public void saveInquiry(InquiriesBean inquiry) throws SQLException {
+	    String sql = "INSERT INTO inquiries (name, email, message) VALUES (?, ?, ?)";
+
+	    try (Connection conn = DBManager.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	        pstmt.setString(1, inquiry.getName()); // 名前
+	        pstmt.setString(2, inquiry.getEmail()); // メール
+	        pstmt.setString(3, inquiry.getInquiryText()); // メッセージ
+
+	        pstmt.executeUpdate();
+	    }
+	}
+	
+	
 	public List<InquiriesBean> getInquiries() throws SQLException {
 	    List<InquiriesBean> inquiriesList = new ArrayList<>();
 //	    String sql = "SELECT inquiry_id, user_id, created_at, inquiry_text, response_text, response_at FROM inquiries";
@@ -54,7 +74,7 @@ public class InquiriesDAO {
 	    	    inquiry.setResponseText(resultSet.getString("response_text"));
 	    	    
 	    	    inquiry.setName(resultSet.getString("name"));
-	    	    inquiry.setName(resultSet.getString("email"));
+	    	    inquiry.setEmail(resultSet.getString("email"));
 	    	    
 	    	    
 	    	    if (resultSet.getTimestamp("response_at") != null) {

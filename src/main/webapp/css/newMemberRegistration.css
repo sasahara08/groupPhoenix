@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/*鐘ケ江*/
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
+/*以下CSS中身*/
+main{
+	text-align: center;
+	background-color: white;
+	margin:0 30%;
+	color:#ec6d4e;
+	border-radius: 25px;
+}
+h1{
+	color:#ec6d4e;
+	padding:30px 0;
+	font-size: 25px;
+}
+/*フォーム項目名用*/
+label {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+  text-align: left;
+}
+
+/*justify-content: flex-start;
+  flexコンテナ内のアイテムを左揃えにする(すべての子要素が左側に配置される)
+  align-items: center;
+  垂直方向に子要素を中央揃えにする(labelとinputが同じ高さで揃う)*/
+.enclose1{
+  display: flex;
+  justify-content: flex-start; /*左寄せ*/
+  align-items: center;         /*垂直方向に中央揃え*/
+  margin-bottom: 10px;
+}
+.button2{
+	margin:20px 20px;
+	}

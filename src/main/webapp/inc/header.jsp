@@ -15,7 +15,7 @@
 					</li>
 					<!-- 新規登録 -->
 					<li>
-						<button onclick="location.href='newMemberRegistration.jsp'">新規登録</button>
+						<button onclick="location.href='${pageContext.request.contextPath}/mainJsp/newMemberRegistration.jsp'">新規登録</button>
 					</li>
 				</div>
 			</ul>

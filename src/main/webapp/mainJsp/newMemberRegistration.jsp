@@ -9,9 +9,11 @@
  <link rel="stylesheet" href="javascript:void(0)"> 
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/newMemberRegistration.css" />
  </head>
  <body>
   <jsp:include page="/inc/header.jsp" />
+  <main>
  	<h1>新規会員登録 入力</h1>
  	
  	<div class = enclose1>
@@ -30,7 +32,7 @@
         <input type="date" id="birthday" name="birthday" required>
  	</p>
 	<p>
- 		<label>性別：</label><br>
+ 		<label>性別：</label>
         <input type="radio" id="male" name="gender" value="male" required>
         <label for="male">男性</label>
         <input type="radio" id="female" name="gender" value="female" required>
@@ -39,15 +41,15 @@
         <label for="other">その他</label>
  	</p>
  	<p>
- 	<label for="postcode">郵便番号 (ハイフンなし7桁)：</label><br>
+ 	<label for="postcode">郵便番号 (ハイフンなし7桁)：</label>
         <input type="text" id="postcode" name="postcode" pattern="\d{7}" required>
  	</p>
  	<p>
- 	<label for="address">住所：</label><br>
+ 	<label for="address">住所：</label>
         <input type="text" id="address" name="address" required>
  	</p>
  	<p>
- 	<label for="phone">電話番号：</label><br>
+ 	<label for="phone">電話番号：</label>
         <input type="tel" id="phone" name="phone" pattern="\d{10,11}" required>
  	</p>
 	<p>
@@ -71,10 +73,11 @@
         <label for="securitycode">セキュリティコード:</label>
         <input type="text" id="securitycode" name="securitycode" pattern="\d{3,4}">
 	</p>
- 	<button type="button" onclick="clearForm()">クリア</button>
-    <button type="submit">確認</button>
+ 	<button type="button" onclick="clearForm()" class="button2">クリア</button>
+    <button type="submit" class="button2">確認</button>
  	</form>
 	</div> 
+	</main>
 <jsp:include page="/inc/footer.jsp" />
 <script>
     function clearForm() {

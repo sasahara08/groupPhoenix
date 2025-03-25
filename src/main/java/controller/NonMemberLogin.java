@@ -36,11 +36,11 @@ public class NonMemberLogin extends HttpServlet {
             if (user != null) {
                 // 認証成功 -> セッションにユーザー情報を保存
                 HttpSession session = request.getSession();
-                session.setAttribute("userName", user.getName());
-                session.setAttribute("userEmail", user.getEmail());
-                session.setAttribute("userId", user.getUserId());
+                session.setAttribute("userName", user.getName());  // ユーザー名
+                session.setAttribute("userEmail", user.getEmail());  // メールアドレス
+                session.setAttribute("userId", user.getUserId());  // ユーザーID
 
-                // member.jsp にリダイレクト
+                // 会員トップページにリダイレクト
                 response.sendRedirect(request.getContextPath() + "/mainJsp/memberTop.jsp");
             } else {
                 // 認証失敗 -> ログインページに戻る

@@ -143,33 +143,14 @@
 		<h4>news</h4>
 		<div class="news">
 			<hr />
-			<!--			<div class="news-number">-->
-			<!--				<p>2025.03.01</p>-->
-			<!--				<a class="news-number-button" href="★">初めてのおつかい（ゼリー編）</a>-->
-			<!--			</div>-->
-			<!--			<hr />-->
-			<!--			<div class="news-number">-->
-			<!--				<p>2025.02.28</p>-->
-			<!--				<a class="news-number-button" href="★">青い空と白い雲</a>-->
-			<!--			</div>-->
-			<!--			<hr />-->
-			<!--			<div class="news-number">-->
-			<!--				<p>2025.02.26</p>-->
-			<!--				<a class="news-number-button" href="★">絵の具の使い方について</a>-->
-			<!--			</div>-->
-			<!--			<hr />-->
-			<!--			<div class="news-number">-->
-			<!--				<p>2025.02.26</p>-->
-			<!--				<a class="news-number-button" href="★">岩室</a>-->
 			<ul class="news-list">
 				<c:forEach var="news" items="${newsList}">
 				<!-- 日付の表示 -->
-					<li><span class="news-date">${news.startAt}</span> <a class="news-title"
-						href="${pageContext.request.contextPath}/mainJsp/news?id=${news.newsId}">${news.title}</a>
+					<li><span class="news-date">${news.startAt}</span> <p class="news-title">${news.title}</a>
 					</li>
+					<hr>
 				</c:forEach>
 			</ul>
-		<hr />
 		<!-- ニュースを全部見るボタン -->
 		<div class="news-all">
 			<p>news all</p>

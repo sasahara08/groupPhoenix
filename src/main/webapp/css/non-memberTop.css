@@ -300,18 +300,11 @@ li{
 	margin-left:50px;
 	color:white;
 	text-decoration:none;
+	transition: transform 0.5s ease; /* transition設定 */
+	display: inline-block; /* 動作を改善 */
 }
-.news-number {
-  display: flex;
-  gap: 40px;
-}
-.news-number-button {
-  color: white;
-  text-decoration: none;
-  transition: all 0.5s;
-}
-.news-number-button:hover {
-  transform: translate(5px, 0px);
+.news-title:hover{
+	transform: translate(5px, 0px);
 }
 .news-all {
   display: flex;

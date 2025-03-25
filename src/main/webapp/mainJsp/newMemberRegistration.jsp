@@ -12,7 +12,7 @@
  </head>
  <body>
   <jsp:include page="/inc/header.jsp" />
- 	<h1>新規会員登録 入力</h1>s
+ 	<h1>新規会員登録 入力</h1>
  	
  	<div class = enclose1>
 <!-- 	<form action="${pageContext.request.contextPath}/nonMemberNewRegistration.jsp" method="post" onsubmit="return validateForm();">-->

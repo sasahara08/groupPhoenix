@@ -27,7 +27,7 @@ import dto.TeamsBean;
  * 
  * @return : 管理者画面内に置ける試合情報のCRUD
  */
-@WebServlet("/game")
+@WebServlet("/Admingame")
 public class AdminGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

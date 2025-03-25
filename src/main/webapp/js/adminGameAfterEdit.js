@@ -8,9 +8,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('displayDate').textContent = urlParams.get('gameDay') || '';
     document.getElementById('gameDay').value = urlParams.get('gameDay') || '';
+    
+    let gameTime = urlParams.get('gameTime') || '';
 
-    document.getElementById('displayTime').textContent = urlParams.get('gameTime') || '';
-    document.getElementById('gameTime').value = urlParams.get('gameTime') || '';
+        // 秒まで表記されたものを分表記に変換
+        if (gameTime) {
+            const parts = gameTime.split(':');
+            if (parts.length === 3) {
+                gameTime = `${parts[0]}:${parts[1]}`;
+            }
+        }
+        
+        console.log(gameTime);
+
+    document.getElementById('displayTime').textContent = gameTime;
+    document.getElementById('gameTime').value = gameTime;
 
     document.getElementById('displayHomeTeam').textContent = urlParams.get('homeTeam') || '';
 //    document.getElementById('homeTeam').value = urlParams.get('homeTeam') || '';

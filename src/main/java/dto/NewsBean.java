@@ -8,11 +8,11 @@ public class NewsBean {
 	private String mainText;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-	private LocalDateTime startAt;
+	private String startAt;
 	private LocalDateTime endingAt;
 	
 	public NewsBean(int newsId, String title, String mainText, LocalDateTime createdAt, LocalDateTime updatedAt,
-			LocalDateTime startAt, LocalDateTime endingAt) {
+			String startAt, LocalDateTime endingAt) {
 		this.newsId = newsId;
 		this.title = title;
 		this.mainText = mainText;
@@ -66,11 +66,11 @@ public class NewsBean {
 		this.updatedAt = updatedAt;
 	}
 
-	public LocalDateTime getStartAt() {
+	public String getStartAt() {
 		return startAt;
 	}
 
-	public void setStartAt(LocalDateTime startAt) {
+	public void setStartAt(String startAt) {
 		this.startAt = startAt;
 	}
 

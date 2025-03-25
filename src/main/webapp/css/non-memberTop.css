@@ -287,12 +287,19 @@ main{
 }
 /* ④ニュース */
 .news {
-  text-align: center;
   color: white;
   margin: 0 20% 5% 20%;
 }
 hr {
   color: white;
+}
+li{
+	list-style:none;
+}
+.news-title{
+	margin-left:50px;
+	color:white;
+	text-decoration:none;
 }
 .news-number {
   display: flex;

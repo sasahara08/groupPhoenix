@@ -198,7 +198,7 @@ CREATE TABLE `players` (
   `player_id` int NOT NULL AUTO_INCREMENT COMMENT '選手ID(オートインクルメント）',
   `name` varchar(64) NOT NULL COMMENT '選手名',
   `kana` varchar(64) NOT NULL COMMENT '選手名（ふりがな）',
-  `image` varchar(255) DEFAULT NULL COMMENT '選手画像(URL)',
+  `image` blob COMMENT '選手画像(URL)',
   `birthday` date NOT NULL COMMENT '生年月日',
   `height` int NOT NULL COMMENT '身長',
   `weight` int NOT NULL COMMENT '体重',
@@ -432,4 +432,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-25 10:53:25
+-- Dump completed on 2025-03-25 13:00:48

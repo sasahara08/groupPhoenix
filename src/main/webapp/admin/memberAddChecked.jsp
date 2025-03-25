@@ -23,29 +23,33 @@
 		<!-- 検索結果一覧エリア -->
 		<div class="searchresultsarea">
 			<h3>追加会員情報の内容確認</h3>
-			<form action="${pageContext.request.contextPath}/AdminMember" method="post">
-				<p>名前: ${user.name}</p>
-				<p>ふりがな: ${user.kana}</p>
-				<p>生年月日: ${user.birthday}</p>
-				<p>郵便番号: ${user.postCode}</p>
-				<p>住所: ${user.address}</p>
-				<p>電話番号: ${user.phone}</p>
-				<p>メールアドレス: ${user.email}</p>
-				<!--				<p>性別: ${user.gender}</p>-->
-				<p>パスワード: ${user.pass}</p>
 
-				<!-- データ送信用のフォーム -->
-				<form action="${pageContext.request.contextPath}/AdminMember" method="post">
-					<input type="hidden" name="name" value="${user.name}"> <input type="hidden" name="kana"
-						value="${user.kana}"> <input type="hidden" name="birthday" value="${user.birthday}"> <input
-						type="hidden" name="postcode" value="${user.postCode}"> <input type="hidden" name="address"
-						value="${user.address}"> <input type="hidden" name="phone" value="${user.phone}"> <input
-						type="hidden" name="email" value="${user.email}">
-					<!--					<input type="hidden" name="gender" value="${user.gender}">-->
-					<input type="hidden" name="pass" value="${user.pass}">
-					<button type="submit" name="sendKind" value="userAddConfirm">確定</button>
-					<button type="submit" name="sendKind" value="userReset">修正</button>
-				</form>
+			<p>名前: ${user.name}</p>
+			<p>ふりがな: ${user.kana}</p>
+			<p>生年月日: ${user.birthday}</p>
+			<p>郵便番号: ${user.postCode}</p>
+			<p>住所: ${user.address}</p>
+			<p>電話番号: ${user.phone}</p>
+			<p>メールアドレス: ${user.email}</p>
+			<!--				<p>性別: ${user.gender}</p>-->
+			<p>パスワード: ${user.pass}</p>
+
+			<!-- データ送信用のフォーム -->
+			<form action="${pageContext.request.contextPath}/AdminMember" method="post">
+				<input type="hidden" name="name" value="${user.name}"> <input type="hidden" name="kana" value="${user.kana}">
+				<input type="hidden" name="birthday" value="${user.birthday}"> <input type="hidden" name="postcode"
+					value="${user.postCode}"> <input type="hidden" name="address" value="${user.address}"> <input
+					type="hidden" name="phone" value="${user.phone}"> <input type="hidden" name="email" value="${user.email}">
+				<!--					<input type="hidden" name="gender" value="${user.gender}">-->
+				<input type="hidden" name="pass" value="${user.pass}">
+				<button type="submit" name="sendKind" value="userAddConfirm">確定</button>
+			</form>
+			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
+				<input type="submit" value="戻る">
+			</form>
+			<!--			<form action="${pageContext.request.contextPath}/AdminMember" method="get">-->
+			<!--				<input type="submit" value="会員情報TOPに戻る">-->
+			<!--			</form>-->
 	</main>
 	<!-- フッターを挿入 -->
 

@@ -22,48 +22,53 @@
 	<main>
 		<!-- 会員情報編集エリア -->
 		<div class="editarea">
-			<h3>【会員情報編集】</h3>
+			<h3>会員情報編集</h3>
 			<form action="${pageContext.request.contextPath}/AdminMember" method="post">
 				<div>
-					<label>会員ID</label><input type="text" name="userId" value="${userId}" readonly>
+					<label>会員ID</label><input type="text" name="userId" value="${editUser.userId}" readonly>
 				</div>
 				<div>
-					<label>名前</label><input type="text" name="name" value="${name}">
+					<label>名前</label><input type="text" name="name" value="${editUser.name}">
 				</div>
 				<div>
-					<label>ふりがな</label><input type="text" name="kana" value="${kana}">
+					<label>ふりがな</label><input type="text" name="kana" value="${editUser.kana}">
 				</div>
 				<div>
-					<label>生年月日</label><input type="date" name="birthday" value="${birthday}">
+					<label>生年月日</label><input type="date" name="birthday" value="${editUser.birthday}">
 				</div>
 				<div>
-					<label>郵便番号</label><input type="text" name="postcode" pattern="\d{3}-?\d{4}" value="${postcode}">
+					<label>郵便番号</label><input type="text" name="postcode" pattern="\d{3}-?\d{4}" value="${editUser.postCode}">
 				</div>
 				<div>
-					<label>住所</label><input type="text" name="address" value="${address}">
+					<label>住所</label><input type="text" name="address" value="${editUser.address}">
 				</div>
 				<div>
-					<label>電話番号</label><input type="text" name="phone" value="${phone}">
+					<label>電話番号</label><input type="text" name="phone" value="${editUser.phone}">
 				</div>
 				<div>
-					<label>メールアドレス</label><input type="email" name="email" value="${email}">
+					<label>メールアドレス</label><input type="email" name="email" value="${editUser.email}">
 				</div>
-				<div class="gender">
-					<label>性別</label> <input type="radio" name="gender" value="male" id="gender_male"
-						<c:if test="${user.gender == 'male'}">checked</c:if>> <label for="gender_male">男</label> <input
-						type="radio" name="gender" value="female" id="gender_female"
-						<c:if test="${user.gender == 'female'}">checked</c:if>> <label for="gender_female">女</label> <input
-						type="radio" name="gender" value="other" id="gender_other" <c:if test="${user.gender == 'other'}">checked</c:if>>
-					<label for="gender_female">その他</label>
-				</div>
+				<!--				<div class="gender">-->
+				<!--					<label>性別</label> <input type="radio" name="gender" value="male" id="gender_male"-->
+				<!--						<c:if test="${user.gender == 'male'}">checked</c:if>> <label for="gender_male">男</label> <input-->
+				<!--						type="radio" name="gender" value="female" id="gender_female"-->
+				<!--						<c:if test="${user.gender == 'female'}">checked</c:if>> <label for="gender_female">女</label> <input-->
+				<!--						type="radio" name="gender" value="other" id="gender_other" <c:if test="${user.gender == 'other'}">checked</c:if>>-->
+				<!--					<label for="gender_female">その他</label>-->
+				<!--				</div>-->
 				<div>
-					<label>パスワード</label><input type="password" name="pass" value="${pass}">
+					<label>パスワード</label><input type="password" name="pass" value="${editUser.pass}">
 				</div>
 				<div class="buttonarea">
 					<button type="submit" name="sendKind" value="userEditCheck">確認</button>
-					<button type="submit" name="sendKind" value="userSearchTop">戻る</button>
-				</div>
 			</form>
+			<!-- 戻るボタン -->
+			<form action="${pageContext.request.contextPath}/AdminMember" method="post" style="display: inline;">
+				<button type="submit" name="sendKind" value="userSearch">戻る</button>
+
+			</form>
+		</div>
+
 		</div>
 	</main>
 	<!-- フッターを挿入 -->

@@ -55,12 +55,11 @@
 								<!--								<td>${user.gender}</td>-->
 								<td>
 									<!-- 編集ボタン -->
-									<form action="AdminMember" method="get" style="display: inline;">
+									<form action="${pageContext.request.contextPath}/AdminMember" method="get" style="display: inline;">
 										<button type="submit" name="sendKind" value="userEdit">編集</button>
 										<input type="hidden" name="userId" value="${user.userId}">
-									</form> 
-									<!-- 削除ボタン -->
-									<form action="AdminMember" method="post" style="display: inline;">
+									</form> <!-- 削除ボタン -->
+									<form action="${pageContext.request.contextPath}/AdminMember" method="get" style="display: inline;">
 										<button type="submit" name="sendKind" value="userDeleteCheck">削除</button>
 										<input type="hidden" name="userId" value="${user.userId}">
 									</form>

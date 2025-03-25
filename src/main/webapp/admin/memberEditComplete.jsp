@@ -22,11 +22,10 @@
 		<!-- 会員情報登録完了エリア -->
 		<div class="editcompletearea">
 			<h3>会員情報_内容編集完了</h3>
-			<p>
-				<a href="${pageContext.request.contextPath}/admin/member.jsp">会員情報TOPに戻る</a>
-				<button type="submit" name="sendKind" value="userTop">会員情報TOPに戻る</button>
-			</p>
-	</main>
+			<p><form action="${pageContext.request.contextPath}/AdminMember" method="get">
+				<input type="submit" value="会員情報TOPに戻る">
+			</form>
+	</p></main>
 	<!-- フッターを挿入 -->
 
 

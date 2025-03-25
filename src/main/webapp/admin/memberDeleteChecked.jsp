@@ -20,30 +20,27 @@
 		</h2>
 	</div>
 	<main>
-		<!-- 検索結果一覧エリア -->
+		<!-- 削除内容確認エリア -->
 		<div class="deletecheckarea">
 			<h3>削除会員情報の内容確認</h3>
-
-			<p>名前: ${sessionScope.newUser.name}</p>
-			<p>ふりがな: ${sessionScope.newUser.kana}</p>
-			<p>生年月日: ${sessionScope.newUser.birthday}</p>
-			<p>郵便番号: ${sessionScope.newUser.postCode}</p>
-			<p>住所: ${sessionScope.newUser.address}</p>
-			<p>電話番号: ${sessionScope.newUser.phone}</p>
-			<p>メールアドレス: ${sessionScope.newUser.email}</p>
-			<!--				<p>性別: ${sessionScope.newUser.gender}</p>-->
-			<!--				<p>パスワード: ${sessionScope.newUser.pass}</p>-->
+			<p>会員ID: ${deleteUser.userId}</p>
+			<p>名前: ${deleteUser.name}</p>
+			<p>ふりがな: ${deleteUser.kana}</p>
+			<p>生年月日: ${deleteUser.birthday}</p>
+			<p>郵便番号: ${deleteUser.postCode}</p>
+			<p>住所: ${deleteUser.address}</p>
+			<p>電話番号: ${deleteUser.phone}</p>
+			<p>メールアドレス: ${deleteUser.email}</p>
 
 
 			<!-- 削除ボタン -->
-			<form action="AdminMember" method="post" style="display: inline;">
+			<form action="${pageContext.request.contextPath}/AdminMember" method="post" style="display: inline;">
 				<button type="submit" name="sendKind" value="userDelete">削除</button>
-				<input type="hidden" name="userId" value="${user.userId}">
+				<input type="hidden" name="userId" value="${deleteUser.userId}">
 			</form>
 			<!-- 戻るボタン -->
-			<form action="AdminMember" method="get" style="display: inline;">
-				<button type="submit" name="sendKind" value="userSearchTop">戻る</button>
-				<input type="hidden" name="userId" value="${user.userId}">
+			<form action="${pageContext.request.contextPath}/AdminMember" method="post" style="display: inline;">
+				<button type="submit" name="sendKind" value="userSearch">戻る</button>
 			</form>
 	</main>
 	<!-- フッターを挿入 -->

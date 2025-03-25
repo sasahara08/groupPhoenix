@@ -6,15 +6,19 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>非会員TOPページ</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css"
+	media="all" />
 <!-- slider.js -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/non-memberTop.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/non-memberTop.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
@@ -30,36 +34,51 @@
 			<div class="right-image">
 				<!-- スライドショー上画像キャッチフレーズ -->
 				<img class="right-image-logo"
-					src="${pageContext.request.contextPath}/images/PhoenixTicketLogoBig.png" alt="画像" />
+					src="${pageContext.request.contextPath}/images/PhoenixTicketLogoBig.png"
+					alt="画像" />
 				<p class="right-image-text">最安値でチケットを買えるサイト</p>
 				<!-- スライドショー画像 -->
 				<div class="slide-container">
 					<div class="slide-wrapper">
-						<img class="slide" src="${pageContext.request.contextPath}/images/baseball.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/batting.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/nagaoka.jpg" alt="良い街" />
+						<img class="slide"
+							src="${pageContext.request.contextPath}/images/baseball.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/batting.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/nagaoka.jpg"
+							alt="良い街" />
 					</div>
 					<div class="slide-wrapper">
-						<img class="slide" src="${pageContext.request.contextPath}/images/baseball.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/batting.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/nagaoka.jpg" alt="良い街" />
+						<img class="slide"
+							src="${pageContext.request.contextPath}/images/baseball.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/batting.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/nagaoka.jpg"
+							alt="良い街" />
 					</div>
 					<div class="slide-wrapper">
-						<img class="slide" src="${pageContext.request.contextPath}/images/baseball.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/batting.jpg" alt="画像" /> <img
-							class="slide" src="${pageContext.request.contextPath}/images/nagaoka.jpg" alt="良い街" />
+						<img class="slide"
+							src="${pageContext.request.contextPath}/images/baseball.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/batting.jpg"
+							alt="画像" /> <img class="slide"
+							src="${pageContext.request.contextPath}/images/nagaoka.jpg"
+							alt="良い街" />
 					</div>
 				</div>
 				<!-- <img src="/images/baseball.jpg" alt="画像" />
           <img src="/images/batting.jpg" alt="画像" /> -->
 				<!-- 回転する画像 -->
-				<img class="rotating-image" src="${pageContext.request.contextPath}/images/spinning.png"
+				<img class="rotating-image"
+					src="${pageContext.request.contextPath}/images/spinning.png"
 					alt="回転する画像" />
 			</div>
 		</div>
 		<!-- サイトの説明文 -->
 		<div class="siteInfo">
-			<img class="siteInfo-bg" src="${pageContext.request.contextPath}/images/baseballStadium.jpg"
+			<img class="siteInfo-bg"
+				src="${pageContext.request.contextPath}/images/baseballStadium.jpg"
 				alt="スタジアム画像" />
 			<div class="siteInfo-text">
 				<h1 class="siteInfo-title">
@@ -79,14 +98,16 @@
 					通勤中や自宅でくつろぎながらでも手軽に予約が完了し、時間と手間を大幅に削減できるという大きな利点があります。</p>
 				<br /> <br /> <br />
 				<div class="siteInfo-button">
-					<a class="button2" href="${pageContext.request.contextPath}/mainJsp/ticket.jsp">チケットを購入する</a>
+					<a class="button2"
+						href="${pageContext.request.contextPath}/mainJsp/ticket.jsp">チケットを購入する</a>
 				</div>
 			</div>
 		</div>
 		<!-- なんかフワっとする画像（フワちゃん） -->
 		<div class="huwa-container">
-			<img src="${pageContext.request.contextPath}/images/featured_image.jpg" alt="" loading="lazy"
-				class="box" />
+			<img
+				src="${pageContext.request.contextPath}/images/featured_image.jpg"
+				alt="" loading="lazy" class="box" />
 			<!-- 流れる文字 -->
 			<div class="loop-wrap">
 				<ul class="loop-area">
@@ -143,32 +164,45 @@
 		<h4>news</h4>
 		<div class="news">
 			<hr />
-			<ul class="news-list">
-				<c:forEach var="news" items="${newsList}">
-				<!-- 日付の表示 -->
-					<li><span class="news-date">${news.startAt}</span> <p class="news-title">${news.title}</a>
-					</li>
-					<hr>
-				</c:forEach>
-			</ul>
-		<!-- ニュースを全部見るボタン -->
-		<div class="news-all">
-			<p>news all</p>
-			<a class="news-all-button" href="${pageContext.request.contextPath}/mainJsp/news.jsp">></a>
-		</div>
+			<!-- ニュースリストが空でない場合 -->
+			<c:if test="${not empty newsList}">
+				<ul class="news-list">
+					<c:forEach var="news" items="${newsList}">
+						<!-- 日付の表示 -->
+						<li><span class="news-date">${news.startAt}</span>
+							<p class="news-title">${news.title}</p></li>
+						<hr>
+					</c:forEach>
+				</ul>
+			</c:if>
+			<!-- ニュースリストが空の場合 -->
+			<c:if test="${empty newsList}">
+				<p>ニュースはありません</p>
+			</c:if>
+
+			<!-- ニュースを全部見るボタン -->
+			<div class="news-all">
+				<p>news all</p>
+				<a class="news-all-button"
+					href="${pageContext.request.contextPath}/mainJsp/news.jsp">></a>
+			</div>
 		</div>
 		<!-- フード・グッズ -->
 		<!-- ⑤選手紹介 -->
 		<h4>player</h4>
 		<div class="player-inf">
 			<div class="image-container">
-				<img class="left-img" src="${pageContext.request.contextPath}/images/kata.jpg" alt="Left Image" />
-				<img class="center-img" src="${pageContext.request.contextPath}/images/uezawa.jpg"
+				<img class="left-img"
+					src="${pageContext.request.contextPath}/images/kata.jpg"
+					alt="Left Image" /> <img class="center-img"
+					src="${pageContext.request.contextPath}/images/uezawa.jpg"
 					alt="Center Image" /> <img class="right-img"
-					src="${pageContext.request.contextPath}/images/tsumori.jpg" alt="Right Image" />
+					src="${pageContext.request.contextPath}/images/tsumori.jpg"
+					alt="Right Image" />
 			</div>
 		</div>
-		<a class="button1" href="${pageContext.request.contextPath}/mainJsp/player.jsp">選手紹介</a>
+		<a class="button1"
+			href="${pageContext.request.contextPath}/mainJsp/player.jsp">選手紹介</a>
 		<!-- ⑥場所 -->
 		<div class="hero">
 			<div class="hero__bg"></div>

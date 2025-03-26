@@ -27,7 +27,7 @@
         <input type="email" id="email" name="email" required>
     </div>
     <div class="form-group">
-        <label for="confirm-email">メールアドレス（確認画面）</label>
+        <label for="confirm-email">メールアドレス（確認）</label>
         <input type="email" id="confirm-email" name="confirm-email" required>
     </div>
     <div class="form-group reverse-label-textarea">

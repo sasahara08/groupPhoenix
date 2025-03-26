@@ -164,6 +164,30 @@ INSERT INTO `news` VALUES (1,'phoenixニュースサイト開設','phoenixの公
 UNLOCK TABLES;
 
 --
+-- Table structure for table `player_images`
+--
+
+DROP TABLE IF EXISTS `player_images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `player_images` (
+  `player_image_id` int NOT NULL AUTO_INCREMENT COMMENT '選手画像ID',
+  `image_name` varchar(255) DEFAULT NULL COMMENT '選手画像名',
+  `image_data` longblob COMMENT '画像データ',
+  PRIMARY KEY (`player_image_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='選手画像';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_images`
+--
+
+LOCK TABLES `player_images` WRITE;
+/*!40000 ALTER TABLE `player_images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `player_images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `player_statuses`
 --
 
@@ -198,7 +222,7 @@ CREATE TABLE `players` (
   `player_id` int NOT NULL AUTO_INCREMENT COMMENT '選手ID(オートインクルメント）',
   `name` varchar(64) NOT NULL COMMENT '選手名',
   `kana` varchar(64) NOT NULL COMMENT '選手名（ふりがな）',
-  `image` blob COMMENT '選手画像(URL)',
+  `image` int DEFAULT NULL COMMENT '選手画像(URL)',
   `birthday` date NOT NULL COMMENT '生年月日',
   `height` int NOT NULL COMMENT '身長',
   `weight` int NOT NULL COMMENT '体重',
@@ -212,6 +236,8 @@ CREATE TABLE `players` (
   `player_status_id` int NOT NULL COMMENT '在籍状況,外部キー（選手ステータステーブルの主キー）',
   PRIMARY KEY (`player_id`),
   KEY `player_status_id_idx` (`player_status_id`),
+  KEY `player_images_idx` (`image`),
+  CONSTRAINT `player_images` FOREIGN KEY (`image`) REFERENCES `player_images` (`player_image_id`),
   CONSTRAINT `player_status_id` FOREIGN KEY (`player_status_id`) REFERENCES `player_statuses` (`player_status_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COMMENT='選手テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -432,4 +458,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-25 13:00:48
+-- Dump completed on 2025-03-26 11:58:15

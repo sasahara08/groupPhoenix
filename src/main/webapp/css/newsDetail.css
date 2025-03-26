@@ -1,16 +1,17 @@
 @charset "UTF-8";
 .back-second{
   text-align: center;
-  text-decoration: none; 
-  width: 8%;
   margin: auto;
-  margin-top: 5%;
-  padding: 0.5rem 0.5rem;
-  font-weight: bold;
-  border: 2px solid #98fb98;
-  background: #98fb98;
-  color: black;
-  transition: 0.5s;
+/*  text-decoration: none; */
+/*  width: 8%;*/
+/*  margin: auto;*/
+/*  margin-top: 5%;*/
+/*  padding: 0.5rem 0.5rem;*/
+/*  font-weight: bold;*/
+/*  border: 2px solid #98fb98;*/
+/*  background: #98fb98;*/
+/*  color: black;*/
+/*  transition: 0.5s;*/
 }
 a {
   text-decoration: none;
@@ -52,6 +53,7 @@ h1.ticket {
   width: 40%;
   margin: auto;
   margin-top: 1%;
+  margin-bottom:  5%;
   font-weight:bold;
   text-align: left;
   color: brown;

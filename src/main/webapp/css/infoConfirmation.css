@@ -2,36 +2,64 @@
 body {
   width: 100%;
 }
+h1 {
+  text-align: center;
+  margin: auto;
+}
 .confirm-content {
     width: 40%;
-    height: 200px;
+    height: 350px;
     margin: auto;
+    margin-top: 3%;
     padding: 20px;
     border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    background-color: bisque;
 }
 
 .confirm-content p {
     margin: 10px 0;
-    color: #0056b3;
-}
-
+    color: brown;
+    padding: 1%;
+    }
+    
 .confirm-content strong {
     font-weight: bold;
 }
 
-.form-group-button {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+/*.form-group-button {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin: 20px;*/
+/* background-color: #ec6d4e;*/
+/*}*/
+.form-group-button-second {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8%;
+/*  margin: 2%;*/
+ 
+  text-align: center;
+  margin: auto;
+  
+/*  margin-top: -4%;*/
+}
+.button1 {
+  background-color: #ec6d4e;
+/*  width: 7%;*/
+/*  margin: 0% 1% 1% 1%;*/
+/*  padding: 0.5rem 0.5rem;*/
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+
+.button1 back-buttonbutton {
+  text-align: center;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #ec6d4e;
+  border: none;
+  cursor: pointer;
 }
 
 button:hover {
@@ -44,4 +72,13 @@ button:hover {
 
 .back-button:hover {
     background-color: #5a6268;
+}
+
+textarea {
+/*  position: relative;*/
+  width: 99%;
+  height: 150px;
+  margin: 0 auto;
+  text-align: left;
+  display: block;
 }

@@ -22,22 +22,42 @@ public class InquiriesDAO {
 //    private static final String USER = "your_username"; // MySQLユーザー名
 //    private static final String PASSWORD = "your_password"; // MySQLパスワード
 
-    // 問い合わせをデータベースに保存するメソッド
+//     問い合わせをデータベースに保存するメソッド
 //    public void saveInquiry(InquiriesBean inquiry) throws SQLException {
 //        String sql = "INSERT INTO inquiries (user_id, created_at, inquiry_text) VALUES (?, ?, ?)";
 //
-//        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+////        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//        		try (Connection conn = DriverManager.getConnection();
 //             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setInt(1, inquiry.getUserId()); // ユーザーID
-//            pstmt.setObject(2, inquiry.getCreatedAt()); // 作成日時
+//             pstmt.setInt(1, inquiry.getName()); // 名前
+//             pstmt.setObject(2, inquiry.getEmail()); // メール
+////            pstmt.setInt(1, inquiry.getUserId()); // ユーザーID
+////            pstmt.setObject(2, inquiry.getCreatedAt()); // 作成日時
 //            pstmt.setString(3, inquiry.getInquiryText()); // 問い合わせ内容
 //            pstmt.executeUpdate();
 //        }
 //    }
+//	修正分
+	
+	public void saveInquiry(InquiriesBean inquiry) throws SQLException {
+	    String sql = "INSERT INTO inquiries (name, email, message) VALUES (?, ?, ?)";
+
+	    try (Connection conn = DBManager.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	        pstmt.setString(1, inquiry.getName()); // 名前
+	        pstmt.setString(2, inquiry.getEmail()); // メール
+	        pstmt.setString(3, inquiry.getInquiryText()); // メッセージ
+
+	        pstmt.executeUpdate();
+	    }
+	}
+	
+	
 	public List<InquiriesBean> getInquiries() throws SQLException {
 	    List<InquiriesBean> inquiriesList = new ArrayList<>();
-	    String sql = "SELECT inquiry_id, user_id, created_at, inquiry_text, response_text, response_at FROM inquiries";
-	    
+//	    String sql = "SELECT inquiry_id, user_id, created_at, inquiry_text, response_text, response_at FROM inquiries";
+	    String sql = "SELECT * FROM inquiries ORDER BY created_at DESC";
 	    try (
 				Connection conn = DBManager.getConnection(); // DB接続を取得
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -46,17 +66,23 @@ public class InquiriesDAO {
 		) {
 
 //次回ここから
+	    	while (resultSet.next()) {
+	    	    InquiriesBean inquiry = new InquiriesBean();
+	    	    inquiry.setInquiryId(resultSet.getInt("inquiry_id"));
+	    	    inquiry.setUserId(resultSet.getInt("user_id"));
+	    	    inquiry.setInquiryText(resultSet.getString("inquiry_text"));
+	    	    inquiry.setResponseText(resultSet.getString("response_text"));
+	    	    
+	    	    inquiry.setName(resultSet.getString("name"));
+	    	    inquiry.setEmail(resultSet.getString("email"));
+	    	    
+	    	    
+	    	    if (resultSet.getTimestamp("response_at") != null) {
+	    	        inquiry.setResponseAt(resultSet.getTimestamp("response_at").toLocalDateTime());
+	    	    }
+	    	    inquiriesList.add(inquiry);
+	    	}
 
-//	        while (rs.next()) {
-//	            inquiriesList.add(new InquiriesBean(
-//	                rs.getInt("inquiry_id"),
-//	                rs.getInt("user_id"),
-//	                rs.getTimestamp("created_at").toLocalDateTime(),
-//	                rs.getString("inquiry_text"),
-//	                rs.getString("response_text"),
-//	                rs.getTimestamp("response_at") != null ? rs.getTimestamp("response_at").toLocalDateTime() : null
-//	            ));
-//	        }
 	    }
 	    return inquiriesList;
 	}

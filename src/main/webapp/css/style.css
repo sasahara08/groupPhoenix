@@ -36,7 +36,7 @@ header {
 .login form {
   margin-right: auto;
 }
-.header_inline_block button {
+.nav button {
   text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
@@ -48,13 +48,21 @@ header {
   font-size: 16px;
   cursor: pointer;
 }
-.header_inline_block button:hover {
+.nav button:hover {
   background-color: #fff;
   color: #ec6d4e;
 }
 .logo {
   padding: 20px;
   margin-left: 0;
+}
+.logo-button{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	padding: 0;
+	appearance: none;
 }
 /* メインコンテンツ */
 /* h1 タイトル */

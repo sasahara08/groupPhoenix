@@ -25,12 +25,12 @@
        display: block;
        border-color: coral;
        margin-bottom: 5px;
-       font-size: 11px;
+       font-size: 15px;
+       font-weight: bold;
     }
     label {
       padding: 2%;
-      color:brown
-      
+      color:brown;
     }
     .form-group input {
         display: block;
@@ -54,25 +54,30 @@
     .form-group-button {
       width: 100%;
       margin: auto;
+      margin: 0% 3%;
       text-align: center;
     }
     .form-group-button button {
       width: 20%;
+/*      margin-top: 5%;*/
+      margin: 6% 3% 3% 3%;
       padding: 0.5rem 0.5rem;
-      font-weight: bold;
-      border: 2px solid #98fb98;
-      background: #98fb98;
-      margin: 5%;
-      color: chocolate;
+      background-color: #ec6d4e
+      
+/*      font-weight: bold;*/
+/*      border: 2px solid #98fb98;*/
+/*      background: #98fb98;*/
+     
+/*      color: chocolate;*/
     }
-    .form-group-button button:hover {
-      margin-top: 10px;
+/*    .form-group-button button:hover {*/
+/*      margin-top: 10px;*/
 /*      padding: 10px 20px;*/
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-     }
+/*      color: #fff;*/
+/*      border: none;*/
+/*      cursor: pointer;*/
+/*      border-radius: 5px;*/
+/*     }*/
 /*    .form-group-button,*/
 /*    .back-button {*/
 /*      display: flex;*/

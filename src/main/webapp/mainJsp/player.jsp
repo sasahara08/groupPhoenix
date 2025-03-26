@@ -29,7 +29,7 @@
 						<p>${player.name}</p>
 						<p>${player.kana}</p>
 						<a href="${pageContext.request.contextPath}/PlayerServlet?id=${player.playerId}"> <img
-							src="${pageContext.request.contextPath}/${player.image}" alt="${player.name}のサムネイル" />
+							src="${pageContext.request.contextPath}/images/${player.image}" alt="${player.name}のサムネイル" />
 						</a>
 						<p>${player.position}</p>
 					</div>

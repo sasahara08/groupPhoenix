@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `phoenix` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `phoenix`;
 -- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: phoenix
@@ -164,30 +162,6 @@ INSERT INTO `news` VALUES (1,'phoenixニュースサイト開設','phoenixの公
 UNLOCK TABLES;
 
 --
--- Table structure for table `player_images`
---
-
-DROP TABLE IF EXISTS `player_images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `player_images` (
-  `player_image_id` int NOT NULL AUTO_INCREMENT COMMENT '選手画像ID',
-  `image_name` varchar(255) DEFAULT NULL COMMENT '選手画像名',
-  `image_data` longblob COMMENT '画像データ',
-  PRIMARY KEY (`player_image_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='選手画像';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `player_images`
---
-
-LOCK TABLES `player_images` WRITE;
-/*!40000 ALTER TABLE `player_images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `player_images` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `player_statuses`
 --
 
@@ -222,7 +196,7 @@ CREATE TABLE `players` (
   `player_id` int NOT NULL AUTO_INCREMENT COMMENT '選手ID(オートインクルメント）',
   `name` varchar(64) NOT NULL COMMENT '選手名',
   `kana` varchar(64) NOT NULL COMMENT '選手名（ふりがな）',
-  `image` int DEFAULT NULL COMMENT '選手画像(URL)',
+  `image` varchar(255) DEFAULT NULL COMMENT '選手画像(URL)',
   `birthday` date NOT NULL COMMENT '生年月日',
   `height` int NOT NULL COMMENT '身長',
   `weight` int NOT NULL COMMENT '体重',
@@ -237,7 +211,6 @@ CREATE TABLE `players` (
   PRIMARY KEY (`player_id`),
   KEY `player_status_id_idx` (`player_status_id`),
   KEY `player_images_idx` (`image`),
-  CONSTRAINT `player_images` FOREIGN KEY (`image`) REFERENCES `player_images` (`player_image_id`),
   CONSTRAINT `player_status_id` FOREIGN KEY (`player_status_id`) REFERENCES `player_statuses` (`player_status_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COMMENT='選手テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -248,7 +221,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'田中 一郎','たなか いちろう',NULL,'1990-04-12',180,75,'東京都','投手','勝利は努力の結果。','2025-03-12 00:00:00','2025-03-12 11:32:00','2009-04-01',NULL,1),(2,'山田 太郎','やまだ たろう',NULL,'1992-06-25',185,80,'大阪府','捕手','笑顔で全力投球！','2025-03-12 00:00:00',NULL,'2015-04-01',NULL,1),(3,'鈴木 勇','すずき いさみ',NULL,'1988-09-10',178,73,'福岡県','内野手','打倒相手チーム！','2025-03-12 00:00:00','2025-03-12 12:21:00','2011-04-01',NULL,1),(4,'佐藤 健','さとう けん',NULL,'1995-11-30',175,72,'北海道','内野手','一歩一歩前進！','2025-03-12 00:00:00','2025-03-12 12:21:00','2014-04-01',NULL,1),(5,'高橋 誠','たかはし まこと',NULL,'1991-03-08',180,78,'神奈川県','内野手','チームのために！','2025-03-12 00:00:00',NULL,'2008-04-01',NULL,1),(6,'渡辺 翔','わたなべ しょう',NULL,'1989-12-17',182,85,'愛知県','内野手','勝利の女神！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(7,'小林 勇','こばやし いさみ',NULL,'1993-05-20',178,68,'京都府','内野手','全力で走れ！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(8,'中村 亮','なかむら りょう',NULL,'1996-01-15',170,65,'広島県','外野手','皆で笑おう！','2025-03-12 00:00:00',NULL,'2014-04-01',NULL,1),(9,'加藤 健','かとう けん',NULL,'1987-07-04',180,75,'埼玉県','外野手','打って走って守る！','2025-03-12 00:00:00',NULL,'2010-04-01',NULL,1),(10,'伊藤 拓','いとう たく',NULL,'1994-02-23',158,62,'宮城県','投手','チャンスを掴め！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(11,'石川 ジョン','いしかわ じょん',NULL,'1990-10-05',192,90,'カリフォルニア州','内野手','ホームランを狙え！','2025-03-12 00:00:00',NULL,'2016-04-01',NULL,1),(12,'清水 クリス','しみず くりす',NULL,'1997-08-14',185,88,'テキサス州','外野手','スピード勝負！','2025-03-12 00:00:00',NULL,'2016-03-01',NULL,1),(13,'松本 デイビッド','まつもと でいびっど',NULL,'1992-11-02',175,70,'ニューヨーク州','内野手','守りで勝て！','2025-03-12 00:00:00',NULL,'2017-04-01',NULL,1),(14,'石井 圭一','いしい けいいち',NULL,'1965-05-05',170,70,'東京都','監督','チーム全員で勝つ！','2025-03-12 00:00:00',NULL,'2018-04-01',NULL,1),(15,'上田 剛','うえだ ごう',NULL,'1970-11-11',175,75,'神奈川県','投手コーチ','完璧な投球を目指せ！','2025-03-12 00:00:00',NULL,'2019-04-01',NULL,1),(16,'マイク・スミス','まいく すみす',NULL,'1980-06-20',180,85,'オハイオ州','打撃コーチ','一撃必殺のバッティング！','2025-03-12 00:00:00',NULL,'2019-04-01',NULL,1);
+INSERT INTO `players` VALUES (1,'田中 一郎','たなか いちろう','1_tanaka.png','1990-04-12',180,75,'東京都','投手','勝利は努力の結果。','2025-03-12 00:00:00','2025-03-12 11:32:00','2009-04-01',NULL,1),(2,'山田 太郎','やまだ たろう','2_yamada.png','1992-06-25',185,80,'大阪府','捕手','笑顔で全力投球！','2025-03-12 00:00:00',NULL,'2015-04-01',NULL,1),(3,'鈴木 勇','すずき いさみ','3_suzuki.png','1988-09-10',178,73,'福岡県','内野手','打倒相手チーム！','2025-03-12 00:00:00','2025-03-12 12:21:00','2011-04-01',NULL,1),(4,'佐藤 健','さとう けん','4_satou.png','1995-11-30',175,72,'北海道','内野手','一歩一歩前進！','2025-03-12 00:00:00','2025-03-12 12:21:00','2014-04-01',NULL,1),(5,'高橋 誠','たかはし まこと','5_takahashi.png','1991-03-08',180,78,'神奈川県','内野手','チームのために！','2025-03-12 00:00:00',NULL,'2008-04-01',NULL,1),(6,'渡辺 翔','わたなべ しょう','6_watanabe.png','1989-12-17',182,85,'愛知県','内野手','勝利の女神！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(7,'小林 勇','こばやし いさみ','7_kobayashi.png','1993-05-20',178,68,'京都府','内野手','全力で走れ！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(8,'中村 亮','なかむら りょう','8_nakamura.png','1996-01-15',170,65,'広島県','外野手','皆で笑おう！','2025-03-12 00:00:00',NULL,'2014-04-01',NULL,1),(9,'加藤 健','かとう けん','9_kato.png','1987-07-04',180,75,'埼玉県','外野手','打って走って守る！','2025-03-12 00:00:00',NULL,'2010-04-01',NULL,1),(10,'伊藤 拓','いとう たく','10_ito.png','1994-02-23',158,62,'宮城県','投手','チャンスを掴め！','2025-03-12 00:00:00',NULL,'2012-04-01',NULL,1),(11,'石川 ジョン','いしかわ じょん','11_ishikawa.png','1990-10-05',192,90,'カリフォルニア州','内野手','ホームランを狙え！','2025-03-12 00:00:00',NULL,'2016-04-01',NULL,1),(12,'清水 クリス','しみず くりす','12_shimizu.png','1997-08-14',185,88,'テキサス州','外野手','スピード勝負！','2025-03-12 00:00:00',NULL,'2016-03-01',NULL,1),(13,'松本 デイビッド','まつもと でいびっど','13_matsumoto.png','1992-11-02',175,70,'ニューヨーク州','内野手','守りで勝て！','2025-03-12 00:00:00',NULL,'2017-04-01',NULL,1),(14,'石井 圭一','いしい けいいち','14_ishii.png','1965-05-05',170,70,'東京都','監督','チーム全員で勝つ！','2025-03-12 00:00:00',NULL,'2018-04-01',NULL,1),(15,'上田 剛','うえだ ごう','15_ueda.png','1970-11-11',175,75,'神奈川県','投手コーチ','完璧な投球を目指せ！','2025-03-12 00:00:00',NULL,'2019-04-01',NULL,1),(16,'マイク・スミス','まいく すみす','16_mike.png','1980-06-20',180,85,'オハイオ州','打撃コーチ','一撃必殺のバッティング！','2025-03-12 00:00:00',NULL,'2019-04-01',NULL,1);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,4 +431,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-26 13:05:54
+-- Dump completed on 2025-03-26 15:18:13

@@ -29,7 +29,7 @@ public class ImageUpload {
             // DBManagerからコネクションを取得
             conn = DBManager.getConnection();
 
-            // SQLクエリの準備
+            // SQLクエリの準備（1つのSQLクエリを使いまわす）
             String sql = "INSERT INTO player_images (image_name, image_data) VALUES (?, ?)";
 
             // 画像ファイルをループしてアップロード
@@ -40,15 +40,17 @@ public class ImageUpload {
                     continue;
                 }
 
+                // 画像ファイルをInputStreamとして開く
                 FileInputStream fis = new FileInputStream(file);
 
+                // PreparedStatementを作成
                 pstmt = conn.prepareStatement(sql);
 
                 // 画像の名前をセット
                 pstmt.setString(1, file.getName());
 
                 // 画像のバイナリデータをセット
-                pstmt.setBinaryStream(2, fis, (int) file.length());
+                pstmt.setBinaryStream(2, fis, (int) file.length());  // (int) file.length() は長さを指定
 
                 // SQLを実行
                 pstmt.executeUpdate();
@@ -63,6 +65,7 @@ public class ImageUpload {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // リソースを確実に閉じる
             try {
                 if (pstmt != null) {
                     pstmt.close();

@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.NewsDAO;
 import dto.NewsBean;
 
-@WebServlet("/indexNews")
+@WebServlet("/IndexNewsServlet")
 public class IndexNewsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

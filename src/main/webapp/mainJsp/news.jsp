@@ -38,6 +38,7 @@
         <li class="news-content">
             公開日: <span>${news.startAt}</span>
             <form action="${pageContext.request.contextPath}/mainJsp/news" method="post" style="display:inline;">
+<!--            <form action="${pageContext.request.contextPath}/News" method="post" style="display:inline;">-->
                 <input type="hidden" name="id" value="${news.newsId}" />
                 <button type="submit" class="link-button">${news.title}</button>
             </form>

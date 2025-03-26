@@ -56,16 +56,13 @@ body {
 	flex: 2;
 	text-align: left;
 }
-
+/* 選手詳細タイトル */
 .player-title {
-	text-align: center;
-	/* テキストを中央揃え */
-	margin-bottom: 20px;
-	/* 下の要素とのスペースを追加 */
-	color: white;
-	/* タイトルの文字色 */
-	width: 100%;
-	/* タイトルの横幅を親要素いっぱいに設定 */
+	text-align: center; /* テキストを中央揃え */
+	margin-bottom: 20px; /* 下の要素とのスペースを追加 */
+	color: white; /* タイトルの文字色 */
+	width: 100%; /* タイトルの横幅を親要素いっぱいに設定 */
+	font-size: 25px; 
 }
 
 

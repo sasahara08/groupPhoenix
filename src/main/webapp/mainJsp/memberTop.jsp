@@ -22,7 +22,7 @@
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../inc/memberHeader.jsp" />
 	<main>
 		<!-- 動く画像のある行 -->
 		<div class="container">

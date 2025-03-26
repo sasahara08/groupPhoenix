@@ -28,17 +28,17 @@
             </div>
             <!-- 右側: 選手詳細情報 -->
             <div class="player-info">
-                <p><strong>選手名:</strong> ${player.name}</p>
-                <p><strong>フリガナ:</strong> ${player.kana}</p>
-                <p><strong>生年月日:</strong> ${player.birthday}</p>
-                <p><strong>年齢:</strong> ${player.age}</p>
-                <p><strong>身長:</strong> ${player.height}cm</p>
-                <p><strong>体重:</strong> ${player.weight}kg</p>
-                <p><strong>出身地:</strong> ${player.birthPlace}</p>
-                <p><strong>ポジション:</strong> ${player.position}</p>
-                <p><strong>選手コメント:</strong> ${player.comment}</p>
-                <p><strong>入団日:</strong> ${player.joinedAt}</p>
-                <p><strong>在籍状況:</strong> ${player.playerStatus}</p>
+                <p><strong>選手名:</strong>  ${player.name}</p>
+                <p><strong>フリガナ:</strong>  ${player.kana}</p>
+                <p><strong>生年月日:</strong>  ${player.birthday}</p>
+                <p><strong>年齢:</strong>  ${player.age}歳</p>
+                <p><strong>身長:</strong>  ${player.height}cm</p>
+                <p><strong>体重:</strong>  ${player.weight}kg</p>
+                <p><strong>出身地:</strong>  ${player.birthPlace}</p>
+                <p><strong>ポジション:</strong>  ${player.position}</p>
+                <p><strong>選手コメント:</strong>  ${player.comment}</p>
+                <p><strong>入団日:</strong>  ${player.joinedAt}</p>
+                <p><strong>在籍状況:</strong>  ${player.playerStatus}</p>
             </div>
         </div>
     </div>

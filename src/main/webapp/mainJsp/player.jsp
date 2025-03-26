@@ -15,7 +15,7 @@
 </head>
 <body class="one">
 	<!-- ヘッダーを挿入 -->
-	<%@ include file="/inc/header.jsp" %>
+	<%@ include file="/inc/header.jsp"%>
 
 	<div class="container">
 		<div class="header">
@@ -29,7 +29,7 @@
 						<p>${player.name}</p>
 						<p>${player.kana}</p>
 						<a href="${pageContext.request.contextPath}/PlayerServlet?id=${player.playerId}"> <img
-							src="${pageContext.request.contextPath}/${player.image}" alt="${player.name}のサムネイル" />
+							src="${pageContext.request.contextPath}/images/${player.image}" alt="${player.name}のサムネイル" />
 						</a>
 						<p>${player.position}</p>
 					</div>
@@ -39,20 +39,9 @@
 	</div>
 
 	<!-- TOPページボタン -->
-	<div class="top-page-button">
-		<%
-		if (session.getAttribute("user") != null) {
-		%>
-		<a href="<%=request.getContextPath()%>/mainJsp/memberTop.jsp" class="button1">　TOPページ　</a>
-		<%
-		} else {
-		%>
-		<a href="<%=request.getContextPath()%>/mainJsp/index.jsp" class="button1">　TOPページ　</a>
-		<%
-		}
-		%>
-	</div>
+		<div class="top-page-button">
+			<a href="<%=request.getContextPath()%>/IndexNewsServlet" class="button1"> TOPページ </a>
+		</div>
 </body>
 </html>
-
 

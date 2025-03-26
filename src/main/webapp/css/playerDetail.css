@@ -36,17 +36,14 @@ body {
 /* サムネイル */
 .player-thumbnail {
 	align-self: center;
-	/* サムネイル自身を中央揃え */
-	flex: 0 0 auto;
-	/* サイズの固定 */
-	margin-right: auto;
-	/* 左寄せに役立てる */
+	flex: 0 0 auto;/* サイズの固定 */
+	margin-right: 30px;/* 左寄せ */
 }
 
 
 .player-thumbnail img {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 	border-radius: 10px;
 	object-fit: cover;
 }
@@ -65,10 +62,12 @@ body {
 	font-size: 25px; 
 }
 
-
 .player-info p {
-	margin: 5px 0;
-	color: white;
+    margin: 10px 0; /* 行間を広げる（上下余白を増やす） */
+    color: white;
+    font-size: 16px; /* 文字サイズを少し大きく設定 */
+    font-weight: bold; /* 文字を少し太くする */
+    line-height: 1.2; /* 行間を広げる（文字高さの比率） */
 }
 
 .back {

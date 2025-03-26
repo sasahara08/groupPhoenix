@@ -32,21 +32,22 @@
 			<h3>チケット_検索結果</h3>
 		</div>
 		<!-- 検索結果の表示 -->
-		
+
 		<c:if test="${not empty ticketLists}">
-			<table>
-				<!-- タイトル -->
-				<tr class="blue">
-					<th>試合ID</th>
-					<th>試合日</th>
-					<th>時間</th>
-					<th>チーム(ホーム)</th>
-					<th>チーム(アウェイ)</th>
-					<th>場所</th>
-					<th>その他</th>
-					<th>操作</th>
-				</tr>
-				<c:forEach var="ticketList" items="${ticketLists}">
+			<c:forEach var="ticketList" items="${ticketLists}">
+				<table>
+					<!-- タイトル -->
+					<tr class="blue">
+						<th>試合ID</th>
+						<th>試合日</th>
+						<th>時間</th>
+						<th>チーム(ホーム)</th>
+						<th>チーム(アウェイ)</th>
+						<th>場所</th>
+						<th>その他</th>
+						<th>操作</th>
+					</tr>
+
 					<!-- 1行目 -->
 					<tr>
 						<td>1</td>
@@ -79,27 +80,28 @@
 						<td>リセール出品</td>
 					</tr>
 					<!-- 4行目 -->
-<!--					<tr class="pink">-->
-<!--						<th>リセール</th>-->
-<!--						<th>チケットID</th>-->
-<!--						<th>チケット購入日</th>-->
-<!--						<th>会員ID</th>-->
-<!--						<th>名前</th>-->
-<!--						<th>ふりがな</th>-->
-<!--						<th></th>-->
-<!--					</tr>-->
+					<!--					<tr class="pink">-->
+					<!--						<th>リセール</th>-->
+					<!--						<th>チケットID</th>-->
+					<!--						<th>チケット購入日</th>-->
+					<!--						<th>会員ID</th>-->
+					<!--						<th>名前</th>-->
+					<!--						<th>ふりがな</th>-->
+					<!--						<th></th>-->
+					<!--					</tr>-->
 					<!-- 5行目 -->
-<!--					<tr>-->
-<!--						<td>★</td>-->
-<!--						<td>${aticketList.ticketId != null ? aticketList.ticketId : ''}</td>-->
-<!--						<td>${aticketList.createAt != null ? aticketList.createAt :  ''}</td>-->
-<!--						<td>${aticketList.userId != null ? aticketList.userId : ''}</td>-->
-<!--						<td>${aticketList.name != null ? aticketList.name : ''}</td>-->
-<!--						<td>${aticketList.kana != null ? taicketList.kana : ''}</td>-->
-<!--						<td></td>-->
-<!--					</tr>-->
-				</c:forEach>
-			</table>
+					<!--					<tr>-->
+					<!--						<td>★</td>-->
+					<!--						<td>${aticketList.ticketId != null ? aticketList.ticketId : ''}</td>-->
+					<!--						<td>${aticketList.createAt != null ? aticketList.createAt :  ''}</td>-->
+					<!--						<td>${aticketList.userId != null ? aticketList.userId : ''}</td>-->
+					<!--						<td>${aticketList.name != null ? aticketList.name : ''}</td>-->
+					<!--						<td>${aticketList.kana != null ? taicketList.kana : ''}</td>-->
+					<!--						<td></td>-->
+					<!--					</tr>-->
+
+				</table>
+			</c:forEach>
 		</c:if>
 		<c:if test="${empty ticketLists}">
 			<p>チケットデータがありません。</p>

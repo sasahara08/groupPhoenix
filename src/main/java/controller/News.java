@@ -73,7 +73,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.NewsDAO;
 import dto.NewsBean;
 
-@WebServlet("/mainJsp/news")
+@WebServlet("/news")
 public class News extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

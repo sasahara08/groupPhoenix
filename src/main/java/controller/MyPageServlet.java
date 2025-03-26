@@ -23,7 +23,7 @@ public class MyPageServlet extends HttpServlet {
         request.setAttribute("user_id", user_id);
 
         // myPage.jspに転送
-        RequestDispatcher dispatcher = request.getRequestDispatcher("myPage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/myPage.jsp");
         dispatcher.forward(request, response);
     }
 }

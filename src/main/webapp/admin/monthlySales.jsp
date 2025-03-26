@@ -95,6 +95,7 @@
             <script>
                 // saleDataをJavaScriptの変数に代入
                 var saleData = JSON.parse('${json}');
+                console.log(saleData);
 
                 // 月ごとの売上データを取得
                 var months = saleData.map(function (item) {

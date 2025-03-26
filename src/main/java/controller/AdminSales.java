@@ -82,6 +82,7 @@ public class AdminSales extends HttpServlet {
 				List<String> yearList = AdminSaleDAO.getYear();
 				//月別の売り上げのリストをjsonに変換
 				String json = AdminSaleDAO.convertListToJson(saleTotalList);
+				System.out.println(json);
 
 				//画面遷移
 				request.setAttribute("sales", saleTotalList);

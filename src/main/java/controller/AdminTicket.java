@@ -132,36 +132,49 @@ public class AdminTicket extends HttpServlet {
 				String ticketUserName = request.getParameter("name");
 				String ticketUserKana = request.getParameter("kana");
 
-//				// リセールチケット購入者情報
-//				String resaleTicketStatusId = request.getParameter("resalePurchaseStatus");
-//				String resaleTicketId = request.getParameter("resaleTicketId");
-//				String resaleTicketPurchaseDate = request.getParameter("resaleTicketPurchaseDate");
-//				String resaleTicketUserId = request.getParameter("resaleUserId");
-//				String resaleTicketUserName = request.getParameter("resaleName");
-//				String resaleTicketUserKana = request.getParameter("resaleKana");
-//
-//				// 試合情報
-//				String gameId = request.getParameter("gameId");
-//				String gameDay = request.getParameter("gameDay");
-//				String homeTeam = request.getParameter("homeTeam");
-//				String awayTeam = request.getParameter("awayTeam");
-//				String stadium = request.getParameter("stadium");
+				//				// リセールチケット購入者情報
+				//				String resaleTicketStatusId = request.getParameter("resalePurchaseStatus");
+				//				String resaleTicketId = request.getParameter("resaleTicketId");
+				//				String resaleTicketPurchaseDate = request.getParameter("resaleTicketPurchaseDate");
+				//				String resaleTicketUserId = request.getParameter("resaleUserId");
+				//				String resaleTicketUserName = request.getParameter("resaleName");
+				//				String resaleTicketUserKana = request.getParameter("resaleKana");
+				//
+				//				// 試合情報
+				//				String gameId = request.getParameter("gameId");
+				//				String gameDay = request.getParameter("gameDay");
+				//				String homeTeam = request.getParameter("homeTeam");
+				//				String awayTeam = request.getParameter("awayTeam");
+				//				String stadium = request.getParameter("stadium");
 
 				//会員一覧を取得
 
 				//				StringBuilder searchTicketSql = new StringBuilder("SELECT * FROM tickets WHERE 1=1");
 
 				StringBuilder searchTicketSql = new StringBuilder(
-						"SELECT T.ticket_status_id, T.tikcet_id, TOD.created_at, TOD.user_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id, away_team.team_id, stadiums.stadium_id, TOD.ticket_purchase_status "
+						"SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.tikcet_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id "
 								+
-								"FROM tickets AS T " +
-								"JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
-								"JOIN games ON T.game_id = games.game_id " +
-								"JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
-								"JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
-								"JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
-								"RIGHT JOIN ticket_order_detail AS TOD ON T.tikcet_id = TOD.ticket_id " +
-								"LEFT JOIN users ON TOD.user_id = users.user_id");
+								"FROM ticket_order_detail AS TOD " +
+								"LEFT JOIN tickets AS T ON TOD.ticket_id = T.tikcet_id " +
+								"LEFT JOIN users ON TOD.user_id = users.user_id " +
+								"LEFT JOIN games ON T.game_id = games.game_id " +
+								"LEFT JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
+								"LEFT JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
+								"LEFT JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
+								"WHERE 1=1");
+
+				//				StringBuilder searchTicketSql = new StringBuilder(
+				//						"SELECT T.ticket_status_id, T.tikcet_id, TOD.created_at, TOD.user_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id, away_team.team_id, stadiums.stadium_id, TOD.ticket_purchase_status "
+				//								+
+				//								"FROM tickets AS T " +
+				//								"JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
+				//								"JOIN games ON T.game_id = games.game_id " +
+				//								"JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
+				//								"JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
+				//								"JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
+				//								"RIGHT JOIN ticket_order_detail AS TOD ON T.tikcet_id = TOD.ticket_id " +
+				//								"LEFT JOIN users ON TOD.user_id = users.user_id " +
+				//								"WHERE 1=1");
 
 				// それぞれの項目ごとに検索かけていく
 				// 通常購入者情報
@@ -183,28 +196,27 @@ public class AdminTicket extends HttpServlet {
 				if (ticketUserKana != null && !ticketUserKana.isEmpty()) {
 					searchTicketSql.append(" AND users.kana = ? ");
 				}
-				
-				
+
 				// リセール購入者情報		
-//				if (resaleTicketStatusId != null && !resaleTicketStatusId.isEmpty()) {
-//					searchTicketSql.append(" AND T.ticket_status_id = ? ");
-//				}
-//				if (resaleTicketId != null && !resaleTicketId.isEmpty()) {
-//					searchTicketSql.append(" AND T.tikcet_id = ? ");
-//				}
-//				if (resaleTicketPurchaseDate != null && !resaleTicketPurchaseDate.isEmpty()) {
-//					searchTicketSql.append(" AND TOD.created_at = ? ");
-//				}
-//				if (resaleTicketUserId != null && !resaleTicketUserId.isEmpty()) {
-//					searchTicketSql.append(" AND TOD.user_id = ? ");
-//				}
-//				if (resaleTicketUserName != null && !resaleTicketUserName.isEmpty()) {
-//					searchTicketSql.append(" AND users.name = ? ");
-//				}
-//				if (resaleTicketUserKana != null && !resaleTicketUserKana.isEmpty()) {
-//					searchTicketSql.append(" AND users.kana = ? ");
-//				}
-//				searchTicketSql.append("ORDER BY TOD.ticket_order_detail_id LIMIT 1");
+				//				if (resaleTicketStatusId != null && !resaleTicketStatusId.isEmpty()) {
+				//					searchTicketSql.append(" AND T.ticket_status_id = ? ");
+				//				}
+				//				if (resaleTicketId != null && !resaleTicketId.isEmpty()) {
+				//					searchTicketSql.append(" AND T.tikcet_id = ? ");
+				//				}
+				//				if (resaleTicketPurchaseDate != null && !resaleTicketPurchaseDate.isEmpty()) {
+				//					searchTicketSql.append(" AND TOD.created_at = ? ");
+				//				}
+				//				if (resaleTicketUserId != null && !resaleTicketUserId.isEmpty()) {
+				//					searchTicketSql.append(" AND TOD.user_id = ? ");
+				//				}
+				//				if (resaleTicketUserName != null && !resaleTicketUserName.isEmpty()) {
+				//					searchTicketSql.append(" AND users.name = ? ");
+				//				}
+				//				if (resaleTicketUserKana != null && !resaleTicketUserKana.isEmpty()) {
+				//					searchTicketSql.append(" AND users.kana = ? ");
+				//				}
+				//				searchTicketSql.append("ORDER BY TOD.ticket_order_detail_id LIMIT 1");
 
 				// 確認用
 				System.out.println("Generated SQL: " + searchTicketSql.toString());
@@ -235,27 +247,26 @@ public class AdminTicket extends HttpServlet {
 					if (ticketUserKana != null && !ticketUserKana.isEmpty()) {
 						statement.setString(index++, ticketUserKana);
 					}
-					
+
 					// リセール購入者情報
-//					if (ticketStatusId != null && !ticketStatusId.isEmpty()) {
-//						statement.setInt(index++, Integer.parseInt(ticketStatusId));
-//					}
-//					if (resaleTicketId != null && !resaleTicketId.isEmpty()) {
-//						statement.setInt(index++, Integer.parseInt(resaleTicketId));
-//					}
-//					if (resaleTicketPurchaseDate != null && !resaleTicketPurchaseDate.isEmpty()) {
-//						statement.setDate(index++, Date.valueOf(resaleTicketPurchaseDate));
-//					}
-//					if (resaleTicketUserId != null && !resaleTicketUserId.isEmpty()) {
-//						statement.setInt(index++, Integer.parseInt(resaleTicketUserId));
-//					}
-//					if (resaleTicketUserName != null && !resaleTicketUserName.isEmpty()) {
-//						statement.setString(index++, resaleTicketUserName);
-//					}
-//					if (resaleTicketUserKana != null && !resaleTicketUserKana.isEmpty()) {
-//						statement.setString(index++, resaleTicketUserKana);
-//					}
-					
+					//					if (ticketStatusId != null && !ticketStatusId.isEmpty()) {
+					//						statement.setInt(index++, Integer.parseInt(ticketStatusId));
+					//					}
+					//					if (resaleTicketId != null && !resaleTicketId.isEmpty()) {
+					//						statement.setInt(index++, Integer.parseInt(resaleTicketId));
+					//					}
+					//					if (resaleTicketPurchaseDate != null && !resaleTicketPurchaseDate.isEmpty()) {
+					//						statement.setDate(index++, Date.valueOf(resaleTicketPurchaseDate));
+					//					}
+					//					if (resaleTicketUserId != null && !resaleTicketUserId.isEmpty()) {
+					//						statement.setInt(index++, Integer.parseInt(resaleTicketUserId));
+					//					}
+					//					if (resaleTicketUserName != null && !resaleTicketUserName.isEmpty()) {
+					//						statement.setString(index++, resaleTicketUserName);
+					//					}
+					//					if (resaleTicketUserKana != null && !resaleTicketUserKana.isEmpty()) {
+					//						statement.setString(index++, resaleTicketUserKana);
+					//					}
 
 					List<TicketsBean> ticketList = new ArrayList<>();
 

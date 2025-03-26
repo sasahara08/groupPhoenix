@@ -28,24 +28,15 @@ h1{
 	padding:30px 0;
 	font-size: 25px;
 }
-/*フォーム項目名用*/
-label {
-  display: inline-block;
-  width: 200px;
-  vertical-align: top;
-  text-align: left;
-}
-
-/*justify-content: flex-start;
-  flexコンテナ内のアイテムを左揃えにする(すべての子要素が左側に配置される)
-  align-items: center;
-  垂直方向に子要素を中央揃えにする(labelとinputが同じ高さで揃う)*/
 .enclose1{
-  display: flex;
-  justify-content: flex-start; /*左寄せ*/
-  align-items: center;         /*垂直方向に中央揃え*/
-  margin-bottom: 10px;
+	text-align: center;
+}
+table{
+	margin:0 auto;
+}
+th{
+	text-align: left;
 }
 .button2{
-	margin:20px 20px;
+	margin:20px 10px;
 	}

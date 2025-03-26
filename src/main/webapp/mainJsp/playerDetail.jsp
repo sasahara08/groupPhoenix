@@ -24,7 +24,7 @@
         <div class="player-detail">
             <!-- 左側: 選手サムネイル -->
             <div class="player-thumbnail">
-                <img src="${pageContext.request.contextPath}/${player.image}" alt="${player.name}のサムネイル" />
+                <img src="${pageContext.request.contextPath}/images/${player.image}" alt="${player.name}のサムネイル" />
             </div>
             <!-- 右側: 選手詳細情報 -->
             <div class="player-info">

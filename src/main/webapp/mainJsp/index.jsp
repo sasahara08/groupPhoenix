@@ -99,7 +99,7 @@
 				<br /> <br /> <br />
 				<div class="siteInfo-button">
 					<a class="button2"
-						href="${pageContext.request.contextPath}/mainJsp/ticket.jsp">チケットを購入する</a>
+						href="${pageContext.request.contextPath}/mainJsp/game.jsp">チケットを購入する</a>
 				</div>
 			</div>
 		</div>
@@ -157,7 +157,7 @@
 			<!-- ③チケット購入 -->
 			<div class="buy-ticket">
 				<h4 class="ticket">game & buy ticket</h4>
-				<a class="ticket-button" href="../mainJsp/ticket.jsp">試合情報＆チケット購入</a>
+				<a class="ticket-button" href="${pageContext.request.contextPath}/mainJsp/game.jsp">試合情報＆チケット購入</a>
 			</div>
 		</div>
 		<!-- ④ニュース -->

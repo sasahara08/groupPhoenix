@@ -20,15 +20,19 @@
             <p class="error-message"><%= request.getAttribute("errorMsg") %></p>
         <% } %>
 
+		<div class="form">
         <form action="${pageContext.request.contextPath}/NonMemberLogin" method="post">
-            <div class="form-group">
-                <label for="email">メールアドレス:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            <table>
+            <tr>
+                <th><label for="email">メールアドレス:</label></th>
+                <td><input type="email" id="email" name="email" required></td>
+                </tr>
 			<br>
-            <div class="form-group">
-                <label for="pass">パスワード:</label>
-                <input type="password" id="pass" name="password" required>  <!-- 修正: name属性を"password"に統一 -->
+            <tr>
+                <th><label for="pass">パスワード:</label></th>
+                <td><input type="password" id="pass" name="password" required></td>  <!-- 修正: name属性を"password"に統一 -->
+                </tr>
+            </table>
             </div>
 			<br>
             <button type="submit" class="button2">ログイン</button>

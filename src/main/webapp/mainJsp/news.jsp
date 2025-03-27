@@ -34,9 +34,9 @@
   <br>
  <div class="back-one">
   <% if (session.getAttribute("user") != null) { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/memberTop.jsp" class="button1">TOP</a>
+    <a href="<%= request.getContextPath() %>/MemberTopServlet" class="button1">TOP</a>
   <% } else { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/index.jsp" class="button1">TOP</a>
+    <a href="<%= request.getContextPath() %>/Index" class="button1">TOP</a>
   <% } %>
 </div> 
 

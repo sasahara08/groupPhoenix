@@ -7,7 +7,7 @@
 			<ul>
 				<!-- ヘッダー左ロゴ (HOME)-->
 				<li>
-					<form action="${pageContext.request.contextPath}/IndexNewsServlet" method="get">
+					<form action="${pageContext.request.contextPath}/Index" method="get">
 						<button type="submit" name="action" value="home" class="logo-button">
 							<img src="${pageContext.request.contextPath}/images/PhoenixTicketLogo.png" alt="非会員ホームページへ">
 						</button>

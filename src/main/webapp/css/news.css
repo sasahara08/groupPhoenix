@@ -1,4 +1,20 @@
 @charset "UTF-8";
+/*鐘ケ江*/
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
 .back-one {
   text-align: center;
 /*  width: 8%;*/
@@ -12,7 +28,7 @@
 }
 a {
   text-decoration: none;
-  color: brown;
+  color: #ec6d4e;
 }
 body {
   width: 100%;
@@ -27,11 +43,11 @@ ul.news {
   padding: 3%;
 }
 li.news-content {
-  color: brown;
+	font-weight: bold;
+  color: #ec6d4e;
   list-style: none;
   text-align: left;
   background-color: azure;
-  border: 1px solid #aaa;
   border-radius: 15px;
   padding: 3%;
   margin-bottom: 5%;

@@ -96,10 +96,11 @@
 				<br /> <br /> <br />
 				<p>インターネットを通じて簡単にチケットを購入できるため、わざわざ店舗に足を運んで長時間待たされる心配がなく、スマートフォンやパソコンさえあれば、
 					通勤中や自宅でくつろぎながらでも手軽に予約が完了し、時間と手間を大幅に削減できるという大きな利点があります。</p>
-				<br /> <br /> <br />
+				<br />
 				<div class="siteInfo-button">
-					<a class="button2"
-						href="${pageContext.request.contextPath}/mainJsp/game.jsp">チケットを購入する</a>
+					<form action="GameServlet" method="get">
+						<button class="button2" type="submit">チケットを購入する</button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -157,7 +158,9 @@
 			<!-- ③チケット購入 -->
 			<div class="buy-ticket">
 				<h4 class="ticket">game & buy ticket</h4>
-				<a class="ticket-button" href="${pageContext.request.contextPath}/mainJsp/game.jsp">試合情報＆チケット購入</a>
+				<form action="GameServlet" method="get">
+					<button class="ticket-button" type="submit">試合情報&チケット購入</button>
+				</form>
 			</div>
 		</div>
 		<!-- ④ニュース -->
@@ -183,8 +186,9 @@
 			<!-- ニュースを全部見るボタン -->
 			<div class="news-all">
 				<p>news all</p>
-				<a class="news-all-button"
-					href="${pageContext.request.contextPath}/mainJsp/news.jsp">></a>
+				<form action="news" method="get">
+					<button class="news-all-button" type="submit">></button>
+				</form>
 			</div>
 		</div>
 		<!-- フード・グッズ -->
@@ -201,8 +205,9 @@
 					alt="Right Image" />
 			</div>
 		</div>
-		<a class="button1"
-			href="${pageContext.request.contextPath}/mainJsp/player.jsp">選手紹介</a>
+		<form action="PlayerServlet" method="get">
+			<button class="button1" type="submit">選手紹介</button>
+		</form>
 		<!-- ⑥場所 -->
 		<div class="hero">
 			<div class="hero__bg"></div>

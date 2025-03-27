@@ -42,6 +42,8 @@
 		<div class="top-page-button">
 			<a href="<%=request.getContextPath()%>/IndexNewsServlet" class="button1"> TOPページ </a>
 		</div>
+		   <!-- フッターを挿入 -->
+   <jsp:include page="../inc/footer.jsp" />
 </body>
 </html>
 

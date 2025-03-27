@@ -10,7 +10,7 @@
 				<li>
 					<form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
 						<button type="submit" name="action" value="home" class="logo-button">
-							<img src="${pageContext.request.contextPath}/images/PhoenixTicketLogo.png" alt="会員ホームページへ">
+							<img src="${pageContext.request.contextPath}/images/PhoenixTicketmembers.png" alt="会員ホームページへ">
 						</button>
 					</form>
 				</li>

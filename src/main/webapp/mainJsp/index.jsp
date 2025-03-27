@@ -98,7 +98,7 @@
 					通勤中や自宅でくつろぎながらでも手軽に予約が完了し、時間と手間を大幅に削減できるという大きな利点があります。</p>
 				<br />
 				<div class="siteInfo-button">
-					<form action="GameServlet" method="get">
+					<form action="${pageContext.request.contextPath}/GameServlet" method="get">
 						<button class="button2" type="submit">チケットを購入する</button>
 					</form>
 				</div>
@@ -158,7 +158,7 @@
 			<!-- ③チケット購入 -->
 			<div class="buy-ticket">
 				<h4 class="ticket">game & buy ticket</h4>
-				<form action="GameServlet" method="get">
+				<form action="${pageContext.request.contextPath}/GameServlet" method="get">
 					<button class="ticket-button" type="submit">試合情報&チケット購入</button>
 				</form>
 			</div>
@@ -186,7 +186,7 @@
 			<!-- ニュースを全部見るボタン -->
 			<div class="news-all">
 				<p>news all</p>
-				<form action="news" method="get">
+				<form action="${pageContext.request.contextPath}/news" method="get">
 					<button class="news-all-button" type="submit">></button>
 				</form>
 			</div>
@@ -205,7 +205,7 @@
 					alt="Right Image" />
 			</div>
 		</div>
-		<form action="PlayerServlet" method="get">
+		<form action="${pageContext.request.contextPath}/PlayerServlet" method="get">
 			<button class="button1" type="submit">選手紹介</button>
 		</form>
 		<!-- ⑥場所 -->

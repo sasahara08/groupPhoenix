@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.NewsDAO;
 import dto.NewsBean;
 
-@WebServlet("/IndexNewsServlet")
-public class IndexNewsServlet extends HttpServlet {
+@WebServlet("/Index")
+public class Index extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

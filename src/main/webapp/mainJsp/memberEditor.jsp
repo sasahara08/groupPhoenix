@@ -30,35 +30,17 @@
 					<tr>
 						<th><label for="name">氏名：</label></th>
 						<td><input type="text" id="name" name="name"
-							value="${user.name}" required></td>
+							value="${user.name}" ></td>
 					</tr>
 					<tr>
 						<th><label for="kana">ふりがな：</label></th>
 						<td><input type="text" id="kana" name="kana"
-							value="${user.kana}" required></td>
-					</tr>
-					<tr>
-						<th><label for="birthday">生年月日：</label></th>
-						<td><input type="date" id="birthday" name="birthday"
-							value="${user.birthday}" required></td>
-					</tr>
-					<tr>
-						<th><label>性別：</label></th>
-						<td><input type="radio" id="male" name="gender" value="male"
-							<c:if test="${user.gender == 'male'}">checked</c:if> required>
-							<label for="male">男性</label> <input type="radio" id="female"
-							name="gender" value="female"
-							<c:if test="${user.gender == 'female'}">checked</c:if> required>
-							<label for="female">女性</label> <input type="radio" id="other"
-							name="gender" value="other"
-							<c:if test="${user.gender == 'other'}">checked</c:if> required>
-							<label for="other">その他</label>
-						<td>
+							value="${user.kana}"></td>
 					</tr>
 					<tr>
 						<th><label for="postcode">郵便番号 (ハイフンなし7桁)：</label></th>
 						<td><input type="text" id="postcode" name="postcode"
-							value="${user.postcode}"></td>
+							value="${user.post_code}"></td>
 					</tr>
 					<tr>
 						<th><label for="address">住所：</label></th>
@@ -79,7 +61,7 @@
 					<tr>
 						<th><label for="password">パスワード：</label></th>
 						<td><input type="password" id="password" name="password"
-							value="${user.password}"></td>
+							value="${user.pass}"></td>
 					</tr>
 					<tr>
 						<th><label for="creditcard">クレジットカード番号：</label></th>

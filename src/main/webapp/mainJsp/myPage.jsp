@@ -39,7 +39,7 @@
 
 		<div class="wrapper">
 			<!-- 会員情報変更ボタン -->
-			<form action="${pageContext.request.contextPath}/memberEditor" method="get">
+			<form action="${pageContext.request.contextPath}/MemberEditorServlet" method="post">
 				<button class="button3" type="submit">会員情報変更</button>
 			</form>
 

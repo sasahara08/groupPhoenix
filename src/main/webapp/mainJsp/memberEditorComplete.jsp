@@ -12,7 +12,7 @@
 <body>
     <h1>登録情報の変更が完了しました。</h1>
     
-    <form action="myPage.jsp" method="get">
+    <form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
         <button type="submit">マイページへ</button>
     </form>
 </body>

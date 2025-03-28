@@ -10,6 +10,7 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admingame.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminSale.css" />
 
         </head>
 

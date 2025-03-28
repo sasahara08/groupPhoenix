@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class AdminLogin
  */
-@WebServlet("/AdminLogout")
+@WebServlet("/adminLogout")
 public class AdminLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

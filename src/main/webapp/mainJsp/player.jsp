@@ -39,11 +39,11 @@
 	</div>
 
 	<!-- TOPページボタン -->
-		<div class="top-page-button">
-			<a class="button1" href="<%=request.getContextPath()%>/Index"> TOPページ </a>
-		</div>
-		   <!-- フッターを挿入 -->
-   <jsp:include page="../inc/footer.jsp" />
+	<div class="top-page-button">
+		<a class="button1" href="<%=request.getContextPath()%>/Index"> TOPページ </a>
+	</div>
+	<!-- フッターを挿入 -->
+	<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>
 

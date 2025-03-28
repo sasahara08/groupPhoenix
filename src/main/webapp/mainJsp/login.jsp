@@ -21,7 +21,7 @@
         <% } %>
 
 		<div class="form">
-        <form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
+       <form action="${pageContext.request.contextPath}/NonMemberLogin" method="post">
             <table>
             <tr>
                 <th><label for="email">メールアドレス:</label></th>

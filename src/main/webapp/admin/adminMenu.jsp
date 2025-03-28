@@ -23,7 +23,7 @@
 		</h3>
 
 		<a href="${pageContext.request.contextPath}/AdminMember" class="button25">1.会員情報管理</a> <a
-			href="${pageContext.request.contextPath}/Admingame" class="button25">2.試合情報管理</a> <a href="#" class="button25">3.チケット情報管理</a>
+			href="${pageContext.request.contextPath}/game" class="button25">2.試合情報管理</a> <a href="#" class="button25">3.チケット情報管理</a>
 		<a href="${pageContext.request.contextPath}/AdminSales" class="button25">4.売上管理</a> <a href="#" class="button25">5.フード/グッズ管理</a>
 		<a href="#" class="button25">6.選手情報管理</a> <a href="#" class="button25">7.NEWS情報管理</a> <a href="#" class="button25">8.問い合わせ管理</a>
 		<a href="#" class="button25">9.管理情報</a>

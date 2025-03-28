@@ -33,9 +33,15 @@
         <label for="message">問い合わせ内容</label>
         <textarea id="message" name="message" rows="5" required></textarea>
     </div>
+<!--    メールエラー確認-->
+<!--    <c:if test="${not empty errorMessage}">-->
+<!--    <div class="error-message">${errorMessage}</div>-->
+<!--    </c:if>-->
+    
     
     <div class="form-group-button">
-        <button type="button" class="button1 back-button" onclick="resetForm()">クリア</button>
+<!--        <button type="button" class="button1 back-button" onclick="resetForm()">クリア</button>-->
+        <button type="reset" class="button1 back-button">クリア</button>
          <button type="submit" name="confirm" class="button1">確認</button>
     </div>
  </form>

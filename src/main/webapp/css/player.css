@@ -20,7 +20,7 @@
 
 h1 {
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 	font-size: 25px; 
 }
 
@@ -89,8 +89,6 @@ h1 {
     margin-top: 20px; /* 上部に少し余白を追加 */
     margin-bottom: 20px; /* 下部にも余白を追加 */
 }
-<<<<<<< HEAD
-
 .buttonx {
 	text-decoration: none;
     padding: 10px 20px; /* パディングを追加してボタンを大きくする */
@@ -106,9 +104,3 @@ h1 {
 	background-color: #fff;
 	 color: #ec6d4e;
 }
-=======
-.button1{
-	padding:15px;
-	border-radius: 30px;
-}
->>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git

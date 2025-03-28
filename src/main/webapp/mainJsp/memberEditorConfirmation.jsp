@@ -1,18 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会員情報変更画面</title>
-<link rel="stylesheet" href="javascript:void(0)"> 
- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員情報変更確認</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 </head>
 <body>
-	 <h1>会員情報変更画面</h1>
+    <h1>会員情報変更確認画面</h1>
 
     <p><strong>氏名:</strong> ${param.name}</p>
     <p><strong>ふりがな:</strong> ${param.kana}</p>
@@ -28,7 +26,6 @@ pageEncoding="UTF-8"%>
     <p><strong>セキュリティコード:</strong> ${param.securitycode}</p>
 
     <form action="memberEditorSave.jsp" method="post">
-        <!-- 確認したデータをhiddenフィールドにセットして、保存処理へ -->
         <input type="hidden" name="name" value="${param.name}">
         <input type="hidden" name="kana" value="${param.kana}">
         <input type="hidden" name="birthday" value="${param.birthday}">
@@ -42,28 +39,11 @@ pageEncoding="UTF-8"%>
         <input type="hidden" name="expiry" value="${param.expiry}">
         <input type="hidden" name="securitycode" value="${param.securitycode}">
 
-<!-- 確認したデータをhiddenフィールドにセットして、保存処理へ -->
-    <form action="memberEditorSave.jsp" method="post">
-        <input type="hidden" name="name" value="${param.name}">
-        <input type="hidden" name="kana" value="${param.kana}">
-        <input type="hidden" name="birthday" value="${param.birthday}">
-        <input type="hidden" name="gender" value="${param.gender}">
-        <input type="hidden" name="postcode" value="${param.postcode}">
-        <input type="hidden" name="address" value="${param.address}">
-        <input type="hidden" name="phone" value="${param.phone}">
-        <input type="hidden" name="email" value="${param.email}">
-        <input type="hidden" name="password" value="${param.password}">
-        <input type="hidden" name="creditcard" value="${param.creditcard}">
-        <input type="hidden" name="expiry" value="${param.expiry}">
-        <input type="hidden" name="securitycode" value="${param.securitycode}">
-
-		<form action="memberEditor.jsp" method="get">
-        <button type="submit">戻る</button>
-        
         <button type="submit">保存</button>
     </form>
 
-    
+    <form action="memberEditor.jsp" method="get">
+        <button type="submit">戻る</button>
     </form>
 </body>
 </html>

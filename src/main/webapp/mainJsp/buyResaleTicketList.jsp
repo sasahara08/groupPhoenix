@@ -17,12 +17,12 @@
  <body>
  	<h1>リセールチケット一覧</h1>
  	 <c:forEach var="ticket" items="${tickets}">
- 	 <form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
+ 	 <form ticket="${pageContext.request.contextPath}/ResaleTicketList" method="post" onsubmit="saveData()">
  	<input type="hidden" name="ticketId" value="${ticket.ticketId}" />
-    <input type="hidden" name="resaleticket" value="buyResaleTicketConfirmation" />
+    <input type="hidden" name="resaleticket" value="resaleTicketConfirmation" />
     <button type="submit" class="link-button">リセール
  	</form>
- 	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
+ 	<form ticket="${pageContext.request.contextPath}/ResaleTicketList" method="post" onsubmit="saveData()">
  	<h5>
 		${ticket.homeTeamName} vs ${ticket.awayTeamName}<br/>
 		日時:  ${ticket.gameDate} ${ticket.startTime}<br/>
@@ -33,9 +33,9 @@
 	</form>
 	</c:forEach>
 	<br/>
-	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
-	<input type="hidden" name="resaleticket" value="game" />
-	<button type="submit" class="link-button">戻る</button>
+	<form ticket="${pageContext.request.contextPath}/ResaleTicketList" method="post" onsubmit="saveData()">
+		<input type="hidden" name="resaleticket" value="game" />
+		<button type="submit" class="link-button">戻る</button>
 	</form>
  <jsp:include page="/inc/footer.jsp" />
  </body>

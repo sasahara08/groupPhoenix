@@ -44,7 +44,7 @@
     </div>
 	<!-- 戻るボタン -->
 	<div class="back">
-		<a href="${pageContext.request.contextPath}/PlayerServlet?action=list" class="button1">　戻る　</a>
+		<a href="${pageContext.request.contextPath}/PlayerServlet?action=list" class="buttonx">　戻る　</a>
 	</div>
 			   <!-- フッターを挿入 -->
    <jsp:include page="../inc/footer.jsp" />

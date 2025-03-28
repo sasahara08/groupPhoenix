@@ -1,5 +1,20 @@
 @charset "UTF-8";
-
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
+/*以下CSS中身*/
 body {
 	/*2025/3/13 清水　flexがあると横並びになるので削除*/
 	/*    display: flex;*/
@@ -82,6 +97,7 @@ body {
 /*	position: relative;*/
 /*	bottom: 10;*/
 }
+<<<<<<< HEAD
 
 
 .buttonx {
@@ -99,3 +115,9 @@ body {
 	background-color: #fff;
 	 color: #ec6d4e;
 }
+=======
+.button1{
+	padding:15px;
+	border-radius: 30px;
+}
+>>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git

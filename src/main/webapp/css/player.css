@@ -82,12 +82,14 @@ h1 {
 
 /* TOPページボタンのスタイル */
 .top-page-button {
+	padding-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px; /* 上部に少し余白を追加 */
     margin-bottom: 20px; /* 下部にも余白を追加 */
 }
+<<<<<<< HEAD
 
 .buttonx {
 	text-decoration: none;
@@ -104,3 +106,9 @@ h1 {
 	background-color: #fff;
 	 color: #ec6d4e;
 }
+=======
+.button1{
+	padding:15px;
+	border-radius: 30px;
+}
+>>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git

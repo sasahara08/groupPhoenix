@@ -8,13 +8,21 @@
     h1 {
       text-align: center;
     }
-    form {
+/*    formクラスをつけて変更*/
+    .grouping {
       width: 35%;
       margin: auto;
       margin-top: 3%;
       padding: 2% 2%;
       background-color:bisque
     }
+/*    form {*/
+/*      width: 35%;*/
+/*      margin: auto;*/
+/*      margin-top: 3%;*/
+/*      padding: 2% 2%;*/
+/*      background-color:bisque*/
+/*    }*/
     .form-group {
       width: 100%;
       display: flex;

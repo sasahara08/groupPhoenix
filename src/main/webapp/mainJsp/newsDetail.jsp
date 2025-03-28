@@ -25,7 +25,7 @@
  </div>
  <br>
  <div class="back-second">
-  <a href="${pageContext.request.contextPath}/mainJsp/news" class="button1">戻る</a>
+  <a href="${pageContext.request.contextPath}/news" class="button1">戻る</a>
  </div>
  
    <!-- フッターを挿入 -->

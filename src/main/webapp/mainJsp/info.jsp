@@ -16,7 +16,7 @@
  <h1>問い合わせ</h1>
 <!-- <form action="ContactServlet" method="post">-->
 <!--<form action="${pageContext.request.contextPath}/controller/Info" method="post">-->
-<form action="${pageContext.request.contextPath}/mainJsp/info" method="post">
+<form class= grouping action="${pageContext.request.contextPath}/info" method="post">
     <div class="form-group">
         <label for="name">氏名</label>
         <input type="text" id="name" name="name" required>

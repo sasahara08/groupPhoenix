@@ -6,13 +6,18 @@
         <head>
             <meta charset="UTF-8">
             <title>管理者画面-ログイン画面</title>
-            <link rel="stylesheet" href="javascript:void(0)">
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-login.css" />
         </head>
 
         <body>
             <!-- ヘッダーを挿入 -->
             <jsp:include page="../inc/adminHeader.jsp" />
-
+			
+			<br>
+			<br>
             <div class="main">
 
                 <h3>管理者ログイン</h3>

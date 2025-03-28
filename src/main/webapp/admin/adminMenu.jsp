@@ -16,8 +16,10 @@
             
             
 	<div class="adminMenu">
+		<br>
+		<br>
 		<h3>
-			管理画面<br />TOP
+			管理画面&nbsp;TOP
 		</h3>
 
 		<a href="${pageContext.request.contextPath}/AdminMember" class="button25">1.会員情報管理</a> <a

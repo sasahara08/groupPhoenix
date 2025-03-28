@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/*見出し用*/
+h3{
+   border-bottom: solid 3px black;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+/* フォームコンテナのスタイル */
+.main {
+  width: 30%; /* 固定幅または必要に応じて調整 */
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+
+
+

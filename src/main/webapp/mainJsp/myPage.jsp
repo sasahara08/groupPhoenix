@@ -1,13 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>マイページ</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css"
+	media="all" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/myPage.css" />
 </head>
 <body>
 	<jsp:include page="/inc/memberHeader.jsp" />
@@ -29,29 +34,34 @@
 		<h1>メンバーページ</h1>
 
 		<div class="welcome-message">
-			<p>
-				ユーザー名:
-				<%=userName%></p>
-			<p>
-				ユーザーID:
-				<%=userId%></p>
+			<table>
+				<tr>
+					<th>ユーザー名:</th>
+					<td><%=userName%></td></tr>
+				<tr>
+					<th>ユーザーID:</th>
+					<td><%=userId%></td></tr>
+			</table>
 		</div>
 
 		<div class="wrapper">
 			<!-- 会員情報変更ボタン -->
-			<form action="${pageContext.request.contextPath}/memberEditor" method="get">
+			<form action="${pageContext.request.contextPath}/memberEditor"
+				method="get">
 				<button class="button3" type="submit">会員情報変更</button>
 			</form>
 
 			<!-- マイチケットボタン -->
-			<form action="${pageContext.request.contextPath}/TicketList" method="get">
+			<form action="${pageContext.request.contextPath}/TicketList"
+				method="get">
 				<button class="button3" type="submit">マイチケット</button>
 			</form>
 		</div>
 		<br>
 
 		<!-- TOPボタン -->
-		<form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
+		<form action="${pageContext.request.contextPath}/MemberTopServlet"
+			method="get">
 			<button class="button2" type="submit">TOP</button>
 		</form>
 		<br> <br>

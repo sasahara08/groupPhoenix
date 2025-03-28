@@ -14,18 +14,22 @@
 	<main>
 		<h1>チケット購入内容 確認</h1>
 		<div class="box2">
-			<p>試合日時：</p>
-			<p>場所：</p>
-			<p>座席：</p>
-			<p>枚数：</p>
-			<p>価格：</p>
+			<p>試合日時：${game.gameDate}</p>
+			<p>試合場所：${game.stadiumName}</p>
+			<p>座席：${seatId.seatType}</p>
+			<p>枚数：${quantity}</p>
+			<p>価格：${quantity*seatId.seatPrice}</p>
 		</div>
 
 		<div class="button99">
-			<button type="button" onclick="location.href='gameLoginLogin.html'">
-				キャンセル</button>
-			<button type="button"
-				onclick="location.href='buyTicketComplete.html'">購入</button>
+		<form ticket="${pageContext.request.contextPath}/GameListServlet" method="post" onsubmit="saveData()">
+                       <button type="button2" name="ticket" value="game">キャンセル</button>
+                       </form>
+                       <form ticket="${pageContext.request.contextPath}/GameListServlet" method="post" onsubmit="saveData()">
+                       <input type="hidden" name="ticketId" value="${ticket.ticketId}" />
+                        <input type="hidden" name="ticket" value="buyTicketComplete"/>
+                       <button type="button1" class="link-button">購入</button>
+         </form>
 		</div>
 	</main>
 </body>

@@ -4,30 +4,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
+
+import dto.Seats;
 
 public class SeatsDAO {
-	/**
-	 * DB接続サンプル
-	 * @author shimizu
-	 * @throws SQLException
-	 */
-	public void test() {
-		//SQL文を記述
-		String sql = "SELECT * FROM seats ORDER BY seat_id";
-		//DBに接続
-		try(Connection conn = DBManager.getConnection();
-			PreparedStatement pStmt = conn.prepareStatement(sql)){
-				//sqlを実行
-				ResultSet rs = pStmt.executeQuery();
-				
-				//とりあえずseatsテーブルから取得した値をコンソースに表示しています
-				while(rs.next()) {
-					System.out.println("seat_id : " + rs.getString("seat_id"));
-					System.out.println("seat_type : " + rs.getString("seat_type"));
-					System.out.println("seat_price : " + rs.getString("seat_price"));
-				}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-	}
+	private static final String QUERY = "SELECT seat_type, seat_price FROM seats WHERE seat_id = ?";
+
+    public static Optional<Seats> getSeatById(int seatId) {
+    	String sql = null;
+		try (Connection conn = DBManager.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+
+            stmt.setInt(1, seatId);
+            while (rs.next()) {
+                    String SeatType = rs.getString("seat_type");
+                    int SeatPrice = rs.getInt("seat_price");
+                    
+                    Seats seat = new Seats(SeatType, SeatPrice);
+                }
+            
+    } catch (SQLException e) {
+        System.err.println("Error retrieving tickets: " + e.getMessage());
+    }
+        return Optional.empty();
+    }
 }
+
+	

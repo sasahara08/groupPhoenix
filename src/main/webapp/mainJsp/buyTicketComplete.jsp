@@ -15,7 +15,7 @@
 		<h1>チケット購入内容 確認</h1>
 		<div class="box2">チケットの購入が完了しました</div>
 
-		<button type="button" onclick="location.href='memberTop'">TOP</button>
+		 <button type="button2" name="ticket" value="top">TOP</button>
 	</main>
 </body>
 </html>

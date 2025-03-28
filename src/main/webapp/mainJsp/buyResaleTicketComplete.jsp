@@ -1,7 +1,10 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
- <!DOCTYPE html>
- <html lang="ja">
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List"%>
+<%@ page import="dto.Game"%>
+<%@ page import="dto.Resaleticket"%>
+<%@ page import="dao.ResaleticketDAO"%>
+ <html>
  <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +15,13 @@
  </head>
  <body>
  <jsp:include page="../inc/memberHeader.jsp" />
- 	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
  	<div class = enclose2>
  	<h5>チケットの購入が完了しました</h5><br/>
- 	<button type="button2" name="resaleticket" value="memberTop">TOP</button>
+ 	<form ticket="${pageContext.request.contextPath}/ResaleTicketList.java" method="post" onsubmit="saveData()">
+	<input type="hidden" name="resaletickett" value="memberTop" />
+	<button type="submit" class="link-button">TOP</button>
+	</form>
  	</div>
- 	</form>
  <jsp:include page="/inc/footer.jsp" />
  </body>
  </html>

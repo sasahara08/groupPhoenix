@@ -7,7 +7,7 @@
 			<ul>
 				<!-- ヘッダー左ロゴ (HOME)-->
 				<li>
-					<form action="IndexNewsServlet" method="get">
+					<form action="${pageContext.request.contextPath}/Index" method="get">
 						<button type="submit" name="action" value="home" class="logo-button">
 							<img src="${pageContext.request.contextPath}/images/PhoenixTicketLogo.png" alt="非会員ホームページへ">
 						</button>
@@ -18,12 +18,12 @@
 					<!-- ログイン -->
 					<li>
 						<button
-							onclick="location.href='${pageContext.request.contextPath}/mainJsp/login.jsp'">ログイン</button>
+							onclick="location.href='${pageContext.request.contextPath}/NonMemberLogin'">ログイン</button>
 					</li>
 					<!-- 新規登録 -->
 					<li>
 						<button
-							onclick="location.href='${pageContext.request.contextPath}/mainJsp/newMemberRegistration.jsp'">新規登録</button>
+							onclick="location.href='${pageContext.request.contextPath}/NewUser'">新規登録</button>
 					</li>
 				</div>
 			</ul>

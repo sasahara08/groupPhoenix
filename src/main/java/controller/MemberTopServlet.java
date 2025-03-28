@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.NewsDAO;
 import dto.NewsBean;
 
-@WebServlet("/IndexNewsServlet")
-public class IndexNewsServlet extends HttpServlet {
+@WebServlet("/MemberTopServlet")
+public class MemberTopServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class IndexNewsServlet extends HttpServlet {
 
         request.setAttribute("newsList", newsList);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/memberTop.jsp");
         dispatcher.forward(request, response);
     }
 }

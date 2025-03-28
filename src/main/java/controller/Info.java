@@ -187,7 +187,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import dao.InquiriesDAO; // saveInquiryメソッドを含むクラスをインポート
 import dto.InquiriesBean;
 
-@WebServlet("/mainJsp/info")
+@WebServlet("/info")
 public class Info extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

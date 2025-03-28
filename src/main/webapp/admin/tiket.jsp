@@ -32,17 +32,16 @@
 			<h3>チケット検索</h3>
 			<!-- ★フォームタグ -->
 			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">
+
+				<!-- 購入者情報 -->
+				<h4>〇購入者情報</h4>
 				<table>
 					<tr>
 						<th>購入ステータス</th>
-						<td><input type="radio" id="status01" name="purchaseStatus" value="1"> <label for="status01">未購入</label>
-							<input type="radio" id="status02" name="purchaseStatus" value="2"> <label for="status02">購入済</label> <input
-							type="radio" id="status03" name="purchaseStatus" value="3"> <label for="status03">リセール販売</label> <input
-							type="radio" id="status04" name="purchaseStatus" value="4"> <label for="status04">リセール購入済</label></td>
+						<td><input type="radio" id="status02" name="purchaseStatus" value="2" checked> <label for="status02">購入済</label></td>
+						<td><input type="radio" id="status04" name="purchaseStatus" value="4"> <label for="status04">リセール購入済</label></td>
 					</tr>
 				</table>
-				<!-- 購入者情報 -->
-				<h4>〇購入者情報</h4>
 				<table>
 					<tr>
 						<th>チケットID</th>
@@ -61,8 +60,21 @@
 					<td><input type="text" placeholder="やまだたろう" name="kana"></td>
 					</tr>
 				</table>
-				<!-- リセール購入者情報 -->
+				<div>
+					<button type="submit" name="sendKind" value="ticketSearch">検索</button>
+					<button type="reset" name="sendKind" value="ticketTop">リセット</button>
+				</div>
+			</form>
+			<!-- リセール購入者情報 -->
+			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">
 				<h4>〇リセール購入者情報</h4>
+				<table>
+					<tr>
+						<th>購入ステータス</th>
+						<td><input type="radio" id="status04" name="resalePurchaseStatus" value="4" checked> <label
+							for="status04">リセール購入済</label></td>
+					</tr>
+				</table>
 				<table>
 					<tr>
 						<th>チケットID</th>
@@ -81,6 +93,10 @@
 					<td><input type="text" placeholder="やまだたろう" name="resaleKana"></td>
 					</tr>
 				</table>
+				<div>
+					<button type="submit" name="sendKind" value="resaleTicketSearch">検索</button>
+					<button type="reset" name="sendKind" value="ticketTop">リセット</button>
+				</div>
 				<!-- 試合情報 -->
 				<h4>〇試合情報</h4>
 				<table>
@@ -118,13 +134,13 @@
 								</c:forEach>
 						</select></td>
 					</tr>
-					<tr>
-						<th>試合ステータス</th>
-						<td><input type="radio" id="gamestatus01" name="GameStatus" value="beforeGame"> <label
-							for="gamestatus01">今後開催</label> <input type="radio" id="gamestatus02" name="GameStatus" value="finishedGame">
-							<label for="gamestatus02">終了</label> <input type="radio" id="gamestatus03" name="GameStatus" value="all">
-							<label for="gamestatus03">すべて</label></td>
-					</tr>
+					<!--					<tr>-->
+					<!--						<th>試合ステータス</th>-->
+					<!--						<td><input type="radio" id="gamestatus01" name="GameStatus" value="beforeGame"> <label-->
+					<!--							for="gamestatus01">今後開催</label> <input type="radio" id="gamestatus02" name="GameStatus" value="finishedGame">-->
+					<!--							<label for="gamestatus02">終了</label> <input type="radio" id="gamestatus03" name="GameStatus" value="all">-->
+					<!--							<label for="gamestatus03">すべて</label></td>-->
+					<!--					</tr>-->
 
 				</table>
 				<!-- 検索・リセットボタン -->

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ニュースTop画面</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/news.css">
@@ -34,9 +34,9 @@
   <br>
  <div class="back-one">
   <% if (session.getAttribute("user") != null) { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/memberTop.jsp" class="button1">TOP</a>
+    <a href="<%= request.getContextPath() %>/MemberTopServlet" class="button1">TOP</a>
   <% } else { %>
-    <a href="<%= request.getContextPath() %>/mainJsp/index.jsp" class="button1">TOP</a>
+    <a href="<%= request.getContextPath() %>/Index" class="button1">TOP</a>
   <% } %>
 </div> 
 

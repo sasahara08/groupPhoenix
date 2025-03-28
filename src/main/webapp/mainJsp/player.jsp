@@ -40,8 +40,10 @@
 
 	<!-- TOPページボタン -->
 		<div class="top-page-button">
-			<a href="<%=request.getContextPath()%>/IndexNewsServlet" class="button1"> TOPページ </a>
+			<a href="<%=request.getContextPath()%>/Index" class="button1"> TOPページ </a>
 		</div>
+		   <!-- フッターを挿入 -->
+   <jsp:include page="../inc/footer.jsp" />
 </body>
 </html>
 

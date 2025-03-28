@@ -51,7 +51,7 @@
 		<br>
 
 		<!-- TOPボタン -->
-		<form action="memberTop.jsp" method="post">
+		<form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
 			<button class="button2" type="submit">TOP</button>
 		</form>
 		<br> <br>

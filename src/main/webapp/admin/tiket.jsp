@@ -7,9 +7,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>チケット情報一覧</title>
-<link rel="stylesheet" href="../css/adminheader.css" />
-<link rel="stylesheet" href="../css/adminfooter.css" />
-<link rel="stylesheet" href="../css/admin-ticket.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket.css" />
 </head>
 <body>
 

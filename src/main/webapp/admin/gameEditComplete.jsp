@@ -15,7 +15,7 @@
             <div class="main">
     
                 <h3>試合情報_内容編集完了</h3>
-                <form action="/groupPhoenix/adminTop" method="get">
+                <form action="/groupPhoenix/AdminTop" method="get">
                     <input type="submit" value="試合情報TOPに戻る">
                 </form>
     

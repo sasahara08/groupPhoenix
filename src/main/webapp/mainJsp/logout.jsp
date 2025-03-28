@@ -12,12 +12,13 @@
 <body>
 	<!-- ヘッダーを挿入 -->
 	<jsp:include page="../inc/memberHeader.jsp" />
-	
-	<div class="completion-container">
-        <h1>ログアウトしますか？</h1>
-        <!-- ログアウト用のサーブレットに遷移するリンク -->
-        <a href="<%=request.getContextPath()%>/LogoutServlet" class="button1">　ログアウトする　</a>
-    </div>
 
+	<div class="completion-container">
+		<h1>ログアウトしますか？</h1>
+		<!-- ログアウト用のサーブレットに遷移するリンク -->
+		<a href="<%=request.getContextPath()%>/LogoutServlet" class="button1"> ログアウトする </a>
+	</div>
+	<!-- フッターを挿入 -->
+	<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>

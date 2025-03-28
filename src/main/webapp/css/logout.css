@@ -1,28 +1,46 @@
 @charset "UTF-8";
 
-body {    
-/*2025/3/13 清水　flexがあると横並びになるので削除*/
-/*    display: flex;*/
-    font-family: Arial, sans-serif;
-    height: 100vh; /* ビューポート全体の高さに固定 */
-    margin: 0;
-    overflow: hidden; /* 不要なスクロールを防止 */
+html {
+	height: 100%;
 }
 
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	overflow: hidden;
+	/* 不要なスクロールを防止 */
+}
 
 /* ログアウト画面用のスタイル */
 .completion-container {
     display: flex; /* フレックスボックスを使用 */
     flex-direction: column; /* 垂直方向に要素を並べる */
-    justify-content: center; /* 縦方向の中央揃え */
+    justify-content:center;
     align-items: center; /* 横方向の中央揃え */
-    height: 100%; /* ビューポート全体の高さを確保 */
+    min-height: calc(100vh - 50px); /* フッターの高さ分を引いて中央に配置 */
     text-align: center; /* テキストを中央揃え */
-	padding: 10px; /* 余白を削減 */
-	box-sizing: border-box; /* パディングを含めた計算に */
+    padding: 30px; 
+    box-sizing: border-box; /* パディングを含めた計算に */
 }
 
 .completion-container h1 {
-    margin-bottom: 30px; /* ボタンとの間に余白を追加 */
+    margin-bottom: 20px; /* ボタンとの間に余白を追加 */
 }
 
+	/* ボタンとの間に余白を追加 */
+}
+footer {
+    position: fixed; /* 常に画面下部に固定 */
+    bottom: 0; /* 下端に配置 */
+    width: 95%; /* 幅を全体に広げる */
+    padding: 10px 0; /* 上下の余白 */
+    text-align: center; /* テキスト中央揃え */
+    display: flex; /* フレックスボックスを使用 */
+    justify-content: center; /* 中央に揃える */
+    align-items: center; /* 垂直方向に中央揃え */
+}
+
+footer .contact-button {
+    margin-left: auto; /* ボタンを右端に配置 */
+    margin-right: 20px; /* 右端に少し余白を追加 */
+}

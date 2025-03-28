@@ -1,98 +1,84 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@taglib prefix="c" uri="jakarta.tags.core" %>
-        <!DOCTYPE html>
-        <html lang="ja">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<!DOCTYPE html>
+<html lang="ja">
 
-        <head>
-            <meta charset="UTF-8">
-            <title>管理者画面-売上詳細</title>
-
-            <style>
-
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-bottom: 20px;
-                }
-
-                th,
-                td,
-                tr {
-                    border: 1px solid #ddd;
-                    padding: 8px;
-                    text-align: center;
-                    height: 50px;
-                }
-
-                th {
-                    background-color: #f2f2f2;
-                }
-
-                canvas {
-                    max-width: 100%;
-                    height: auto;
-                }
-            </style>
-        </head>
-
-        <body>
-
-            <jsp:include page="../inc/adminHeader.jsp" />
-
-            <h3>売上一覧：月別</h3>
+<head>
+<meta charset="UTF-8">
+<head>
+<meta charset="UTF-8">
+<title>管理者画面-売上一覧</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMonth.css" />
+</head>
 
 
-            <form action="/groupPhoenix/AdminSales" method="get">
-                <select name="selectYear">
-                    <c:forEach var="year" items="${years}">
-                        <option value=${year}>${year}</option>
-                    </c:forEach>
-                </select> <input type="hidden" name="salePage" value="saleMonth">
-                <button type="submit">更新</button>
-            </form>
 
-            <table>
-                <tr>
-                    <th>月</th>
-                    <th>売上高 (円)</th>
-                    <th>外野席 (枚)</th>
-                    <th>内野席（南側） (枚)</th>
-                    <th>内野席（北側） (枚)</th>
-                    <th>バックネット側指定席 (枚)</th>
-                </tr>
+<body>
 
-                <c:forEach var="sale" items="${sales}">
-                    <tr>
-                        <td>${sale.saleManth}</td>
-                        <td>${sale.salesValue}</td>
-                        <td><span>${sale.outSeat} /</span> <span>${sale.totalOutSeat}</span><br>
-                            <span>完売率
-                                : ${sale.outSeatSellOutRate} %</span></td>
-                        <td><span>${sale.nInSeat} /</span> <span>${sale.totalNInSeat}</span><br>
-                            <span>完売率
-                                : ${sale.outSeatSellNInSeat} %</span></td>
-                        <td><span>${sale.sInSeat} /</span> <span>${sale.totalSInSeat}</span><br>
-                            <span>完売率
-                                : ${sale.outSeatSellSInSeat} %</span></td>
-                        <td><span>${sale.backnetSeat} /</span>
-                            <span>${sale.totalBacknetSeat}</span><br>
-                            <span>完売率 : ${sale.outSeatSellBacknetSeat} %</span>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
+	<jsp:include page="../inc/adminHeader.jsp" />
 
-            <canvas id="monthlySalesChart" width="400" height="200"></canvas>
-            <canvas id="monthlySellOutRateChart" width="400" height="200"></canvas>
+	<main> 
+		<h3>売上一覧：月別</h3>
 
-            <jsp:include page="../inc/adminFooter.jsp" />
 
-            <script>
+		<form action="/groupPhoenix/AdminSales" method="get">
+			<select name="selectYear">
+				<c:forEach var="year" items="${years}">
+					<option value=${year}>${year}</option>
+				</c:forEach>
+			</select> <input type="hidden" name="salePage" value="saleMonth">
+			<button type="submit">更新</button>
+		</form>
+
+		<table>
+			<tr>
+				<th>月</th>
+				<th>売上高 (円)</th>
+				<th>外野席 (枚)</th>
+				<th>内野席（南側） (枚)</th>
+				<th>内野席（北側） (枚)</th>
+				<th>バックネット側指定席 (枚)</th>
+			</tr>
+
+			<c:forEach var="sale" items="${sales}">
+				<tr>
+					<td>${sale.saleManth}</td>
+					<td>${sale.salesValue}</td>
+					<td><span>${sale.outSeat} /</span> <span>${sale.totalOutSeat}</span><br> <span>完売率 :
+							${sale.outSeatSellOutRate} %</span></td>
+					<td><span>${sale.nInSeat} /</span> <span>${sale.totalNInSeat}</span><br> <span>完売率 :
+							${sale.outSeatSellNInSeat} %</span></td>
+					<td><span>${sale.sInSeat} /</span> <span>${sale.totalSInSeat}</span><br> <span>完売率 :
+							${sale.outSeatSellSInSeat} %</span></td>
+					<td><span>${sale.backnetSeat} /</span> <span>${sale.totalBacknetSeat}</span><br> <span>完売率 :
+							${sale.outSeatSellBacknetSeat} %</span></td>
+				</tr>
+			</c:forEach>
+		</table>
+		
+		<h3>売上グラフ：月別</h3>
+    
+        <div class="graph">
+		<canvas id="monthlySalesChart" width="400" height="200"></canvas>
+		</div>
+		
+		<div class="graph">
+		<canvas id="monthlySellOutRateChart" width="400" height="200"></canvas>
+		</div>
+
+	</main>
+
+	<jsp:include page="../inc/adminFooter.jsp" />
+
+	<script>
                 console.log(${ json });
             </script>
 
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
                 // saleDataをJavaScriptの変数に代入
                 var saleData = JSON.parse('${json}');
                 console.log(saleData);
@@ -197,6 +183,6 @@
                     }
                 });
             </script>
-        </body>
+</body>
 
-        </html>
+</html>

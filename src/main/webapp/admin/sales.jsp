@@ -6,7 +6,11 @@
         <head>
             <meta charset="UTF-8">
             <title>管理者画面-売上一覧</title>
-            <link rel="stylesheet" href="javascript:void(0)">
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admingame.css" />
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminSale.css" />
         </head>
 
         <body>
@@ -31,11 +35,11 @@
                         <tr>
                             <th>対象試合</th>
 <!--                            <th>開催日時</th>-->
-                            <th>売上高</th>
-                            <th>外野席</th>
-                            <th>内野席(南)</th>
-                            <th>内野席(北)</th>
-                            <th>バックネット側席</th>
+                            <th>売上高 (円)</th>
+                            <th>外野席 (枚)</th>
+                            <th>北側内野席(枚)</th>
+                            <th>南側内野席(枚)</th>
+                            <th>バックネット側席(枚)</th>
                         </tr>
 
                         <c:forEach var="sale" items="${sales}">

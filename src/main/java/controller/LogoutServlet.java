@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/LogoutServlet") // サーブレットのURLパターンを設定
+@WebServlet("/AdminLogout") // サーブレットのURLパターンを設定
 public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 import dto.Seats;
 
 public class SeatsDAO {
-	private static final String QUERY = "SELECT seat_type, seat_price FROM seats WHERE seat_id = ?";
+	private static final String sql = "SELECT seat_type, seat_price FROM seats WHERE seat_id = ?";
 
     public static Optional<Seats> getSeatById(int seatId) {
     	String sql = null;

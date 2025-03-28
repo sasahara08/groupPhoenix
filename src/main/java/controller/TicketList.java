@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import dao.ResaleDAO;
 import dto.Resale;  
@@ -31,7 +32,22 @@ public class TicketList extends HttpServlet {
 
     @Override 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  
-            throws ServletException, IOException {  
+            throws ServletException, IOException {
+    	// セッションを取得（新規作成しない）
+        HttpSession session = request.getSession(false);
+        
+        // セッションが存在しない、またはログイン情報がない場合
+        if (session == null || session.getAttribute("user_id") == null) {
+            // ログインページへリダイレクト
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            return;
+        }
+        
+        // ログイン済みのユーザー情報を取得
+        String userId = (String) session.getAttribute("user_id");
+        request.setAttribute("user_id", userId);
+
+
     	 List<Resale> resales = resaleDAO.getAllTickets();
          request.setAttribute("tickets", resales);
          System.out.println(resales.size());
@@ -39,7 +55,8 @@ public class TicketList extends HttpServlet {
          request.getRequestDispatcher("/mainJsp/ticket.jsp").forward(request, response);
      }
 
-        
+    
+      
 
     	@Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

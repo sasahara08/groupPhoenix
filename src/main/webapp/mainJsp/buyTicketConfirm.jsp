@@ -14,11 +14,11 @@
 	<main>
 		<h1>チケット購入内容 確認</h1>
 		<div class="box2">
-			<p>試合日時：${game.gameDate}</p>
-			<p>試合場所：${game.stadiumName}</p>
-			<p>座席：${seatId.seatType}</p>
+			<p>試合日時：${ticket.gameDate}</p>
+			<p>試合場所：${ticket.stadiumName}</p>
+			<p>座席：${ticket.seatType}</p>
 			<p>枚数：${quantity}</p>
-			<p>価格：${quantity*seatId.seatPrice}</p>
+			<p>価格：${quantity*ticket.seatPrice}</p>
 		</div>
 
 		<div class="button99">

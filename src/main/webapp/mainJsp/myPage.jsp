@@ -46,12 +46,9 @@
 
 		<div class="wrapper">
 			<!-- 会員情報変更ボタン -->
-<<<<<<< HEAD
 			<form action="${pageContext.request.contextPath}/MemberEditorServlet" method="post">
-=======
 			<form action="${pageContext.request.contextPath}/memberEditor"
 				method="get">
->>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git
 				<button class="button3" type="submit">会員情報変更</button>
 			</form>
 

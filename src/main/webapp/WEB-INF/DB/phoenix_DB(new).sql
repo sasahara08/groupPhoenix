@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `phoenix` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `phoenix`;
 -- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: phoenix
@@ -237,7 +239,7 @@ CREATE TABLE `seats` (
   `seat_type` varchar(64) NOT NULL COMMENT '座席種類',
   `seat_price` int NOT NULL COMMENT '座席料金',
   PRIMARY KEY (`seat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COMMENT='座席テーブル';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='座席テーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +248,7 @@ CREATE TABLE `seats` (
 
 LOCK TABLES `seats` WRITE;
 /*!40000 ALTER TABLE `seats` DISABLE KEYS */;
-INSERT INTO `seats` VALUES (1,'外野応援席',3000),(2,'内野指定席',5000),(3,'バックネット側指定席',8000);
+INSERT INTO `seats` VALUES (1,'外野応援席',3000),(2,'内野指定席(北側)',5000),(3,'内野指定席(南側)',5000),(4,'バックネット側指定席',8000);
 /*!40000 ALTER TABLE `seats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +420,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','女性','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL),(2,'田中 太一','たなか たいち','2000-01-01','男性','8100072','福岡県福岡市中央区長浜2-3-18-220','09012345678','iwamuro0604@gmail.com','Iwamuro0604','2025-03-24','2025-03-24 16:30:00',NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'斎藤 飛鳥','さいとう あすか','1998-08-01','女性','8100072','福岡県福岡市中央区長浜一丁目4番13号 SF福岡ビル6階','0924011835','asuka-saitou@rikarento.com','1234','2025-03-12','2025-03-12 15:10:00',NULL,NULL,NULL),(2,'田中 太一','たなか たいち','2000-01-01','男性','8100072','福岡県福岡市中央区長浜2-3-18-220','09012345678','tanaka@gmail.com','1111','2025-03-24','2025-03-24 16:30:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -431,4 +433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-26 15:18:13
+-- Dump completed on 2025-03-28 10:29:57

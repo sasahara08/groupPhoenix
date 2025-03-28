@@ -1,21 +1,14 @@
 @charset "UTF-8";
 
-html {
-  height: 100%;
-}
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+	/*2025/3/13 清水　flexがあると横並びになるので削除*/
+	/*    display: flex;*/
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	/* 横スクロールを防止 */
 }
-header {
-  width: 100%;
-}
-footer {
-  position: sticky;
-  top: 100vh;
-}
-
 
 .container {
     display: flex;
@@ -23,16 +16,19 @@ footer {
     justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
-    margin-top:  50px;
+    margin: 0 auto;
     width: 100%;
 }
 
 /* 選手詳細 */
 .player-detail {
 	display: flex;
-	justify-content: center;/* 子要素を中央に配置 */
-	align-items: center;/* 垂直方向の中央揃え */
-	gap: 20px;/* 要素間のスペース */
+	justify-content: center;
+	/* 子要素を中央に配置 */
+	align-items: center;
+	/* 垂直方向の中央揃え */
+	gap: 20px;
+	/* 要素間のスペース */
 }
 
 /* サムネイル */
@@ -41,6 +37,7 @@ footer {
 	flex: 0 0 auto;/* サイズの固定 */
 	margin-right: 30px;/* 左寄せ */
 }
+
 
 .player-thumbnail img {
 	width: 300px;
@@ -72,24 +69,11 @@ footer {
 }
 
 .back {
+	margin:20px 20px 0 20px;
 	display: flex;
-	   justify-content: center;
-	   align-items: center;
-	   margin-top: 20px; /* 上部に少し余白を追加 */
-	   margin-bottom: 20px; /* 下部にも余白を追加 */
-}
-.buttonx {
-	text-decoration: none;
-    padding: 10px 20px; /* パディングを追加してボタンを大きくする */
-	background: none; 
-	border: 2px solid white;
-	border-radius: 20px; /* 角丸にする */
-    color: white;
-	font-size: 18px;
-	cursor: pointer;
-}
-
-.buttonx:hover {
-	background-color: #fff;
-	 color: #ec6d4e;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	position: relative;
+	bottom: 10;
 }

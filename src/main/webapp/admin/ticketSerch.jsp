@@ -7,9 +7,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>検索結果画面</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket-search.css" />
+<link rel="stylesheet" href="../css/adminheader.css" />
+<link rel="stylesheet" href="../css/adminfooter.css" />
+<link rel="stylesheet" href="../css/admin-ticket-search.css" />
 </head>
 <body>
 	<!--     ヘッダー  -->
@@ -32,6 +32,7 @@
 			<h3>チケット_検索結果</h3>
 		</div>
 		<!-- 検索結果の表示 -->
+
 		<c:if test="${not empty ticketLists}">
 			<c:forEach var="ticketList" items="${ticketLists}">
 				<table>
@@ -39,34 +40,28 @@
 					<tr class="blue">
 						<th>試合ID</th>
 						<th>試合日</th>
-						<th>開始時間</th>
+						<th>時間</th>
 						<th>チーム(ホーム)</th>
 						<th>チーム(アウェイ)</th>
 						<th>場所</th>
+						<th>その他</th>
 						<th>操作</th>
 					</tr>
 
 					<!-- 1行目 -->
 					<tr>
-						<td>${ticketList.gameId}</td>
-						<td>${ticketList.gameDate}</td>
-						<td>${ticketList.startTime}</td>
-						<td>${ticketList.homeTeamName}</td>
-						<td>${ticketList.awayTeamName}</td>
-						<td>${ticketList.stadium}</td>
-						<td rowspan="3" class="green">
-							<!-- 購入済またはリセール販売の場合 --> <c:if test="${ticketList.ticketStatus == '購入済' || ticketList.ticketStatus == 'リセール販売'}">&nbsp;-&nbsp;
-    </c:if> <c:if test="${ticketList.ticketStatus == 'リセール購入済'}">
-								<form action="${pageContext.request.contextPath}/AdminTicket" method="get" style="display: inline;">
-									<button type="submit" name="sendKind" value="resaleTicketDeleteCheck">削除</button>
-									<input type="hidden" name="ticketId" value="${ticketList.ticketId}"> <input type="hidden"
-										name="orderDetailId" value="${ticketList.orderDetailId}">
-								</form>
-							</c:if>
-						</td>
+						<td>1</td>
+						<td>##</td>
+						<td>##</td>
+						<td>フェニックス</td>
+						<td>ロッチ</td>
+						<td>paypayドーム</td>
+						<td></td>
+						<td rowspan="5" class="green"><a class="green-button" href="../admin/ticketDeleteChecked.jsp">編集</a></td>
 					</tr>
 					<!-- 2行目 -->
 					<tr class="orange">
+						<th>通常</th>
 						<th>チケットID</th>
 						<th>チケット購入日</th>
 						<th>会員ID</th>
@@ -76,13 +71,35 @@
 					</tr>
 					<!-- 3行目 -->
 					<tr>
+						<td>★</td>
 						<td>${ticketList.ticketId}</td>
 						<td>${ticketList.createAt}</td>
 						<td>${ticketList.userId}</td>
 						<td>${ticketList.name}</td>
 						<td>${ticketList.kana}</td>
-						<td>${ticketList.ticketStatus}</td>
+						<td>リセール出品</td>
 					</tr>
+					<!-- 4行目 -->
+					<!--					<tr class="pink">-->
+					<!--						<th>リセール</th>-->
+					<!--						<th>チケットID</th>-->
+					<!--						<th>チケット購入日</th>-->
+					<!--						<th>会員ID</th>-->
+					<!--						<th>名前</th>-->
+					<!--						<th>ふりがな</th>-->
+					<!--						<th></th>-->
+					<!--					</tr>-->
+					<!-- 5行目 -->
+					<!--					<tr>-->
+					<!--						<td>★</td>-->
+					<!--						<td>${aticketList.ticketId != null ? aticketList.ticketId : ''}</td>-->
+					<!--						<td>${aticketList.createAt != null ? aticketList.createAt :  ''}</td>-->
+					<!--						<td>${aticketList.userId != null ? aticketList.userId : ''}</td>-->
+					<!--						<td>${aticketList.name != null ? aticketList.name : ''}</td>-->
+					<!--						<td>${aticketList.kana != null ? taicketList.kana : ''}</td>-->
+					<!--						<td></td>-->
+					<!--					</tr>-->
+
 				</table>
 			</c:forEach>
 		</c:if>
@@ -90,10 +107,6 @@
 			<p>チケットデータがありません。</p>
 		</c:if>
 		<br>
-
-		<!-- 戻るボタン -->
-		<form action="${pageContext.request.contextPath}/AdminTicket" method="get" style="display: inline;">
-			<button type="submit">戻る</button>
 	</main>
 	<!--      フッター -->
 	<footer class="footer">
@@ -101,3 +114,13 @@
 	</footer>
 </body>
 </html>
+
+<!-- forEachを使用してリストのデータを全て表示
+    <c:forEach var="ticket" items="${ticketList}">
+        <tr>
+            <td>${ticket.id}</td>
+            <td>${ticket.name}</td>
+            <td>${ticket.gameDate}</td>
+            <td>${ticket.status}</td>
+        </tr>
+    </c:forEach> -->

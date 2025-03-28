@@ -2,7 +2,7 @@ package dto;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Resaleticket {
 		   
@@ -28,11 +28,7 @@ public class Resaleticket {
 		    private String homeTeamName;
 		    private String awayTeamName;
 		    private int userId;
-
-
-
-
-			private Timestamp createdAt;
+		    private LocalDateTime createdAt;
 
 		    // Constructor
 		    public Resaleticket( int ticketId, Date gameDate, Time startTime, String homeTeamName, String awayTeamName, String stadiumName, int seatPrice, String seatType, String seatNumber) {
@@ -57,16 +53,8 @@ public class Resaleticket {
 
 
 
-			public Resaleticket() {
-				// TODO 自動生成されたコンストラクター・スタブ
-			}
-
-
-
 			// GETTERメソッド
 		    private int ticketId;
-		    
-		    
 		    public int getTicketId() {
 				return ticketId;
 			}
@@ -77,6 +65,18 @@ public class Resaleticket {
 				this.ticketId = ticketId;
 			}
 
+
+
+			public void setUserId(int userId) {
+				this.userId = userId;
+			}
+
+
+
+			public void setCreatedAt(LocalDateTime createdAt) {
+				this.createdAt = createdAt;
+			}
+		   
 
 		    public int getGameId() {
 		        return gameId;
@@ -154,14 +154,9 @@ public class Resaleticket {
 		        return userId;
 		    }
 
-		    public Timestamp getCreatedAt() {
+		    public LocalDateTime getCreatedAt() {
 		        return createdAt;
 		    }
-		    
-		    public void setUserId(int userId) {
-				this.userId = userId;
-			}
-
 		    
 			@Override
 			public String toString() {
@@ -174,9 +169,6 @@ public class Resaleticket {
 						+ ", awayTeamName=" + awayTeamName + ", userId=" + userId + ", createdAt=" + createdAt + "]";
 			}
 
-
-
-		
 
 
 			

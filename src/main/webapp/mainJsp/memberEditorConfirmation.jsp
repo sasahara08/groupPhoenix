@@ -1,49 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="ja">
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員情報変更確認</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <title>会員情報確認</title>
 </head>
 <body>
-    <h1>会員情報変更確認画面</h1>
+    <h2>会員情報確認</h2>
+    <form action="${pageContext.request.contextPath}/UpdateMemberServlet" method="POST">
+        <table>
+            <tr>
+                <td>名前:</td>
+                <td>${param.name}</td>
+            </tr>
+            <tr>
+                <td>かな:</td>
+                <td>${param.kana}</td>
+            </tr>
+            <tr>
+                <td>生年月日:</td>
+                <td>${param.birthday}</td>
+            </tr>
+            <tr>
+                <td>郵便番号:</td>
+                <td>${param.postCode}</td>
+            </tr>
+            <tr>
+                <td>住所:</td>
+                <td>${param.address}</td>
+            </tr>
+            <tr>
+                <td>電話番号:</td>
+                <td>${param.phone}</td>
+            </tr>
+            <tr>
+                <td>性別:</td>
+                <td>${param.gender}</td>
+            </tr>
+            <tr>
+                <td>クレジットカード番号:</td>
+                <td>${param.creditCardNumber}</td>
+            </tr>
+            <tr>
+                <td>クレジットカード有効期限:</td>
+                <td>${param.creditCardExpiryDate}</td>
+            </tr>
+            <tr>
+                <td>クレジットカードセキュリティコード:</td>
+                <td>${param.creditCardSecurityCode}</td>
+            </tr>
+        </table>
 
-    <p><strong>氏名:</strong> ${param.name}</p>
-    <p><strong>ふりがな:</strong> ${param.kana}</p>
-    <p><strong>生年月日:</strong> ${param.birthday}</p>
-    <p><strong>性別:</strong> ${param.gender}</p>
-    <p><strong>郵便番号:</strong> ${param.postcode}</p>
-    <p><strong>住所:</strong> ${param.address}</p>
-    <p><strong>電話番号:</strong> ${param.phone}</p>
-    <p><strong>メールアドレス:</strong> ${param.email}</p>
-    <p><strong>パスワード:</strong> ${param.password}</p>
-    <p><strong>クレジットカード番号:</strong> ${param.creditcard}</p>
-    <p><strong>クレジットカード使用期限:</strong> ${param.expiry}</p>
-    <p><strong>セキュリティコード:</strong> ${param.securitycode}</p>
-
-    <form action="memberEditorSave.jsp" method="post">
-        <input type="hidden" name="name" value="${param.name}">
-        <input type="hidden" name="kana" value="${param.kana}">
-        <input type="hidden" name="birthday" value="${param.birthday}">
-        <input type="hidden" name="gender" value="${param.gender}">
-        <input type="hidden" name="postcode" value="${param.postcode}">
-        <input type="hidden" name="address" value="${param.address}">
-        <input type="hidden" name="phone" value="${param.phone}">
-        <input type="hidden" name="email" value="${param.email}">
-        <input type="hidden" name="password" value="${param.password}">
-        <input type="hidden" name="creditcard" value="${param.creditcard}">
-        <input type="hidden" name="expiry" value="${param.expiry}">
-        <input type="hidden" name="securitycode" value="${param.securitycode}">
-
-        <button type="submit">保存</button>
-    </form>
-
-    <form action="memberEditor.jsp" method="get">
-        <button type="submit">戻る</button>
+        <button type="submit" name="action" value="confirm">確定</button>
+        <button type="submit" name="action" value="back">戻る</button>
     </form>
 </body>
 </html>

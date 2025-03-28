@@ -19,7 +19,7 @@
 					<!-- ログアウト -->
 					<li>
 						<button
-							onclick="location.href='${pageContext.request.contextPath}/LogoutConfirmation'">ログアウト</button>
+							onclick="location.href='${pageContext.request.contextPath}/LogoutServlet'">ログアウト</button>
 					</li>
 					<!-- マイページ -->
 					<li>

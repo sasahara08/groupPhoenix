@@ -40,6 +40,22 @@ public class NonMemberLogin extends HttpServlet {
                 session.setAttribute("userEmail", user.getEmail());  // メールアドレス
                 session.setAttribute("userId", user.getUserId());  // ユーザーID
 
+                // 新しい情報をセッションに保存
+                session.setAttribute("userKana", user.getKana());  // カナ
+                session.setAttribute("userBirthday", user.getBirthday());  // 生年月日
+                session.setAttribute("userPostCode", user.getPostCode());  // 郵便番号
+                session.setAttribute("userAddress", user.getAddress());  // 住所
+                session.setAttribute("userPhone", user.getPhone());  // 電話番号
+                session.setAttribute("userGender", user.getGender());  // 性別
+                session.setAttribute("userCreatedAt", user.getCreatedAt());  // 登録日
+                session.setAttribute("userLastLoginAt", user.getLastLoginAt());  // 最終ログイン日
+                session.setAttribute("userCreditCardNumber", user.getCreditCardNumber());  // クレジットカード番号
+                session.setAttribute("userCreditCardExpiryDate", user.getCreditCardExpiryDate());  // クレジットカード有効期限
+                session.setAttribute("userCreditCardSecurityCode", user.getCreditCardSecurityCode());  // クレジットカードセキュリティコード
+                
+                // 最終ログイン時間を更新
+                loginDAO.updateLastLoginTime(user.getUserId());  // 最終ログイン時間を更新する
+
                 // 会員トップページにリダイレクト
                 response.sendRedirect(request.getContextPath() + "/MemberTopServlet");
             } else {

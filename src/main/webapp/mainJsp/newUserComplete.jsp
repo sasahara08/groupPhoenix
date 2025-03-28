@@ -13,7 +13,7 @@
     <h1>新規会員登録 完了</h1>
     
     <div class="button-wrapper">
-        <form action="${pageContext.request.contextPath}/Index" method="get">
+        <form action="memberTop.jsp" method="get">
             <button type="submit">TOP</button>
         </form>
     </div>

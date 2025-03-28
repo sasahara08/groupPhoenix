@@ -16,18 +16,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import dao.DBManager;
-import dao.ResaleCancelDAO;
 import dto.StadiumsBean;
 import dto.TeamsBean;
 import dto.TicketsBean;
-
-/**
-* 管理者画面_購入チケット情報のCRUD
-*
-* @since  : 2025/03/24
-* @author : C.Tateshita
-*
-*/
 
 /**
  * Servlet implementation class AdminTicket
@@ -104,24 +95,7 @@ public class AdminTicket extends HttpServlet {
 				request.getRequestDispatcher(path).forward(request, response);
 			}
 		} else {
-			switch (sendKind) {
 
-			//チケット検索一覧_削除ボタン→削除内容確認画面
-			case "resaleTicketDeleteCheck":
-				String delOrderDetailId = request.getParameter("orderDetailId");
-				int intDelOrderDetailId = Integer.parseInt(delOrderDetailId);
-
-				// DAOから該当ユーザー情報を取得
-				TicketsBean deleteResaleTicket = ResaleCancelDAO.OrderDetailId(intDelOrderDetailId);
-
-				// リクエストスコープにユーザー情報を保存
-				request.setAttribute("deleteResaleTicket", deleteResaleTicket);
-
-				// 削除確認画面にフォワード
-				String deleteCheckPath = "/admin/ticketDeleteChecked.jsp";
-				request.getRequestDispatcher(deleteCheckPath).forward(request, response);
-				break;
-			}
 		}
 
 	}
@@ -173,8 +147,12 @@ public class AdminTicket extends HttpServlet {
 				//				String awayTeam = request.getParameter("awayTeam");
 				//				String stadium = request.getParameter("stadium");
 
+				//会員一覧を取得
+
+				//				StringBuilder searchTicketSql = new StringBuilder("SELECT * FROM tickets WHERE 1=1");
+
 				StringBuilder searchTicketSql = new StringBuilder(
-						"SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.tikcet_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
+						"SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.tikcet_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id "
 								+
 								"FROM ticket_order_detail AS TOD " +
 								"LEFT JOIN tickets AS T ON TOD.ticket_id = T.tikcet_id " +
@@ -183,18 +161,25 @@ public class AdminTicket extends HttpServlet {
 								"LEFT JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
 								"LEFT JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
 								"LEFT JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
-								"LEFT JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
 								"WHERE 1=1");
+
+				//				StringBuilder searchTicketSql = new StringBuilder(
+				//						"SELECT T.ticket_status_id, T.tikcet_id, TOD.created_at, TOD.user_id, users.name, users.kana, games.game_id, games.game_date, home_team.team_id, away_team.team_id, stadiums.stadium_id, TOD.ticket_purchase_status "
+				//								+
+				//								"FROM tickets AS T " +
+				//								"JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
+				//								"JOIN games ON T.game_id = games.game_id " +
+				//								"JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
+				//								"JOIN teams AS home_team ON games.home_team_id = home_team.team_id " +
+				//								"JOIN teams AS away_team ON games.away_team_id = away_team.team_id " +
+				//								"RIGHT JOIN ticket_order_detail AS TOD ON T.tikcet_id = TOD.ticket_id " +
+				//								"LEFT JOIN users ON TOD.user_id = users.user_id " +
+				//								"WHERE 1=1");
 
 				// それぞれの項目ごとに検索かけていく
 				// 通常購入者情報
 				if (ticketStatusId != null && !ticketStatusId.isEmpty()) {
 					searchTicketSql.append(" AND T.ticket_status_id = ? ");
-
-					// ticketStatusIdが4の場合は購入状態ステータス2のものが表示
-					if ("4".equals(ticketStatusId)) {
-						searchTicketSql.append(" AND TOD.ticket_purchase_status = 2 ");
-					}
 				}
 				if (ticketId != null && !ticketId.isEmpty()) {
 					searchTicketSql.append(" AND T.tikcet_id = ? ");
@@ -296,14 +281,6 @@ public class AdminTicket extends HttpServlet {
 							ticketData.setName(resultSet.getString("users.name"));
 							ticketData.setKana(resultSet.getString("users.kana"));
 							ticketData.setTicketPurchaseStatusId(resultSet.getInt("TOD.ticket_purchase_status"));
-							ticketData.setGameId(resultSet.getInt("games.game_id"));
-							ticketData.setGameDate(resultSet.getDate("games.game_date"));
-							ticketData.setStartTime(resultSet.getTime("games.start_time"));
-							ticketData.setHomeTeamName(resultSet.getString("home_team.team_name"));
-							ticketData.setAwayTeamName(resultSet.getString("away_team.team_name"));
-							ticketData.setStadium(resultSet.getString("stadiums.stadium_name"));
-							ticketData.setTicketStatus(resultSet.getString("ticket_statuses.ticket_status"));
-							ticketData.setOrderDetailId(resultSet.getInt("TOD.ticket_order_detail_id"));
 							ticketList.add(ticketData);
 						}
 						request.setAttribute("ticketLists", ticketList);
@@ -320,22 +297,6 @@ public class AdminTicket extends HttpServlet {
 					path = "/admin/ticketSerch.jsp";
 					request.getRequestDispatcher(path).forward(request, response);
 				}
-				break;
-				
-				//チケット削除内容確認画面→削除完了画面
-			case "resaleTicketDelete":				
-				String updateResaleTicketId = request.getParameter("ticketId");
-				int intUpdateResaleTicketId = Integer.parseInt(updateResaleTicketId);
-				String deleteOrderDetailId = request.getParameter("orderDetailId");
-				int intDeleteOrderDetailId = Integer.parseInt(deleteOrderDetailId);
-
-				// DBから該当データ更新、削除
-				ResaleCancelDAO.changeTicketStatus(intUpdateResaleTicketId);
-				ResaleCancelDAO.deleteTicketDetail(intDeleteOrderDetailId);
-
-				// 削除完了画面にフォワード
-				String deleteCompletePath = "/admin/ticketDeleteComplete.jsp";
-				request.getRequestDispatcher(deleteCompletePath).forward(request, response);
 				break;
 
 			}

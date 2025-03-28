@@ -40,7 +40,7 @@ public class InquiriesDAO {
 //	修正分
 	
 	public void saveInquiry(InquiriesBean inquiry) throws SQLException {
-	    String sql = "INSERT INTO inquiries (name, email, inquiry_text) VALUES (?, ?, ?)";
+	    String sql = "INSERT INTO inquiries (name, email, inquiry_text, created_at) VALUES (?, ?, ?,now())";
 
 	    try (Connection conn = DBManager.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {

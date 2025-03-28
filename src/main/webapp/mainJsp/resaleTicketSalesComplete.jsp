@@ -15,7 +15,7 @@
  	<div class = enclose2>
  	<h5>チケットのリセール出品が完了しました。</h5><br/>
  	<form ticket="${pageContext.request.contextPath}/TicketList" method="post" onsubmit="saveData()">
- 	<button type="button2" name="resaleticket" value="memberTop">TOP</button>
+ 	<button type="button2" name="resale" value="memberTop">TOP</button>
  	</div>
  	</form>
  <jsp:include page="../inc/footer.jsp" />

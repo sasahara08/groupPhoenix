@@ -23,18 +23,19 @@ footer {
 	color: #ec6d4e;
 }
 .welcome-message{
-	margin:20px 100px 25px 100px;
-	padding:50px 0;
+	margin:0 150px;
+	padding:50px 10px;
 	border:2px solid #ec6d4e;
 	border-radius: 25px;
+	margin-bottom: 40px;
 }
 h2{
 	color: #ec6d4e;
 }
 h1{
-	color:#ec6d4e;
-	font-size: 24px;
+	color: #ec6d4e;
 	margin:20px 35%;
+	font-size: 24px;
 }
 /*会員情報・マイチケット*/
 .wrapper{
@@ -43,5 +44,9 @@ h1{
 	gap: 20px; /* ボタン間のスペース */
 }
 table{
-	margin:0 auto;
+	margin: 0 auto;
+}
+.button2{
+	padding:10px 30px;
+	border-radius: 35px;
 }

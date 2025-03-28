@@ -54,10 +54,10 @@
 	</div>
 	</form>
 	<form action="${pageContext.request.contextPath}/ResaleTicketList" method="post" onsubmit="saveData()">
-        
+        <input type="hidden" id="user_id" value="<%= userId %>">
     <input type="text" id="ticket_id" placeholder="Ticket ID">
  <input type="hidden" name="resaleticket" value="buyResaleTicketComplete" />
-       購入する</button>
+        <button onclick="addTicketOrder(document.getElementById('ticket_id').value, '<%= userId %>')">購入する</button>
     </form>
 
     <!-- キャンセルボタン -->

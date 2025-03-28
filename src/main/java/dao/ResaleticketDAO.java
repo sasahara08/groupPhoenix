@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,33 +106,22 @@ public class ResaleticketDAO {
 				return game;
 		  }
 	}
-		  public void updateTicketStatus(int ticketId, int newStatusId) throws SQLException {
-				String sql = "UPDATE tickets SET ticket_status_id = ? WHERE ticket_id = ?";
+		  
+		  public void addTicketOrder(int ticketId, int userId, LocalDateTime createdAt) throws SQLException {
+		        String sql = "INSERT INTO ticket_order_detail (ticket_id, user_id, created_at) VALUES (?, ?, ?)";
+		        try (
+	 					Connection conn = DBManager.getConnection();
+	 		             PreparedStatement pstmt = conn.prepareStatement(sql)
+	 		      ) {
 
-				try (Connection conn = DBManager.getConnection();
-						PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		        	pstmt.setInt(1, ticketId);
+					pstmt.setInt(2, userId);
+					pstmt.setTimestamp(3, java.sql.Timestamp.valueOf(createdAt));
+		        	pstmt.executeUpdate();
+		        }
 
-					pstmt.setInt(1, newStatusId);
-					pstmt.setInt(2, ticketId);
-					pstmt.executeUpdate();
-				}
 		  }
 		  
-		  public void insertResaleticket(Resaleticket bean) {
-			    String sql = "INSERT INTO ticket_order_detail (user_id, created_at) VALUES (?, now()) FROM tickets t " + 
-			    			"LEFT JOIN ticket_order_detail tod ON t.ticket_id = tod.tikcet_id ";
+	}
 
-			    try (Connection conn = DBManager.getConnection();
-			         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-			        pstmt.setInt(1, bean.getUserId());
-			        pstmt.executeUpdate();
-			    } catch (SQLException e) {
-			        e.printStackTrace();
-			    }
-			}
-
-		
-
-		  
-}

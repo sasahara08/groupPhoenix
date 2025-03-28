@@ -10,6 +10,8 @@ public class MemberEditorDAO {
     // ユーザーIDに基づいてユーザー情報を取得（String[] で返す）
     public String[] getUserById(int userId) throws SQLException {
         String[] userInfo = null;
+        
+//        SQL文の準備
         String sql = "SELECT name, kana, post_code, address, phone, email, pass, credit_card_number, credit_card_expiry_date, credit_card_security_code "
                    + "FROM users WHERE user_id = ?";
 

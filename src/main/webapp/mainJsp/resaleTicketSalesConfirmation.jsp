@@ -21,7 +21,7 @@
  		出品後はチケットは使用不可になります。
  	</h5>
  	<div class = enclose1>
- 	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
+ 	<form ticket="${pageContext.request.contextPath}/TicketList" method="post" onsubmit="saveData()">
  	<h1>
 		${ticket.homeTeamName}vs${ticket.awayTeamName}<br/>
 	</h1>	
@@ -34,13 +34,14 @@
 	</h5>
 	</form>
 	</div>
-	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
-	 <input type="hidden" name="resale" value="ticket"/>
+	<form ticket="${pageContext.request.contextPath}/TicketList" method="post" onsubmit="saveData()">
+	 <input type="hidden" name="resaleticket" value="buyResaleTicketList"/>
 	<button type="button1" class="link-button">戻る</button>
 	</form>
-	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
+	<form ticket="${pageContext.request.contextPath}/TicketList" method="post" onsubmit="saveData()">
 	<input type="hidden" name="ticketId" value="${ticket.ticketId}"/>
-    <input type="hidden" name="resale" value="resaleTicketSalesComplete"/>
+	<input type="hidden" name="userId" value="${ticket.userId}"/>
+    <input type="hidden" name="resaleticket" value="resaleTicketSalesComplete"/>
 	<button type="button1" class="link-button">出品する</button>
 	</form>
 <jsp:include page="../inc/footer.jsp" />

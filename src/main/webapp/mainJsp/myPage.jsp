@@ -39,12 +39,12 @@
 
 		<div class="wrapper">
 			<!-- 会員情報変更ボタン -->
-			<form action="memberEditor.jsp" method="post">
+			<form action="${pageContext.request.contextPath}/MemberEditorServlet" method="get">
 				<button class="button3" type="submit">会員情報変更</button>
 			</form>
 
 			<!-- マイチケットボタン -->
-			<form action="ticket.jsp" method="post">
+			<form action="${pageContext.request.contextPath}/TicketList" method="get">
 				<button class="button3" type="submit">マイチケット</button>
 			</form>
 		</div>

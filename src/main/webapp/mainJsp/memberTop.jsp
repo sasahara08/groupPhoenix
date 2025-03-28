@@ -225,7 +225,7 @@
 					〒810-0072 福岡県福岡市中央区<br /> 長浜1丁目4番13号 SF福岡ビル 6階
 				</p>
 				<div class="confirm-button">
-					<a class="button2" href="https://maps.app.goo.gl/RExydBp71P7HY72X6">確認する</a>
+					<a class="button2" href="https://maps.app.goo.gl/RExydBp71P7HY72X6" target="_blank" rel="noopener noreferrer">確認する</a>
 				</div>
 			</div>
 		</div>

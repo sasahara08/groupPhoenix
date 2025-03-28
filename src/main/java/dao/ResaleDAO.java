@@ -30,7 +30,7 @@ public class ResaleDAO {
 	                    		+ "OR (g.game_date = CURRENT_DATE AND g.start_time >= CURRENT_TIME)) "
 	                    		+ "AND ts.ticket_status_id = 2 "
 	                    		+ "AND g.game_delete_at IS NULL "
-	                    		+ "AND tod.user_id = 2 ";
+	                    		+ "AND tod.user_id = ? ";
 	                    		 
 	            
 	            System.out.println(sql);

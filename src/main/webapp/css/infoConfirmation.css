@@ -1,4 +1,20 @@
 @charset "UTF-8";
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
+/*以下CSS中身*/
 body {
   width: 100%;
 }
@@ -12,13 +28,12 @@ h1 {
     margin: auto;
     margin-top: 3%;
     padding: 20px;
-    border: 1px solid #ccc;
     background-color: bisque;
 }
 
 .confirm-content p {
     margin: 10px 0;
-    color: brown;
+    color: #ec6d4e;
     padding: 1%;
     }
     

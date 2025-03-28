@@ -39,7 +39,7 @@
 
     <div class="back-to-top">
 <!--        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="back-button">TOPへ戻る</a>-->
-        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="button1">TOP</a>
+        <a href="${pageContext.request.contextPath}/mainJsp/index.jsp" class="button2">TOP</a>
     </div>
 
     <!-- フッターを挿入 -->

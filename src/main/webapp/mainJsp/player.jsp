@@ -40,7 +40,7 @@
 
 	<!-- TOPページボタン -->
 	<div class="top-page-button">
-		<a class="button1" href="<%=request.getContextPath()%>/Index"> TOPページ </a>
+		<a class="buttonx" href="<%=request.getContextPath()%>/Index"> TOPページ </a>
 	</div>
 	<!-- フッターを挿入 -->
 	<jsp:include page="../inc/footer.jsp" />

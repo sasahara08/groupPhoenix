@@ -1,25 +1,10 @@
 @charset "UTF-8";
-html {
-  height: 100%;
-}
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-header {
-  width: 100%;
-}
-footer {
-  position: sticky;
-  top: 100vh;
-}
-/*以下CSS中身*/
 .complete-content {
     text-align: center;
     margin: 2rem auto;
     padding: 1.5rem;
-    background-color: white;
+    border: 1px solid #98fb98;
+    background-color: #f5fff5;
     width: 60%;
     height: 200px;
     font-size: 1.2rem;

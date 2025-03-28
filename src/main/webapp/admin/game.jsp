@@ -58,13 +58,11 @@
                         </select>
                     </div>
 
-<!--                    <div class="formItem">-->
-<!--                        <label for="status">試合ステータス</label> すべて <input type="radio" id="all" name="status" value="all">-->
-<!--                        今後開催 <input type="radio" name="status" value="all"> 終了 <input type="radio" name="status"-->
-<!--                            value="all"> -->
-<!--                    </div>-->
-                    
-                    <input type="hidden" name="gamePage" value="search">
+                    <div class="formItem">
+                        <label for="status">試合ステータス</label> すべて <input type="radio" id="all" name="status" value="all">
+                        今後開催 <input type="radio" name="status" value="all"> 終了 <input type="radio" name="status"
+                            value="all"> <input type="hidden" name="gamePage" value="search">
+                    </div>
 
                     <div class="searchBtn">
                         <input type="reset" value="reset">&nbsp; <input type="submit" name="search" value="検索">

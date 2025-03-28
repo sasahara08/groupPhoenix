@@ -43,8 +43,8 @@
 		<div class="box2">
 			<label class="selectbox-3">
 				<p>
-						<label for="seatId">座席を選択する  </label>
-						<select id="seatid" name="seatId">
+						<label for="seatid">座席を選択する  </label>
+						<select id="seatid" name="seatid">
 						<option value="1">外野応援席</option>
 						<option value="2">内野指定席</option>
 						<option value="3">バックネット側指定席</option>
@@ -57,7 +57,7 @@
                        <button type="button2" name="ticket" value="game">戻る</button>
 					
                         <input type="hidden" name="ticket" value="buyTicketConfirm"/>	
-                        <input type="hidden" name="gameId" value="${ticket.gameId}" />
+                        <input type="hidden" name="gameId" value="${game.gameId}" />
                        <button type="button1" class="link-button">確認する</button>
         </form>
 		</div>

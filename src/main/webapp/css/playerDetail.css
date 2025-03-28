@@ -1,5 +1,20 @@
 @charset "UTF-8";
-
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
+/*以下CSS中身*/
 body {
 	/*2025/3/13 清水　flexがあると横並びになるので削除*/
 	/*    display: flex;*/
@@ -69,11 +84,40 @@ body {
 }
 
 .back {
-	margin:20px 20px 0 20px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0px;
-	position: relative;
-	bottom: 10;
+	   justify-content: center;
+	   align-items: center;
+	   margin-top: 20px; /* 上部に少し余白を追加 */
+	   margin-bottom: 20px; /* 下部にも余白を追加 */
+/*	margin:20px 20px 0 20px;*/
+/*	display: flex;*/
+/*	justify-content: center;*/
+/*	align-items: center;*/
+/*	padding: 0px;*/
+/*	position: relative;*/
+/*	bottom: 10;*/
 }
+<<<<<<< HEAD
+
+
+.buttonx {
+	text-decoration: none;
+    padding: 10px 20px; /* パディングを追加してボタンを大きくする */
+	background: none; 
+	border: 2px solid white;
+	border-radius: 20px; /* 角丸にする */
+    color: white;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.buttonx:hover {
+	background-color: #fff;
+	 color: #ec6d4e;
+}
+=======
+.button1{
+	padding:15px;
+	border-radius: 30px;
+}
+>>>>>>> branch 'main' of https://github.com/sasahara08/groupPhoenix.git

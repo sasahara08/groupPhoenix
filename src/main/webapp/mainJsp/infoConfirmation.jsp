@@ -34,9 +34,9 @@
 
     <div class="form-group-button-second">
 <!--        <button class="button1" onclick="history.back()">戻る</button>-->
-        <a href="<%= request.getContextPath() %>/mainJsp/info.jsp" class="button2">戻る</a>
+        <a href="<%= request.getContextPath() %>/mainJsp/info.jsp" class="button1">戻る</a>
         <!-- <button type="submit" name="confirm" class="button1">確認</button> -->
-        <button type="submit" class="button2">送信</button>
+        <button type="submit" class="button1">送信</button>
     </div>
 </form>
     </div>

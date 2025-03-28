@@ -23,8 +23,7 @@
 		<div class=enclose1>
 			<form
 				action="${pageContext.request.contextPath}/mainJsp/newUserConfirm.jsp"
-				method="post" onsubmit="return validateForm();"
-				id="memberForm">
+				method="post" onsubmit="return validateForm();">
 				<table>
 					<tr>
 						<th><label for="name">氏名：</label></th>

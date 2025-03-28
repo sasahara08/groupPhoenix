@@ -83,7 +83,7 @@ System.out.println(tickets.size());
         	 String ticketParam = request.getParameter("gameId");
              int ticket1 = Integer.parseInt(ticketParam);
              int quantity = request.getIntHeader("quantity");
-             String seatIdParam = request.getParameter("seatId");
+             String seatIdParam = request.getParameter("seatid");
          	int seatId = request.getIntHeader(seatIdParam);
 
              // DAOでデータ取得
@@ -104,17 +104,17 @@ System.out.println(tickets.size());
         	List<Resaleticket> resaletickets = resaleticketDAO.getAllTickets();
     		request.setAttribute("tickets", resaletickets);
                 request.getRequestDispatcher("./mainJsp/buyResaleTicketList.jsp").forward(request, response);
-        } else if ("buyTicketComplete".equals(ticket)) {
-        	
-        	String seatIdParam = request.getParameter("seatid");
-        	int seatId = request.getIntHeader(seatIdParam);
-        	
-        	 SeatsDAO seatsDAO = new SeatsDAO();
-             Optional<Seats> seat = SeatsDAO.getSeatById(seatId);
-             request.setAttribute("seatType", seatId);
-             request.setAttribute("seatPrice", seatId);
+//        } else if ("buyTicketComplete".equals(ticket)) {
+//        	
+//        	String seatIdParam = request.getParameter("seatid");
+//        	int seatId = request.getIntHeader(seatIdParam);
+//        	
+//        	 SeatsDAO seatsDAO = new SeatsDAO();
+//             Optional<Seats> seat = SeatsDAO.getSeatById(seatId);
+//             request.setAttribute("seatType", seatId);
+//             request.setAttribute("seatPrice", seatId);
                
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/buyTicketConfirm.jsp");dispatcher.forward(request, response);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainJsp/buyTicketConfirm.jsp");dispatcher.forward(request, response);
                     
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");

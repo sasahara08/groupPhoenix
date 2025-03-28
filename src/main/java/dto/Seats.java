@@ -8,7 +8,7 @@ public class Seats {
 	public Seats( String seatType, int seatPrice) {
 		this.seatId = seatId;
 		this.seatType = seatType;
-		this.SeatPrice = seatPrice;
+		SeatPrice = seatPrice;
 	}
 
 	public int getSeatId() {

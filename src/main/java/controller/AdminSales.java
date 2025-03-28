@@ -72,7 +72,7 @@ public class AdminSales extends HttpServlet {
 				String saleYear = request.getParameter("selectYear");
 
 				// パラメータに値が入っていた時だけyearsを初期化
-				if (years != 0) {
+				if (saleYear != null) {
 					years = Integer.parseInt(saleYear);
 				}
 

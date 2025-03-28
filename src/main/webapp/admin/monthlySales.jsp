@@ -45,7 +45,7 @@
             <form action="/groupPhoenix/AdminSales" method="get">
                 <select name="selectYear">
                     <c:forEach var="year" items="${years}">
-                        <option value="year">${year}</option>
+                        <option value=${year}>${year}</option>
                     </c:forEach>
                 </select> <input type="hidden" name="salePage" value="saleMonth">
                 <button type="submit">更新</button>

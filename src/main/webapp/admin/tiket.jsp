@@ -7,9 +7,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>チケット情報一覧</title>
-<link rel="stylesheet" href="../css/adminheader.css" />
-<link rel="stylesheet" href="../css/adminfooter.css" />
-<link rel="stylesheet" href="../css/admin-ticket.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket.css" />
 </head>
 <body>
 
@@ -39,6 +39,7 @@
 					<tr>
 						<th>購入ステータス</th>
 						<td><input type="radio" id="status02" name="purchaseStatus" value="2" checked> <label for="status02">購入済</label></td>
+						<td><input type="radio" id="status03" name="purchaseStatus" value="3"> <label for="status03">リセール出品中</label></td>
 						<td><input type="radio" id="status04" name="purchaseStatus" value="4"> <label for="status04">リセール購入済</label></td>
 					</tr>
 				</table>
@@ -66,37 +67,37 @@
 				</div>
 			</form>
 			<!-- リセール購入者情報 -->
-			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">
-				<h4>〇リセール購入者情報</h4>
-				<table>
-					<tr>
-						<th>購入ステータス</th>
-						<td><input type="radio" id="status04" name="resalePurchaseStatus" value="4" checked> <label
-							for="status04">リセール購入済</label></td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<th>チケットID</th>
-						<td><input type="text" placeholder="1" name="resaleTicketId"></td>
-					</tr>
-					<th>チケット購入日</th>
-					<td><input type="date" name="resaleTicketPurchaseDate"></td>
-					</tr>
-					<th>会員ID</th>
-					<td><input type="text" placeholder="1" name="resaleUserId"></td>
-					</tr>
-					<th>名前</th>
-					<td><input type="text" placeholder="山田太郎" name="resaleName"></td>
-					</tr>
-					<th>ふりがな</th>
-					<td><input type="text" placeholder="やまだたろう" name="resaleKana"></td>
-					</tr>
-				</table>
-				<div>
-					<button type="submit" name="sendKind" value="resaleTicketSearch">検索</button>
-					<button type="reset" name="sendKind" value="ticketTop">リセット</button>
-				</div>
+<!--			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">-->
+<!--				<h4>〇リセール購入者情報</h4>-->
+<!--				<table>-->
+<!--					<tr>-->
+<!--						<th>購入ステータス</th>-->
+<!--						<td><input type="radio" id="status04" name="resalePurchaseStatus" value="4" checked> <label-->
+<!--							for="status04">リセール購入済</label></td>-->
+<!--					</tr>-->
+<!--				</table>-->
+<!--				<table>-->
+<!--					<tr>-->
+<!--						<th>チケットID</th>-->
+<!--						<td><input type="text" placeholder="1" name="resaleTicketId"></td>-->
+<!--					</tr>-->
+<!--					<th>チケット購入日</th>-->
+<!--					<td><input type="date" name="resaleTicketPurchaseDate"></td>-->
+<!--					</tr>-->
+<!--					<th>会員ID</th>-->
+<!--					<td><input type="text" placeholder="1" name="resaleUserId"></td>-->
+<!--					</tr>-->
+<!--					<th>名前</th>-->
+<!--					<td><input type="text" placeholder="山田太郎" name="resaleName"></td>-->
+<!--					</tr>-->
+<!--					<th>ふりがな</th>-->
+<!--					<td><input type="text" placeholder="やまだたろう" name="resaleKana"></td>-->
+<!--					</tr>-->
+<!--				</table>-->
+<!--				<div>-->
+<!--					<button type="submit" name="sendKind" value="resaleTicketSearch">検索</button>-->
+<!--					<button type="reset" name="sendKind" value="ticketTop">リセット</button>-->
+<!--				</div>-->
 				<!-- 試合情報 -->
 				<h4>〇試合情報</h4>
 				<table>

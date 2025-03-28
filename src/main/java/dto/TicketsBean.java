@@ -1,6 +1,7 @@
 package dto;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class TicketsBean {
 	private int ticketId;
@@ -9,13 +10,22 @@ public class TicketsBean {
 	private int seatNUmber;
 	private int ticketStatusId;
 
+	private Date gameDate;
+	private Time startTime;
+	private String homeTeamName;
+	private String awayTeamName;
+	private String stadium;
+
 	private Date createAt;
+	private int orderDetailId;
 
 	private int userId;
 	private String name;
 	private String kana;
 
 	private int ticketPurchaseStatusId;
+
+	private String ticketStatus;
 
 	public TicketsBean(int ticketId, int gameId, int seatId, int seatNUmber, int ticketStatusId) {
 		this.ticketId = ticketId;
@@ -24,9 +34,15 @@ public class TicketsBean {
 		this.seatNUmber = seatNUmber;
 		this.ticketStatusId = ticketStatusId;
 	}
+	
+//	public TicketsBean(int ticketId, int ticketStatusId) {
+//		this.ticketId = ticketId;
+//		this.ticketStatusId = ticketStatusId;
+//	}
 
 	public TicketsBean(int ticketStatusId, int ticketId, Date createAt, int userId, String name, String kana,
-			int ticketPurchaseStatusId) {
+			int ticketPurchaseStatusId, int gameId, Date gameDate, Time startTime, String homeTeamName,
+			String awayTeamName, String stadium, String ticketStatus, int orderDetailId) {
 		this.ticketStatusId = ticketStatusId;
 		this.ticketId = ticketId;
 		this.createAt = createAt;
@@ -34,10 +50,14 @@ public class TicketsBean {
 		this.name = name;
 		this.kana = kana;
 		this.ticketPurchaseStatusId = ticketPurchaseStatusId;
-		//		this.setCreateAt(createAt);
-		//		this.setUserId(userId);
-		//		this.setName(name);
-		//		this.setKana(kana);
+		this.gameId = gameId;
+		this.gameDate = gameDate;
+		this.startTime = startTime;
+		this.homeTeamName = homeTeamName;
+		this.awayTeamName = awayTeamName;
+		this.stadium = stadium;
+		this.ticketStatus = ticketStatus;
+		this.orderDetailId = orderDetailId;
 
 	}
 
@@ -125,5 +145,62 @@ public class TicketsBean {
 	public void setTicketPurchaseStatusId(int ticketPurchaseStatusId) {
 		this.ticketPurchaseStatusId = ticketPurchaseStatusId;
 	}
+
+	public Date getGameDate() {
+		return gameDate;
+	}
+
+	public void setGameDate(Date gameDate) {
+		this.gameDate = gameDate;
+	}
+
+	public Time getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getHomeTeamName() {
+		return homeTeamName;
+	}
+
+	public void setHomeTeamName(String homeTeamName) {
+		this.homeTeamName = homeTeamName;
+	}
+
+	public String getAwayTeamName() {
+		return awayTeamName;
+	}
+
+	public void setAwayTeamName(String awayTeamName) {
+		this.awayTeamName = awayTeamName;
+	}
+
+	public String getStadium() {
+		return stadium;
+	}
+
+	public void setStadium(String stadium) {
+		this.stadium = stadium;
+	}
+
+	public String getTicketStatus() {
+		return ticketStatus;
+	}
+
+	public void setTicketStatus(String ticketStatus) {
+		this.ticketStatus = ticketStatus;
+	}
+	
+	public int getOrderDetailId() {
+        return orderDetailId;
+    }
+
+    public void setOrderDetailId(int orderDetailId) {
+        this.orderDetailId = orderDetailId;
+    }
+
 
 }

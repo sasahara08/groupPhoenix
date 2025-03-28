@@ -1,7 +1,10 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
- <!DOCTYPE html>
- <html lang="ja">
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List"%>
+<%@ page import="dto.Game"%>
+<%@ page import="dto.Resale"%>
+<%@ page import="dao.ResaleDAO"%>
+ <html>
  <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,22 +20,28 @@
  		表示されているチケットを出品してもよろしいでしょうか？<br/>
  		出品後はチケットは使用不可になります。
  	</h5>
- 	<c:forEach var="ticket" items="${ticket.ticketId}">
  	<div class = enclose1>
  	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
  	<h1>
-		${game.homeTeam}vs${game.awayTeam}<br/>
+		${ticket.homeTeamName}vs${ticket.awayTeamName}<br/>
 	</h1>	
 	<h5>
-		日時:${game.gameDate} ${game.gameTime}<br/>
-		場所:${game.stadiumPlace}<br/>
-		座席:${seats.seattype} ${tickets.seatnumber}<br/>
-		枚数:${orderdetail.quantity}枚<br/>
+		日時: ${ticket.gameDate} ${ticket.startTime}<br/>
+		場所: ${ticket.stadiumName}<br/>
+		座席: ${ticket.seatType} ${ticket.seatNumber}<br/>
+		枚数: 枚<br/>
+		価格: ${ticket.seatPrice} 円
 	</h5>
+	</form>
 	</div>
-	<button type="button2" name="ticket" value="ticket">戻る</button>
-	<button type="button1" name="ticket" value="resaleTicketSalesComplete">出品する</button>
-	</c:forEach>
+	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
+	 <input type="hidden" name="resale" value="ticket"/>
+	<button type="button1" class="link-button">戻る</button>
+	</form>
+	<form ticket="${pageContext.request.contextPath}/TicketList.java" method="post" onsubmit="saveData()">
+	<input type="hidden" name="ticketId" value="${ticket.ticketId}"/>
+    <input type="hidden" name="resale" value="resaleTicketSalesComplete"/>
+	<button type="button1" class="link-button">出品する</button>
 	</form>
 <jsp:include page="../inc/footer.jsp" />
  </body>

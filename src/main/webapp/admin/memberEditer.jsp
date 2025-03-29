@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理者画面-会員情報編集</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminmember.css" />
-<link rel="stylesheet" href="javascript:void(0)">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMemberList.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
@@ -21,32 +20,48 @@
 	</div>
 	<main>
 		<!-- 会員情報編集エリア -->
-		<div class="editarea">
+		<div class="editForm">
 			<h3>会員情報編集</h3>
+			<br>
 			<form action="${pageContext.request.contextPath}/AdminMember" method="post">
-				<div>
-					<label>会員ID</label><input type="text" name="userId" value="${editUser.userId}" readonly>
+				<div class="formItem">
+					<label>会員ID</label>
+					<input type="text" name="userId" value="${editUser.userId}" readonly>
 				</div>
-				<div>
-					<label>名前</label><input type="text" name="name" value="${editUser.name}">
+				
+				<div class="formItem">
+					<label>名前</label>
+					<input type="text" name="name" value="${editUser.name}">
 				</div>
-				<div>
-					<label>ふりがな</label><input type="text" name="kana" value="${editUser.kana}">
+				
+				<div class="formItem">
+					<label>ふりがな</label>
+					<input type="text" name="kana" value="${editUser.kana}">
 				</div>
-				<div>
-					<label>生年月日</label><input type="date" name="birthday" value="${editUser.birthday}">
+				
+				<div class="formItem">
+					<label>生年月日</label>
+					<input type="date" name="birthday" value="${editUser.birthday}">
 				</div>
-				<div>
-					<label>郵便番号</label><input type="text" name="postcode" pattern="\d{3}-?\d{4}" value="${editUser.postCode}">
+				
+				<div class="formItem">
+					<label>郵便番号</label>
+					<input type="text" name="postcode" pattern="\d{3}-?\d{4}" value="${editUser.postCode}">
 				</div>
-				<div>
-					<label>住所</label><input type="text" name="address" value="${editUser.address}">
+				
+				<div class="formItem">
+					<label>住所</label>
+					<input type="text" name="address" value="${editUser.address}">
 				</div>
-				<div>
-					<label>電話番号</label><input type="text" name="phone" value="${editUser.phone}">
+				
+				<div class="formItem">
+					<label>電話番号</label>
+					<input type="text" name="phone" value="${editUser.phone}">
 				</div>
-				<div>
-					<label>メールアドレス</label><input type="email" name="email" value="${editUser.email}">
+				
+				<div class="formItem">
+					<label>メールアドレス</label>
+					<input type="email" name="email" value="${editUser.email}">
 				</div>
 				<!--				<div class="gender">-->
 				<!--					<label>性別</label> <input type="radio" name="gender" value="male" id="gender_male"-->
@@ -56,19 +71,21 @@
 				<!--						type="radio" name="gender" value="other" id="gender_other" <c:if test="${user.gender == 'other'}">checked</c:if>>-->
 				<!--					<label for="gender_female">その他</label>-->
 				<!--				</div>-->
-				<div>
-					<label>パスワード</label><input type="password" name="pass" value="${editUser.pass}">
+				<div class="formItem">
+					<label>パスワード</label>
+					<input type="password" name="pass" value="${editUser.pass}">
 				</div>
-				<div class="buttonarea">
+			
+		
+				<div class="editBtn">
 					<button type="submit" name="sendKind" value="userEditCheck">確認</button>
 			</form>
-			<!-- 戻るボタン -->
-			<form action="${pageContext.request.contextPath}/AdminMember" method="post" style="display: inline;">
-				<button type="submit" name="sendKind" value="userSearch">戻る</button>
-
-			</form>
-		</div>
-
+				&nbsp;
+				<!-- 戻るボタン -->
+					<form action="${pageContext.request.contextPath}/AdminMember" method="post" style="display: inline;">
+					<button type="submit" name="sendKind" value="userSearch">戻る</button>
+					</form>
+				</div>
 		</div>
 	</main>
 	<!-- フッターを挿入 -->

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理者画面-会員情報編集完了</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminmember.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMember.css" />
 <link rel="stylesheet" href="javascript:void(0)">
 </head>
 <body>
@@ -20,12 +20,16 @@
 	</div>
 	<main>
 		<!-- 会員情報登録完了エリア -->
-		<div class="editcompletearea">
-			<h3>会員情報_内容編集完了</h3>
-			<p><form action="${pageContext.request.contextPath}/AdminMember" method="get">
+		<div class="container">
+			<h3>会員情報&nbsp;内容編集完了</h3>
+			
+			<div class="btn">
+			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
 				<input type="submit" value="会員情報TOPに戻る">
 			</form>
-	</p></main>
+			</div>
+		</div>
+	</main>
 	<!-- フッターを挿入 -->
 
 

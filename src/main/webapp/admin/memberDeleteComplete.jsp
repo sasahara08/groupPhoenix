@@ -6,8 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理者画面-会員情報削除完了</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminmember.css" />
-<link rel="stylesheet" href="javascript:void(0)">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMember.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
@@ -20,13 +19,15 @@
 	</div>
 	<main>
 		<!-- 会員情報登録完了エリア -->
-		<div class="addcompletearea">
+		<div class="container">
 			<h3>会員情報削除完了</h3>
-			<p>
+			
+			<div class="btn">
 			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
 				<input type="submit" value="会員情報TOPに戻る">
 			</form>
-			</p>
+			</div>
+		</div>
 	</main>
 	<!-- フッターを挿入 -->
 

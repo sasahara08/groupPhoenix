@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理者画面-会員情報検索結果</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminmember.css" />
-<link rel="stylesheet" href="javascript:void(0)">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMemberList.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
+	<jsp:include page="../inc/adminHeader.jsp" />
 
 	<!-- ページタイトル -->
 	<div class="title">
@@ -21,10 +23,11 @@
 	</div>
 	<main>
 		<!-- 検索結果一覧エリア -->
-		<div class="searchresultsarea">
+		<div class="memberSearchList">
 			<h3>会員検索結果一覧</h3>
+			<br>
 			<c:if test="${not empty users}">
-				<table border="1">
+				<table class="table_design08">
 					<thead>
 						<tr>
 							<th>会員ID</th>
@@ -78,7 +81,9 @@
 			</c:if>
 		</div>
 	</main>
+
 	<!-- フッターを挿入 -->
+	<jsp:include page="../inc/adminFooter.jsp" />
 
 
 </body>

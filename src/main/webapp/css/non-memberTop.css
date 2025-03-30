@@ -169,9 +169,14 @@ main {
 	color: #ec6d4e;
 	z-index: 2;
 }
-
+.big-text{
+	font-size: 36px;
+	margin:10px 0;
+	font-weight: bold;
+}
 .siteInfo-button {
 	text-align: center;
+	margin-top:20px;
 }
 
 /*文字の動き*/
@@ -463,7 +468,7 @@ h4 {
 .hero {
 	margin: 0 20% -600px 0;
 	height: 600px;
-	background-image: url(../images/baseball.jpg);
+	background-image: url(../images/poypoy.jpg);
 	background-size: cover;
 	background-position: top;
 	animation: parallax linear both;

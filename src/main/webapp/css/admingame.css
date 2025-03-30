@@ -7,6 +7,42 @@ h3{
    margin-bottom: 10px;
 }
 
+h4{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+/*完了画面用*/
+.container {
+  width: 30%; /* 固定幅または必要に応じて調整 */
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+.label{
+  display: flex;
+  justify-content: flex-start; /*左寄せ*/
+  align-items: center;         /*垂直方向に中央揃え*/
+  margin-bottom: 10px;
+}
+
+.data{
+	display: flex;
+	  justify-content: flex-start; /*左寄せ*/
+	  align-items: center;         /*垂直方向に中央揃え*/
+	  margin-bottom: 10px;
+}
+
+.btn {
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center;
+  margin-top: 20px; /* 上部のスペースを追加 */
+}
 
 /* 試合検索、試合追加のform用 */
 /* フォームコンテナのスタイル */

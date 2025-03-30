@@ -1,12 +1,125 @@
 @charset "UTF-8";
-body {
-  background-color: #a8a8a8;
-  text-align: center; /* ページ全体を中央寄せ */
-  color: black;
+
+/* ページタイトルのスタイル */
+.title {
+	background-color: #e9e7e7;
+	/* 背景色を水色に設定 */
+	display: flex;
+	justify-content: center;
+	/* 水平方向の中央揃え */
+	align-items: center;
+	/* 垂直方向の中央揃え */
+	height: 70px;
+	/*	 タイトル領域を画面全体の高さに設定 */
+	margin: 20px 0;
+	/* 余白を設定 */
+	text-align: center;
+	/* テキストを中央揃え */
 }
-main{
-	margin:20px 0;
+
+h2 {
+	font-size: 26px;
+	/* テキストサイズ */
+	line-height: 1.5;
+	/* 行間の調整 */
 }
+
+.subtitle {
+	display: block;
+	/* 改行させる */
+	font-size: 0.7em;
+	/* テキストサイズ */
+}
+
+/* 見出し */
+h3{
+   margin-top: 20px;
+   margin-bottom: 10px;
+   text-align: center;
+}
+
+h4{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+/* コンテナブロック */
+.container {
+  width: 40%; /* 固定幅または必要に応じて調整 */
+  margin: 20px auto; /* 上下のマージンを追加し、中央に配置 */
+  padding: 20px; /* 内側のパディングを追加 */
+  background-color: #fff; /* 背景色を追加 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+}
+
+/* ボタン */
+.btn {
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center;
+  margin-top: 20px; /* 上部のスペースを追加 */
+}
+
+
+
+/* テーブル */
+.table_design08 {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table_design08 th,
+.table_design08 td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table_design08 th {
+  background-color: #f2f2f2;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.deleted-message {
+  color: tomato;
+  text-align: center;
+}
+
+@media screen and (max-width: 787px) {
+  .table_design08 {
+    text-align: left;
+  }
+  .table_design08 thead {
+    display:none;
+  }
+  .table_design08 th, .table_design08 td {
+    display: block;
+    border: 0;
+    border-bottom: 2px solid #e6f1f6;
+  }
+  .table_design08 tbody th{
+    background: #f2f2f2;
+  }
+  .table_design08 td::before{
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 20%;
+    min-width: 4em;
+  }
+  .deleted-message {
+    color: tomato;
+    text-align: center;
+  }
+}
+
+
+
+
 form {
   display: inline-block; /* フォームを中央に寄せる */
   text-align: left; /* フォーム内のテキストを左寄せ */
@@ -26,31 +139,6 @@ div {
   padding: 20px 0 0 0;
   text-align: center;
 }
-/* タイトル */
-.title {
-  background-color: #444444;
-  margin: 0 30%;
-  border-radius: 25px;
-}
-.sub {
-  color: #a8a8a8;
-}
-/* メインの箱（白） */
-.main {
-  background-color: white;
-  margin: 0 30%;
-  padding: 25px 0;
-  border-radius: 25px;
-}
-h3,
-h4 {
-  background-color: #007bff;
-  color: white;
-  text-align: center;
-  margin: 10px 20%;
-  border-radius: 25px;
-  padding: 5px 0;
-}
-h1 {
-  margin: 0;
-}
+
+
+

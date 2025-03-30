@@ -7,35 +7,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>チケット情報一覧</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket.css" />
 </head>
 <body>
-
-	<!--     ヘッダー  -->
-	<header>
-		<h1>
-			<a href="#" class="logo">Phoenix管理画面</a>
-		</h1>
-		<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
-		<button type="logout" class="logout-button">ログアウト</button>
-	</header>
+	<!-- ヘッダーを挿入 -->
+	<jsp:include page="../inc/adminHeader.jsp" />
+	
 	<!-- タイトル -->
-	<main>
-		<div class="title">
-			<h1>管理画面</h1>
-			<p class="sub">3.チケット情報管理</p>
-		</div>
-		<!-- チケット検索 -->
-		<div class="main">
-			<h3>チケット検索</h3>
+	<div class="title">
+		<h2>
+			管理画面<span class="subtitle">3.チケット情報管理</span>
+		</h2>
+	</div>
+	
+	<!-- チケット検索 -->
+		<h3><u>チケット検索</u></h3>
+		
+		<div class="container">
+		<h4>〇購入者情報</h4>
+		<br>
 			<!-- ★フォームタグ -->
 			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">
 
 				<!-- 購入者情報 -->
-				<h4>〇購入者情報</h4>
-				<table>
+				<table class="table_design08">
 					<tr>
 						<th>購入ステータス</th>
 						<td><input type="radio" id="status02" name="purchaseStatus" value="2" checked> <label for="status02">購入済</label></td>
@@ -43,10 +41,11 @@
 						<td><input type="radio" id="status04" name="purchaseStatus" value="4"> <label for="status04">リセール購入済</label></td>
 					</tr>
 				</table>
-				<table>
+				<br>
+				<table class="table_design08">
 					<tr>
-						<th>チケットID</th>
-						<td><input type="text" placeholder="1" name="ticketId"></td>
+					<th>チケットID</th>
+					<td><input type="text" placeholder="1" name="ticketId"></td>
 					</tr>
 					<th>チケット購入日</th>
 					<td><input type="date" name="ticketPurchaseDate"></td>
@@ -66,6 +65,8 @@
 					<button type="reset" name="sendKind" value="ticketTop">リセット</button>
 				</div>
 			</form>
+		</div>
+			
 			<!-- リセール購入者情報 -->
 <!--			<form action="${pageContext.request.contextPath}/AdminTicket" method="post">-->
 <!--				<h4>〇リセール購入者情報</h4>-->
@@ -99,8 +100,11 @@
 <!--					<button type="reset" name="sendKind" value="ticketTop">リセット</button>-->
 <!--				</div>-->
 				<!-- 試合情報 -->
-				<h4>〇試合情報</h4>
-				<table>
+				
+		<div class="container">		
+			<h4>〇試合情報</h4>
+				<br>
+				<table class="table_design08">
 					<tr>
 						<th>試合ID</th>
 						<td><input type="text" placeholder="1" name="gameId"></td>
@@ -145,16 +149,15 @@
 
 				</table>
 				<!-- 検索・リセットボタン -->
-				<div>
+				<div class="btn">
 					<button type="submit" name="sendKind" value="ticketSearch">検索</button>
+					&nbsp;
 					<button type="reset" name="sendKind" value="ticketTop">リセット</button>
 				</div>
 			</form>
 		</div>
-	</main>
-	<!--      フッター -->
-	<footer class="footer">
-		<p>© 2025 Phoenix Inc. All Rights Reserved.</p>
-	</footer>
+	
+	<!-- フッターを挿入 -->
+	<jsp:include page="../inc/adminFooter.jsp" />
 </body>
 </html>

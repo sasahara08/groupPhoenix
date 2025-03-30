@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import dao.NonMemberDAO;
@@ -20,8 +21,9 @@ public class LoginModel {
      * @param pass パスワード
      * @return 認証成功時はUserDTOオブジェクト、失敗時はnull
      * @throws SQLException データベース接続エラー発生時
+     * @throws NoSuchAlgorithmException 
      */
-    public LoginBean authenticate(String email, String pass) throws SQLException {
+    public LoginBean authenticate(String email, String pass) throws SQLException,NoSuchAlgorithmException {
     	NonMemberDAO userDAO = new NonMemberDAO();
         return userDAO.findByEmailAndPassword(email, pass);
     }

@@ -1,3 +1,8 @@
+package dao;
+
+import java.sql.Date;
+import java.sql.SQLException;
+
 public class User {
     private int userId;  // user_id
     private String name;
@@ -117,4 +122,10 @@ public class User {
     public void setSecuritycode(String securitycode) {
         this.securitycode = securitycode;
     }
+    
+ // User情報を取得するメソッドの実装  
+    public static User getUserInfo(String userId) throws SQLException {  
+        User user = null;
+		return user;
+	}
 }

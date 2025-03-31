@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/newUserComplete.css" />
 </head>
 <body>
+<jsp:include page="/inc/header.jsp" />
+	<main>
     <h1>新規会員登録 完了</h1>
     
     <div class="button-wrapper">
         <form action="/MemberTopServlet" method="get">
-            <button type="submit">TOP</button>
+            <button type="submit" class="button2">TOP</button>
         </form>
     </div>
     
@@ -43,6 +45,7 @@
         out.println("<p>会員登録に失敗しました。</p>");
     }
 	%>
-  
+	</main>
+      <jsp:include page="/inc/footer.jsp" />
 </body>
 </html>

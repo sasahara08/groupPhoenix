@@ -13,9 +13,11 @@
 <link rel="stylesheet" href="javascript:void(0)">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/buyticket.css" />
 </head>
-<jsp:include page="../inc/memberHeader.jsp" />
+
 <body>
+<jsp:include page="../inc/memberHeader.jsp" />
 	<main>
 		<h1>座席と枚数を選択する</h1>
 
@@ -40,12 +42,12 @@
 			</div>
 			<div class="button99">
 
-				<button type="button2" name="ticket" value="game">戻る</button>
+				<button type="button2" name="ticket" value="game" class="button3">戻る</button>
 
 				<input type="hidden" name="ticket" value="buyTicketConfirm" />
 				<input type="hidden" name="gameId" value="${ticket.gameId}" /> 
 				
-				<button type="button1" class="link-button">確認する</button>
+				<button type="button1" class="button3">確認する</button>
 		</form>
 		</div>
 	</main>

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*鐘ケ江*/
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+header {
+  width: 100%;
+}
+footer {
+  position: sticky;
+  top: 100vh;
+}
+/*以下CSS中身*/
+main{
+	text-align: center;
+	background-color: white;
+	margin:0 25%;
+	border-radius: 25px;
+	color:#ec6d4e;
+}
+h1{
+	color:#ec6d4e;
+	padding: 50px 0 25px 0;
+	font-size: 24px;
+}
+h2{
+	color: #ec6d4e;
+	font-size: 20px;
+	padding:10px 0;
+	text-decoration: underline;
+}
+.button2{
+	margin:25px 0;
+}
+.button3{
+	margin-top: 20px;
+	margin-bottom:15px;
+}

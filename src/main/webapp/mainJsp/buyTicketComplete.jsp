@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="javascript:void(0)">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/buyTicketComplete.css" />
 </head>
 <jsp:include page="../inc/memberHeader.jsp" />
 <body>

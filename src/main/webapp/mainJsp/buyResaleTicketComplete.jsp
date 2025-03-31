@@ -12,16 +12,19 @@
 <link rel="stylesheet" href="javascript:void(0)">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/buyResaleTicketComplete.css" />
 </head>
 <body>
 	<jsp:include page="../inc/memberHeader.jsp" />
+	<main>
 	<div class=enclose2>
 		<h5>チケットの購入が完了しました</h5>
 		<br />
 		<form action="${pageContext.request.contextPath}/MemberTopServlet" method="get">
-				<button class="button2" type="submit">TOP</button>
+				<button class="button3" type="submit">TOP</button>
 			</form>
 	</div>
+	</main>
 	<jsp:include page="/inc/footer.jsp" />
 </body>
 </html>

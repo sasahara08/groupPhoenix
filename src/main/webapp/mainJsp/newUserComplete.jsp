@@ -8,12 +8,13 @@
     <title>新規会員登録 完了</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/newUserComplete.css" />
 </head>
 <body>
     <h1>新規会員登録 完了</h1>
     
     <div class="button-wrapper">
-        <form action="memberTop.jsp" method="get">
+        <form action="/MemberTopServlet" method="get">
             <button type="submit">TOP</button>
         </form>
     </div>

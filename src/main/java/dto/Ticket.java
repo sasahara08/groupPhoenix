@@ -3,6 +3,7 @@ package dto;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
+import java.util.List;
 
 // Ticket.java  
 public class Ticket {
@@ -30,7 +31,7 @@ public class Ticket {
 
 	// Constructor
 	public Ticket(int gameId, Date gameDate, Time startTime, String homeTeamName, String awayTeamName,
-			String stadiumName, int seatPrice, String seatType, int ticketId, int ticketStatus) {
+			String stadiumName, int seatPrice, String seatType, int ticketId, int ticketStatus, int userId) {
 		this.ticketId = ticketId;
 		this.gameId = gameId;
 		this.seatId = seatId;
@@ -47,8 +48,10 @@ public class Ticket {
 		this.awayTeamName = awayTeamName;
 		this.seatPrice = seatPrice;
 		this.ticketStatus = ticketStatus;
+		this.userId = userId;
 
 	}
+
 
 	// GETTERメソッド
 	public int getTicketId() {
@@ -131,6 +134,11 @@ public class Ticket {
 		return userId;
 	}
 
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -145,5 +153,14 @@ public class Ticket {
 				+ ", stadiumId=" + stadiumId + ", stadiumName=" + stadiumName + ", homeTeamName=" + homeTeamName
 				+ ", awayTeamName=" + awayTeamName + ", userId=" + userId + ", createdAt=" + createdAt + "]";
 	}
+
+
+	public List<Integer> fetchTicketIds(List<String> asList) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+	
 
 }

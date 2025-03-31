@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -9,12 +10,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import dao.ResaleticketDAO;
-import dao.SeatsDAO;
 import dao.TicketDAO;
-import dto.Resaleticket;
-import dto.Seats;
 import dto.Ticket;
 
 /**
@@ -54,7 +53,7 @@ public class GameListServlet extends HttpServlet {
 		String ticket = request.getParameter("ticket");
 
 		if ("top".equals(ticket)) {
-			request.getRequestDispatcher("./mainJsp/Top.jsp").forward(request, response);
+			request.getRequestDispatcher("${pageContext.request.contextPath}/MemberTopServlet").forward(request, response);
 		} else if ("buyTicket".equals(ticket)) {
 			String ticketParam = request.getParameter("gameId");
 			int ticket1 = Integer.parseInt(ticketParam);
@@ -81,52 +80,64 @@ public class GameListServlet extends HttpServlet {
 
 			String ticketParam = request.getParameter("gameId");
 			int ticket1 = Integer.parseInt(ticketParam);
-			String seatIdParam = request.getParameter("seatid");
-			//int seatId = request.getIntHeader(seatIdParam);
+			String seatIdParam = request.getParameter("seatId");
+//			int seatId = request.getIntHeader(seatIdParam);
 			
 			int seatId = Integer.parseInt(seatIdParam);
 			
-			System.out.println("seatId :" + seatId);
+//			System.out.println("seatId :" + seatId);
 			// DAOでデータ取得
 			TicketDAO ticketDAO = new TicketDAO();
-			Ticket game = ticketDAO.getSeatdById(ticket1);
-			SeatsDAO seatsDAO = new SeatsDAO();
-			Seats seat = seatsDAO.getSeatById(seatId);
-			
-			System.out.println(seat.toString());
-			request.setAttribute("seat", seat);
-			request.setAttribute("ticket", game);
-			
+			Ticket game = null;
+			game =ticketDAO.getGameIdById(ticket1);
 
-System.out.println(game.toString());
+			
+			//List<Ticket> tickets = new ArrayList<>();
+			List<Ticket> tickets = ticketDAO.getTicketids(ticket1, seatId);
+			request.setAttribute("tickets", tickets);
+			System.out.println(tickets.size());
+
+		      
 			request.getRequestDispatcher("/mainJsp/buyTicketConfirm.jsp").forward(request, response);
 
 		} else if ("buyTicketComplete".equals(ticket)) {
-			
-			// JSPから送信されたパラメータを取得
-						int ticketId = Integer.parseInt(request.getParameter("ticketId"));
-						int newStatusId = 2; // ステータスを「3」に設定
+			int ticketId = Integer.parseInt(request.getParameter("ticketId"));
 
-//						// DAOを呼び出してステータスを更新
-//						try {
-//							resaleticketDAO.updateTicketStatus(ticketId, newStatusId);
-//						} catch (SQLException e) {
-//							// TODO 自動生成された catch ブロック
-//							e.printStackTrace();
-//						}
-//						
-//
-//						// DAOを介してデータを挿入
-//						ResaleticketDAO dao = new ResaleticketDAO();
-//						dao.insertResaleticket(bean);
+        	// セッションを取得（新規作成しない）
+        	HttpSession session = request.getSession(false);
 
-						response.getWriter().println("データが挿入されました！");
+        	// ログイン済みのユーザー情報を取得
+        	int userId = (int) session.getAttribute("userId");
+        	System.out.println("userId" + userId);
+        	request.setAttribute("userId", userId);
+
+        	// DAOを呼び出してステータスを更新
+        	try {
+        	    // userIdを渡す
+        	    resaleticketDAO.updateUserId(userId,ticketId );
+        	} catch (SQLException e) {
+        	    e.printStackTrace();
+        	}
+
+        	
+        	// JSPから送信されたパラメータを取得
+			int newStatusId = 2; // ステータスを「3」に設定
 			
-			request.getRequestDispatcher("./mainJsp/buyTicketComplete.jsp").forward(request, response);
-		} else if ("buyResaleTicketList".equals(ticket)) {
-			List<Resaleticket> resaletickets = resaleticketDAO.getAllTickets();
-			request.setAttribute("tickets", resaletickets);
-			request.getRequestDispatcher("./mainJsp/buyResaleTicketList.jsp").forward(request, response);
+
+			// DAOを呼び出してステータスを更新
+			try {
+				resaleticketDAO.updateTicketStatus(ticketId, newStatusId);
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+
+             request.getRequestDispatcher("./mainJsp/buyTicketComplete.jsp").forward(request, response);
+		
+		} else if ("ResaleTicketList".equals(ticket)) {
+//			List<Resaleticket> resaletickets = resaleticketDAO.getAllTickets();
+//			request.setAttribute("tickets", resaletickets);
+			request.getRequestDispatcher("${pageContext.request.contextPath}/ResaleTicketList").forward(request, response);
 			//        } else if ("buyTicketComplete".equals(ticket)) {
 			//        	
 			//        	String seatIdParam = request.getParameter("seatid");
@@ -143,7 +154,7 @@ System.out.println(game.toString());
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
 		}
 	}
-
+}
 	//        
 	//        
 	//        @Override
@@ -156,4 +167,4 @@ System.out.println(game.toString());
 	//            }
 	//
 	//    		request.getRequestDispatcher("/mainJsp/buyTicket.jsp").forward(request, response);
-}
+

@@ -1,59 +1,43 @@
-h1 {
-  text-align: center;
+@charset "UTF-8";
+/*鐘ケ江*/
+html {
+  height: 100%;
 }
-
-.box2 {
-  width: 50%;
-  padding: 0.5em 1em;
-  margin: 50px auto;
-  font-weight: bold;
-  color: #ec6d4e; /*文字色*/
-  background: #fff;
-  border: solid 3px grey; /*線*/
-  border-radius: 10px; /*角の丸み*/
-}
-
-.box2 p {
+body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
-
-button {
-  display: block;
-  margin: auto;
+header {
+  width: 100%;
 }
-
-.button99 {
-  display: flex;
-  justify-content: center;
+footer {
+  position: sticky;
+  top: 100vh;
 }
-
-.selectbox-3 {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
+/*以下CSS中身*/
+main{
+	text-align: center;
+	background-color: white;
+	margin:0 25%;
+	border-radius: 25px;
+	color:#ec6d4e;
 }
-
-.selectbox-3::after {
-  position: absolute;
-  right: 15px;
-  width: 10px;
-  height: 7px;
-  background-color: #535353;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  content: '';
-  pointer-events: none;
+h1{
+	color:#ec6d4e;
+	padding: 50px 0 25px 0;
+	font-size: 24px;
 }
-
-.selectbox-3 select {
-  appearance: none;
-  min-width: 230px;
-  height: 2.8em;
-  padding: 0.4em calc(0.8em + 30px) 0.4em 0.8em;
-  border: 1px solid #d0d0d0;
-  border-radius: 3px;
-  background-color: #fff;
-  color: #333333;
-  font-size: 1em;
-  cursor: pointer;
+h2{
+	color: #ec6d4e;
+	font-size: 20px;
+	padding:10px 0;
+	text-decoration: underline;
+}
+.button2{
+	margin:25px 0;
+}
+.button3{
+	margin-top: 10px;
+	margin-bottom:15px;
 }

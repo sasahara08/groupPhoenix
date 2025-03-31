@@ -11,13 +11,14 @@
 <link rel="stylesheet" href="javascript:void(0)">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/game.css" />
 </head>
-<jsp:include page="../inc/memberHeader.jsp" />
-
 <body>
+<jsp:include page="../inc/memberHeader.jsp" />
+<main>
 	<h1>試合リスト</h1>
 		<form action="${pageContext.request.contextPath}/ResaleTicketList" method="get">
-			<button class="button2" type="submit">リセールチケット</button>
+			<button class="button3" type="submit">リセールチケット</button>
 		</form>
 
 	<div class="ticket-list">
@@ -30,7 +31,7 @@
 				<form ticket="${pageContext.request.contextPath}/GameListServlet" method="post" onsubmit="saveData()">
 					<input type="hidden" name="gameId" value="${ticket.gameId}" /> 
 					<input type="hidden" name="ticket" value="buyTicket" />
-					<button type="button1" class="link-button">チケット購入</button>
+					<button type="button" class="button3">チケット購入</button>
 				</form>
 			</div>
 		</c:forEach>
@@ -39,6 +40,7 @@
 				<button class="button2" type="submit">戻る</button>
 			</form>
 		</div>
+		</main>
 	<jsp:include page="/inc/footer.jsp" />
 </body>
 </html>

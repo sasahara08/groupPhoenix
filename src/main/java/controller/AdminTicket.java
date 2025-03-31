@@ -174,10 +174,10 @@ public class AdminTicket extends HttpServlet {
 				//				String stadium = request.getParameter("stadium");
 
 				StringBuilder searchTicketSql = new StringBuilder(
-						"SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.tikcet_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
+						"SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.ticket_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
 								+
 								"FROM ticket_order_detail AS TOD " +
-								"LEFT JOIN tickets AS T ON TOD.ticket_id = T.tikcet_id " +
+								"LEFT JOIN tickets AS T ON TOD.ticket_id = T.ticket_id " +
 								"LEFT JOIN users ON TOD.user_id = users.user_id " +
 								"LEFT JOIN games ON T.game_id = games.game_id " +
 								"LEFT JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
@@ -197,7 +197,7 @@ public class AdminTicket extends HttpServlet {
 					}
 				}
 				if (ticketId != null && !ticketId.isEmpty()) {
-					searchTicketSql.append(" AND T.tikcet_id = ? ");
+					searchTicketSql.append(" AND T.ticket_id = ? ");
 				}
 				if (ticketPurchaseDate != null && !ticketPurchaseDate.isEmpty()) {
 					searchTicketSql.append(" AND TOD.created_at = ? ");
@@ -290,7 +290,7 @@ public class AdminTicket extends HttpServlet {
 						while (resultSet.next()) {
 							TicketsBean ticketData = new TicketsBean();
 							ticketData.setTicketStatusId(resultSet.getInt("T.ticket_status_id"));
-							ticketData.setTicketId(resultSet.getInt("T.tikcet_id"));
+							ticketData.setTicketId(resultSet.getInt("T.ticket_id"));
 							ticketData.setCreateAt(resultSet.getDate("TOD.created_at"));
 							ticketData.setUserId(resultSet.getInt("TOD.user_id"));
 							ticketData.setName(resultSet.getString("users.name"));

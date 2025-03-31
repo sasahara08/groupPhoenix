@@ -11,10 +11,10 @@ public class ResaleCancelDAO {
 
 	//チケット情報_ticket_idが一致するもの
 	public static TicketsBean OrderDetailId(int orderDetailId) {
-		String sql = "SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.tikcet_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
+		String sql = "SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.ticket_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
 				+
 				"FROM ticket_order_detail AS TOD " +
-				"LEFT JOIN tickets AS T ON TOD.ticket_id = T.tikcet_id " +
+				"LEFT JOIN tickets AS T ON TOD.ticket_id = T.ticket_id " +
 				"LEFT JOIN users ON TOD.user_id = users.user_id " +
 				"LEFT JOIN games ON T.game_id = games.game_id " +
 				"LEFT JOIN stadiums ON games.stadium_id = stadiums.stadium_id " +
@@ -35,7 +35,7 @@ public class ResaleCancelDAO {
 					// TicketBeanにデータをセット
 					ticket = new TicketsBean();
 					ticket.setTicketStatusId(resultSet.getInt("T.ticket_status_id"));
-					ticket.setTicketId(resultSet.getInt("T.tikcet_id"));
+					ticket.setTicketId(resultSet.getInt("T.ticket_id"));
 					ticket.setCreateAt(resultSet.getDate("TOD.created_at"));
 					ticket.setUserId(resultSet.getInt("TOD.user_id"));
 					ticket.setName(resultSet.getString("users.name"));
@@ -65,7 +65,7 @@ public class ResaleCancelDAO {
 			// sql設定
 			String sql = "UPDATE tickets "
 					+ "SET ticket_status_id = 3 "
-					+ "WHERE tikcet_id = ? ";
+					+ "WHERE ticket_id = ? ";
 			// sqlにticketIDを代入して更新
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, ticketId);

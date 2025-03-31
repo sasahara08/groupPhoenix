@@ -11,5 +11,4 @@
 
 		<button type="button" class="logout-button" onclick="location.href='${pageContext.request.contextPath}/AdminLogout'">ログアウト</button>
 
-
 	</header>

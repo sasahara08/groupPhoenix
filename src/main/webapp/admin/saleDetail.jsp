@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>管理者画面-売上詳細</title>
-<link rel="stylesheet" href="javascript:void(0)">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->

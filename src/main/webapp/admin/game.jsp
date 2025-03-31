@@ -10,7 +10,6 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admingame.css" />
-
         </head>
 
         <body>
@@ -188,9 +187,7 @@
 
 
             <!-- フッターを挿入 -->
-            <footer class="footer">
-                <p>© 2025 Phoenix Inc. All Rights Reserved.</p>
-            </footer>
+			<jsp:include page="../inc/adminFooter.jsp" />
+            
         </body>
-
         </html>

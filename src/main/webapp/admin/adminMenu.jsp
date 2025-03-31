@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
-            <jsp:include page="../inc/adminHeader.jsp" />
+    <jsp:include page="../inc/adminHeader.jsp" />
             
             
 	<div class="adminMenu">
@@ -34,8 +34,7 @@
 	</div>
 
 	<!-- フッターを挿入 -->
-	<footer class="footer">
-		<p>© 2025 Phoenix Inc. All Rights Reserved.</p>
-	</footer>
+	<jsp:include page="../inc/adminFooter.jsp" />
+	
 </body>
 </html>

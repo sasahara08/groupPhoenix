@@ -7,11 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>管理者画面-会員情報編集</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminMemberList.css" />
 </head>
 <body>
 	<!-- ヘッダーを挿入 -->
-
+	<jsp:include page="../inc/adminHeader.jsp" />
+	
 	<!-- ページタイトル -->
 	<div class="title">
 		<h2>
@@ -88,8 +91,9 @@
 				</div>
 		</div>
 	</main>
+	
 	<!-- フッターを挿入 -->
-
+	<jsp:include page="../inc/adminFooter.jsp" />	
 
 </body>
 </html>

@@ -17,7 +17,7 @@
 
 
 <body>
-
+	<!-- ヘッダーを挿入 -->
 	<jsp:include page="../inc/adminHeader.jsp" />
 
 	<main> 
@@ -183,6 +183,10 @@
                     }
                 });
             </script>
+            
+	<!-- フッターを挿入 -->
+	<jsp:include page="../inc/adminFooter.jsp" />
+	
 </body>
 
 </html>

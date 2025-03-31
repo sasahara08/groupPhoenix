@@ -7,6 +7,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>検索結果画面</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminheader.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminfooter.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin-ticket-search.css" />

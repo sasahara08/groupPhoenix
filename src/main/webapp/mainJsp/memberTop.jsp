@@ -94,7 +94,7 @@
 				<p class="big-text">④足を運ぶ必要なし！</p>
 				<br />
 				<div class="siteInfo-button">
-					<form action="${pageContext.request.contextPath}/GameServlet" method="get">
+					<form action="${pageContext.request.contextPath}/GameListServlet" method="get">
 						<button class="button2" type="submit">チケットを購入する</button>
 					</form>
 				</div>
@@ -132,17 +132,17 @@
 		<div class="swiper sample-slider">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<img src="${pageContext.request.contextPath}/images/baseball.jpg" />
+					<img src="${pageContext.request.contextPath}/images/bees.jpg" />
 				</div>
 				<div class="swiper-slide">
-					<img src="${pageContext.request.contextPath}/images/baseball.jpg" />
+					<img src="${pageContext.request.contextPath}/images/dolphins.jpg" />
 				</div>
 				<div class="swiper-slide">
-					<img src="${pageContext.request.contextPath}/images/baseball.jpg" />
+					<img src="${pageContext.request.contextPath}/images/flowers.jpg" />
 				</div>
-				<div class="swiper-slide">
-					<img src="${pageContext.request.contextPath}/images/baseball.jpg" />
-				</div>
+<!--				<div class="swiper-slide">-->
+<!--					<img src="${pageContext.request.contextPath}/images/baseball.jpg" />-->
+<!--				</div>-->
 			</div>
 			<div class="swiper-pagination"></div>
 			<div class="swiper-button-prev"></div>
@@ -154,7 +154,7 @@
 			<!-- ③チケット購入 -->
 			<div class="buy-ticket">
 				<h4 class="ticket">game & buy ticket</h4>
-				<form action="${pageContext.request.contextPath}/GameServlet" method="get">
+				<form action="${pageContext.request.contextPath}/GameListServlet" method="get">
 					<button class="ticket-button" type="submit">試合情報&チケット購入</button>
 				</form>
 			</div>

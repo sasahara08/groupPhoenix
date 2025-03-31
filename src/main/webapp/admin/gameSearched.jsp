@@ -33,7 +33,13 @@
 					<th>操作</th>
 				</tr>
 			</thead>
-					
+			
+			<tr>				                            
+			<c:if test="${game.gameDeleteAt != null}">
+			<td colspan="7" class="deleted-message">試合情報は削除されています</td>
+			</c:if>
+			</tr>
+			
 			<tbody>
 			<c:forEach var="game" items="${games}">
 				<tr>
@@ -43,12 +49,6 @@
 					<td data-label="チーム(ホーム)">${game.homeTeamName}</td>
 					<td data-label="チーム(アウェイ)">${game.awayTeamName}</td>
 					<td data-label="場所">${game.stadium}</td>
-					
-					<td>				                            
-					<c:if test="${game.gameDeleteAt != null}">
-					<td colspan="7" class="deleted-message">試合情報は削除されています</td>
-					</c:if>
-					</td>
 					
                     <td>            
 					<form action="/groupPhoenix/game" method="get">
@@ -77,7 +77,8 @@
 					</form>     
 			</c:forEach>      
 			</c:if>
-
+			
+			
  			<c:if test="${empty games}">
 				<p>試合データがありません。</p>
 			</c:if>

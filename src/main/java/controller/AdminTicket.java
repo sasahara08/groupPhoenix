@@ -17,9 +17,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import dao.DBManager;
 import dao.ResaleCancelDAO;
+import dto.AdminTicketsBean;
 import dto.StadiumsBean;
 import dto.TeamsBean;
-import dto.TicketsBean;
 
 /**
 * 管理者画面_購入チケット情報のCRUD
@@ -112,7 +112,7 @@ public class AdminTicket extends HttpServlet {
 				int intDelOrderDetailId = Integer.parseInt(delOrderDetailId);
 
 				// DAOから該当ユーザー情報を取得
-				TicketsBean deleteResaleTicket = ResaleCancelDAO.OrderDetailId(intDelOrderDetailId);
+				AdminTicketsBean deleteResaleTicket = ResaleCancelDAO.OrderDetailId(intDelOrderDetailId);
 
 				// リクエストスコープにユーザー情報を保存
 				request.setAttribute("deleteResaleTicket", deleteResaleTicket);
@@ -283,12 +283,12 @@ public class AdminTicket extends HttpServlet {
 					//						statement.setString(index++, resaleTicketUserKana);
 					//					}
 
-					List<TicketsBean> ticketList = new ArrayList<>();
+					List<AdminTicketsBean> ticketList = new ArrayList<>();
 
 					try (ResultSet resultSet = statement.executeQuery()) {
 						// 結果をリクエスト属性にセット
 						while (resultSet.next()) {
-							TicketsBean ticketData = new TicketsBean();
+							AdminTicketsBean ticketData = new AdminTicketsBean();
 							ticketData.setTicketStatusId(resultSet.getInt("T.ticket_status_id"));
 							ticketData.setTicketId(resultSet.getInt("T.ticket_id"));
 							ticketData.setCreateAt(resultSet.getDate("TOD.created_at"));

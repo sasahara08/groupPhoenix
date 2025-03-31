@@ -4,8 +4,8 @@ public class Seats {
 	private int seatId;
 	private String seatType;
 	private int SeatPrice;
-	
-	public Seats( String seatType, int seatPrice) {
+
+	public void seats(String seatType, int seatPrice) {
 		this.seatId = seatId;
 		this.seatType = seatType;
 		SeatPrice = seatPrice;
@@ -34,8 +34,12 @@ public class Seats {
 	public void setSeatPrice(int seatPrice) {
 		SeatPrice = seatPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "Seats [seatId=" + seatId + ", seatType=" + seatType + ", SeatPrice=" + SeatPrice + "]";
+	}
 	
 	
-	
-	
+
 }

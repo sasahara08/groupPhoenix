@@ -29,7 +29,8 @@ public class ResaleticketDAO {
 				+ "(g.game_date > CURRENT_DATE "
 				+ "OR (g.game_date = CURRENT_DATE AND g.start_time >= CURRENT_TIME)) "
 				+ "AND ts.ticket_status_id = 3 "
-				+ "AND g.game_delete_at IS NULL ";
+				+ "AND g.game_delete_at IS NULL "
+				+ "LIMIT 10 ";
 
 		System.out.println(sql);
 		try (Connection conn = DBManager.getConnection();
@@ -154,6 +155,33 @@ public class ResaleticketDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void insertUser(int userId) {
+		String sql = "INSERT INTO ticket_order_detail (user_id, created_at) VALUES (?, now()) "
+				+ "FROM tickets t " 
+				+ "LEFT JOIN ticket_order_detail tod ON t.ticket_id = tod.ticket_id ";
+
+		try (Connection conn = DBManager.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setInt(1, userId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+}
+	}
+
+	public void updateTicketStatus(int ticketId, int newStatusId, String userId) throws SQLException {
+		String sql = "UPDATE tickets SET ticket_status_id = ? WHERE ticket_id = ?";
+
+		try (Connection conn = DBManager.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setInt(1, newStatusId);
+			pstmt.setInt(2, ticketId);
+			pstmt.executeUpdate();
+		}
 
 
 //	 public List<Resaleticket> getTicketIdsByGameAndSeat(int gameId, int seatId) throws SQLException {
@@ -174,4 +202,5 @@ public class ResaleticketDAO {
 //	    }
 
 	
+	}
 }

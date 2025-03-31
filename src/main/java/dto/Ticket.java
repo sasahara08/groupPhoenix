@@ -7,6 +7,8 @@ import java.util.List;
 
 // Ticket.java  
 public class Ticket {
+//	public static final int GANE_ID = 0;
+//	public static final int SEAT_ID = 0;
 	private int ticketId;
 	private int gameId;
 	private int seatId;
@@ -30,6 +32,9 @@ public class Ticket {
 	private LocalDateTime createdAt;
 
 	// Constructor
+	public Ticket() {
+		
+	}
 	public Ticket(int gameId, Date gameDate, Time startTime, String homeTeamName, String awayTeamName,
 			String stadiumName, int seatPrice, String seatType, int ticketId, int ticketStatus, int userId) {
 		this.ticketId = ticketId;
@@ -58,13 +63,22 @@ public class Ticket {
 		return ticketId;
 	}
 
+	public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
 	public int getGameId() {
 		return gameId;
 	}
 
+	public void setSeatId(int seatId) {
+        this.seatId = seatId;
+    }
+	
 	public int getSeatId() {
 		return seatId;
 	}
+
 
 	public String getSeatNumber() {
 		return seatNumber;

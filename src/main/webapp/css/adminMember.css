@@ -58,19 +58,26 @@ h4{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
 }
 
-.label{
-  display: flex;
-  justify-content: flex-start; /*左寄せ*/
-  align-items: center;         /*垂直方向に中央揃え*/
-  margin-bottom: 10px;
+.info-row {
+	width:fit-content;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 8px; /* 各行の間隔を調整 */
 }
 
-.data{
-	display: flex;
-	  justify-content: flex-start; /*左寄せ*/
-	  align-items: center;         /*垂直方向に中央揃え*/
-	  margin-bottom: 10px;
+.label {
+    width: 200px; /* ラベルの幅を設定 */
+    font-weight: bold; /* ラベルを太字に */
 }
+
+.data {
+	width: 250px;
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 8px; /* ラベルとデータの間にスペースを追加 */
+}
+
+
 
 /*ボタン*/
 .btn {

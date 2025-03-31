@@ -27,35 +27,43 @@
 		<h3>会員情報編集&nbsp;内容確認</h3>
 		<h4>編集後</h4>
 		<br>
+		<div class="info-row">
 			<div class="label">会員ID：</div>
 			<div class="data">${editUser.userId}</div>
-			
+		</div>
+		<div class="info-row">
 			<div class="label">名前：</div>
 			<div class="data">${editUser.name}</div>
-			
+		</div>
+		<div class="info-row">	
 			<div class="label">ふりがな：</div>
 			<div class="data">${editUser.kana}</div>
-			
+		</div>	
+		<div class="info-row">	
 			<div class="label">生年月日：</div>
 			<div class="data">${editUser.birthday}</div>
-			
+		</div>	
+		<div class="info-row">	
 			<div class="label">郵便番号：</div>
 			<div class="data">${editUser.postCode}</div>
-			
+		</div>	
+		<div class="info-row">	
 			<div class="label">住所：</div>
 			<div class="data">${editUser.address}</div>
-			
+		</div>	
+		<div class="info-row">	
 			<div class="label">電話番号：</div>
 			<div class="data">${editUser.phone}</div>
-			
+		</div>	
+		<div class="info-row">	
 			<div class="label">メールアドレス：</div>
 			<div class="data">${editUser.email}</div>
-			
+		</div>	
 			<!--<p>性別: ${editUser.gender}</p>-->
-			
+		<div class="info-row">	
 			<div class="label">パスワード：</div>
 			<div class="data">${editUser.pass}</div>
-		
+		</div>
 
 			<div class="btn">
 				<!-- データ送信用のフォーム -->

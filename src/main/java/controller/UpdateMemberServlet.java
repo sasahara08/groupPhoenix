@@ -70,14 +70,14 @@ public class UpdateMemberServlet extends HttpServlet {
                     creditCardSecurityCode
                 );
                 // 更新完了後、完了画面へ
-                response.sendRedirect("memberEditorComplete.jsp");
+                response.sendRedirect("/groupPhoenix/mainJsp/memberEditorComplete.jsp");
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("error.jsp");
             }
         } else {
             // 確認画面に遷移
-            response.sendRedirect("memberEditorConfirmation.jsp");
+            response.sendRedirect("/groupPhoenix/mainJsp/memberEditorConfirmation.jsp");
         }
     }
 }

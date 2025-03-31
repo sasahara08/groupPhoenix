@@ -8,6 +8,7 @@
     <title>確認画面</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/newUserConfirm.css" />
     <style>
         .button-wrapper {
             display: flex;
@@ -22,8 +23,9 @@
 </head>
 <body>
     <jsp:include page="/inc/header.jsp" />
+    <main>
     <h1>新規会員登録 確認</h1>
-    
+    <div class="table">
     <p><strong>氏名:</strong> <%= request.getParameter("name") %></p>
     <p><strong>ふりがな:</strong> <%= request.getParameter("kana") %></p>
     <p><strong>生年月日:</strong> <%= request.getParameter("birthday") %></p>
@@ -49,9 +51,10 @@
         <input type="hidden" name="expiry" value="<%= request.getParameter("expiry") %>">
         <input type="hidden" name="creditcard" value="<%= request.getParameter("creditcard") %>">
         <input type="hidden" name="securitycode" value="<%= request.getParameter("securitycode") %>">
-        
-        <button type="submit">登録</button>
+            </div>
+        <button type="submit" class="button2">登録</button>
     </form>
+    </main>
     
     <jsp:include page="/inc/footer.jsp" />
 </body>

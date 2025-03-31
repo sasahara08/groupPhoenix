@@ -19,7 +19,7 @@
     <h3>試合情報の削除完了</h3>
     	
     	<div class="btn">
-		<form action="/groupPhoenix/adminTop" method="get">
+		<form action="/groupPhoenix/AdminTop" method="get">
 			<input type="submit" value="試合情報TOPに戻る">
 		</form>
 		</div>

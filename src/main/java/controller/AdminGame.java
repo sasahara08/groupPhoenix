@@ -577,7 +577,7 @@ public class AdminGame extends HttpServlet {
 				int intValue = Integer.parseInt(deleteGameId);
 				AdminGameDAO.deleteGame(intValue);
 				//画面遷移
-				path = "/admin/gameEditComplete.jsp";
+				path = "/admin/gameDeleteComplete.jsp";
 				request.getRequestDispatcher(path).forward(request, response);
 
 				break;

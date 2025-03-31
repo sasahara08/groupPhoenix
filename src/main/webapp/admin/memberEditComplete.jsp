@@ -26,7 +26,7 @@
 			<h3>会員情報&nbsp;内容編集完了</h3>
 			
 			<div class="btn">
-			<form action="${pageContext.request.contextPath}/AdminMember" method="get">
+			<form action="${pageContext.request.contextPath}/AdminTop" method="get">
 				<input type="submit" value="会員情報TOPに戻る">
 			</form>
 			</div>

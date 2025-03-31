@@ -13,7 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import dao.ResaleticketDAO;
+import dao.SeatsDAO;
 import dao.TicketDAO;
+import dto.Seats;
 import dto.Ticket;
 
 /**
@@ -77,7 +79,6 @@ public class GameListServlet extends HttpServlet {
 			request.getRequestDispatcher("./mainJsp/game.jsp").forward(request, response);
 
 		} else if ("buyTicketConfirm".equals(ticket)) {
-
 			String ticketParam = request.getParameter("gameId");
 			int ticket1 = Integer.parseInt(ticketParam);
 			String seatIdParam = request.getParameter("seatId");
@@ -90,19 +91,41 @@ public class GameListServlet extends HttpServlet {
 			TicketDAO ticketDAO = new TicketDAO();
 			Ticket game = null;
 			game =ticketDAO.getGameIdById(ticket1);
-
-			
+			System.out.println(game.toString());
+		
+			SeatsDAO seatsDAO = new SeatsDAO();
+			Seats seats = seatsDAO.getSeatById(seatId);
 			//List<Ticket> tickets = new ArrayList<>();
-			List<Ticket> tickets = ticketDAO.getTicketids(ticket1, seatId);
-			request.setAttribute("tickets", tickets);
-			System.out.println(tickets.size());
+			//List<Ticket> tickets = ticketDAO.getTicketids(ticket1, seatId);
+			request.setAttribute("ticket", game);
+			request.setAttribute("seat", seats);
+			//System.out.println(tickets.size());
+
 
 		      
 			request.getRequestDispatcher("/mainJsp/buyTicketConfirm.jsp").forward(request, response);
 
 		} else if ("buyTicketComplete".equals(ticket)) {
-			int ticketId = Integer.parseInt(request.getParameter("ticketId"));
+			//int ticketId = Integer.parseInt(request.getParameter("ticketId"));
 
+			// JSPからのパラメータを取得
+	        String gameIdParam = request.getParameter("gameId");
+	        String seatIdParam = request.getParameter("seatId");
+
+	        int gameId = Integer.parseInt(gameIdParam);
+	        int seatId = Integer.parseInt(seatIdParam);
+
+	        // BeanとDAOを使用してticketIdを取得
+	        Ticket ticketBean = new Ticket();
+	        ticketBean.setGameId(gameId);
+	        ticketBean.setSeatId(seatId);
+
+	        TicketDAO ticketDAO = new TicketDAO();
+	        int ticketId1 = ticketDAO.getTicketId(ticketBean);
+
+	        // JSPに転送
+	        request.setAttribute("ticketId", ticketId1);
+			
         	// セッションを取得（新規作成しない）
         	HttpSession session = request.getSession(false);
 
@@ -114,7 +137,7 @@ public class GameListServlet extends HttpServlet {
         	// DAOを呼び出してステータスを更新
         	try {
         	    // userIdを渡す
-        	    resaleticketDAO.updateUserId(userId,ticketId );
+        	    resaleticketDAO.updateUserId(userId,ticketId1 );
         	} catch (SQLException e) {
         	    e.printStackTrace();
         	}
@@ -126,7 +149,7 @@ public class GameListServlet extends HttpServlet {
 
 			// DAOを呼び出してステータスを更新
 			try {
-				resaleticketDAO.updateTicketStatus(ticketId, newStatusId);
+				resaleticketDAO.updateTicketStatus(ticketId1, newStatusId);
 			} catch (SQLException e) {
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();

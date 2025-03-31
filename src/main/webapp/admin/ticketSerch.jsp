@@ -14,13 +14,8 @@
 </head>
 <body>
 	<!--     ヘッダー  -->
-	<header>
-		<h1>
-			<a href="#" class="logo">Phoenix管理画面</a>
-		</h1>
-		<!--		未ログイン時は「ログイン」、ログイン時は「ログアウト」-->
-		<button type="logout" class="logout-button">ログアウト</button>
-	</header>
+	<!-- ヘッダーを挿入 -->
+    <jsp:include page="../inc/adminHeader.jsp" />
 	<!-- ページタイトル -->
 	<div class="main-title">
 		<h1>管理画面</h1>

@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="javascript:void(0)">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/html5reset-1.6.1.css" media="all" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/buyTicketConfirm.css" />
 </head>
-<body>
 <jsp:include page="../inc/memberHeader.jsp" />
+<body>
 	<main>
 		<h1>チケット購入内容 確認</h1>
 		<div class="box2">
@@ -23,12 +22,13 @@
 
 		<div class="button99">
 			<form ticket="${pageContext.request.contextPath}/GameListServlet" method="post" onsubmit="saveData()">
-				<button type="button2" name="ticket" value="game" class="button3">キャンセル</button>
+				<button type="submit" name="ticket" value="game">キャンセル</button>
 			</form>
 			<form ticket="${pageContext.request.contextPath}/GameListServlet" method="post" onsubmit="saveData()">
-				<input type="hidden" name="ticketId" value="${ticket.ticketId}" />
+				<input type="hidden" name="gameId" value="${ticket.gameId}" />
+				<input type="hidden" name="seatId" value="${seat.seatId}" />
 				 <input type="hidden" name="ticket" value="buyTicketComplete" />
-				<button type="button1" class="button3">購入</button>
+				<button type="submit" class="link-button">購入</button>
 			</form>
 		</div>
 	</main>

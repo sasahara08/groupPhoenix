@@ -87,6 +87,7 @@ public class AdminSales extends HttpServlet {
 				//画面遷移
 				request.setAttribute("sales", saleTotalList);
 				request.setAttribute("years", yearList);
+				request.setAttribute("admin", admin);
 				request.setAttribute("json", json);
 				String path = "./admin/monthlySales.jsp";
 				request.getRequestDispatcher(path).forward(request, response);

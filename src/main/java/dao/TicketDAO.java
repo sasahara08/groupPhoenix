@@ -94,6 +94,33 @@ public class TicketDAO {
 		return game;
 	}
 	
+	
+	public int getTicketId(Ticket ticket) {
+        int ticketId = -1; // デフォルト値：該当なし
+
+        String sql = "SELECT ticket_id FROM tickets WHERE game_id = ? AND seat_id = ? AND ticket_status_id = 1 ORDER BY ticket_id";
+
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        	System.out.println( "GameId"+ ticket.getGameId());
+        	System.out.println( "SeatId"+ ticket.getSeatId());
+        	
+            pstmt.setInt(1, ticket.getGameId());
+            pstmt.setInt(2, ticket.getSeatId());
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    ticketId = rs.getInt("ticket_id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+System.out.println("ticketId" + ticketId);
+        return ticketId;
+    }
+
+	
 		public void insertUser(int userId) {
 			String sql = "INSERT INTO ticket_order_detail (user_id, created_at) VALUES (?, now()) "
 					+ "FROM tickets t " 

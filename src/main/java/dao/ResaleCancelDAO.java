@@ -5,12 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.TicketsBean;
+import dto.AdminTicketsBean;
 
 public class ResaleCancelDAO {
 
 	//チケット情報_ticket_idが一致するもの
-	public static TicketsBean OrderDetailId(int orderDetailId) {
+	public static AdminTicketsBean OrderDetailId(int orderDetailId) {
 		String sql = "SELECT TOD.ticket_purchase_status, TOD.created_at, TOD.user_id, T.ticket_status_id, T.ticket_id, users.name, users.kana, games.game_id, games.game_date, games.start_time, home_team.team_id AS home_team_id, away_team.team_id AS away_team_id, stadiums.stadium_id, home_team.team_name, away_team.team_name, stadiums.stadium_name, ticket_statuses.ticket_status, TOD.ticket_order_detail_id "
 				+
 				"FROM ticket_order_detail AS TOD " +
@@ -23,7 +23,7 @@ public class ResaleCancelDAO {
 				"LEFT JOIN ticket_statuses ON T.ticket_status_id = ticket_statuses.ticket_status_id " +
 				"WHERE TOD.ticket_order_detail_id = ?";
 
-		TicketsBean ticket = null;
+		AdminTicketsBean ticket = null;
 
 		try (Connection connection = DBManager.getConnection();
 				PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -33,7 +33,7 @@ public class ResaleCancelDAO {
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
 					// TicketBeanにデータをセット
-					ticket = new TicketsBean();
+					ticket = new AdminTicketsBean();
 					ticket.setTicketStatusId(resultSet.getInt("T.ticket_status_id"));
 					ticket.setTicketId(resultSet.getInt("T.ticket_id"));
 					ticket.setCreateAt(resultSet.getDate("TOD.created_at"));
